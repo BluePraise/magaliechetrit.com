@@ -10,3 +10,11 @@ ul li {
 li + li {
     margin-top: 8px;
 }
+
+li a {
+    line-height: 0;
+    display: inline-block;
+}
+li a img {
+    margin-bottom: 0;
+}
