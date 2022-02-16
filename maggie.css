@@ -1,5 +1,18 @@
+/*
+This CSS has custom features I don't think should be in Careless CSS
+*/
+
+body {
+    --attention-color: #ff008d85;
+}
 h3 {
     padding-top: 50px;
     margin-bottom: 20px;
     border-bottom: 1px solid var(--text-color);
+}
+
+.ribbon {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background: var(--attention-color);
 }
