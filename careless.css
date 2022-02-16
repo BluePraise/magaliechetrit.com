@@ -1,0 +1,311 @@
+/* KEEPING IT SIMPLE - Tired of showing off. 
+This css is meant to not have too much overhead. I was inspired by new.css / https://newcss.net/
+But couldn't get on board with some decisions. SO i made my own. 
+*/
+
+@font-face {
+    font-family: "MintGroteskBold";
+    src: url("mint-grotesk/MintGroteskV1.1-Bold.woff2") format("woff2");
+}
+
+:root {
+    --default-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+        "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --bold-font: 'MintGroteskBold';
+    --text-color: #383838;
+    --color-1: #f2f2f3;
+    --color-2: #afafaf;
+    --color-3: #00bf5f;
+    --color-4: #a0ffe9;
+    --font-size-reg: 16px;
+    --font-size-s: 14px;
+    --font-size-xs: 12px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+* ::selection {
+    background: var(--color-4);
+    color: var(--text-color);
+    text-shadow: none;
+}
+
+address,
+area,
+article,
+aside,
+audio,
+blockquote,
+datalist,
+details,
+dl,
+fieldset,
+figure,
+form,
+input,
+iframe,
+img,
+meter,
+nav,
+ol,
+optgroup,
+option,
+output,
+p,
+pre,
+progress,
+ruby,
+section,
+table,
+textarea,
+ul,
+video {
+    /* Margins for most elements */
+    margin-bottom: 1rem;
+}
+
+html,
+input,
+select,
+button {
+    /* Set body font family and some finicky elements */
+    font-family: var(--default-font);
+}
+
+html,
+body {
+    position: relative;
+    text-rendering: optimizeLegibility;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    /*display: none;*/
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 30px;
+
+    /* pretty lettertjes */
+    font-family: var(--default-font);
+    color: var(--text-color);
+    font-weight: 300;
+    font-size: 18px;
+    letter-spacing: 0.4px;
+    line-height: 30px;
+    overflow-x: hidden !important;
+    /*override for calendly css */
+
+    border-radius: 6px;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+}
+
+header {
+    background: var(--color-4);
+    border-bottom: 1px solid var(--color-1);
+    padding: 2rem 1.5rem;
+    margin: -2rem calc(0px - (50vw - 50%)) 2rem;
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+}
+
+header > *:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+header > *:last-child {
+    margin-bottom: 0;
+}
+
+a {
+    color: var(--color-3);
+}
+a:hover {
+    background-color: var(--color-4);
+}
+footer {
+    margin-top: 2rem;
+    margin-bottom: -2rem;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--bold-font);
+}
+
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 10px;
+}
+
+
+nav a.active {
+    font-weight: 600;
+}
+hr {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 1px solid;
+}
+
+blockquote {
+    padding: 20px;
+    background: var(--accent-color-1);
+    border-left: 10px solid black;
+}
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: justify;
+  }
+code {
+    background: var(--color-1);
+    padding: 5px;
+    border: 1px solid var(--color-3);
+    border-radius: 2px;
+}
+
+img,
+svg {
+    height: auto;
+    max-width: 100%;
+    margin-top: 0px;
+    margin-bottom: 2.5rem;
+}
+
+summary {
+    outline: none;
+}
+
+details p {
+    padding: 16px;
+}
+
+pre.smaller {
+    display:  inline-block;
+    font-size:  small;
+}
+
+
+.table-grid {
+    display: grid;
+    grid-template-columns: 1fr 25% 30% 1fr;
+    grid-column-gap: 20px;
+    padding: 2rem 1.5rem;
+    margin: -2rem calc(0px - (50vw - 50%)) 2rem;
+    padding-left: calc(47vw - 50%);
+    padding-right: calc(42vw - 50%);
+}
+
+.table-header-item {
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: var(--font-size-xs);
+}
+
+.row-item {
+    margin: 5px 0;
+    border-bottom: var(--color-1) 1px solid;
+    font-size: var(--font-size-reg);
+}
+
+.colofon {
+    font-size: var(--font-size-s);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: var(--color-1) 1px solid;
+}
+
+/* Cookie banner */
+
+.cc-window {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    z-index: 9999;
+    padding: 1em 1.8em;
+    width: 30%;
+    margin: 40px;
+    opacity: 1;
+    transition: opacity 1s ease;
+    background: #000;
+    font-size: 12px;
+    line-height: 1.5em;
+    border-radius: 3px;
+}
+
+.cc-window.cc-invisible {
+    opacity: 0;
+    z-index: -1;
+}
+
+.cc-btn {
+    display: block;
+    padding: 0.4em 0.8em;
+    font-size: 0.9em;
+    font-weight: 400;
+    border-width: 2px;
+    border-style: solid;
+    text-align: center;
+    white-space: nowrap;
+    color: white;
+    cursor: pointer;
+}
+
+.cc-banner .cc-message {
+    display: block;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    max-width: 100%;
+    margin-right: 1em;
+    color: white;
+}
+
+.cc-compliance {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-line-pack: justify;
+    align-content: space-between;
+}
+
+@media screen and (max-width: 900px) {
+    .cc-btn {
+        white-space: normal;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .table-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 10px;
+        padding: 2rem 1.5rem;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .row-item {
+        margin: 2px 0;
+        font-size: var(--font-size-s);
+    }
+    .client,
+    .project {
+        border-bottom: none;
+    }
+}
