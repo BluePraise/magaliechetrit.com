@@ -222,7 +222,7 @@ pre.smaller {
     font-size: var(--font-size-s);
     padding-top: 20px;
     padding-bottom: 20px;
-    border-top: var(--color-1) 1px solid;
+    border-top: var(--text-color) 1px solid;
 }
 
 /* Cookie banner */
