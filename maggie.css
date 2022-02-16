@@ -1,12 +1,12 @@
+h1 {
+    font-size: 70px;
+}
 h3 {
     padding-top: 50px;
     margin-bottom: 20px;
     border-bottom: 1px solid var(--text-color);
 }
 
-ul li {
-    list-style-type: auto;
-}
 li + li {
     margin-top: 8px;
 }
