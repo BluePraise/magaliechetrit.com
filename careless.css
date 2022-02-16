@@ -214,7 +214,7 @@ pre.smaller {
 
 .row-item {
     margin: 5px 0;
-    border-bottom: var(--color-1) 1px solid;
+    border-bottom: var(--text-color) 1px solid;
     font-size: var(--font-size-reg);
 }
 
