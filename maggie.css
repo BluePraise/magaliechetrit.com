@@ -12,9 +12,15 @@ li + li {
 }
 
 li a {
-    line-height: 0;
+    line-height: 1;
     display: inline-block;
 }
 li a img {
     margin-bottom: 0;
+}
+
+@media (max-width: 440px) {
+    h1 {
+        line-height: 1;
+    }
 }
