@@ -21,6 +21,7 @@ li a img {
 
 @media (max-width: 440px) {
     h1 {
-        line-height: 1;
+        font-size: 60px;
+        line-height: 1.3;
     }
 }
