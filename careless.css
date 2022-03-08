@@ -112,17 +112,22 @@ header {
     background: var(--color-4);
     border-bottom: 1px solid var(--color-1);
     padding: 2rem 1.5rem;
+}
+
+
+.full-width {
     margin: -2rem calc(0px - (50vw - 50%)) 2rem;
     padding-left: calc(50vw - 50%);
     padding-right: calc(50vw - 50%);
+
 }
 
-header > *:first-child {
+.full-width > *:first-child {
     margin-top: 0;
     padding-top: 0;
 }
 
-header > *:last-child {
+.full-width> *:last-child {
     margin-bottom: 0;
 }
 

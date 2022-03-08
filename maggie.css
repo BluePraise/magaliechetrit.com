@@ -1,6 +1,14 @@
+/*
+This CSS has custom features I don't think should be in Careless CSS
+*/
+
+body {
+    --attention-color: #ffeb3b;
+}
 h1 {
     font-size: 70px;
 }
+
 h3 {
     padding-top: 50px;
     margin-bottom: 20px;
@@ -17,6 +25,11 @@ li a {
 }
 li a img {
     margin-bottom: 0;
+}
+.ribbon {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background: var(--attention-color);
 }
 
 @media (max-width: 440px) {
