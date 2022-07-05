@@ -5,12 +5,12 @@ But couldn't get on board with some decisions. SO i made my own.
 
 @font-face {
     font-family: "MintGrotesk";
-    src: url("mint-grotesk/MintGroteskV1.1-Regular.woff2") format("woff2");
+    src: url("mint-grotesk/Mint-Grotesk-RegularV13.woff2") format("woff2");
 }
 
 @font-face {
     font-family: "MintGroteskBold";
-    src: url("mint-grotesk/MintGroteskV1.1-Bold.woff2") format("woff2");
+    src: url("mint-grotesk/Mint-Grotesk-Bold-V13.woff2") format("woff2");
 }
 
 :root {
