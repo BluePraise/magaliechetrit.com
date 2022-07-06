@@ -8,3 +8,4 @@
 - multilingual
 - find templating system
 - about page
+- Remove IRC an
