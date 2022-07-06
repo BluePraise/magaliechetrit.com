@@ -3,16 +3,6 @@ This css is meant to not have too much overhead. I was inspired by new.css / htt
 But couldn't get on board with some decisions. SO i made my own. 
 */
 
-@font-face {
-    font-family: "MintGrotesk";
-    src: url("mint-grotesk/Mint-Grotesk-RegularV13.woff2") format("woff2");
-}
-
-@font-face {
-    font-family: "MintGroteskBold";
-    src: url("mint-grotesk/Mint-Grotesk-Bold-V13.woff2") format("woff2");
-}
-
 :root {
     --default-font: "MintGrotesk", "Segoe UI", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --bold-font: 'MintGroteskBold';
@@ -182,7 +172,6 @@ pre {
 code {
     background: var(--color-1);
     padding: 5px;
-    border: 1px solid var(--color-3);
     border-radius: 2px;
 }
 
