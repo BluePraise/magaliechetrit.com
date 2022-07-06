@@ -1,0 +1,84 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Magalie Chetrit | Web Designer, Web Developer in Arnhem. WordPress, WooCommerce. WebDevelopment.</title>
+    <meta name="description" content="A Front-End Developer with Business Sense in Arnhem. Wordpress, Woocommerce, SEO, Webdesign and Development.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="front-end developer, front-end, websites, website, website development, wordpress, woocommerce, e-commerce">
+    <meta property="og:title" content="Portfolio website of Magalie Chetrit">
+    <meta property="og:url" content="https://magaliechetrit.com">
+    <meta property="og:description" content="A Portfolio Website of Magalie Chetrit - Front-End Developer">
+    <meta property="og:type" content="website">
+    <base href="/">
+    <link rel="stylesheet" href="./careless.css">
+    <link rel="stylesheet" href="./maggie.css">
+</head>
+
+<body>
+    <header class="full-width" role="banner">
+        <h1 class="main-title">Magalie Chetrit</h1>
+    </header>
+    <main>
+        <a href="/">Back to home</a> / <a href="./freebies">Back to article list</a>
+        <h2>Search Filter in Vanilla JavaScript</h2>
+        <p>If you'd like to get more information in your inbox - <a href="https://buttondown.email/magaliechetrit" alt="this goes to a new page where you can subscribe to my newsletter">subscribe to my newsletter</i></a>. 
+        They're a delightful surprise, because I send them very irregularly.</p>
+        <section>
+            <article>
+                <h3>How to make a search and filter with pure JavaScript</h3>
+                <small>Posted on: 5 July 2022.</small>
+                <h4>What exactly is it? And why is it so special?</h4>
+                <p>I was working on a project for a friend and she wanted a search filter on her site. Most active search filters require a database connection or XHR requests. That was a bit too heavy for me. 
+                    All I wanted was a functionality that searched through the current page, something light and simple. I couldn't really find anything so I set about making one myself.</p>
+                <p>This code snippet is a few lines of codes and you don't need any other libraries or frameworks.</p>
+                
+                <h4>Show me how it's done!</h4>
+                <p>Alright so you're ready to try out my search filter? Great.</p>
+                <p class="highlight"><span class="emoji">🤝</span>If at any time you have questions, feel free to reach out to me. You can find my contact details below.</p>
+                <h4>Here's how it works.</h4>
+                <em>I've written this for newbies, so if you're advanced - you may get a little bored.</em>
+                <p>
+                    <strong>1. The search input.</strong><br>
+                    In your html file, you have to paste this:
+                    <pre><code>&lt;input type="search" class="js-search-field" placeholder="Type a word.."/&gt;</code></pre>
+                    If you're a beginner and do not know any JavaScript, <u>make sure that the classname is the same</u>.
+                    In JavaScript it finds <pre>.js-search-field</pre> and has an <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener">EventListener</a> attached to it. That eventlistener "scans" or "listens" for the users input from the keyboard.
+                    
+                </p>
+                <p>If it turns out that in your project you can't paste that input - you can change the classname to the classname or identifier you may have to use in the JavaScript.</p>
+                <p> 
+                    <strong>2. The search items.</strong><br>
+                    If you're a beginner this is where it may get tricky . If you're using pure HTML and CSS like I am, then it's easy. The JavaScript code finds a classname in the HTML that has all the search entries you want to search through.
+                    <pre><code> &lt;li class="search-item"&gt;</ltul></code></pre>
+                </p>
+
+                
+                <p class="highlight"><span class="emoji">👩‍💻</span>I also offer an hour of my time to help you with any webrelated problem you may have.</p>
+                <div class="contact-info">
+                    <h3>Contact Details</h3>
+                    <ol>
+                        <li><a href="https://www.linkedin.com/in/magaliechetrit/" alt="link to LinkedIn">LinkedIn</a>
+                        </li>
+                        <li><a href="https://github.com/BluePraise?tab=repositories" alt="link to Github">Github</a>
+                        </li>
+                        <li>Perpetual chats on discord, here's an <a href="https://discord.gg/QFUhzFSnDj" alt="link to discord server">invite to my server</a></li>
+                        <li><a href="mailto:email+website@magaliechetrit.com" alt="link to E-Mail">Email</i></a> <small>(for more secure options read the privacy section)</small></li>
+                        <li><a href="https://buttondown.email/magaliechetrit"
+                                alt="this goes to a new page where you can subscribe to my newsletter">Subscribe to my
+                                newsletter</i></a></li>
+                    </ol>
+                </div>
+            </article>
+        </section>
+    </main>    
+    <footer class=site-footer>            
+        <p class="colofon">© 2022 MagalieLinda. All Rights Reserved. <a href="Algemene Voorwaarden Magalie Linda - v2020.pdf"class="terms">Terms 2020 in Dutch</a></p>       
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+</body>
+
+</html>
