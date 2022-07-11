@@ -1,0 +1,91 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Magalie Chetrit | Search Filter Demo</title>
+    <meta name="description" content="A lightweight javascript search filter.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="search filter, javascript, simple search filter">
+    <meta property="og:title" content="A lightweight javascript search filter.">
+    <meta property="og:url" content="https://magaliechetrit.com">
+    <meta property="og:description" content="A lightweight javascript search filter of Magalie Chetrit - Front-End Developer">
+    <meta property="og:type" content="website">
+    <base href="/">
+    <link rel="stylesheet" href="./careless.css">
+    <link rel="stylesheet" href="./maggie.css">
+</head>
+
+<body>
+    <header class="full-width" role="banner">
+        <h1 class="main-title">Search Filter Demo</h1>
+    </header>
+
+    <main>
+        <a href="">Back to home</a> / <a href="./freebies/search-filter-js/">Back to article</a>
+        <h2>This is a demo of the Search Filter</h2>
+        <p>These are random phrases from a generator I found online.</p>
+        <input type="search" class="js-search-field" placeholder="Type a word.."/>
+        <ul class="search-list">
+            <li class="search-item">Crying is for plain women. Pretty women go shopping.</li>
+            <li class="search-item">She wanted to be rescued, but only if it was Tuesday and raining.</li>
+            <li class="search-item">People spend their time wondering whether the glass is half empty or half full. Me, I just drink whatever's in the glass.</li>
+            <li class="search-item">Hang on, my kittens are scratching at the bathtub and they'll be upset by the lack of biscuits.</li>
+            <li class="search-item">My mother used to say, the older you get, the better you get. Unless you're a banana</li>
+            <li class="search-item">Love is not like pizza.</li>
+            <li class="search-item">I know this is a long shot, but did you take much acid during the sixties?</li>
+            <li class="search-item">If this sauce was a person, I'd get naked and make love to it.</li>
+        </ul>
+    <footer class=site-footer>
+            
+                <p class="colofon">© 2022 Magalie Chetrit. All Rights Reserved. <a href="Algemene Voorwaarden Magalie Linda - v2020.pdf"class="terms">Terms 2020 in Dutch</a></p>
+            
+        
+    </footer>
+
+    <script>
+        // all the search items
+        const items = [...document.querySelectorAll('.search-item')]
+        // the values from the search
+        const filters = {
+            searchText: ''
+        }
+
+        const renderResults = function (items, filters) {
+            // filter through all the search items and match it with the values input
+            const filteredItems = items.filter(function (item) {
+                return item.textContent.toLowerCase().includes(filters.searchText.toLowerCase())
+            })
+
+            // empty main container
+            document.querySelector('.search-list').innerHTML = ''
+            
+            // place each result in the search list
+            filteredItems.forEach(function (item) {
+                document.querySelector('.search-list').appendChild(item)
+            })
+        }   
+
+        const searchField = document.querySelector('.js-search-field')
+        if (searchField) {
+            searchField.addEventListener('input', function(e) {
+                filters.searchText = e.target.value
+                
+                // if user types more than 2 characters a result will be shown
+                if(e.target.value.length > 2) {
+                    setTimeout(renderResults(items, filters), 400)
+                }
+                // if the user clears the input all the results will come back
+                else if (e.target.value.length === 0 ) {
+                    renderResults(items, filters)
+                }
+                
+            })
+        }
+</script>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+</body>
+
+</html>

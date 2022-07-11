@@ -8,3 +8,8 @@ Started a changelog July 2022.
 - Bumped Mint Grotesk to V13
 - Updated to do list
 - Updated content
+
+## 2022, july 7.
+- Finished article/search-filter-js!
+- Added buymeacoffee
+- Updated careless.css
