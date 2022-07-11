@@ -15,3 +15,6 @@ Started a changelog July 2022.
 - Updated careless.css
 - Updated technical parts about this site
 - Added navigation
+
+## 2022, july 11.
+- Added a changelog to article
