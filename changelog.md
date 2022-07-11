@@ -9,7 +9,8 @@ Started a changelog July 2022.
 - Updated to do list
 - Updated content
 
-## 2022, july 7.
+## 2022, july 10.
 - Finished article/search-filter-js!
 - Added buymeacoffee
 - Updated careless.css
+- Updated technical parts about this site
