@@ -14,3 +14,4 @@ Started a changelog July 2022.
 - Added buymeacoffee
 - Updated careless.css
 - Updated technical parts about this site
+- Added navigation

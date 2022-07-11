@@ -149,9 +149,11 @@ h6 {
     margin-bottom: 10px;
 }
 
-
+nav > a {
+    color: black;
+}
 nav a.active {
-    font-weight: 600;
+    /* font-weight: 600; */
 }
 hr {
     margin-top: 50px;

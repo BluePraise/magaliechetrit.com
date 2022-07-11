@@ -19,6 +19,12 @@ body {
 
     background-color: #fff;
 }
+nav > a {
+    font-size: 16px;
+}
+nav a.active {
+    font-family: "MintGroteskBold";
+}
 h1 {
     font-size: 200%;
 }
