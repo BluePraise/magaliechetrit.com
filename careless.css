@@ -187,6 +187,10 @@ summary {
     outline: none;
 }
 
+details:hover {
+    cursor: pointer;
+}
+
 details p {
     padding: 16px;
 }

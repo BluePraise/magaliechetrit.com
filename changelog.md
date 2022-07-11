@@ -7,3 +7,8 @@ Started a changelog July 2022.
 - Moved fonts out of careless css and into custom css
 - Bumped up Mint Grotesk to V13
 - Updated to do list
+
+## 2022, july 7.
+- Finished article/search-filter-js!
+- Added buymeacoffee
+- Updated careless.css

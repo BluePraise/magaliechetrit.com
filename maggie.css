@@ -74,3 +74,10 @@ strong  {
 .highlight {
     background: yellow;
 }
+details {
+    display: block;
+    margin-top: 20px;
+}
+details p {
+	border-left: 1px solid var(--color-2);
+}
