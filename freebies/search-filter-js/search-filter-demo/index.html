@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Magalie Chetrit | Search Filter Demo</title>
+    <title>😎 Magalie Chetrit | Search Filter Demo</title>
     <meta name="description" content="A lightweight javascript search filter.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="search filter, javascript, simple search filter">
@@ -17,14 +17,23 @@
     <link rel="stylesheet" href="./maggie.css">
 </head>
 
+<script>
+
+    setTimeout(function() {
+            document.querySelector('.scroll-container').classList.remove('hide')
+    }, "1000")
+</script>
+
 <body>
-    <header class="full-width" role="banner">
+    <div class="full-width" role="banner">
+        <div class="scroll-container hide">
         <h1 class="main-title">Search Filter Demo</h1>
-        <small>I build websites, wordpress sites and I am a Front-End Developer</small>
+        <small>Where you can try out how it works</small>
         <nav>
             <a href="/">Home</a> /
             <a class="active" href="/freebies">Freebies & Articles</a>
         </nav>
+        </div>
     </header>
 
     <main>

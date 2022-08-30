@@ -4,27 +4,34 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Magalie Chetrit | Web Developer in Arnhem. WordPress, WooCommerce. WebDevelopment.</title>
-    <meta name="description" content="A Front-End Developer with Business Sense in Arnhem. Wordpress, Woocommerce, SEO, Webdesign and Development.">
+    <title>😎 Magalie Chetrit | Web Developer in Arnhem. WordPress, WooCommerce. WebDevelopment.</title>
+    <meta name="description" content="A Front-End Developer with Business Sense. Wordpress, Woocommerce, SEO, Webdesign and Development.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="front-end developer, front-end, websites, website, website development, wordpress, woocommerce, e-commerce">
-    <meta property="og:title" content="Portfolio website of Magalie Chetrit">
+    <meta name="keywords" content="front-end developer, front-end, websites, website, website development, wordpress, woocommerce, e-commerce, javascript, howto, tutorial">
+    <meta property="og:title" content="Search Filter in Vanilla JavaScript">
     <meta property="og:url" content="https://magaliechetrit.com">
-    <meta property="og:description" content="A Portfolio Website of Magalie Chetrit - Front-End Developer">
+    <meta property="og:description" content="How to build a simple search filter with JavaScript">
     <meta property="og:type" content="website">
     <base href="/">
     <link rel="stylesheet" href="./careless.css">
     <link rel="stylesheet" href="./maggie.css">
 </head>
+<script>
 
+    setTimeout(function() {
+            document.querySelector('.scroll-container').classList.remove('hide')
+    }, "1000")
+</script>
 <body>
     <header class="full-width" role="banner">
-        <h1 class="main-title">Magalie Chetrit</h1>
-        <small>I build websites, wordpress sites and I am a Front-End Developer</small>
-        <nav>
-            <a href="/">Home</a> /
-            <a class="active" href="/freebies">Freebies & Articles</a>
-        </nav>
+        <div class="scroll-container hide">
+            <h1 class="main-title">Search Filter in Vanilla JavaScript</h1>
+            <small>How to build a simple search filter with JavaScript</small>
+            <nav>
+                <a href="/">Home</a> /
+                <a class="active" href="/freebies">Freebies & Articles</a>
+            </nav>
+        </div>
     </header>
     <main>
         <a href="">home</a> → article

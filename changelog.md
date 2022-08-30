@@ -18,3 +18,7 @@ Started a changelog July 2022.
 
 ## 2022, july 11.
 - Added a changelog to article
+
+## 2022, august 30.
+- Header height is now full screen height
+- I chose an emoji
