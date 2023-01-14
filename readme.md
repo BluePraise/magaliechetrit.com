@@ -8,8 +8,7 @@
 - multilingual
 - find templating system
 - about page
-- Remove IRC an
+- remove IRC
+- fix relative path structures
+- templating system
 
-14 January 2023
-- Started to remove all spaces from files
-- Added fancy header

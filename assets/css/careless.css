@@ -6,11 +6,12 @@ But couldn't get on board with some decisions. SO i made my own.
 :root {
     --default-font: "MintGrotesk", "Segoe UI", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --bold-font: 'MintGroteskBold';
-    --text-color: #383838;
     --color-1: #f2f2f3;
     --color-2: #afafaf;
     --color-3: #00bf5f;
     --color-4: #a0ffe9;
+    --text-color: #383838;
+    --link-color: var(--text-color);
     --font-size-reg: 16px;
     --font-size-s: 14px;
     --font-size-xs: 12px;
@@ -87,10 +88,7 @@ body {
 
 body {
     /*display: none;*/
-    max-width: 750px;
     margin: 0 auto;
-    padding: 30px;
-
     /* pretty lettertjes */
     font-family: var(--default-font);
     color: var(--text-color);
@@ -129,7 +127,7 @@ header {
 }
 
 a {
-    color: var(--color-3);
+    color: var(--link-color);
 }
 a:hover {
     background-color: var(--color-4);

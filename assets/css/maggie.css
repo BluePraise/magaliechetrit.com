@@ -1,16 +1,19 @@
 /*
-This CSS has custom features I don't think should be in Careless CSS
+* This CSS has custom features I don't think should be in Careless CSS
+* TODO:
+*  - fix relative paths
 */
 
 
 @font-face {
     font-family: "MintGrotesk";
-    src: url("mint-grotesk/Mint-Grotesk-Regular-V13.woff2") format("woff2");
+    /* src: url("/assets/fonts/mint-grotesk/Mint-Grotesk-Regular-V13.woff2") format("woff2"); */
+    src: url("http://127.0.0.1:5500/assets/fonts/mint-grotesk/Mint-Grotesk-Regular-V13.woff2") format("woff2");
 }
 
 @font-face {
     font-family: "MintGroteskBold";
-    src: url("mint-grotesk/Mint-Grotesk-Bold-V13.woff2") format("woff2");
+    src: url("http://127.0.0.1:5500/assets/fonts/mint-grotesk/Mint-Grotesk-Bold-V13.woff2") format("woff2");
 }
 
 body {
@@ -20,6 +23,7 @@ body {
     background-color: #fff;
 }
 header  {
+    position: relative;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -27,10 +31,6 @@ header  {
     background-position: fixed;
     background-color: black;
     color: var(--shadow);
-    /*width: 20%;*/
-    /*position: fixed;*/
-    /*top: 0;*/
-    /*left: 20px;*/
 }
 .scroll-container {
     position: sticky;
@@ -46,8 +46,11 @@ nav a.active {
 nav > a:hover {
     color: black;
 }
+main {
+    padding: 2rem 1.5rem;
+}
 h1 {
-    font-family: 'Silkscreen', cursive;
+    font-family: "MintGroteskBold";
     font-size: 200%;
     line-height: 1.3;
 }
@@ -113,4 +116,12 @@ details p {
 
 .hide {
     opacity: 0;
+}
+.text-container {
+    max-width: 50vw;
+    padding: 1em;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    border-bottom-color: var(--text-color);
+    border-bottom-left-radius: 6px;
 }

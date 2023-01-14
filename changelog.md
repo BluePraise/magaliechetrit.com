@@ -2,23 +2,33 @@
 
 Started a changelog July 2022. 
 
-## 2022, july 5.
+## 2022, July 5.
 - Changed background color
 - Moved fonts out of careless css and into custom css
 - Bumped Mint Grotesk to V13
 - Updated to do list
 - Updated content
 
-## 2022, july 10.
+## 2022, July 10.
 - Finished article/search-filter-js!
 - Added buymeacoffee
 - Updated careless.css
 - Updated technical parts about this site
 - Added navigation
 
-## 2022, july 11.
+## 2022, July 11.
 - Added a changelog to article
 
-## 2022, august 30.
+## 2022, August 30.
 - Header height is now full screen height
 - I chose an emoji
+
+## 2023, January 14.
+- Started to remove all spaces from files
+- Added fancy header
+- Folder structure
+- Style fixes in writing
+- Added additional paragraphs in header on frontpage
+- Class text-container has a small box
+- Added link color for careless css
+- Removed navigation temporarily from front page
