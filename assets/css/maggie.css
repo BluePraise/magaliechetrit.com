@@ -20,7 +20,7 @@ body {
     --attention-color: #ffeb3b;
     --shadow: #d3d3d3;
 
-    background-color: #fff;
+    background-color: rgb(245, 245, 245);
 }
 header  {
     position: relative;
