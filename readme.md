@@ -11,3 +11,4 @@
 [ ] remove IRC
 [ ] fix relative path structures
 [ ] make site semantic (add sections)
+[ ] fix blog links

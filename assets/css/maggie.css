@@ -118,7 +118,7 @@ details p {
     opacity: 0;
 }
 .text-container {
-    max-width: 50vw;
+    max-width: 870px;
     padding: 1em;
     border-bottom-color: var(--text-color);
     border-bottom-left-radius: 6px;
