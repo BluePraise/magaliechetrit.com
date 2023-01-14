@@ -47,6 +47,7 @@ nav > a:hover {
     color: black;
 }
 h1 {
+    font-family: 'Silkscreen', cursive;
     font-size: 200%;
     line-height: 1.3;
 }

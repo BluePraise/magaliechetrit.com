@@ -9,3 +9,7 @@
 - find templating system
 - about page
 - Remove IRC an
+
+14 January 2023
+- Started to remove all spaces from files
+- Added fancy header

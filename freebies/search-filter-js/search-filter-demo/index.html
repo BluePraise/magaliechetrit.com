@@ -13,6 +13,9 @@
     <meta property="og:description" content="A lightweight javascript search filter of Magalie Chetrit - Front-End Developer">
     <meta property="og:type" content="website">
     <base href="/">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./careless.css">
     <link rel="stylesheet" href="./maggie.css">
 </head>
@@ -74,18 +77,18 @@
 
             // empty main container
             document.querySelector('.search-list').innerHTML = ''
-            
+
             // place each result in the search list
             filteredItems.forEach(function (item) {
                 document.querySelector('.search-list').appendChild(item)
             })
-        }   
+        }
 
         const searchField = document.querySelector('.js-search-field')
         if (searchField) {
             searchField.addEventListener('input', function(e) {
                 filters.searchText = e.target.value
-                
+
                 // if user types more than 2 characters a result will be shown
                 if(e.target.value.length > 2) {
                     setTimeout(renderResults(items, filters), 400)
@@ -94,7 +97,7 @@
                 else if (e.target.value.length === 0 ) {
                     renderResults(items, filters)
                 }
-                
+
             })
         }
 </script>
