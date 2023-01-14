@@ -28,7 +28,11 @@ Started a changelog July 2022.
 - Added fancy header
 - Folder structure
 - Style fixes in writing
-- Added additional paragraphs in header on frontpage
+- Added additional paragraphs in content on frontpage
 - Class text-container has a small box
 - Added link color for careless css
 - Removed navigation temporarily from front page
+- Changed style of H3
+- Updated work grid/table
+- Updated footer to align with rest of sections
+- Removed IRC

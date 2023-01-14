@@ -56,9 +56,9 @@ h1 {
 }
 
 h3 {
-    padding-top: 250px;
+    padding-top: 100px;
     margin-bottom: 20px;
-    border-bottom: 1px solid var(--text-color);
+    border-bottom: 1px dotted var(--text-color);
 }
 
 li + li {
@@ -120,8 +120,10 @@ details p {
 .text-container {
     max-width: 50vw;
     padding: 1em;
-    border-left: 1px solid;
-    border-bottom: 1px solid;
     border-bottom-color: var(--text-color);
     border-bottom-left-radius: 6px;
+}
+
+.site-footer {
+    padding: 20px;
 }

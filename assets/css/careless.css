@@ -18,8 +18,7 @@ But couldn't get on board with some decisions. SO i made my own.
 }
 
 * {
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 * ::-moz-selection {
@@ -204,13 +203,9 @@ pre.smaller {
 .table-grid {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: 1fr 20px 25% 20px 30% 20px 1fr;
-    grid-template-columns: 1fr 25% 30% 1fr;
+    grid-template-columns: fit-content(180px) 1fr 1fr 1fr;
     grid-column-gap: 20px;
-    padding: 2rem 1.5rem;
-    margin: -2rem calc(0px - (50vw - 50%)) 2rem;
-    padding-left: calc(47vw - 50%);
-    padding-right: calc(42vw - 50%);
+    padding: 1em; /* this needs to go to maggie.css */
 }
 
 .table-header-item {
@@ -221,7 +216,8 @@ pre.smaller {
 
 .row-item {
     margin: 5px 0;
-    border-bottom: var(--text-color) 1px solid;
+    padding-right: 10px;
+    border-bottom: #38383821 1px solid;
     font-size: var(--font-size-reg);
 }
 
@@ -239,27 +235,16 @@ pre.smaller {
     left: 0;
     bottom: 0;
     overflow: hidden;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    display: -ms-flexbox;
-    display: -webkit-box;
+    box-sizing: border-box;
     display: flex;
-    -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
-    -ms-flex-align: center;
-    -webkit-box-align: center;
-            align-items: center;
-    -ms-flex-direction: row;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-            flex-direction: row;
+    align-items: center;
+    flex-direction: row;
     z-index: 9999;
     padding: 1em 1.8em;
     width: 30%;
     margin: 40px;
     opacity: 1;
-    -webkit-transition: opacity 1s ease;
-    -o-transition: opacity 1s ease;
     transition: opacity 1s ease;
     background: #000;
     font-size: 12px;
@@ -287,22 +272,15 @@ pre.smaller {
 
 .cc-banner .cc-message {
     display: block;
-    -ms-flex: 1 1 auto;
-    -webkit-box-flex: 1;
-            flex: 1 1 auto;
+    flex: 1 1 auto;
     max-width: 100%;
     margin-right: 1em;
     color: white;
 }
 
 .cc-compliance {
-    display: -ms-flexbox;
-    display: -webkit-box;
     display: flex;
-    -ms-flex-align: center;
-    -webkit-box-align: center;
-            align-items: center;
-    -ms-flex-line-pack: justify;
+    align-items: center;
     align-content: space-between;
 }
 
