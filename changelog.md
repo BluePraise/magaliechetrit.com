@@ -1,28 +1,10 @@
 # Changelog of magaliechetrit.com
 
-Started a changelog July 2022. 
+Started a changelog July 2022.
 
-## 2022, July 5.
-- Changed background color
-- Moved fonts out of careless css and into custom css
-- Bumped Mint Grotesk to V13
-- Updated to do list
-- Updated content
-
-## 2022, July 10.
-- Finished article/search-filter-js!
-- Added buymeacoffee
-- Updated careless.css
-- Updated technical parts about this site
-- Added navigation
-
-## 2022, July 11.
-- Added a changelog to article
-
-## 2022, August 30.
-- Header height is now full screen height
-- I chose an emoji
-
+## 2023, February 28
+- Changed order of changelog
+- Updated metadata in `<head>`
 ## 2023, January 14.
 - Started to remove all spaces from files
 - Added fancy header
@@ -36,3 +18,25 @@ Started a changelog July 2022.
 - Updated work grid/table
 - Updated footer to align with rest of sections
 - Removed IRC
+
+## 2022, August 30.
+- Header height is now full screen height
+- I chose an emoji
+
+## 2022, July 11.
+- Added a changelog to article
+
+## 2022, July 10.
+- Finished article/search-filter-js!
+- Added buymeacoffee
+- Updated careless.css
+- Updated technical parts about this site
+- Added navigation
+
+## 2022, July 5.
+- Changed background color
+- Moved fonts out of careless css and into custom css
+- Bumped Mint Grotesk to V13
+- Updated to do list
+- Updated content
+
