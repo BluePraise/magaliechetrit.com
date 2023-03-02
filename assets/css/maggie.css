@@ -66,7 +66,7 @@ li + li {
 }
 
 li a {
-    line-height: 1;
+    line-height: 30px;
     display: inline-block;
 }
 li a img {
@@ -83,12 +83,6 @@ strong  {
     background: var(--attention-color);
 }
 
-@media (max-width: 440px) {
-    h1 {
-        font-size: 60px;
-        line-height: 1.3;
-    }
-}
 
 .js-search-field {
     padding: 9px;
@@ -126,4 +120,39 @@ details p {
 
 .site-footer {
     padding: 20px;
+}
+
+.row-item-label {
+    display: none;
+}
+@media (max-width: 410px) {
+    h3 {
+        padding-top: initial;
+    }
+    .text-container {
+        padding: 0;
+    }
+    .table-grid {
+        display: block;
+        padding: initial;
+    }
+    .table-header-item {
+        display: none;
+    }
+    .row-item {
+        display: flex;
+        padding: 0;
+    }
+    .row-item.year {
+        border-bottom: #38383800 1px solid;
+    }
+    .row-item.designer {
+        margin-bottom: 20px;
+    }
+    .row-item-label {
+        display: inline-block;
+        margin-right: 10px;
+        font-size: 10px;
+        width: 52px;
+    }
 }

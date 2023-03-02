@@ -19,3 +19,10 @@ header nav a {
 header.bg-image h1 {
     font-size: 400%;
 }
+
+@media (max-width: 410px) {
+    header.bg-image h1 {
+        margin: initial;
+        font-size: 60px;
+    }
+}
