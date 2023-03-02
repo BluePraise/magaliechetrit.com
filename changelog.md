@@ -6,6 +6,7 @@ Started a changelog July 2022.
 - Updated content encrypted email
 - Updated content referral links
 - Responsive styling added for screens with a viewport of 410px and lower resolution.
+- Added fallback support for font MintGrotesk
 
 ## 2023, February 28
 - Changed order of changelog
