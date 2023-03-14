@@ -1,13 +1,14 @@
 {
-  "name": "codekit-project",
+  "name": "maggies-handlebars-test",
   "version": "1.0.0",
-  "description": "CodeKit created this starter package.json file. You should customize it appropriately. (If you intend to publish this project on npm, add an entry in the 'repository' field and remove the 'private' attribute, below.)",
+  "description": "",
   "scripts": {},
   "author": "",
   "license": "UNLICENSED",
   "repository": {},
   "private": true,
   "dependencies": {
-    "handlebars": "^4.7.7"
+    "handlebars": "^4.7.7",
+    "handlebars-loader": "^1.5.0"
   }
 }
