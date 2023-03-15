@@ -2,6 +2,12 @@
 
 Started a changelog July 2022.
 
+## 2023, March 15
+- Decided to use (11ty)[https://www.11ty.dev/] and (nunjucks)[https://mozilla.github.io/nunjucks/]
+- Converted index.html to 11ty and nunjucks
+- Added a topbar
+- Updated to-do list
+
 ## 2023, March 2
 - Updated content encrypted email
 - Updated content referral links

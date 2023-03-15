@@ -6,9 +6,9 @@
 [ ] add public key!
 [ ] make a book list with referral links
 [ ] multilingual
-[ ] find templating system
+[x] find templating system *15 march 2023*
 [ ] about page
-[ ] remove IRC
+[x] remove IRC *14 jan 2023*
 [ ] fix relative path structures
 [ ] make site semantic (add sections)
 [ ] fix blog links
