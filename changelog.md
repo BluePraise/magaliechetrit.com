@@ -7,7 +7,7 @@ Started a changelog July 2022.
 - Converted index.html to 11ty and nunjucks
 - Added a topbar
 - Updated to-do list
-
+- Added css and image passthroughCopy. Now css image will be copied to output folder
 ## 2023, March 2
 - Updated content encrypted email
 - Updated content referral links

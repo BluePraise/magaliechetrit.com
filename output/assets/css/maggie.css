@@ -8,12 +8,12 @@
 @font-face {
     font-family: "MintGrotesk", sans-serif;
     /* src: url("/assets/fonts/mint-grotesk/Mint-Grotesk-Regular-V13.woff2") format("woff2"); */
-    src: url("/assets/fonts/mint-grotesk/Mint-Grotesk-Regular-V13.woff2") format("woff2");
+    src: url("./assets/fonts/mint-grotesk/Mint-Grotesk-Regular-V13.woff2") format("woff2");
 }
 
 @font-face {
     font-family: "MintGroteskBold";
-    src: url("/assets/fonts/mint-grotesk/Mint-Grotesk-Bold-V13.woff2") format("woff2");
+    src: url("./assets/fonts/mint-grotesk/Mint-Grotesk-Bold-V13.woff2") format("woff2");
 }
 
 body {
@@ -46,35 +46,6 @@ nav a.active {
 nav > a:hover {
     color: black;
 }
-.topbar {
-    display: flex;
-    justify-content: space-between;
-    font-family: monospace;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    padding: 4px;
-    border-bottom: 1px solid;
-    width: 100%;
-    font-size: 12px;
-    backdrop-filter: blur(1.1px);
-}
-.text-label {
-    font-weight: bolder;
-}
-.availibility-signal {
-    border-radius: 50%;
-    width: 6px;
-    height: 6px;
-    display: inline-block;
-    background-color: greenyellow;
-    margin: 0 5px 0px 10px;
-}
-.contact-item {
-    display: inline-block;
-    margin-left: 10px;
-}
 main {
     padding: 2rem 1.5rem;
 }
@@ -87,6 +58,7 @@ h1 {
 h3 {
     padding-top: 100px;
     margin-bottom: 20px;
+    border-bottom: 1px dotted var(--text-color);
 }
 
 li + li {
@@ -142,7 +114,8 @@ details p {
 .text-container {
     max-width: 870px;
     padding: 1em;
-    border: 1px solid
+    border-bottom-color: var(--text-color);
+    border-bottom-left-radius: 6px;
 }
 
 .site-footer {

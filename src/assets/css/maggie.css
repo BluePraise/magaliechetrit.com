@@ -8,12 +8,12 @@
 @font-face {
     font-family: "MintGrotesk", sans-serif;
     /* src: url("/assets/fonts/mint-grotesk/Mint-Grotesk-Regular-V13.woff2") format("woff2"); */
-    src: url("http://127.0.0.1:5500/assets/fonts/mint-grotesk/Mint-Grotesk-Regular-V13.woff2") format("woff2");
+    src: url("./assets/fonts/mint-grotesk/Mint-Grotesk-Regular-V13.woff2") format("woff2");
 }
 
 @font-face {
     font-family: "MintGroteskBold";
-    src: url("http://127.0.0.1:5500/assets/fonts/mint-grotesk/Mint-Grotesk-Bold-V13.woff2") format("woff2");
+    src: url("./assets/fonts/mint-grotesk/Mint-Grotesk-Bold-V13.woff2") format("woff2");
 }
 
 body {

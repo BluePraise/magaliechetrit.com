@@ -1,7 +1,7 @@
 {
   "name": "magaliechetrit.com",
   "version": "1.0.0",
-  "description": "I am a testing 11ty with Nunjucks",
+  "description": "A Personal Project with 11ty and Nunjucks",
   "main": "index.js",
   "scripts": {
     "start": "npx @11ty/eleventy --serve",

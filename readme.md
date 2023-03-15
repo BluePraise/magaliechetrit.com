@@ -13,3 +13,4 @@
 [ ] make site semantic (add sections)
 [ ] fix blog links
 [ ] Move .table-grid css to frontpage.css
+[ ] Automatic Deployment (CD)
