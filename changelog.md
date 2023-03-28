@@ -1,6 +1,9 @@
 # Changelog of magaliechetrit.com
 
 Started a changelog July 2022.
+## 2023, March 28
+- Fixed font targeting
+- Added styling for topbar
 
 ## 2023, March 15
 - Decided to use (11ty)[https://www.11ty.dev/] and (nunjucks)[https://mozilla.github.io/nunjucks/]

@@ -1,6 +1,8 @@
 module.exports = function (eleventyConfig) {
-    eleventyConfig.addPassthroughCopy("**/*/*/*.css")
-    eleventyConfig.addPassthroughCopy("**/*/*/*.jpg")
+    // move css and jpg to output folder
+    eleventyConfig.addWatchTarget("./src/assets/css/*.css")
+    eleventyConfig.addPassthroughCopy("*.css")
+    // eleventyConfig.addPassthroughCopy("**/*/*/*.jpg")
     return {
         dir: {
             input: 'src',
@@ -11,5 +13,5 @@ module.exports = function (eleventyConfig) {
         markdownTemplateEngine: 'njk',
         htmlTemplateEngine: 'njk',
         dataTemplateEngine: 'njk',
-    };
+    }
 }
