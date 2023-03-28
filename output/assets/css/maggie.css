@@ -4,7 +4,6 @@
 *  - fix relative paths
 */
 
-
 @font-face {
     font-family: "MintGrotesk", sans-serif;
     /* src: url("/assets/fonts/mint-grotesk/Mint-Grotesk-Regular-V13.woff2") format("woff2"); */
@@ -22,6 +21,7 @@ body {
     --shadow: #d3d3d3;
 
     background-color: rgb(245, 245, 245);
+    font-size: 18px;
 }
 .topbar {
     position: fixed;
@@ -88,7 +88,6 @@ h1 {
 h3 {
     padding-top: 100px;
     margin-bottom: 20px;
-    border-bottom: 1px dotted var(--text-color);
 }
 
 li + li {

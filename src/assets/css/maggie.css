@@ -88,7 +88,6 @@ h1 {
 h3 {
     padding-top: 100px;
     margin-bottom: 20px;
-    border-bottom: 1px dotted var(--text-color);
 }
 
 li + li {
@@ -138,6 +137,9 @@ details p {
 	border-left: 1px solid var(--color-2);
 }
 
+#backspaceBadge {
+    display: none;
+}
 .hide {
     opacity: 0;
 }

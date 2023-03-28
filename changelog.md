@@ -4,6 +4,9 @@ Started a changelog July 2022.
 ## 2023, March 28
 - Fixed font targeting
 - Added styling for topbar
+- Updated contact information
+- Removed border on h3
+- Updated PGP Key
 
 ## 2023, March 15
 - Decided to use (11ty)[https://www.11ty.dev/] and (nunjucks)[https://mozilla.github.io/nunjucks/]

@@ -15,3 +15,4 @@
 [ ] Move .table-grid css to frontpage.css
 [ ] Automatic Deployment (CD)
 [ ] Make date dynamic (in the homepage section)
+[ ] Adapt taskrunner to copy css to output folder
