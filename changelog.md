@@ -7,3 +7,4 @@
 - Removed redundant code for left sidebar
 - Better look and feel for responsive
 - Added rainbow buttons - copied from Eleventy.js site
+- Improved file structure by using partials
