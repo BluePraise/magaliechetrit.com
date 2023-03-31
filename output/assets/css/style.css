@@ -662,8 +662,7 @@ main {
 .left-sidebar {
     max-width: 485px;
     width: 100%;
-    border-radius: 30px;
-    border: 1px solid #565656;
+    border-right: 1px solid #565656;
     position: fixed;
     left: 20px;
     top: 50%;
@@ -679,13 +678,9 @@ main .left-sidebar {
     display: block;
     margin-bottom: 56px;
 }
-.left-sidebar .sidebar-header {
-    margin-bottom: 65px;
-}
-.left-sidebar .sidebar-header .designation {
-    max-width: 110px;
-    text-align: right;
-    color: #fff;
+
+.left-sidebar .designation {
+    text-align: center;
     font-size: 14px;
     font-weight: 400;
 }

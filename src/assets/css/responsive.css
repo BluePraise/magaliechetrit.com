@@ -13,7 +13,7 @@
     .left-sidebar .copyright {
         margin-bottom: 25px;
     }
-    
+
     .menu {
         top: 50%;
         transform: translateY(-50%);
@@ -47,18 +47,8 @@
     .section-header h1 br {
         display: none;
     }
-    .left-sidebar {
-        position: relative;
-        max-width: 767px;
-        left: 0;
-        margin: auto;
-        top: 0;
-        transform: translateY(0);
-        margin-top: 20px;
-        display: none;
-    }
 
-    .drake-main .left-sidebar {
+    .left-sidebar {
         display: block;
     }
     .left-sidebar > img.me {
