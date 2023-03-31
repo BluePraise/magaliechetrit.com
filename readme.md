@@ -6,6 +6,7 @@
 [ ] replace jquery with vanilla javascript
 [ ] replace bootstrap with my own css
 [ ] replace Inter with an nicer font
+[ ] use more css vars
 [ ] multilingual
 [ ] about page
 [ ] fix relative path structures

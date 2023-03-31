@@ -23,7 +23,7 @@ $(function(){
             $(".color-boxed a").removeClass("clr-active");
             $(this).addClass("clr-active");
         });
-        
+
         $(document).on('click', ".global-color .setting-toggle", function() {
             $(".global-color").addClass("active");
         });
@@ -35,7 +35,7 @@ $(function(){
     });
 
     $(window).scroll(function() {
-            
+
         var windscroll = $(window).scrollTop();
         // if (windscroll >= 0) {
         //     $('.page-section').each(function(i) {
@@ -59,7 +59,7 @@ $(function(){
             $('.scroll-to-page').each(function(i) {
 
                 var wscrolldecress = windscroll + 1;
-                console.log(wscrolldecress);
+                // console.log(wscrolldecress);
                 if ($(this).position().top <= wscrolldecress - 0) {
                     $('.scroll-nav .scroll-to.active').removeClass('active');
                     $('.scroll-nav .scroll-to').eq(i).addClass('active');
@@ -109,7 +109,7 @@ $(function(){
             var element   = event.target;         // DOM element, in this example .owl-carousel
             var items     = event.item.count;     // Number of items
             var item      = event.item.index + 1;     // Position of the current item
-        
+
         // it loop is true then reset counter from 1
         if(item > items) {
                 item = item - items
@@ -176,7 +176,7 @@ $(function(){
 
     //     var offset = gsap.getProperty("#smooth-content", "y");
     //     var position = jQuery(target).get(0).getBoundingClientRect().top - offset;
-    
+
 
     //     e.addEventListener('click', (e) => {
     //         e.preventDefault();
@@ -204,8 +204,8 @@ $(function(){
     //         });
     //     });
 
-        
-    
+
+
     // });
 
 });
