@@ -78,11 +78,6 @@ $(function(){
     }).scroll();
 
 
-
-
-
-
-
     if ($('.testimonial-slider').length) {
         var testimonial = $('.testimonial-slider').owlCarousel({
             items: 1,
@@ -230,19 +225,19 @@ function scroll_animations() {
         };
         var animations = {
             fade_from_bottom: {
-                y: 180,
+                y: 140,
                 opacity: 0,
             },
             fade_from_top: {
-                y: -180,
+                y: -140,
                 opacity: 0,
             },
             fade_from_left: {
-                x: -180,
+                x: -140,
                 opacity: 0,
             },
             fade_from_right: {
-                x: 180,
+                x: 140,
                 opacity: 0,
             },
             fade_in: {
