@@ -21,3 +21,4 @@
 [ ] Add testimonial section
 [ ] Add resume section
 [ ] Add skills section
+[ ] Implement React or Vue.js
