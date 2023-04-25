@@ -143,7 +143,7 @@ $(function(){
     // });
 
     window.addEventListener('scroll', {
-        scroll_animations,
+        // scroll_animations,
     });
 
 

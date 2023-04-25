@@ -19,3 +19,4 @@
 [ ] Add portfolio section
 [ ] Add testimonial section
 [ ] Add resume section
+[ ] Add skills section

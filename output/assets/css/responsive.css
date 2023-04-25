@@ -121,6 +121,7 @@
 
 @media (max-width: 767px) {
     .icon-menu {
+        display: none;
         right: 30px;
         top: 30px;
     }
@@ -274,6 +275,10 @@
     .about-area,
     .hero-section {
         padding-bottom: 0;
+    }
+    .page-section {
+        padding-left: 0;
+        padding-right: 0;
     }
     .hero-section .hero-content h1 {
         font-size: 50px;
