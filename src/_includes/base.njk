@@ -1,0 +1,25 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+{% include "./partials/_head.njk" %}
+
+<body {% if pagename %} class="{{pagename}}" {% endif %}>
+<!-- Preloader -->
+<div class="page-loader">
+    <div class="bounceball"></div>
+</div>
+{% include "./partials/_sidebarleft.njk" %}
+{% include "./partials/_sidebarmenu.njk" %}
+
+{% if pagename %}
+    <link rel="stylesheet" href="./assets/css/{{pagename}}.css">
+{% endif %}
+
+{{content | safe}}
+<!-- Contact Section -->
+{% include "./sections/_contact.njk" %}
+{% include "./partials/_footer.njk" %}
+
+</body>
+
+</html>
