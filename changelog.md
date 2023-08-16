@@ -44,4 +44,13 @@ Started a changelog July 2022.
 - Bumped Mint Grotesk to V13
 - Updated to do list
 - Updated content
+# Changelog
+16 August 2023
+- Added hero.css
+
+7 April 2023
+- Updated resume
+- Turned off icon
+- Added activity and skills in resume
+- Updated social links
 
