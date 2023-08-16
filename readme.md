@@ -12,9 +12,7 @@
 [ ] fix relative path structures
 [ ] make site semantic (add sections)
 [ ] fix blog links
-<<<<<<< Updated upstream
 [ ] Move .table-grid css to frontpage.css
-=======
 [ ] Modular JavaScript
 [ ] Move .table-grid css to frontpage.css
 [ ] Automatic Deployment (CD)
@@ -32,4 +30,4 @@
 2. I demand great performance.
 3. I do not care about SEO.
 4. I want to show that partials are possible and very practical.
->>>>>>> Stashed changes
+
