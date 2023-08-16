@@ -5,6 +5,23 @@
 - [Nunjucks](https://github.com/mozilla/nunjucks)
 - A little PHP
 
+## About CSS Structure
+Style.css contains the main styles for the site or elements that are used in all pages. The rest of the styles are in the respective pages.
+For example: there should only be one H1 on a site so why give it a classname? Just style it in the main stylesheet.
+
+### Responsive.css
+There's a separate responsive css file which is easier for tweaking the many breakpoints I've set. I've tried to keep the breakpoints to a minimum but I've found that it's easier to tweak the styles in a separate file.
+
+## Responsive Breakpoints
+- 320px
+- 480px
+- 768px
+- 1024px
+- 1200px
+- 1440px
+- 1920px
+- 2560px
+
 ### To-Do
 - [x] convert to eleventy.js
 - [x] add Nunjucks

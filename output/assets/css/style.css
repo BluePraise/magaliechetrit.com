@@ -34,7 +34,7 @@
     --primary-color: #28e98c;
     --color-gray: #999999;
     --color-gray-dark: #1f1f1f;
-
+    --text-color: var(var(--color-gray));;
     --scroll-padding: 40px;
     --default-font: 'Inter', sans-serif;
     --header-font: 'Bricolage Grotesque', sans-serif;
@@ -62,15 +62,18 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--header-font);
     color: #fff;
 }
-h1,
-h2,
-h3 {
-    font-weight: 800;
-}
 
 h1 {
-    font-size: 48px;
-    line-height: 60px;
+    font-size: 72px;
+    line-height: 63px;
+    margin-bottom: 40px;
+    font-weight: 200;
+}
+.h2,
+.subtitle {
+    font-size: 42px;
+    line-height: 52px;
+    font-weight: 200;
 }
 
 .bg-white {
@@ -129,6 +132,18 @@ a {
     text-shadow: 0 0 2px rgba(0,0,0,.9);
     animation: rainbow 4s ease-out alternate infinite;
 }
+
+ul.social-links,
+ul.social-profile {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    margin: 18px 0;
+    padding: 0;
+}
+
 /* Credit - Eleventy site*/
 @keyframes rainbow {
  0% {

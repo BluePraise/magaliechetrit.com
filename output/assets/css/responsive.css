@@ -1,9 +1,18 @@
+@media (min-width: 1440.1px) {
+    .left-sidebar {
+        max-width: 25%;
+        padding: 50px 30px;
+    }
+}
 
+@media (min-width: 768.1px) and (max-width: 1440px) {
+    .left-sidebar {
+        max-width: 30%;
+        padding: 20px;
+    }
+}
 
 @media (max-width: 2000px) {
-    .left-sidebar {
-        max-width: 400px;
-    }
     .left-sidebar .sidebar-header {
         margin-bottom: 30px;
     }
@@ -22,15 +31,15 @@
 
 @media (max-width: 1555px) {
     .left-sidebar {
-        max-width: 350px;
+        /* max-width: 350px; */
         padding: 30px;
     }
     .left-sidebar > img.me {
         width: 100%;
-        max-width: 250px;
+        /* max-width: 250px;
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: 46px;
+        margin-bottom: 46px; */
     }
     .left-sidebar .sidebar-header .designation {
         line-height: 1.4;

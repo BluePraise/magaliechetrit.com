@@ -1,6 +1,9 @@
 # Changelog
 ## 16 August 2023
 - Added hero.css
+- Restructured folder structure
+- Reworked left sidebar to be more semantic
+- Styling for left sidebar is only for > 1440px
 
 ## 2023, March 2
 - Updated content encrypted email
@@ -10,6 +13,7 @@
 ## 2023, February 28
 - Changed order of changelog
 - Updated metadata in `<head>`
+
 ## 2023, January 14.
 - Started to remove all spaces from files
 - Added fancy header
