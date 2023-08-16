@@ -29,7 +29,7 @@ nav > a {
     color: var(--shadow);
 }
 nav a.active {
-    font-family: "Inter";
+    font-family: "inter";
 }
 nav > a:hover {
     color: black;

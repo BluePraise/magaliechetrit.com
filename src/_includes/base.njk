@@ -14,10 +14,11 @@
 {% if pagename %}
     <link rel="stylesheet" href="./assets/css/{{pagename}}.css">
 {% endif %}
-
-{{content | safe}}
-<!-- Contact Section -->
-{% include "./sections/_contact.njk" %}
+<main>
+    {{content | safe}}
+    <!-- Contact Section -->
+    {% include "./sections/_contact.njk" %}
+</main>
 {% include "./partials/_footer.njk" %}
 
 </body>

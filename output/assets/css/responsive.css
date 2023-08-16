@@ -47,15 +47,10 @@
     .section-header h1 br {
         display: none;
     }
-    .left-sidebar {
-        position: relative;
-        max-width: 767px;
-        left: 0;
-        margin: 20px auto;
-        top: 0;
-        transform: translateY(0);
-    }
 
+    .left-sidebar {
+        display: block;
+    }
     .left-sidebar > img.me {
         width: auto;
     }
@@ -121,7 +116,6 @@
 
 @media (max-width: 767px) {
     .icon-menu {
-        display: none;
         right: 30px;
         top: 30px;
     }
@@ -275,10 +269,6 @@
     .about-area,
     .hero-section {
         padding-bottom: 0;
-    }
-    .page-section {
-        padding-left: 0;
-        padding-right: 0;
     }
     .hero-section .hero-content h1 {
         font-size: 50px;

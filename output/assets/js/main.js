@@ -1,40 +1,40 @@
 
-$(function(){
+$(function () {
 
     $(window).on('load', function () {
         $('.page-loader').delay('500').fadeOut(1000);
     });
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
-        $(document).on('click', '.icon-menu', function() {
+        $(document).on('click', '.icon-menu', function () {
             $('.responsive-sidebar-menu').addClass('active');
         });
-        $(document).on('click', '.responsive-sidebar-menu .overlay', function() {
+        $(document).on('click', '.responsive-sidebar-menu .overlay', function () {
             $('.responsive-sidebar-menu').removeClass('active');
         });
 
-        $(document).on('click', '.menu li .scroll-to', function() {
+        $(document).on('click', '.menu li .scroll-to', function () {
             $('.responsive-sidebar-menu').removeClass('active');
         })
 
 
-        $(document).on('click', ".color-boxed a", function() {
+        $(document).on('click', ".color-boxed a", function () {
             $(".color-boxed a").removeClass("clr-active");
             $(this).addClass("clr-active");
         });
 
-        $(document).on('click', ".global-color .setting-toggle", function() {
+        $(document).on('click', ".global-color .setting-toggle", function () {
             $(".global-color").addClass("active");
         });
 
-        $(document).on('click', ".global-color .inner .overlay, .global-color .inner .global-color-option .close-settings", function() {
+        $(document).on('click', ".global-color .inner .overlay, .global-color .inner .global-color-option .close-settings", function () {
             $(".global-color").removeClass("active");
         });
 
     });
 
-    $(window).scroll(function() {
+    $(window).scroll(function () {
 
         var windscroll = $(window).scrollTop();
         // if (windscroll >= 0) {
@@ -56,7 +56,7 @@ $(function(){
         // }
 
         if (windscroll >= 0) {
-            $('.scroll-to-page').each(function(i) {
+            $('.scroll-to-page').each(function (i) {
 
                 var wscrolldecress = windscroll + 1;
                 // console.log(wscrolldecress);
@@ -88,28 +88,28 @@ $(function(){
             loop: false,
             nav: false,
             dots: false,
-            onInitialized  : counter, //When the plugin has initialized.
-            onTranslated : counter //When the translation of the stage has finished.
+            onInitialized: counter, //When the plugin has initialized.
+            onTranslated: counter //When the translation of the stage has finished.
         });
 
-        $('.testimonial-nav .next').on('click', function() {
+        $('.testimonial-nav .next').on('click', function () {
             testimonial.trigger('next.owl.carousel');
         })
-        $('.testimonial-nav .prev').on('click', function() {
+        $('.testimonial-nav .prev').on('click', function () {
             testimonial.trigger('prev.owl.carousel', [300]);
         })
 
 
         function counter(event) {
-            var element   = event.target;         // DOM element, in this example .owl-carousel
-            var items     = event.item.count;     // Number of items
-            var item      = event.item.index + 1;     // Position of the current item
+            var element = event.target;         // DOM element, in this example .owl-carousel
+            var items = event.item.count;     // Number of items
+            var item = event.item.index + 1;     // Position of the current item
 
-        // it loop is true then reset counter from 1
-        if(item > items) {
+            // it loop is true then reset counter from 1
+            if (item > items) {
                 item = item - items
-        }
-        $('#testimonial-slide-count').html("<span class='left'>"+item+"</span> / "+items)
+            }
+            $('#testimonial-slide-count').html("<span class='left'>" + item + "</span> / " + items)
         }
     }
 
@@ -211,7 +211,7 @@ function scroll_animations() {
     // var allow_on_mobile = !0;
     // if (typeof config_scroll_animation_on_mobile !== "undefined") allow_on_mobile = config_scroll_animation_on_mobile;
     // if (allow_on_mobile == !1 && is_mobile_device) return;
-    var defaults = {
+    const defaults = {
         duration: 1.2,
         ease: "power4.out",
         animation: "fade_from_bottom",
@@ -271,28 +271,29 @@ scroll_animations();
 // References and sources:
 // https://linguinecode.com/post/enable-wordpress-rest-api-cors
 
-const url = 'https://libra.nightschool.studio/mc/wp-json/wp/v2/posts'
+// const url = 'https://libra.nightschool.studio/mc/wp-json/wp/v2/posts'
+// console.log(url)
+// const response = fetch(url)
+//     .then(response => response.json())
+//     .then(data => data.forEach(post => {
+//         console.log(post.title.rendered);
+//     }));
 
-const response = fetch(url)
-    .then(response => response.json())
-    .then(data => data.forEach(post => {
-        console.log(post.title.rendered);
-    }));
-
-// this one works. Fallback.
-function fetchAllPosts() {
-    let request = new XMLHttpRequest();
-    if (request) {
-        request.onreadystatechange = function () {
-            if (this.readyState == 4 && (this.status == 200 || this.status == 304)) {
-                // why does a XMLHttpRequest need to be parsed and the fetch does not?
-                parsedData = JSON.parse(request.responseText);
-                console.log(parsedData[0].title);
-            }
-        }
-        request.open("GET", url, true)
-        request.send(null)
-    }
-}
+// // this one works. Fallback.
+// function fetchAllPosts() {
+//     let request = new XMLHttpRequest();
+//     if (request) {
+//         request.onreadystatechange = function () {
+//             if (this.readyState == 4 && (this.status == 200 || this.status == 304)) {
+//                 // why does a XMLHttpRequest need to be parsed and the fetch does not?
+//                 parsedData = JSON.parse(request.responseText);
+//                 console.log(parsedData[0].title);
+//             }
+//         }
+//         request.open("GET", url, true)
+//         request.send(null)
+//     }
+// }
 
 // fetchAllPosts();
+console.log('Fetching all posts...');

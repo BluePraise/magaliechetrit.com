@@ -1,8 +1,9 @@
 module.exports = function (eleventyConfig) {
     // move css and jpg to output folder
-    eleventyConfig.addWatchTarget("./src/assets/css/*.css")
-    eleventyConfig.addPassthroughCopy("*.css")
-    // eleventyConfig.addPassthroughCopy("**/*/*/*.jpg")
+    eleventyConfig.addPassthroughCopy("src/assets/")
+    eleventyConfig.addWatchTarget("src/assets/css/*.css")
+    eleventyConfig.addPassthroughCopy("src/css/");
+
     return {
         dir: {
             input: 'src',

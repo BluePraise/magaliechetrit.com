@@ -20,5 +20,9 @@
   "homepage": "https://github.com/BluePraise/magaliechetrit.com#readme",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1"
+  },
+  "dependencies": {
+    "@11ty/eleventy-fetch": "^4.0.0",
+    "common-tags": "^1.8.2"
   }
 }

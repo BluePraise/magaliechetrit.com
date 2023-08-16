@@ -22,3 +22,10 @@
 [ ] Add resume section
 [ ] Add skills section
 [ ] Implement React or Vue.js
+[ ] A11Y
+
+### Some sparkles ✨
+1. I demand great A11Y.
+2. I demand great performance.
+3. I do not care about SEO.
+4. I want to show that partials are possible and very practical.
