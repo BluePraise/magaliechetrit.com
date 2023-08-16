@@ -1,8 +1,12 @@
+const pluginRev = require("eleventy-plugin-rev")
+
 module.exports = function (eleventyConfig) {
+    eleventyConfig.addPlugin(pluginRev)
+    eleventyConfig.setServerOptions({ showVersion: true })
     // move css and jpg to output folder
     eleventyConfig.addPassthroughCopy("src/assets/")
     eleventyConfig.addWatchTarget("src/assets/css/*.css")
-    eleventyConfig.addPassthroughCopy("src/css/");
+    eleventyConfig.addPassthroughCopy("src/css/")
 
     return {
         dir: {
@@ -15,4 +19,5 @@ module.exports = function (eleventyConfig) {
         htmlTemplateEngine: 'njk',
         dataTemplateEngine: 'njk',
     }
+
 }

@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/BluePraise/magaliechetrit.com#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1"
+    "@11ty/eleventy": "^2.0.1",
+    "eleventy-plugin-rev": "^1.1.1"
   },
   "dependencies": {
     "@11ty/eleventy-fetch": "^4.0.0",
