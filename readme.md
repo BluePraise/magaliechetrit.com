@@ -1,8 +1,8 @@
 # Welcome to my site
 
 ## What it is this site built with?
-- Eleventy.js
-- Nunjucks
+- [Eleventy.js](https://www.11ty.dev)
+- [Nunjucks](https://github.com/mozilla/nunjucks)
 - A little PHP
 
 ### To-Do
