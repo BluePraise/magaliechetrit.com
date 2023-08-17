@@ -1,0 +1,14 @@
+.clients-logos {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.clients-logos ul.unlist {
+    justify-content: space-between;
+    align-items: center;
+}
+
+li.client-logo img {
+    width: 100px;
+    display: block;
+    transition: .3s;
+}

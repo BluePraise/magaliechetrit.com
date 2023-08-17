@@ -1,9 +1,18 @@
 # Changelog
+## 17 August 2023
+- Clients Logo's
+
 ## 16 August 2023
 - Added hero.css
 - Restructured folder structure
 - Reworked left sidebar to be more semantic
 - Styling for left sidebar is only for > 1440px
+- Reworked hero section
+- Removed section label in hero section
+- Working on Typography CSS
+- Updated fade in animation
+- Reworked the layout grid
+- Added animations to elements on sidebar left
 
 ## 2023, March 2
 - Updated content encrypted email
