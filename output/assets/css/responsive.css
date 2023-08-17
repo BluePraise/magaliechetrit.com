@@ -47,11 +47,11 @@
 }
 
 @media (max-width: 1220px) {
-    .custom-container {
+    /* .custom-container {
         max-width: 767px;
-    }
+    }*/
     .content-width {
-        max-width: 100%;
+        max-width: 75%;
     }
     .section-header h1 br {
         display: none;
