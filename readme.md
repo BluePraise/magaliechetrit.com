@@ -22,6 +22,8 @@ There's a separate responsive css file which is easier for tweaking the many bre
 - 1920px
 - 2560px
 
+
+
 ### To-Do
 - [x] convert to eleventy.js
 - [x] add Nunjucks
@@ -45,6 +47,7 @@ There's a separate responsive css file which is easier for tweaking the many bre
 - [ ] Add skills section
 - [ ] Implement React or Vue.js
 - [ ] A11Y
+- [ ] Convert CSS values to VW/% where necessary. (This is to make the site more responsive.)
 
 ### Some sparkles ✨
 1. I demand great A11Y.

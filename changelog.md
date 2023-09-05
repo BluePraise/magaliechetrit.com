@@ -1,4 +1,8 @@
 # Changelog
+## 24 August 2023
+- CSS values are now in VW. This is to make the site more responsive.
+- Some CSS responsive code are in their respective files, because of hierarchy issues.
+
 ## 17 August 2023
 - Clients Logo's
 

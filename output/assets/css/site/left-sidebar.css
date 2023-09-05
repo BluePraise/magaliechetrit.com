@@ -16,7 +16,7 @@ main .left-sidebar {
 .left-sidebar > img.me {
     border-radius: 30px;
     display: block;
-    max-width: 50%;
+    /* max-width: 50%; */
     margin-bottom: 56px;
 }
 
@@ -80,4 +80,36 @@ main .left-sidebar {
 }
 .sidebar-footer {
     padding-top: 20px
+}
+
+@media (min-width: 768.1px) and (max-width: 1023.9px) {
+    .sidebar-header h3.email {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .left-sidebar > img.me {
+        max-width: 100%;
+    }
+    .left-sidebar .social-profile li a {
+        width: 30px;
+        height: 30px;
+        line-height: 26px;
+    }
+    .left-sidebar .social-profile li a i {
+        font-size: 16px;
+    }
+}
+@media (max-width: 768px) {
+    .left-sidebar {
+        position: relative;
+        padding: 10px;
+    }
+    .sidebar-footer,
+    .left-sidebar > img.me {
+        display: none;
+    }
+    .left-sidebar .social-wrapper {
+        flex-grow: unset;
+    }
 }

@@ -12,3 +12,10 @@ li.client-logo img {
     display: block;
     transition: .3s;
 }
+
+@media (min-width: 768.1px) and (max-width: 1023.9px) {
+    .clients-logos {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+}
