@@ -1,4 +1,9 @@
 # Changelog
+
+## 08 September 2023
+- Decided to remove fixed sidebar since it added no value and only complexity.
+- Changed content width to 960px
+
 ## 24 August 2023
 - CSS values are now in VW. This is to make the site more responsive.
 - Some CSS responsive code are in their respective files, because of hierarchy issues.
