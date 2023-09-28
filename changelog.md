@@ -1,4 +1,10 @@
 # Changelog
+(more like a worklog)
+
+## 28 September 2023
+- Keep it simple: removed navigation
+- Removed most js
+- Can't add more portfolio items
 
 ## 08 September 2023
 - Decided to remove fixed sidebar since it added no value and only complexity.

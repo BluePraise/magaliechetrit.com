@@ -17,10 +17,7 @@ There's a separate responsive css file which is easier for tweaking the many bre
 - 480px
 - 768px
 - 1024px
-- 1200px
-- 1440px
-- 1920px
-- 2560px
+- `> 1280px`
 
 ### To-Do
 - [x] convert to eleventy.js
@@ -33,7 +30,7 @@ There's a separate responsive css file which is easier for tweaking the many bre
 - [ ] multilingual
 - [ ] about page
 - [ ] fix relative path structures
-- [ ] make site semantic (add sections)
+- [x] make site semantic (add sections)
 - [ ] fix blog links
 - [ ] Modular JavaScript
 - [ ] Move .table-grid css to frontpage.css
@@ -41,12 +38,18 @@ There's a separate responsive css file which is easier for tweaking the many bre
 - [ ] Make date dynamic (in the homepage section)
 - [ ] Adapt taskrunner to copy css to output folder
 - [ ] Add portfolio section
+    - [ ] Add ArtEZ Press gif
+    - [ ] Add McD As Featured In gif
 - [ ] Add testimonial section
 - [ ] Add resume section
 - [ ] Add skills section
-- [ ] Implement React or Vue.js
 - [ ] A11Y
 - [ ] Make all CSS Values scalable to the viewport
+- [ ] Better naming convention for `.section-label`. It is being used for a button too.
+
+
+### Removed Tasks
+- [ ] Implement React or Vue.js
 
 ### Some sparkles ✨
 1. I demand great A11Y.
