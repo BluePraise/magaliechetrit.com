@@ -117,8 +117,8 @@ ul.unlist {
     display: flex;
 }
 .content-width {
-    max-width: 960px;
-    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
     margin: auto;
 }
 .theme-btn {
@@ -921,6 +921,10 @@ body .body-overlay {
 }
 
 /* 14 - Portfolio */
+.portfolio-items {
+    display: flex;
+    gap: 5%;
+}
 .portfolio-items .portfolio-item {
     margin-bottom: 62px;
 }
@@ -1844,8 +1848,10 @@ body .body-overlay {
 
 .section-content p {
     font-family: var(--header-font);
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 2.4vw;
+    font-weight: 100;
+    line-height: 3vw;
+    letter-spacing: -2px;
     color: white;
 }
 

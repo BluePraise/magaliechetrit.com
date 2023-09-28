@@ -40,100 +40,6 @@
 </div>
 
 
-<span class="icon-menu">
-    <span class="bar"></span>
-    <span class="bar"></span>
-</span>
-
-<!-- Side Menu Bar -->
-<div class="responsive-sidebar-menu">
-    <div class="overlay"></div>
-    <div class="sidebar-menu-inner">
-        <div class="menu-wrap">
-            <p>Menu</p>
-            <ul class="menu scroll-nav-responsive d-flex">
-                <li>
-                    <a class="scroll-to" href="#home">
-                        <i class="las la-home"></i> <span>Home</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="scroll-to" href="#about">
-                        <i class="lar la-user"></i> <span>About</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="scroll-to" href="#resume">
-                        <i class="las la-briefcase"></i> <span>Resume</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="scroll-to" href="#services">
-                        <i class="las la-stream"></i> <span>Services</span>
-                    </a>
-                </li>
-                
-                
-                <li>
-                    <a class="scroll-to" href="#contact">
-                        <i class="las la-envelope"></i> <span>Contact</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-
-        <div class="sidebar-social">
-            <p>Links</p>
-            <ul class="social-links d-flex align-items-center">
-                <li>
-                    <a href="mailto:email@magaliechetrit.com"><i class="las la-envelope"></i></a>
-                </li>
-                <li>
-                    <a href="https://github.com/BluePraise/"><i class="lab la-github"></i></a>
-                </li>
-                <li>
-                    <a href="https://www.linkedin.com/in/magaliechetrit/"><i class="lab la-linkedin"></i></a>
-                </li>
-                <li>
-                    <a href="https://instagram.com/maggiematters"><i class="lab la-instagram"></i></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<ul class="menu scroll-nav d-flex">
-    <li>
-        <a class="scroll-to" href="#home">
-            <span>Home</span> <i class="las la-home"></i>
-        </a>
-    </li>
-    <li>
-        <a class="scroll-to" href="#about">
-            <span>About</span> <i class="lar la-user"></i>
-        </a>
-    </li>
-    <li>
-        <a class="scroll-to" href="#resume">
-            <span>Resume</span> <i class="las la-briefcase"></i>
-        </a>
-    </li>
-    <li>
-        <a class="scroll-to" href="#services">
-            <span>Services</span> <i class="las la-stream"></i>
-        </a>
-    </li>
-    
-    
-    <li>
-        <a class="scroll-to" href="#contact">
-            <span>Contact</span> <i class="las la-envelope"></i>
-        </a>
-    </li>
-</ul>
-
-
 
     <link rel="stylesheet" href="./assets/css/site/News.css">
 
@@ -141,106 +47,27 @@
     
 
     <!-- Contact Section -->
-    <section class="contact-area page-section scroll-content" id="contact">
-        <div class="custom-container">
+    <section class="contact-area page-section">
+
             <div class="contact-content content-width">
                 <div class="section-header">
-                    <h4 class="section-label scroll-animation" data-animation="fade_from_bottom">
-                        <i class="las la-dollar-sign"></i> contact
+                    <h4 class="section-label">
+                        <i class="las la-wifi"></i> contact
                     </h4>
-                    <h2 class="section-title scroll-animation" data-animation="fade_from_bottom">Let's Work
-                        <span>Together!</span></h2>
+                    <h2 class="section-title" data-animation="fade_from_bottom">Let's Work <span class="highlight">Together!</span></h2>
                 </div>
-                <h3 class="scroll-animation" data-animation="fade_from_bottom">email@magaliechetrit.com</h3>
-                <p id="required-msg">* Marked fields are required to fill.</p>
 
-                <form class="contact-form scroll-animation" data-animation="fade_from_bottom" method="POST"
-                    action="mailer.php">
-                    <div class="alert alert-success messenger-box-contact__msg" style="display: none"
-                        role="alert">
-                        Your message was sent successfully.
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                <label for="full-name">full Name <sup>*</sup></label>
-                                <input type="text" name="full-name" id="full-name" placeholder="Your Full Name">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                <label for="email">Email <sup>*</sup></label>
-                                <input type="email" name="email" id="email" placeholder="Your email adress">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                <label for="phone-number">phone <span>(optional)</span></label>
-                                <input type="text" name="phone-number" id="phone-number"
-                                    placeholder="Your number phone">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                <label for="subject">subject <sup>*</sup></label>
-                                <select name="subject" id="subject">
-                                    <option value="">Select a subject</option>
-                                    <option value="subject1">Freelance/Contract Hiring</option>
-                                    <option value="subject2">Website Development</option>
-                                    <option value="subject3">Other</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="input-group">
-                                <label for="budget">your budget <span>(optional)</span></label>
-                                <input type="number" name="budget" id="budget"
-                                    placeholder="A range budget for your project">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="input-group">
-                                <label for="message">message</label>
-                                <textarea name="message" id="message"
-                                    placeholder="Wrire your message here ..."></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="input-group upload-attachment">
-                                <div>
-                                    <label for="upload-attachment">
-                                        <i class="las la-cloud-upload-alt"></i> add an attachment
-                                        <input type="file" name="file" id="upload-attachment">
-                                    </label>
-
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="input-group submit-btn-wrap">
-                                <button class="theme-btn" name="submit" type="submit" id="submit-form">send
-                                    message</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
+                <h3 class="s-animation" data-animation="fade_from_bottom">How to get in touch?</h3>
+                <p>The easiest way: Send me an email at <a href="mailto:email@magaliechetrit.com">email@magaliechetrit.com</a></p></br>
+                <p>You can also find my on <a href="https://www.linkedin.com/in/magaliechetrit/">LinkedIn</a>, where I maintain an updated profile.</p>
             </div>
-        </div>
+
 </section>
 </main>
     <footer></footer>
     <script src="./assets/js/jquery.js"></script>
-    
-    
-    <script src="./assets/js/gsap.min.js"></script>
     <script src="./assets/js/ScrollTrigger.min.js"></script>
-    <script src="./assets/js/ScrollToPlugin.min.js"></script>
-    
-
     <script src="./assets/js/main.js"></script>
-    <script src="./assets/js/ajax-form.js"></script>
 </body>
 </html>
 
