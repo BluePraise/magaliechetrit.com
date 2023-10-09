@@ -3,10 +3,10 @@
 }
 
 @media (min-width: 1139.9px) {
-    h1, h2.section-title__large {
+    /* h1, h2.section-title__large {
         font-size: 5rem;
         line-height: 5rem;
-    }
+    } */
     .section-content p {
         font-size: 3rem;
         line-height: 3rem;
@@ -28,12 +28,12 @@
 
     .h2,
     .subtitle {
-        font-size: 22px;
-        line-height: 24px;
+        /* font-size: 22px; */
+        /* line-height: 24px; */
     }
 
     .section-content p {
-        line-height: 28px;
+        /* line-height: 28px; */
     }
     .clients-logos ul.unlist {
         gap: 5%;

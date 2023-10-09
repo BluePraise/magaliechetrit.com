@@ -65,8 +65,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 72px;
-    line-height: 63px;
+    font-size: 5rem;
+    line-height: 5rem;
     margin-bottom: 40px;
 }
 .h2,
@@ -1847,9 +1847,9 @@ body .body-overlay {
 
 .section-content p {
     font-family: var(--header-font);
-    font-size: 2.4vw;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
     font-weight: 100;
-    line-height: 3vw;
     letter-spacing: -2px;
     color: var(--text-color);
 }
