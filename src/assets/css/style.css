@@ -31,10 +31,11 @@
 
 */
 :root {
-    --primary-color: #28e98c;
+    --primary-color: #8b8bef;
     --color-gray: #999999;
     --color-gray-dark: #1f1f1f;
-    --text-color: var(var(--color-gray));;
+    --text-color: var(--color-gray-dark);
+    --background-color: #fff;
     --scroll-padding: 40px;
     --default-font: 'Inter', sans-serif;
     --header-font: 'Bricolage Grotesque', sans-serif;
@@ -49,8 +50,8 @@ body {
     font-family: var(--default-font);
     font-size: 16px;
     scroll-behavior: smooth;
-    color: var(--color-gray);
-    background: var(--color-gray-dark);
+    color: var(--text-color);
+    background: var(--background-color);
     line-height: 1.7;
     overflow-x: hidden;
     height: 100vh;
@@ -60,7 +61,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--header-font);
-    color: #fff;
+    color: var(--text-color);
 }
 
 h1 {
@@ -82,7 +83,6 @@ h2.section-title__large {
 h3.section-title {
     font-size: 48px;
     line-height: 60px;
-    color: #fff;
     font-weight: 300;
     margin-bottom: 33px;
 }
@@ -102,7 +102,6 @@ img {
     max-width: 100%;
 }
 a {
-    text-decoration: none;
     color: var(--primary-color);
 }
 
@@ -1824,7 +1823,7 @@ body .body-overlay {
 .section-label {
     font-family: var(--header-font);
     font-size: 12px;
-    color: #ffffff;
+    /* color: #ffffff; */
     text-transform: uppercase;
     font-weight: 300;
     margin: 0;
@@ -1852,7 +1851,7 @@ body .body-overlay {
     font-weight: 100;
     line-height: 3vw;
     letter-spacing: -2px;
-    color: white;
+    color: var(--text-color);
 }
 
 
