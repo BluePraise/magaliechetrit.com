@@ -1,6 +1,10 @@
 # Changelog
 (more like a worklog)
 
+## 21 November 2023
+- Changed layout again.
+- Fixed page loader
+
 ## 28 September 2023
 - Keep it simple: removed navigation
 - Removed most js

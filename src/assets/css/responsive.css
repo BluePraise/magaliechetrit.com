@@ -5,15 +5,7 @@
 }
 
 @media (min-width: 1139.9px) {
-    h1, h2.section-title__large {
-        font-size: 6rem;
-        line-height: 6rem;
-    }
-    .section-content p {
-        font-size: 3rem;
-        line-height: 3rem;
-        letter-spacing: 0.2px;
-    }
+
 }
 
 

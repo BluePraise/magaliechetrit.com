@@ -2,11 +2,19 @@
 $(function () {
 
     $(window).on('load', function () {
-        $('.page-loader').delay('300').fadeOut(600);
+        $('.page-loader').delay('400').fadeOut(600);
+
+    });
+    $(document).ready(function() {
+        new WOW().init();
     });
 
+});
+
+document.addEventListener("DOMContentLoaded", (event) => {
 
 });
+
 
 // References and sources:
 // https://linguinecode.com/post/enable-wordpress-rest-api-cors

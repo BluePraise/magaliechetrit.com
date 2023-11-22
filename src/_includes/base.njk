@@ -9,15 +9,12 @@
 <div class="page-loader">
     <div class="bounceball"></div>
 </div>
-
-
+{% include "./partials/_header.njk" %}
 {% if pagename %}
     <link rel="stylesheet" href="./assets/css/site/{{pagename}}.css">
 {% endif %}
-<main>
+<main class="container">
     {{content | safe}}
-    <!-- Contact Section -->
-    {% include "./sections/_contact.njk" %}
 </main>
 {% include "./partials/_footer.njk" %}
 
