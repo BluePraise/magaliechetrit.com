@@ -3,7 +3,7 @@
     --a11y-color: #009950;
     --color-gray: #999999;
     --color-gray-dark: #1f1f1f;
-    --text-color: var(var(--color-gray));
+    --text-color: var(--color-gray);
     --scroll-padding: 40px;
     --default-font: 'Inter', sans-serif;
     --header-font: 'Bricolage Grotesque', sans-serif;
@@ -52,10 +52,7 @@ body {
     margin: 0;
     padding: 0;
 }
-header {
-    padding: 20px 0;
-    border-bottom: 1px solid #eee;
-}
+
 
 p.hero-text {
     margin-bottom: 20px;
@@ -70,12 +67,12 @@ p.hero-text {
     margin-top: 0;
     margin-bottom: 50px;
     padding: 20px;
+    border-bottom: 1px solid #eee;
 }
 
 .main-header h1.site-title {
     font-family: var(--header-font);
     font-size: 24px;
-    /* color: #a2a2a2; */
     margin: 0;
 }
 
@@ -99,7 +96,14 @@ nav.social-nav ul.unlist li a:hover {
 /* Typography */
 
 h1, h2, h3, h4, h5, h6 {
+    font-family: var(--header-font);
     font-weight: 900;
+}
+
+.main-heading {
+    font-family: var(--header-font);
+    font-size: 44px;
+    line-height: 60px;
 }
 .highlight {
     color: var(--primary-color);
@@ -132,12 +136,17 @@ main.container {
     height: 8px;
     text-align: center;
 }
+a.link__small {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: var(--color-gray);
+}
 
 /* hero */
 .hero h2 {
-    font-family: var(--header-font);
-    font-size: 44px;
-    line-height: 60px;
+
 }
 
 .page-loader {
@@ -171,6 +180,55 @@ main.container {
     background-color: #fff;
     transform-origin: 50%;
     animation: bounceLoader 500ms alternate infinite ease;
+}
+section + section {
+    margin-bottom: 60px;
+    margin-top: 100px;
+    padding: 0 10px;
+}
+
+.section-header {
+    margin-bottom: 60px;
+}
+
+.section-title {
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--color-gray);
+    font-weight: 600;
+}
+
+.portfolio-items {
+    display: flex;
+    gap: 5%;
+}
+.portfolio-categories {
+    gap: 5%;
+}
+.portfolio-link,
+.portfolio-year,
+.portfolio-item-title {
+    display: block;
+    font-family: var(--header-font);
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+
+/* aricle + project detail */
+.project-detail.container-content {
+    margin: 0 auto;
+}
+.article-subtitle {
+    font-weight: 600;
+    font-family: var(--header-font);
+    color: var(--color-gray);
+}
+
+.project-detail figure {
+    max-width: 400px;
 }
 
 footer {

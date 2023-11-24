@@ -1,66 +1,18 @@
-<section class="portfolio-area page-section scroll-to-page" id="portfolio">
-            <div class="portfolio-content content-width">
-                <div class="section-header">
-                    <h3 class="section-title scroll-animation" data-animation="fade_from_bottom">Featured <span class="highlight">Projects</span></h3>
-                </div>
+<section class="portfolio-area">
 
-                <ul class="portfolio-items unlist">
-                    <li class="scroll-animation" data-animation="fade_from_bottom">
-                        <div class="portfolio-item portfolio-half">
-                            <div class="portfolio-item-inner">
-                                <a href="./assets/images/portfolio2.jpg" data-lightbox="example-1">
-                                    <img src="./assets/img/mcd-gfo.gif" alt="Portfolio">
-                                </a>
+            <header class="section-header wow fadeInDown" data-wow-delay="1800ms">
+                <h3 class="section-title">Latest Projects</h3>
+            </header>
 
-                                <img src="./assets/images/portfolio2.jpg" alt="Portfolio">
-
-                                <ul class="portfolio-categories unlist">
-                                    <li>
-                                        <a href="">WordPress</a>
-                                    </li>
-                                    <li>
-                                        <a href="">Pantheon</a>
-                                    </li>
-                                    <li>
-                                        <a href="">WPML</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h2>McDonald's As Featured In - Promotion Site</h2>
-                            <p>August 09, 2023 - McDonald's celebrated being featured in movies for decades by introducing
-                            a new meal and a new promotion site. I was tasked with developing the site. As an international site, the site supported over 105 languages.
-                            <br><br>
-                            <h3>Press</h3>
-                            <ul class="unlist">
-                                <li><a href="https://www.adweek.com/brand-marketing/loki-and-michael-scott-walk-into-a-mcdonalds-brand-serves-up-iconic-tv-and-film-orders/"><b>Adweek:</b> <br>Loki and Michael Scott Walk Into a McDonald's: Brand Serves Up Iconic TV and Film Orders</a></li>
-                                <li><a href="https://www.businessinsider.com/mcdonalds-new-as-featured-in-meal-inspired-films-tv-shows-2023-8"><b>BusinessInsider:</b><br> McDonald's 'As Featured in Meal' reminds customers that Marvel's 'Loki' is just its latest cameo</a></li>
-                                <li><a href="https://www.usatoday.com/story/money/food/2023/08/14/mcdonalds-as-featured-in-meal-loki/70586921007/"><b>USAToday:</b><br>New McDonald's meal: The 'As Featured In Meal' highlights 'Loki' Season 2</a></li>
-                            </ul>
-                            <br><br>
-                            <a class="theme-btn" href="https://mcdonaldsasfeaturedin.com">Click to view mobile website</a></p>
-                        </div>
+            <ul class="portfolio-items unlist">
+                {%- for project in collections.project -%}
+                    <li class="portfolio-item wow {{project.data.wowEffect}}" data-wow-delay="{{project.data.wowDelay}}">
+                        <img src="{{ project.data.imageFront }}" alt="{{ project.data.title }}">
+                        <h4 class="portfolio-item-title">{{ project.data.title }}</h4>
+                        <span class="portfolio-year">{{ project.data.year }}</span>
+                        <a href="{{ project.url }}" class="portfolio-link">Find out more <i class="las la-long-arrow-alt-right"></i></a>
                     </li>
-
-                    <li class="scroll-animation" data-animation="fade_from_bottom">
-                        <div class="portfolio-item">
-                            <div class="portfolio-item-inner">
-                                <img src="./assets/img/modem.png" alt="Portfolio">
-                                <ul class="portfolio-categories unlist">
-                                    <li>
-                                        <a href="">Kirby CMS</a>
-                                    </li>
-                                    <li>
-                                        <a href="">Paper.js</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h2>Modem.Work - Architecture Studio Website</h2>
-                            <p>A professional portfolio website using Kirby CMS for the head of
-                                Architecture at MIT University, showcasing their work and achievements and
-                            enhancing their online presence. <br><br><a class="theme-btn" href="https://modem.work">Click to view website</a></p>
-                        </div>
-                    </li>
+                {%-  endfor -%}
 
             </ul>
-
     </section>

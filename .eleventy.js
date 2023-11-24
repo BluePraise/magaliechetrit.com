@@ -8,6 +8,14 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addWatchTarget("src/assets/css/*.css")
     eleventyConfig.addPassthroughCopy("src/css/")
 
+    // Collections
+    // config.addCollection('projects', collection => {
+    //     return sortByDisplayOrder(collection.getFilteredByGlob('./src/projects/*.md'));
+    // })
+
+    // presents current year
+    eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+
     return {
         dir: {
             input: 'src',

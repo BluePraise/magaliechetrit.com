@@ -5,17 +5,23 @@
 
 <body {% if pagename %} class="{{pagename}}" {% endif %}>
 
-<!-- Preloader -->
-<div class="page-loader">
-    <div class="bounceball"></div>
-</div>
+{% if pagename === "frontpage" %}
+    <!-- Preloader -->
+    <div class="page-loader">
+        <div class="bounceball"></div>
+    </div>
+ {% endif %}
+
 {% include "./partials/_header.njk" %}
+
 {% if pagename %}
     <link rel="stylesheet" href="./assets/css/site/{{pagename}}.css">
 {% endif %}
+
 <main class="container">
     {{content | safe}}
 </main>
+
 {% include "./partials/_footer.njk" %}
 
 </body>

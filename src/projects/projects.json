@@ -1,0 +1,5 @@
+{
+    "layout" : "_project-detail.njk",
+    "tags" : ["project", "featured"],
+    "date": "Last Modified"
+}
