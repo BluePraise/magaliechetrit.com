@@ -1,0 +1,13 @@
+---
+layout: 'base.njk'
+---
+<article class="container-content">
+<a class="link__small" href="/"><i class="las la-long-arrow-alt-left"></i>Back to homepage</a>
+    <div class="flex">
+        <figure><img src=" {{image}}" /></figure>
+        <figcaption>{{featuredImageAlt}}</figcaption>
+    <div class="content">
+        {{ content | safe }}
+    </div>
+    </div>
+</article>

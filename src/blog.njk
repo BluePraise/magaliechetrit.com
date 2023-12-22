@@ -1,0 +1,16 @@
+---
+layout: base.njk
+pagename: News
+title: "😎 Magalie Chetrit | Web Designer, Web Developer in New Jersey. WordPress, WooCommerce. WebDevelopment."
+permalink: blog/{{ blogpost.slug }}/
+---
+<section class="blog">
+    <h1 class="page-title">Recent blog posts</h1>
+    <ul>
+        {%- for post in collections.post -%}
+            <li>
+                {{ post.data.title }}
+            </li>
+        {%- endfor -%}
+    </ul>
+</section>
