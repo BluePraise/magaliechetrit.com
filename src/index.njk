@@ -4,4 +4,10 @@ pagename: frontpage
 title: "😎 Magalie Chetrit | Web Designer, Web Developer in New Jersey. WordPress, WooCommerce. WebDevelopment."
 ---
 {% include "./_includes/sections/_hero.njk" %}
+{# {{ blogPosts | dump}} #}
+<ul class="blogposts">
+{% for blogpost in blogPosts %}
+    <li class="post">{{ blogpost.title.rendered }}</a></li>
+{% endfor %}
+</ul>
 {% include "./_includes/sections/_portfolio.njk" %}
