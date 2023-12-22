@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
         return i;
     }
-    startTime();
+    // startTime();
 });
 
 
