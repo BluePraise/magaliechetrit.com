@@ -35,13 +35,11 @@ There's a separate responsive css file which is easier for tweaking the many bre
 - [ ] Modular JavaScript
 - [ ] Move .table-grid css to frontpage.css
 - [ ] Automatic Deployment (CD)
-- [ ] Make date dynamic (in the homepage section)
+- [x] Make date dynamic
 - [ ] Adapt taskrunner to copy css to output folder
 - [ ] Add portfolio section
     - [ ] Add ArtEZ Press gif
     - [ ] Add McD As Featured In gif
-- [ ] Add testimonial section
-- [ ] Add resume section
 - [ ] Add skills section
 - [ ] A11Y
 - [ ] Make all CSS Values scalable to the viewport
@@ -50,6 +48,8 @@ There's a separate responsive css file which is easier for tweaking the many bre
 
 ### Removed Tasks
 - [ ] Implement React or Vue.js
+- [ ] Add testimonial section
+- [ ] Add resume section
 
 ### Some sparkles ✨
 1. I demand great A11Y.
