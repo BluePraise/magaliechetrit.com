@@ -1,0 +1,18 @@
+<section class="portfolio-area">
+
+            <header class="section-header wow fadeInDown" data-wow-delay="1800ms">
+                <h3 class="section-title">Latest Projects</h3>
+            </header>
+
+            <ul class="portfolio-items unlist">
+                {%- for project in collections.project -%}
+                    <li class="portfolio-item wow {{project.data.wowEffect}}" data-wow-delay="{{project.data.wowDelay}}">
+                        <img src="{{ project.data.imageFront }}" alt="{{ project.data.title }}">
+                        <h4 class="portfolio-item-title">{{ project.data.title }}</h4>
+                        <span class="portfolio-year">{{ project.data.year }}</span>
+                        <a href="{{ project.url }}" class="portfolio-link">Find out more <i class="las la-long-arrow-alt-right"></i></a>
+                    </li>
+                {%-  endfor -%}
+
+            </ul>
+    </section>

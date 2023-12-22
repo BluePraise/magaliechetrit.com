@@ -1,0 +1,115 @@
+/* 06 - Left Sidebar */
+.left-sidebar {
+    position: fixed;
+    z-index: 10;
+    left: 00px;
+    height: 100vh;
+    border-right: 1px solid #565656;
+    display: flex;
+    flex-direction: column;
+}
+
+main .left-sidebar {
+    display: none;
+}
+
+.left-sidebar > img.me {
+    border-radius: 30px;
+    display: block;
+    /* max-width: 50%; */
+    margin-bottom: 56px;
+}
+
+.sidebar-header {
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+}
+
+.sidebar-header h2.subtitle {
+    margin-bottom: 20px;
+}
+.sidebar-header h3.email {
+    font-weight: 200;
+    color: var(--text-color);
+}
+.left-sidebar .address {
+    margin-bottom: 30px;
+}
+
+.left-sidebar .social-wrapper {
+    flex-grow: 2;
+}
+
+.left-sidebar .social-profile li + li {
+    margin-left: 5px;
+}
+.left-sidebar .social-profile li a {
+    display: block;
+    width: 70px;
+    height: 70px;
+    line-height: 74px;
+    text-align: center;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    color: var(--color-gray-dark);
+    background-color: white;
+    font-size: 20px;
+    transition: .3s;
+}
+.left-sidebar .social-profile li a i {
+    font-size: 32px;
+}
+
+.left-sidebar .social-profile li a:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    background-image: linear-gradient(238deg, red, #ff8000, #ff0, #80ff00, #0f0, #00ff80, #0ff, #0080ff, #00f, #8000ff, #ff0080);
+    background-size: 1200% 1200%;
+    background-position: 2% 80%;
+    text-shadow: 0 0 2px rgba(0, 0, 0, .9);
+    animation: rainbow 4s ease-out alternate infinite;
+}
+
+.sidebar-footer .copyright {
+    font-size: 14px;
+    margin-top: 45px;
+    margin-bottom: 45px;
+    border-top: 1px solid #565656;
+    padding-top: 20px;
+}
+.sidebar-footer {
+    padding-top: 20px
+}
+
+@media (min-width: 768.1px) and (max-width: 1023.9px) {
+    .sidebar-header h3.email {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .left-sidebar > img.me {
+        max-width: 100%;
+    }
+    .left-sidebar .social-profile li a {
+        width: 30px;
+        height: 30px;
+        line-height: 26px;
+    }
+    .left-sidebar .social-profile li a i {
+        font-size: 16px;
+    }
+}
+@media (max-width: 768px) {
+    .left-sidebar {
+        position: relative;
+        padding: 10px;
+    }
+    .sidebar-footer,
+    .left-sidebar > img.me {
+        display: none;
+    }
+    .left-sidebar .social-wrapper {
+        flex-grow: unset;
+    }
+}

@@ -1,0 +1,5 @@
+.article-title {
+    font-family: var(--header-font);
+    font-size: 44px;
+    line-height: 60px;
+}
