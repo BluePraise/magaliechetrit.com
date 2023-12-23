@@ -41,7 +41,7 @@ I'm working on a few improvements but I wanted to share it with you. I hope you 
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
 ## The HTML Markup.
-A simple search input with a class of `js-search-field` and a list item with a class of `js-search-field`. I am using the prefix `js-` prefix to indicate that this is a class that will be used in JavaScript. It's a convention that I like to use to keep things organized.
+A simple search input with a class of `js-search-field` and a list item with a class of `js-search-item`. I am using the prefix `js-` prefix to indicate that this is a class that will be used in JavaScript. It's a convention that I like to use to keep things organized.
 
 ```<input type="search" class="js-search-field" placeholder="Type a word.."/>```
 
@@ -62,5 +62,3 @@ I also understand other languages like PHP much better. I know PHP is a server-s
 Debugging is also much easier in vanilla JavaScript. I've learned to use the console and the debugger. I've also learned to use the `debugger` keyword. It's a great way to stop the code at a certain point and see what's going on.
 
 Let me know if you have any questions or suggestions. I'm always open to learning new things. And I would love to know if you've used this in any of your projects, shoot me an email!
-
-
