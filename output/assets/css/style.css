@@ -116,6 +116,12 @@ a {
     color: #000;
 }
 
+code {
+    background: #eee;
+    padding: 2px;
+    border: 1px solid #eee;
+}
+
 main.container {
     flex: 1; /* keep footer to bottom */
     margin: 0 auto;
@@ -136,19 +142,17 @@ main.container {
     height: 8px;
     text-align: center;
 }
-a.link__small {
+.text__small {
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 600;
-    letter-spacing: 4px;
     color: var(--color-gray);
+}
+a.back-link {
+    letter-spacing: 4px;
 }
 
 /* hero */
-.hero h2 {
-
-}
-
 .page-loader {
     position: fixed;
     left: 0;
@@ -229,6 +233,16 @@ section + section {
 
 .project-detail figure {
     max-width: 400px;
+}
+
+.meta {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+.meta span {
+    display: inline-block;
+    margin-right: 10px;
 }
 
 footer {
