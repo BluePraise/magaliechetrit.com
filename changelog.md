@@ -1,6 +1,10 @@
 # Changelog
 (more like a worklog)
 
+## 27 December 2023
+- Fixed date in eleventy config
+- Added new articles
+
 ## 21 November 2023
 - Changed layout again.
 - Fixed page loader
