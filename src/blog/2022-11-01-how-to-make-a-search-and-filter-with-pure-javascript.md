@@ -52,12 +52,12 @@ In this case, the dataset is the list of items that we want to search through. I
 
 The meat of the operation is in the function `renderResults`. This function is called when the user types in the search field. The function loops through the array `searchItems` and checks if the search query matches any of the items in the array. If it does, it shows the item. If it doesn't, right now it does nothing. But it would be nice if it showed a message that there are no results. See To Do List.
 
-## Learnings.
-Lately, I've been on a really big kick to learn more about JavaScript. I've been using it for a while but I've never really taken the time to learn it properly. I was always a little scared of it. Before that I mainly defaulted to jQuery. I still appreciate jQuery. It's one of the best libraries out on the web.
+## Key takeaways.
+Lately, I've been on a big kick to learn more about JavaScript. I've been using it for a while but I've never taken the time to learn it properly. I was a little scared of it, I think. I mainly defaulted to jQuery. I still appreciate jQuery. It's one of the best libraries on the web.
 
 Using vanilla JavaScript taught me to appreciate the sequence of rendering of a website.
 
-I also understand other languages like PHP much better. I know PHP is a server-side language, but because I was exposed to new principles I understand the MVC patterns and why some things are done the way they are.
+I also understand other languages such as PHP much better. I know PHP is a server-side language, but because I was exposed to new principles I understand the MVC patterns and why some things are done the way they are.
 
 Debugging is also much easier in vanilla JavaScript. I've learned to use the console and the debugger. I've also learned to use the `debugger` keyword. It's a great way to stop the code at a certain point and see what's going on.
 
