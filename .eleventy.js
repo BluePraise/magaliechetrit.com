@@ -1,4 +1,6 @@
 const pluginRev = require("eleventy-plugin-rev")
+const { DateTime } = require("luxon")
+
 
 module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(pluginRev)
@@ -6,10 +8,15 @@ module.exports = function (eleventyConfig) {
     // move css and jpg to output folder
     eleventyConfig.addPassthroughCopy("src/assets/")
     eleventyConfig.addWatchTarget("src/assets/css/*.css")
-    eleventyConfig.addPassthroughCopy("src/css/")
 
     // presents current year
     eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`)
+
+    // presents modified date in format 01-01-2022
+    eleventyConfig.addFilter("makeDateReadable", (dateObj) => {
+        return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED)
+    })
+
 
     return {
         dir: {
@@ -17,10 +24,7 @@ module.exports = function (eleventyConfig) {
             includes: '_includes',
             output: 'output',
         },
-        templateFormats: ['md', 'njk', 'html'],
         markdownTemplateEngine: 'njk',
-        htmlTemplateEngine: 'njk',
-        dataTemplateEngine: 'njk',
     }
 
 }
