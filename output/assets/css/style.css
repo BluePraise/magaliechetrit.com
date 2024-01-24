@@ -16,7 +16,9 @@
 .flex {
     display: flex;
 }
-
+.grid {
+    display: grid;
+}
 .container {
     width: 100%;
     max-width: 1440px;
@@ -109,7 +111,9 @@ h1, h2, h3, h4, h5, h6 {
 .highlight {
     color: var(--primary-color);
 }
-
+figure {
+    margin: 0;
+}
 img {
     max-width: 100%;
 }
@@ -220,6 +224,24 @@ section + section {
     text-transform: uppercase;
     font-weight: 400;
     margin-bottom: 0px;
+}
+.blogposts .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5%;
+}
+
+.blogposts li.blogpost {
+    max-width: 47%;
+    border: 1px solid #cccccc2e;
+    border-radius: 12px;
+    padding: 0 10px 10px;
+}
+.blogposts li.blogpost + li {
+    margin-top: 20px;
+}
+
+.blogposts li.blogpost .flex {
+    justify-content: space-between;
 }
 
 /* aricle + project detail */

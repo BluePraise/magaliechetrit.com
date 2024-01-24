@@ -9,6 +9,11 @@ permalink: blog/{{ blogpost.slug }}/
     <ul>
         {%- for post in collections.post -%}
             <li>
+                {% if image %}
+                    <figure>
+                        <img src="/assets/img/{{ image }}" />
+                    </figure>
+                {% endif %}
                 {{ post.data.title }}
                 <p class="meta date-posted"><datetime>{{ page.date | makeDateReadable }}</datetime></p>
             </li>

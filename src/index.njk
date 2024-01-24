@@ -6,12 +6,16 @@ title: "😎 Magalie Chetrit | Web Designer, Web Developer in New Jersey. WordPr
 {% include "./_includes/sections/_hero.njk" %}
 <section class="blogposts">
     <h2>Latest Posts</h2>
-    <ul>
+    <ul class="unlist">
     {%- for post in collections.post -%}
-        <li>
-            <a href="{{ post.url }}">{{ post.data.title }}</a>
-            <p class="meta date-posted"><datetime>{{ page.date | makeDateReadable }}</datetime></p>
-            <p>{{ post.data.description }}</p>
+        <li class="blogpost">
+
+                <h2>{{ post.data.title }}</h2>
+
+            <div class="flex">
+                <p class="meta date-posted"><datetime>{{ post.data.dateCreated  | makeDateReadable }}</datetime></p>
+                <a href="{{ post.url }}">Read</a>
+            </div>
         </li>
     {%- endfor -%}
     </ul>
