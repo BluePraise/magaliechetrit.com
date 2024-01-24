@@ -8,8 +8,7 @@ module.exports = function (eleventyConfig) {
 
     eleventyConfig.setServerOptions({ showVersion: true });
     // move css and jpg to output folder
-    eleventyConfig.addPassthroughCopy("src/assets/blog/*/*.jpg");
-    eleventyConfig.addPassthroughCopy("src/assets/*/*");
+    eleventyConfig.addPassthroughCopy("src/assets/*/**");
     eleventyConfig.addWatchTarget("src/assets/css/*.css");
 
     // presents current year
