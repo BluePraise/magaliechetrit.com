@@ -59,6 +59,6 @@ Using vanilla JavaScript taught me to appreciate the sequence of rendering of a 
 
 I also understand other languages such as PHP much better. I know PHP is a server-side language, but because I was exposed to new principles I understand the MVC patterns and why some things are done the way they are.
 
-Debugging is also much easier in vanilla JavaScript. I've learned to use the console and the debugger. I've also learned to use the `debugger` keyword. It's a great way to stop the code at a certain point and see what's going on.
+Debugging is also much easier in vanilla JavaScript. I've learned to use the console and the debugger. It's a great way to stop the code at a certain point and see what's going on.
 
 Let me know if you have any questions or suggestions. I'm always open to learning new things. And I would love to know if you've used this in any of your projects, shoot me an email!
