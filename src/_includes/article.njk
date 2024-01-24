@@ -4,17 +4,18 @@ layout: 'base.njk'
 <article class="container-xs">
 <a class="back-link text__small" href="/"><i class="las la-long-arrow-alt-left"></i>Back to home</a>
     <header class="article-header">
+        {% if image %}
+            <figure>
+                <img src="/assets/img/{{ image }}" />
+            </figure>
+        {% endif %}
         <h1 class="main-heading">{{ title }}</h1>
         <p class="meta date-posted"><span class="text__small">Date posted: </span><datetime>{{ dateCreated | makeDateReadable }}</datetime></p>
         <p class="meta date-modified"><span class="text__small">Date modified: </span><datetime>{{ page.date | makeDateReadable }}</datetime></p>
+
     </header>
-    <div class="post-content flex">
-        {% if image %}
-            <figure>
-                <img src=" {{ image }}" />
-            </figure>
-            <figcaption>{{ featuredImageAlt }}</figcaption>
-        {% endif %}
+    <div class="post-content">
+
     <div class="content">
         {{ content | safe }}
     </div>
