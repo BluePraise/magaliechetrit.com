@@ -1,0 +1,17 @@
+<section class="blogposts wow fadeInLeft" data-wow-delay="1800ms">
+    <h3 class="section-title">Latest Posts</h2>
+    <ul class="unlist">
+    {%- for post in collections.post -%}
+        <li class="blogpost">
+
+                <h2>{{ post.data.title }}</h2>
+
+            <div class="flex">
+                <p class="meta date-posted"><datetime>{{ post.data.dateCreated  | makeDateReadable }}</datetime></p>
+                <a href="{{ post.url }}">Read</a>
+            </div>
+        </li>
+    {%- endfor -%}
+    </ul>
+    <a href="/blog" class="link" role="link">More Posts</a>
+</section>
