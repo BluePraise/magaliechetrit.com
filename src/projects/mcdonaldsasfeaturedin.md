@@ -3,16 +3,16 @@ title: McDonald's As Featured In - Promotion Site
 subtitle: How I helped McDonald's celebrate being featured in movies for decades by introducing a new meal and a new promotion site.
 introduction: McDonald's celebrated being featured in movies for decades by introducing a new meal and a new promotion site. I was tasked with developing the site. As an international site, the site supported over 105 languages.
 year: 2023
-tags: project
-imageFront: /assets/img/mcdo-front-view.jpg
-imageGif: /assets/img/mcd-gfo.gif
-image: /assets/img/mcd-gfo.gif
+dateCreated: 2023-07-05
+dateModified: 2024-03-20
+tags: ['project', 'post']
+imageFront: /assets/img/MCD-AsFeaturedIn-IphoneTilted.png
 featuredImage: /assets/img/mcd-featured.png
 featuredImageAlt: McDonald's As Featured In Meal
 wowDelay: 2000ms
 wowEffect: fadeInLeft
+techStack: ['WordPress', 'WPML', 'Lokalize', 'Pantheon', 'JIRA', 'Figma', 'ACF', 'Custom Theme', 'Git']
 ---
-<!-- Title: "McDonald's As Featured In": A Showcase of Collaborative Innovation in Web Development -->
 
 ## Introduction
 
@@ -30,19 +30,16 @@ The backbone of any successful project lies in effective collaboration. This ven
 
 ## Design and Development
 
-The design phase, executed in Figma by the talented designers of TMSW, laid the foundation for a visually stunning and user-friendly interface. As the lead developer, my role was pivotal in translating these designs into a fully functional website.
+The design phase, executed in Figma by the talented designers of TMSW, laid the foundation for a visually clear and user-friendly interface. As the lead developer, my role was pivotal in translating these designs into a fully functional website.
 
 ## Technological Stack
 
-To achieve global reach and cater to diverse audiences, the project employed a robust technological stack. The website was built on Pantheon, a high-performance hosting platform that ensured optimal speed and reliability. WPML (WordPress Multilingual) was used for content translation, allowing the site to serve over 105 locales seamlessly.
+The project was built on WordPress. We built a custom theme with Advanced Custom Fields (ACF) that facilitated seamless content management and customization. For version control we used Git, ensuring that the development process was streamlined and efficient. The integration of Lokalize.com with WPML played a pivotal role in streamlining the content translation. It allowed for efficient translation management, ensuring that content updates were reflected accurately across all 105locales. To achieve global reach and cater to diverse audiences, the project employed a robust technological stack. The website was hosted by Pantheon, a high-performance hosting platform that ensured optimal speed and reliability.
 
 ## Localization and Global Deployment
 
 One of the project's standout achievements was its global footprint. With content translated into 105 languages, the site was published in an equal number of countries. This not only showcased McDonald's international influence but also demonstrated the technical prowess of the team.
 
-## Tools for Efficiency
-
-Efficiency is the cornerstone of any successful project. The integration of Lokalize.com with WPML played a pivotal role in streamlining the localization process. It allowed for efficient translation management, ensuring that content updates were reflected accurately across all locales.
 
 ## Conclusion
 

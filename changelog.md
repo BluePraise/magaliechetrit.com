@@ -5,6 +5,7 @@
 - Added new article: Why I use LinkedIn for contact requests and resume.
 - Moved portfolio items to a partial.
 - Added blog-posts partial.
+- Updated articles.
 
 ## 27 December 2023
 - Fixed date in eleventy config
