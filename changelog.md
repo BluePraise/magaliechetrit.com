@@ -6,6 +6,8 @@
 - Moved portfolio items to a partial.
 - Added blog-posts partial.
 - Updated articles.
+- Added conditionals to elements to prevent empty HTML.
+- Added span to back link in detail pages
 
 ## 27 December 2023
 - Fixed date in eleventy config
