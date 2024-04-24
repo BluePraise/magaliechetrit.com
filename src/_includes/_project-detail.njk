@@ -3,15 +3,21 @@ layout: 'base.njk'
 ---
 
 <article class="project-detail container-content">
-<a class="link__small" href="/"><i class="las la-long-arrow-alt-left"></i>Back to homepage</a>
+
+    <a class="link__small" href="/"><i class="las la-long-arrow-alt-left"></i><span>Back to homepage</span></a>
     <h1 class="article-title main-heading">{{title}}</h1>
     <h2 class="article-subtitle">{{subtitle}}</h2>
-
-    <div class="flex">
-        <figure><img src=" {{image}}" /></figure>
-        <figcaption>{{featuredImageAlt}}</figcaption>
-    <div class="content">
+    {% if dateCreated %}
+        <p class="meta date-posted"><span class="text__small">Date posted: </span><datetime>{{ dateCreated | makeDateReadable }}</datetime></p>
+    {% endif %}
+    {% if dateModified %}
+        <p class="meta date-modified"><span class="text__small">Date modified: </span><datetime>{{ dateModified | makeDateReadable }}</datetime></p>
+    {% endif %}
+    {% if techStack %}
+        <p class="meta tech"><span class="text__small">Tech Stack: </span>{{ techStack | join(', ') }}</p>
+    {% endif %}
+    <div class="article-content">
         {{ content | safe }}
-    </div>
-    </div>
+        </div>
+
 </article>
