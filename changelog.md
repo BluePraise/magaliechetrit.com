@@ -7,7 +7,9 @@
 - Added blog-posts partial.
 - Updated articles.
 - Added conditionals to elements to prevent empty HTML.
-- Added span to back link in detail pages
+- Added span to back link in detail pages.
+- Updated font-weight Bricolage Grotesque from 200 to 800.
+- Updated images for two portfolio items.
 
 ## 27 December 2023
 - Fixed date in eleventy config
