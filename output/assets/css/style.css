@@ -5,6 +5,8 @@
     --color-gray-dark: #1f1f1f;
     --text-color: var(--color-gray);
     --scroll-padding: 40px;
+    --element-spacing: 60px;
+    --section-spacing-desktop: 100px;
     --default-font: 'Inter', sans-serif;
     --header-font: 'Bricolage Grotesque', sans-serif;
 }
@@ -16,12 +18,12 @@
 .flex {
     display: flex;
 }
-.grid {
+.grid-container {
     display: grid;
 }
 .container {
     width: 100%;
-    max-width: 1440px;
+    /* max-width: 1440px; */
     padding: 0 10px;
     margin: 0 auto;
 }
@@ -57,8 +59,24 @@ body {
 }
 
 
-p.hero-text {
+.hero-text {
     margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 300;
+
+}
+.cta-banner {
+    display: block;
+    margin-top: 80px;
+    text-align: center;
+    padding: 40px;
+    text-decoration: none;
+}
+.cta-banner h2 {
+    font-family: var(--header-font);
+    font-weight: 300;
+    font-size: 44px;
+    margin-bottom: 0px;
 }
 
 /* Main Header*/
@@ -77,6 +95,7 @@ p.hero-text {
     font-family: var(--header-font);
     font-size: 24px;
     margin: 0;
+    font-weight: 300;
 }
 
 
@@ -100,13 +119,18 @@ nav.social-nav ul.unlist li a:hover {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--header-font);
-    font-weight: 900;
+}
+
+h2 {
+    font-size: 24px;
+    line-height: 30px;
 }
 
 .main-heading {
     font-family: var(--header-font);
     font-size: 44px;
     line-height: 60px;
+    font-weight: 300;
 }
 .highlight {
     color: var(--primary-color);
@@ -147,13 +171,14 @@ main.container {
     height: 8px;
     text-align: center;
 }
+.link__small,
 .text__small {
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 600;
     color: var(--color-gray);
 }
-a.back-link {
+a.link__small {
     letter-spacing: 4px;
 }
 
@@ -191,13 +216,13 @@ a.back-link {
     animation: bounceLoader 500ms alternate infinite ease;
 }
 section + section {
-    margin-bottom: 60px;
-    margin-top: 100px;
+    margin-bottom: var(--element-spacing);
+    margin-top: var(--section-spacing-desktop);
     padding: 0 10px;
 }
 
 .section-header {
-    margin-bottom: 60px;
+    margin-bottom: var(--element-spacing);
 }
 
 .section-title {
@@ -236,6 +261,9 @@ section + section {
     border-radius: 12px;
     padding: 0 10px 10px;
 }
+.blogpost h2 {
+    margin: 0;
+}
 .blogposts li.blogpost + li {
     margin-top: 20px;
 }
@@ -245,9 +273,6 @@ section + section {
 }
 
 /* aricle + project detail */
-.project-detail.container-content {
-    margin: 0 auto;
-}
 .article-subtitle {
     font-weight: 600;
     font-family: var(--header-font);
@@ -268,13 +293,20 @@ section + section {
     margin-right: 10px;
 }
 
+.article-content h2 {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+
 footer {
     border-top: 1px solid #eee;
     padding: 20px 0;
     margin-top: 20px;
     background-color: black;
 }
-footer h3 {
+footer h3 a {
     font-family: var(--header-font);
     color: var(--primary-color);
 }

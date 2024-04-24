@@ -20,7 +20,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 
@@ -69,17 +69,36 @@
         </p>
 
 </section>
-<section class="blogposts">
-    <h2>Latest Posts</h2>
+<section class="portfolio-area">
+
+            <header class="section-header wow fadeInDown" data-wow-delay="1800ms">
+                <h3 class="section-title">Latest Projects</h3>
+            </header>
+
+            <ul class="portfolio-items unlist"><li class="portfolio-item wow fadeInRight" data-wow-delay="2000ms">
+                        <figure>
+                            <img src="/assets/img/modem-imac.png" alt="Modem.Work - Architecture Studio Portfolio">
+                        </figure>
+                        <h4 class="portfolio-item-title">Modem.Work - Architecture Studio Portfolio</h4>
+                        <span class="portfolio-year">2018/2023</span>
+                        <a href="/projects/modem/" class="portfolio-link">Find out more <i class="las la-long-arrow-alt-right"></i></a>
+                    </li><li class="portfolio-item wow fadeInLeft" data-wow-delay="2000ms">
+                        <figure>
+                            <img src="/assets/img/MCD-AsFeaturedIn-IphoneTilted.png" alt="McDonald&#39;s As Featured In - Promotion Site">
+                        </figure>
+                        <h4 class="portfolio-item-title">McDonald&#39;s As Featured In - Promotion Site</h4>
+                        <span class="portfolio-year">2023</span>
+                        <a href="/projects/mcdonaldsasfeaturedin/" class="portfolio-link">Find out more <i class="las la-long-arrow-alt-right"></i></a>
+                    </li></ul>
+
+            <a class="cta-banner" href="https://www.linkedin.com/in/magaliechetrit/">
+                <h2>Interested in my full resume? <i class="las la-external-link-alt"></i></h2>
+                <p class="text__small">Click here to view my LinkedIn profile</p>
+            </a>
+    </section>
+<section class="blogposts wow fadeInLeft" data-wow-delay="1800ms">
+    <h3 class="section-title">Latest Posts</h2>
     <ul class="unlist"><li class="blogpost">
-
-                <h2>How to make a search filter with pure JavaScript</h2>
-
-            <div class="flex">
-                <p class="meta date-posted"><datetime>Jul 4, 2022</datetime></p>
-                <a href="/blog/2022-11-01-how-to-make-a-search-and-filter-with-pure-javascript/">Read</a>
-            </div>
-        </li><li class="blogpost">
 
                 <h2>A few thoughts on project management</h2>
 
@@ -95,13 +114,38 @@
                 <p class="meta date-posted"><datetime>Dec 21, 2023</datetime></p>
                 <a href="/blog/2023-12-22-things-learned-in-2023/">Read</a>
             </div>
+        </li><li class="blogpost">
+
+                <h2>How to make a search filter with pure JavaScript</h2>
+
+            <div class="flex">
+                <p class="meta date-posted"><datetime>Jul 4, 2022</datetime></p>
+                <a href="/blog/2022-11-01-how-to-make-a-search-and-filter-with-pure-javascript/">Read</a>
+            </div>
+        </li><li class="blogpost">
+
+                <h2>McDonald&#39;s As Featured In - Promotion Site</h2>
+
+            <div class="flex">
+                <p class="meta date-posted"><datetime>Jul 4, 2023</datetime></p>
+                <a href="/projects/mcdonaldsasfeaturedin/">Read</a>
+            </div>
+        </li><li class="blogpost">
+
+                <h2>Why I use LinkedIn for contact requests and resume.</h2>
+
+            <div class="flex">
+                <p class="meta date-posted"><datetime>Apr 21, 2024</datetime></p>
+                <a href="/blog/2024-04-22-why-I-use-linkedin-for-contact-requests/">Read</a>
+            </div>
         </li></ul>
+    <a href="/blog" class="link" role="link">More Posts</a>
 </section>
 </main>
 
     <footer>
         <div class="container">
-            <h3>Magalie Chetrit</h3>
+            <h3 class="site-title"><a href="/">Magalie Chetrit</a></h3>
              <nav class='social-nav'>
                 <ul class="unlist">
                     <li><a href="https://www.linkedin.com/in/magaliechetrit/"><i class="lab la-linkedin-in"></i></a></li>
@@ -109,11 +153,13 @@
                     <li><a href="https://github.com/bluepraise"><i class="lab la-github"></i></a></li>
                 </ul>
             </nav>
-            <p>Last updated: 21 November 2023.</p>
+            <p>Last updated: 24 April 2024.</p>
             <p>© Magalie Chetrit 2024. All Rights Reserved. </p>
         </div>
     </footer>
     <script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/gsap.min.js"></script>
+    <script src="/assets/js/masonry.min.js"></script>
     <script src="/assets/js/ScrollTrigger.min.js"></script>
     <script src="/assets/js/wow.min.js"></script>
     <script src="/assets/js/main.js"></script>
