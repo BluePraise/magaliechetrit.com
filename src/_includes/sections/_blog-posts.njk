@@ -1,22 +1,22 @@
-<section class="blogposts wow fadeInLeft" data-wow-delay="1800ms">
-    <h3 class="section-title">Latest Posts</h2>
+<section class="blogposts wow fadeInLeft" data-wow-delay="1800ms" aria-labelledby="blogposts-title">
+    <h3 class="section-title" id="blogposts-title">Latest Posts</h3>
     <ul class="unlist">
     {%- for post in collections.post -%}
         <li class="blogpost">
 
             <h2>{{ post.data.title }}</h2>
-            <p class="meta date-posted"><datetime>{{ post.data.dateCreated  | makeDateReadable }}</datetime></p>
+            <p class="meta date-posted"><time datetime="{{ post.data.dateCreated }}">{{ post.data.dateCreated  | makeDateReadable }}</time></p>
 
             {%- if post.data.tags -%}
                 {# Check if "project" is in tags #}
                 {%- if "project" in post.data.tags -%}
-                    <a href="{{ post.url }}">Read about project: {{ post.data.title }}</a>
+                    <a href="{{ post.url }}" aria-label="Read about project: {{ post.data.title }}">Read about project: {{ post.data.title }}</a>
                 {%- elif "post" in post.data.tags -%}
-                    <a href="{{ post.url }}">Read article: {{ post.data.title }}</a>
+                    <a href="{{ post.url }}" aria-label="Read article: {{ post.data.title }}">Read article: {{ post.data.title }}</a>
                 {%- endif -%}
             {%- endif -%}
         </li>
     {%- endfor -%}
     </ul>
-    <a href="/blog" class="link" role="link">More Posts</a>
+    <a href="/blog" class="link" aria-label="Link to more blog posts">More Posts</a>
 </section>
