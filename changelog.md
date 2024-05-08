@@ -1,5 +1,8 @@
 # Changelog
 (more like a worklog)
+## 7 May 2024
+- Filtered out portfolio items that are not projects on the front page.
+- Added a styleguide to keep better track of changes v0.1 has typography
 
 ## 24 April 2024
 - Added new article: Why I use LinkedIn for contact requests and resume.
