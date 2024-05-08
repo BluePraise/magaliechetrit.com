@@ -1,5 +1,6 @@
 :root {
     --primary-color: #28e98c;
+    --highlight-color: #28e98c;
     --a11y-color: #009950;
     --color-gray: #999999;
     --color-gray-dark: #1f1f1f;
@@ -9,6 +10,10 @@
     --section-spacing-desktop: 100px;
     --default-font: 'Inter', sans-serif;
     --header-font: 'Bricolage Grotesque', sans-serif;
+
+    --base-font-size: 16px;
+    --base-line-height: 1.5;
+    --base-font-weight: 300;
 }
 *,*::before,*::after {
     box-sizing: border-box;
@@ -29,7 +34,7 @@
 }
 .container-content {
     width: 100%;
-    max-width: 50%;
+    max-width: 60%;
     padding: 0 10px;
 }
 
@@ -53,6 +58,8 @@ ul.unlist {
 }
 
 body {
+    line-height: var(--base-line-height);
+    font-weight: var(--base-font-weight);
     font-family: var(--default-font);
     scroll-behavior: smooth;
     line-height: 1.7;
@@ -152,7 +159,7 @@ h3 + h3 {
 }
 
 .highlight {
-    color: var(--primary-color);
+    color: var(--highlight-color);
 }
 figure {
     margin: 0;
@@ -243,13 +250,15 @@ section + section {
 .section-header {
     margin-bottom: var(--element-spacing);
 }
-
+/* The big heading */
 .section-title {
-    text-transform: uppercase;
-    font-size: 12px;
-    letter-spacing: 4px;
-    color: var(--color-gray);
-    font-weight: 600;
+    font-size: 200px;
+    font-family: var(--header-font);
+    font-weight: 400;
+    color: black;
+    text-align: center;
+    margin-top: 0;
+
 }
 
 .portfolio-area {
@@ -264,9 +273,7 @@ section + section {
 .portfolio-categories {
     gap: 5%;
 }
-.portfolio-link,
-.portfolio-year,
-.portfolio-item-title {
+.meta {
     display: block;
     font-family: var(--header-font);
     font-size: 12px;
@@ -287,8 +294,8 @@ section + section {
 }
 .blogpost h2 {
     margin: 0;
-    font-size: clamp(44px, 64px, 64px);
-    line-height: clamp(44px, 70px, 70px);
+    font-size: clamp(44px, 64px, 54px);
+    line-height: clamp(44px, 70px, 54px);
     font-weight: 300;
 }
 .blogposts li.blogpost + li {
@@ -310,15 +317,6 @@ section + section {
     max-width: 400px;
 }
 
-.meta {
-    margin: 0;
-    font-size: 14px;
-    font-weight: 600;
-}
-.meta span {
-    display: inline-block;
-    margin-right: 10px;
-}
 
 .article-content h2 {
     margin-top: 40px;
