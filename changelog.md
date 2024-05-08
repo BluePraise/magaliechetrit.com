@@ -1,5 +1,10 @@
 # Changelog
 (more like a worklog)
+## 8 May 2024
+- Merged styling for metadata by using one class for all meta data: `meta`.
+- Changed css variable name for highlight color to `--highlight-color`.
+- Updated styleguide to reflect changes in metadata styling.
+- Uniformity in read more links by adding icons
 
 ## 7 May 2024
 - Filtered out portfolio items that are not projects on the front page.

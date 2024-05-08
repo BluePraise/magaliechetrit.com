@@ -38,3 +38,5 @@ _Used for portfolio items, for articles_
     - display: block;
     - margin-bottom: 0px;
 
+`h2.section-title`:
+    - 

@@ -115,7 +115,6 @@ body {
     font-weight: 300;
 }
 
-
 nav.social-nav ul.unlist li {
     display: inline-block;
     border: 1px solid #eee;
@@ -133,14 +132,8 @@ nav.social-nav ul.unlist li a:hover {
 }
 
 /* Typography */
-
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--header-font);
-}
-
-h2 {
-    font-size: 24px;
-    line-height: 30px;
 }
 
 h3 {
@@ -388,7 +381,6 @@ footer nav.social-nav ul.unlist li a {
 .fadeInUp {
     animation-delay: 750ms;
 }
-
 
 @media screen and (max-width: 767px) {
     .main-heading,
