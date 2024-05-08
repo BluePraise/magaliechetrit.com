@@ -4,12 +4,17 @@
     {%- for post in collections.post -%}
         <li class="blogpost">
 
-                <h2>{{ post.data.title }}</h2>
+            <h2>{{ post.data.title }}</h2>
+            <p class="meta date-posted"><datetime>{{ post.data.dateCreated  | makeDateReadable }}</datetime></p>
 
-            <div class="flex">
-                <p class="meta date-posted"><datetime>{{ post.data.dateCreated  | makeDateReadable }}</datetime></p>
-                <a href="{{ post.url }}">Read</a>
-            </div>
+            {%- if post.data.tags -%}
+                {# Check if "project" is in tags #}
+                {%- if "project" in post.data.tags -%}
+                    <a href="{{ post.url }}">Read about project: {{ post.data.title }}</a>
+                {%- elif "post" in post.data.tags -%}
+                    <a href="{{ post.url }}">Read article: {{ post.data.title }}</a>
+                {%- endif -%}
+            {%- endif -%}
         </li>
     {%- endfor -%}
     </ul>
