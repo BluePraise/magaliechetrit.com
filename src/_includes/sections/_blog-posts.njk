@@ -13,13 +13,13 @@
             {%- if post.data.tags -%}
                 {# Check if "project" is in tags #}
                 {%- if "project" in post.data.tags -%}
-                    <a href="{{ post.url }}" class="meta" aria-label="Read about project: {{ post.data.title }}">Read about project: {{ post.data.title }}</a>
+                    <a href="{{ post.url }}" class="meta" aria-label="Read about project: {{ post.data.title }}">Read about project: {{ post.data.title }} <i class="las la-long-arrow-alt-right"></i></a>
                 {%- elif "post" in post.data.tags -%}
-                    <a href="{{ post.url }}" class="meta" aria-label="Read article: {{ post.data.title }}">Read article: {{ post.data.title }}</a>
+                    <a href="{{ post.url }}" class="meta" aria-label="Read article: {{ post.data.title }}">Read article: {{ post.data.title }} <i class="las la-long-arrow-alt-right"></i></a>
                 {%- endif -%}
             {%- endif -%}
         </li>
     {%- endfor -%}
     </ul>
-    <a href="/blog" class="link" aria-label="Link to more blog posts">More Posts</a>
+    <a href="/blog" class="link" aria-label="Link to more blog posts">More Posts <i class="las la-long-arrow-alt-right"></i></a>
 </section>
