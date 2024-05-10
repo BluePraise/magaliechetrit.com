@@ -19,6 +19,9 @@ There's a separate responsive css file which is easier for tweaking the many bre
 - 1024px
 - `> 1280px`
 
+### Styling feature
+`.highlight` class is used for highlighting text. It's a css var `--highlight-color` which is a light green color.
+
 ### To-Do
 - [x] convert to eleventy.js
 - [x] add Nunjucks

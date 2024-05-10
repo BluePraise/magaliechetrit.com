@@ -1,11 +1,14 @@
 # Changelog
 (more like a worklog)
+
 ## 10 May 2024
 - Updated all headings articles and projects to conform to semantic structure.
 - Renamed blog to articles to adhere to logical structure.
 - Updated styleguide to reflect changes in `h3` headings.
 - Renamed classes for articles for uniformity in naming convention.
 - Cleaned up styling for article detail view.
+- Renamed `.article-subtitle` to `.subtitle` for uniformity. (new applied uniformity removed the need for more styling ✨)
+- Semantic structure and A11y applied to project detail page.
 
 ## 9 May 2024
 - Unfified `h2` headings everywhere.

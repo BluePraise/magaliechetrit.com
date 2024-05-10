@@ -281,6 +281,18 @@ section + section {
     margin-top: 0px;
 }
 
+.meta-container {
+    border-bottom: 1px solid;
+    padding-bottom: 40px;
+}
+
+.back-link {
+    margin-bottom: 40px;
+}
+.back-link span {
+    margin-left: 10px;
+}
+
 .articles .grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 5%;
@@ -301,10 +313,10 @@ section + section {
 }
 
 /* aricle + project detail */
-.article-subtitle {
-    font-weight: 600;
-    font-family: var(--header-font);
+h3.subtitle {
     color: var(--color-gray);
+    margin-top: 0px;
+    margin-bottom: 40px;
 }
 
 .project-detail figure {
