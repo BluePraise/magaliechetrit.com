@@ -9,6 +9,8 @@
 - Cleaned up styling for article detail view.
 - Renamed `.article-subtitle` to `.subtitle` for uniformity. (new applied uniformity removed the need for more styling ✨)
 - Semantic structure and A11y applied to project detail page.
+- Conditional on subtitle because not all projects need a subtitle.
+- Reduced timing on fade in animation.
 
 ## 9 May 2024
 - Unfified `h2` headings everywhere.

@@ -1,3 +1,21 @@
+/*********************************************
+  INDEX
+  0. CSS VARS
+  1. BASE
+  2. TYPOGRAPHY
+  3. COLORS
+  4. HELPERS
+  5. SITE ELEMENTS
+    5.1 HEADER and NAV
+    5.2 MAIN
+    5.3 FOOTER
+    5.4 ARTICLE
+    5.5 PROJECT DETAIL
+  6. MISC
+    6.1 CTA BANNER
+********************************************/
+
+/* 0. CSS VARS */
 :root {
     --primary-color: #28e98c;
     --highlight-color: #28e98c;
@@ -19,44 +37,7 @@
     box-sizing: border-box;
 }
 
-/* Helpers */
-.flex {
-    display: flex;
-}
-.grid-container {
-    display: grid;
-}
-.container {
-    width: 100%;
-    /* max-width: 1440px; */
-    padding: 0 10px;
-    margin: 0 auto;
-}
-.container-content {
-    width: 100%;
-    max-width: 60%;
-    padding: 0 10px;
-}
-
-@media screen and (max-width: 767px) {
-    .container-content {
-        max-width: 100%;
-    }
-}
-
-.container-xs {
-    width: 100%;
-    max-width: 640px;
-    padding: 0 10px;
-    margin: 0 auto;
-}
-
-ul.unlist {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
+/* 1. BASE */
 body {
     line-height: var(--base-line-height);
     font-weight: var(--base-font-weight);
@@ -67,8 +48,26 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    margin: unset;
+    padding: unset;
+}
+
+figure {
     margin: 0;
-    padding: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: #000;
+}
+
+code {
+    background: #eee;
+    padding: 2px;
+    border: 1px solid #eee;
 }
 
 /* Typography */
@@ -107,14 +106,73 @@ h3 + h3 {
     margin-top: 0px;
 }
 
-
-
 .hero-text {
     margin-bottom: 20px;
     font-size: 24px;
     font-weight: 300;
 
 }
+
+.link__small,
+.text__small {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-gray);
+}
+
+a.link__small {
+    letter-spacing: 4px;
+}
+
+.highlight {
+    color: var(--highlight-color);
+}
+
+
+/* HELPERS */
+.flex {
+    display: flex;
+}
+
+.grid-container {
+    display: grid;
+}
+
+.container {
+    width: 100%;
+    /* max-width: 1440px; */
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+.container-content {
+    width: 100%;
+    max-width: 60%;
+    padding: 0 10px;
+}
+
+@media screen and (max-width: 767px) {
+    .container-content {
+        max-width: 100%;
+    }
+}
+
+.container-xs {
+    width: 100%;
+    max-width: 640px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+ul.unlist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+
 .cta-banner {
     display: block;
     margin-top: 80px;
@@ -126,7 +184,7 @@ h3 + h3 {
     /* transition: all 0.5s ease-in-out; */
 }
 
-/* Main Header*/
+/* 5.1 HEADER and NAV */
 .main-header {
     justify-content: space-between;
     align-items: center;
@@ -162,25 +220,6 @@ nav.social-nav ul.unlist li a:hover {
 }
 
 
-.highlight {
-    color: var(--highlight-color);
-}
-figure {
-    margin: 0;
-}
-img {
-    max-width: 100%;
-}
-a {
-    color: #000;
-}
-
-code {
-    background: #eee;
-    padding: 2px;
-    border: 1px solid #eee;
-}
-
 main.container {
     flex: 1; /* keep footer to bottom */
     margin: 0 auto;
@@ -201,17 +240,6 @@ main.container {
     height: 8px;
     text-align: center;
 }
-.link__small,
-.text__small {
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--color-gray);
-}
-a.link__small {
-    letter-spacing: 4px;
-}
-
 /* hero */
 .page-loader {
     position: fixed;
