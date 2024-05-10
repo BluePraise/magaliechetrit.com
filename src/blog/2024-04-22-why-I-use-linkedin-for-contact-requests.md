@@ -1,12 +1,12 @@
 ---
-title: Things I learned in 2023
+title: Why I use LinkedIn for contact requests and resume.
 author: Magalie Chetrit
-dateCreated: 2023-12-22
+dateCreated: 2024-04-22
 date: Last Modified
-tags: post
-image: 2023-12-22-things-learned-in-2023.jpg
+tags: post, draft
+image:
 imageAlt:
-description: The year 2023 was a very dynamic year. I learned a lot of new things and in this article I will share some of them with you.
+description: I use LinkedIn for contact requests and resume. Here's why.
 ---
 ### Wrap my functions with conditional checks in JavaScript.
 This is a great way to make sure that the function is only called when it's needed and when the DOM is ready.
