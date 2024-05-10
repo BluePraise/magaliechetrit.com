@@ -42,7 +42,7 @@ _Including margins and responsive sizes._
     _Used on article and project detail_
     - font-size: 2rem;
     - font-size: 1.5rem;
-    - font-weight: 400;
+    - font-weight: 300;
 
 - Small Text
 `span.text__small`:

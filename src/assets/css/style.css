@@ -99,7 +99,7 @@ h2,
 h3 {
     font-size: 2rem;
     line-height: 1.2;
-    font-weight: 400;
+    font-weight: 300;
     margin-bottom: 5px;
 }
 
@@ -276,6 +276,11 @@ section + section {
     font-weight: 400;
     margin-bottom: 0px;
 }
+
+.meta + .meta {
+    margin-top: 0px;
+}
+
 .articles .grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 5%;
