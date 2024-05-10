@@ -10,8 +10,10 @@ layout: 'base.njk'
             </figure>
         {% endif %}
         <h2>{{ title }}</h2>
-        <p class="meta date-posted"><span class="text__small">Date posted: </span><time datetime="{{ dateCreated }}">{{ dateCreated | makeDateReadable }}</time></p>
-        <p class="meta date-modified"><span class="text__small">Date modified: </span><time datetime="{{ page.date }}">{{ page.date | makeDateReadable }}</time></p>
+        <div class="meta-container">
+            <p class="meta date-posted"><span class="text__small">Date posted: </span><time datetime="{{ dateCreated }}">{{ dateCreated | makeDateReadable }}</time></p>
+            <p class="meta date-modified"><span class="text__small">Date modified: </span><time datetime="{{ page.date }}">{{ page.date | makeDateReadable }}</time></p>
+        </div>
     </header>
     <section class="article-content">
         <!-- Use h3 for section titles and h4 for subsection titles within the article -->

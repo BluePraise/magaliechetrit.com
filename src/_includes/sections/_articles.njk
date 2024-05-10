@@ -1,4 +1,4 @@
-<section class="articles wow fadeInLeft" data-wow-delay="1800ms" aria-labelledby="blogposts-title">
+<section class="articles wow fadeInLeft" data-wow-delay="1500ms" aria-labelledby="article-section-title">
     <h2 class="heading__huge" id="blogposts-title">Latest Posts</h2>
     <ul class="unlist">
     {%- for post in collections.post | sort(attribute='data.dateCreated') | reverse -%}

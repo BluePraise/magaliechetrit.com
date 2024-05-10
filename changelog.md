@@ -11,6 +11,7 @@
 - Semantic structure and A11y applied to project detail page.
 - Conditional on subtitle because not all projects need a subtitle.
 - Reduced timing on fade in animation.
+- Added index to stylesheet for readability.
 
 ## 9 May 2024
 - Unfified `h2` headings everywhere.
