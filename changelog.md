@@ -1,10 +1,16 @@
 # Changelog
 (more like a worklog)
+## 9 May 2024
+- Unfified `h2` headings everywhere.
+- Blog posts, articles, and portfolio items (on detailpages) now have the same styling for headings.
+- Updated styleguide to reflect changes in headings.
+
 ## 8 May 2024
 - Merged styling for metadata by using one class for all meta data: `meta`.
 - Changed css variable name for highlight color to `--highlight-color`.
 - Updated styleguide to reflect changes in metadata styling.
 - Uniformity in read more links by adding icons
+- Changed heading from `h1` to `h2` in blog overview partial.
 
 ## 7 May 2024
 - Filtered out portfolio items that are not projects on the front page.

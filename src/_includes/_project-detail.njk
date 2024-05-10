@@ -5,8 +5,8 @@ layout: 'base.njk'
 <article class="project-detail container-content">
 
     <a class="link__small" href="/"><i class="las la-long-arrow-alt-left"></i><span>Back to homepage</span></a>
-    <h1 class="article-title main-heading">{{title}}</h1>
-    <h2 class="article-subtitle">{{subtitle}}</h2>
+    <h2>{{title}}</h2>
+    <h3 class="article-subtitle">{{subtitle}}</h3>
     {% if dateCreated %}
         <p class="meta date-posted"><span class="text__small">Date posted: </span><datetime>{{ dateCreated | makeDateReadable }}</datetime></p>
     {% endif %}

@@ -9,7 +9,7 @@ layout: 'base.njk'
                 <img src="/assets/img/{{ image }}" alt="{{ title }}" />
             </figure>
         {% endif %}
-        <h1 class="main-heading">{{ title }}</h1>
+        <h2>{{ title }}</h2>
         <p class="meta date-posted"><span class="text__small">Date posted: </span><time datetime="{{ dateCreated }}">{{ dateCreated | makeDateReadable }}</time></p>
         <p class="meta date-modified"><span class="text__small">Date modified: </span><time datetime="{{ page.date }}">{{ page.date | makeDateReadable }}</time></p>
 
