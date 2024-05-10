@@ -2,7 +2,7 @@
 layout: 'base.njk'
 ---
 <article class="container-xs">
-<a class="back-link text__small" href="/" aria-label="Back to home"><i class="las la-long-arrow-alt-left"></i><span>Back to home</span></a>
+    <a class="back-link text__small" href="/" aria-label="Back to home"><i class="las la-long-arrow-alt-left"></i><span>Back to home</span></a>
     <header class="article-header">
         {% if image %}
             <figure>
@@ -12,12 +12,9 @@ layout: 'base.njk'
         <h2>{{ title }}</h2>
         <p class="meta date-posted"><span class="text__small">Date posted: </span><time datetime="{{ dateCreated }}">{{ dateCreated | makeDateReadable }}</time></p>
         <p class="meta date-modified"><span class="text__small">Date modified: </span><time datetime="{{ page.date }}">{{ page.date | makeDateReadable }}</time></p>
-
     </header>
-    <div class="post-content">
-
-    <div class="content">
+    <section class="post-content">
+        <!-- Use h3 for section titles and h4 for subsection titles within the article -->
         {{ content | safe }}
-    </div>
-    </div>
+    </section>
 </article>

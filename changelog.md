@@ -1,5 +1,9 @@
 # Changelog
 (more like a worklog)
+## 10 May 2024
+- Updated all headings articles and projects to conform to semantic structure.
+- Renamed blog to articles to adhere to logical structure.
+
 ## 9 May 2024
 - Unfified `h2` headings everywhere.
 - Blog posts, articles, and portfolio items (on detailpages) now have the same styling for headings.
