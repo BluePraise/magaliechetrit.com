@@ -1,5 +1,6 @@
 :root {
     --primary-color: #28e98c;
+    --highlight-color: #28e98c;
     --a11y-color: #009950;
     --color-gray: #999999;
     --color-gray-dark: #1f1f1f;
@@ -9,6 +10,10 @@
     --section-spacing-desktop: 100px;
     --default-font: 'Inter', sans-serif;
     --header-font: 'Bricolage Grotesque', sans-serif;
+
+    --base-font-size: 16px;
+    --base-line-height: 1.5;
+    --base-font-weight: 300;
 }
 *,*::before,*::after {
     box-sizing: border-box;
@@ -29,8 +34,14 @@
 }
 .container-content {
     width: 100%;
-    max-width: 960px;
+    max-width: 60%;
     padding: 0 10px;
+}
+
+@media screen and (max-width: 767px) {
+    .container-content {
+        max-width: 100%;
+    }
 }
 
 .container-xs {
@@ -47,6 +58,8 @@ ul.unlist {
 }
 
 body {
+    line-height: var(--base-line-height);
+    font-weight: var(--base-font-weight);
     font-family: var(--default-font);
     scroll-behavior: smooth;
     line-height: 1.7;
@@ -57,6 +70,43 @@ body {
     margin: 0;
     padding: 0;
 }
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--header-font);
+}
+
+h2,
+.heading__medium {
+    font-size: clamp(2rem, 4vw, 4rem);
+    line-height: 1;
+    font-weight: 300;
+}
+
+.heading__huge {
+    font-size: clamp(1.4rem, 12.5vw, 12.5vw);
+    line-height: 1.2;
+    font-weight: 400;
+    text-align: center;
+    margin: 0;
+}
+
+h3 {
+    font-size: 2rem;
+    line-height: 1.2;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+h3 + h3 {
+    margin-top: 0px;
+}
+
 
 
 .hero-text {
@@ -71,12 +121,9 @@ body {
     text-align: center;
     padding: 40px;
     text-decoration: none;
-}
-.cta-banner h2 {
-    font-family: var(--header-font);
-    font-weight: 300;
-    font-size: 44px;
-    margin-bottom: 0px;
+    /* border: 1px solid #cccbcb; */
+    box-shadow: 0px 0px 5px 1px #f4f4f4;
+    /* transition: all 0.5s ease-in-out; */
 }
 
 /* Main Header*/
@@ -98,7 +145,6 @@ body {
     font-weight: 300;
 }
 
-
 nav.social-nav ul.unlist li {
     display: inline-block;
     border: 1px solid #eee;
@@ -115,25 +161,9 @@ nav.social-nav ul.unlist li a:hover {
     background-color: #eee;
 }
 
-/* Typography */
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--header-font);
-}
-
-h2 {
-    font-size: 24px;
-    line-height: 30px;
-}
-
-.main-heading {
-    font-family: var(--header-font);
-    font-size: 44px;
-    line-height: 60px;
-    font-weight: 300;
-}
 .highlight {
-    color: var(--primary-color);
+    color: var(--highlight-color);
 }
 figure {
     margin: 0;
@@ -225,12 +255,10 @@ section + section {
     margin-bottom: var(--element-spacing);
 }
 
-.section-title {
-    text-transform: uppercase;
-    font-size: 12px;
-    letter-spacing: 4px;
-    color: var(--color-gray);
-    font-weight: 600;
+
+.portfolio-area {
+    border-top: 1px solid #e8e8e8;
+    padding-top: 50px;
 }
 
 .portfolio-items {
@@ -240,9 +268,7 @@ section + section {
 .portfolio-categories {
     gap: 5%;
 }
-.portfolio-link,
-.portfolio-year,
-.portfolio-item-title {
+.meta {
     display: block;
     font-family: var(--header-font);
     font-size: 12px;
@@ -250,25 +276,34 @@ section + section {
     font-weight: 400;
     margin-bottom: 0px;
 }
-.blogposts .grid {
+
+.meta + .meta {
+    margin-top: 0px;
+}
+
+.back-link {
+    margin-bottom: 40px;
+}
+.back-link span {
+    margin-left: 10px;
+}
+
+.articles .grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 5%;
 }
 
-.blogposts li.blogpost {
-    max-width: 47%;
-    border: 1px solid #cccccc2e;
+.articles li.article-item {
+    text-align: center;
     border-radius: 12px;
-    padding: 0 10px 10px;
+    padding: 20px 10px;
 }
-.blogpost h2 {
-    margin: 0;
-}
-.blogposts li.blogpost + li {
+
+.articles li.article-item + li {
     margin-top: 20px;
 }
 
-.blogposts li.blogpost .flex {
+.articles li.article-item .flex {
     justify-content: space-between;
 }
 
@@ -282,23 +317,6 @@ section + section {
 .project-detail figure {
     max-width: 400px;
 }
-
-.meta {
-    margin: 0;
-    font-size: 14px;
-    font-weight: 600;
-}
-.meta span {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.article-content h2 {
-    margin-top: 40px;
-    margin-bottom: 10px;
-    font-weight: 300;
-}
-
 
 footer {
     border-top: 1px solid #eee;
@@ -362,19 +380,4 @@ footer nav.social-nav ul.unlist li a {
 }
 .fadeInUp {
     animation-delay: 750ms;
-}
-
-
-@media (max-width: 768.1px) {
-
-}
-
-@media (max-width: 960.1px) {
-    .main-header {
-        margin-bottom: 20px;
-    }
-    .hero h2 {
-        font-size: 36px;
-        line-height: 48px;
-    }
 }

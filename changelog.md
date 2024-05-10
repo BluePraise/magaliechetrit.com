@@ -5,6 +5,7 @@
 - Renamed blog to articles to adhere to logical structure.
 - Updated styleguide to reflect changes in `h3` headings.
 - Renamed classes for articles for uniformity in naming convention.
+- Cleaned up styling for article detail view.
 
 ## 9 May 2024
 - Unfified `h2` headings everywhere.
