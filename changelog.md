@@ -8,6 +8,7 @@
 - Unfified `h2` headings everywhere.
 - Blog posts, articles, and portfolio items (on detailpages) now have the same styling for headings.
 - Updated styleguide to reflect changes in headings.
+- Removed media query for headings due to the use of `clamp` for font-size.
 
 ## 8 May 2024
 - Merged styling for metadata by using one class for all meta data: `meta`.
