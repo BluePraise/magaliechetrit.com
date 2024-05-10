@@ -13,7 +13,7 @@ layout: 'base.njk'
         <p class="meta date-posted"><span class="text__small">Date posted: </span><time datetime="{{ dateCreated }}">{{ dateCreated | makeDateReadable }}</time></p>
         <p class="meta date-modified"><span class="text__small">Date modified: </span><time datetime="{{ page.date }}">{{ page.date | makeDateReadable }}</time></p>
     </header>
-    <section class="post-content">
+    <section class="article-content">
         <!-- Use h3 for section titles and h4 for subsection titles within the article -->
         {{ content | safe }}
     </section>

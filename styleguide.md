@@ -19,7 +19,7 @@ Version: 0.2.1
 - H2 for main sections.
 - H2 for page titles
 - Default color: black.
-- Default font-family: Bricolage Grotesque
+- Default font-family: Bricolage Grotesque `var(--header-font)`
 
 _Including margins and responsive sizes._
 - H1 `.site-title`:
@@ -32,10 +32,17 @@ _Including margins and responsive sizes._
 
     `h2` and `heading__medium`:
     _Used on blog titles and project titles on single page_
-    - font-family: var(--header-font);
     - font-size: clamp(2rem, 4vw, 4rem);
     - line-height: 1;
     - font-weight: 300;
+
+- H3
+    I found that 2rem works well within the container size on all devices.
+    `h3` (no class. in article content `.article-content h3`):
+    _Used on article and project detail_
+    - font-size: 2rem;
+    - font-size: 1.5rem;
+    - font-weight: 400;
 
 - Small Text
 `span.text__small`:
