@@ -11,7 +11,7 @@ featuredImage: /assets/img/mcd-featured.png
 featuredImageAlt: McDonald's As Featured In Meal
 wowDelay: 2000ms
 wowEffect: fadeInLeft
-techStack: ['WordPress', 'WPML', 'Lokalize', 'Pantheon', 'JIRA', 'Figma', 'ACF', 'Custom Theme', 'Git']
+techStack: ['WordPress', 'WPML', 'Lokalize', 'Pantheon', 'JIRA', 'Figma', 'ACF', 'Custom WP Theme', 'Git']
 ---
 
 ### Introduction
@@ -41,13 +41,13 @@ The project was built on WordPress. We built a custom theme with Advanced Custom
 One of the project's standout achievements was its global footprint. With content translated into 105 languages, the site was published in an equal number of countries. This not only showcased McDonald's international influence but also demonstrated the technical prowess of the team.
 
 
-###  Conclusion
+### Conclusion
 
 "McDonald's As Featured In" might have had a brief run, but its impact was far-reaching. The collaboration between McDonald's and Palace, coupled with the technical finesse of the development team, resulted in a visually appealing, multilingual website that transcended borders.
 
 This project is not just a testament to technical expertise; it is a showcase of the seamless integration of design, development, and collaboration. As the lead developer, steering this project was not only a professional milestone but also a testament to the power of teamwork in the ever-evolving landscape of web development.
 
-### ## Press
+### Press
 
 - [Adweek: Loki and Michael Scott Walk Into a McDonald's: Brand Serves Up Iconic TV and Film Orders](https://www.adweek.com/brand-marketing/loki-and-michael-scott-walk-into-a-mcdonalds-brand-serves-up-iconic-tv-and-film-orders/)
 - [BusinessInsider: McDonald's 'As Featured in Meal' reminds customers that Marvel's 'Loki' is just its latest cameo](https://www.businessinsider.com/mcdonalds-new-as-featured-in-meal-inspired-films-tv-shows-2023-8)
