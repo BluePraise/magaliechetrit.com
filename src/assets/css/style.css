@@ -2,17 +2,18 @@
   INDEX
   0. CSS VARS
   1. BASE
-  2. TYPOGRAPHY
-  3. COLORS
-  4. HELPERS
-  5. SITE ELEMENTS
-    5.1 HEADER and NAV
-    5.2 MAIN
-    5.3 FOOTER
-    5.4 ARTICLE
-    5.5 PROJECT DETAIL
-  6. MISC
-    6.1 CTA BANNER
+    1.1 TYPOGRAPHY
+    1.2 COLORS
+    1.3 LAYOUT
+    1.4 HELPERS
+  2. SITE ELEMENTS
+    2.1 HEADER and NAV
+    2.2 MAIN
+    2.3 FOOTER
+    2.4 ARTICLE
+    2.5 PROJECT DETAIL
+  3. MISC
+    3.1 CTA BANNER
 ********************************************/
 
 /* 0. CSS VARS */
@@ -129,9 +130,22 @@ a.link__small {
 .highlight {
     color: var(--highlight-color);
 }
-
+main.container {
+    flex: 1;
+    /* keep footer to bottom */
+    margin: 0 auto;
+    padding: 0 10px;
+}
 
 /* HELPERS */
+
+ul.unlist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* LAYOUT */
 .flex {
     display: flex;
 }
@@ -140,13 +154,13 @@ a.link__small {
     display: grid;
 }
 
-.container {
+.container__xs {
     width: 100%;
-    /* max-width: 1440px; */
+    max-width: 640px;
     padding: 0 10px;
     margin: 0 auto;
 }
-
+.container__medium,
 .container-content {
     width: 100%;
     max-width: 60%;
@@ -154,22 +168,10 @@ a.link__small {
 }
 
 @media screen and (max-width: 767px) {
+    .container__medium,
     .container-content {
         max-width: 100%;
     }
-}
-
-.container-xs {
-    width: 100%;
-    max-width: 640px;
-    padding: 0 10px;
-    margin: 0 auto;
-}
-
-ul.unlist {
-    list-style: none;
-    padding: 0;
-    margin: 0;
 }
 
 
@@ -185,7 +187,7 @@ ul.unlist {
     /* transition: all 0.5s ease-in-out; */
 }
 
-/* 5.1 HEADER and NAV */
+/* HEADER and NAV */
 .main-header {
     justify-content: space-between;
     align-items: center;
@@ -195,6 +197,7 @@ ul.unlist {
     margin-bottom: 50px;
     padding: 20px;
     border-bottom: 1px solid #eee;
+    width: 100%;
 }
 
 .main-header h1.site-title {
@@ -221,11 +224,6 @@ nav.social-nav ul.unlist li a:hover {
 }
 
 
-main.container {
-    flex: 1; /* keep footer to bottom */
-    margin: 0 auto;
-}
-
 .dash {
     margin: 80px 0;
     width: 100%;
@@ -242,6 +240,10 @@ main.container {
     text-align: center;
 }
 /* hero */
+.hero {
+    margin: 0 auto;
+    text-align: center;
+}
 .page-loader {
     position: fixed;
     left: 0;
@@ -291,7 +293,8 @@ section + section {
 }
 
 .portfolio-items {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 5%;
 }
 .portfolio-categories {

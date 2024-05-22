@@ -22,6 +22,10 @@ There's a separate responsive css file which is easier for tweaking the many bre
 ### Styling feature
 `.highlight` class is used for highlighting text. It's a css var `--highlight-color` which is a light green color.
 
+### Content elements
+#### Job Title in Portfolio items
+For Portfolio items sometimes I'd like to add a job title and sometimes I don't. There's a conditional in the nunjucks file that checks if there's a job title and if there is it will display it.
+
 ### To-Do
 - [x] convert to eleventy.js
 - [x] add Nunjucks

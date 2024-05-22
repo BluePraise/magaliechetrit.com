@@ -1,5 +1,16 @@
 # Changelog
 (more like a worklog)
+## 22 May 2024
+- Updated classnames for containers throughout the site to match the typography naming.
+- Updated styleguide.md to reflect changes in classnames.
+- Updated hero and footer partial to reflect changes in classnames.
+- Portfolio has a conditional for `jobTitle`.
+- Updated Readme. Wow. I should have done this earlier.
+
+## 20 May 2024
+- Removed spacings in As featured in
+- Updated techstack in As featured in
+- Added content to Modem.Work
 
 ## 10 May 2024
 - Updated all headings articles and projects to conform to semantic structure.

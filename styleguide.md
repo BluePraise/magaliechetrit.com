@@ -1,6 +1,6 @@
 Styleguide for Magaliechetrit.com
-Updated: 8 May 2024
-Version: 0.2.1
+Updated: 22 May 2024
+Version: 0.3
 
 # Colors
 ## Highlight/Accent
@@ -28,7 +28,7 @@ _Including margins and responsive sizes._
     `h2.heading__huge`:
     _Used on homepage_
     Large titles.
-    - font-size: clamp(1.4rem, 12.5vw, 12.5vw);
+    - font-size: clamp(1.4rem, 12.5vw, 12.5vw);w
 
     `h2` and `heading__medium`:
     _Used on blog titles and project titles on single page_
@@ -57,3 +57,12 @@ _Used for portfolio items, for articles_
     - font-weight: 400
     - display: block;
     - margin-bottom: 0px;
+
+## Containers
+All containers
+- margin: 0 auto;
+- padding: 0 20px;
+
+`.container__medium`:
+ _Used in hero on frontpage_
+    - max-width: 60%;
