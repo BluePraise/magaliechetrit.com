@@ -1,10 +1,10 @@
 <section class="articles wow fadeInLeft" data-wow-delay="1500ms" aria-labelledby="article-section-title">
-    <h2 class="heading__huge" id="blogposts-title">Latest Posts</h2>
+    <h2 class="heading__medium" id="blogposts-title">Latest Posts</h2>
     <ul class="unlist">
     {%- for post in collections.post | sort(attribute='data.dateCreated') | reverse -%}
         <li class="article-item">
 
-            <h3 class="heading__medium">{{ post.data.title }}</h3>
+            <h3>{{ post.data.title }}</h3>
             <p class="meta date-posted"><time datetime="{{ post.data.dateCreated }}">{{ post.data.dateCreated  | makeDateReadable }}</time></p>
             {# If modified add a small span with the date modified #}
             {%- if post.data.dateModified -%}

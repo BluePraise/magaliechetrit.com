@@ -2,10 +2,11 @@
 (more like a worklog)
 ## 22 May 2024
 - Updated classnames for containers throughout the site to match the typography naming.
-- Updated styleguide.md to reflect changes in classnames.
 - Updated hero and footer partial to reflect changes in classnames.
 - Portfolio has a conditional for `jobTitle`.
 - Updated Readme. Wow. I should have done this earlier.
+- Removed heading styling from h3 article title. It's now a default h3.
+- Updated styleguide.md to reflect changes.
 
 ## 20 May 2024
 - Removed spacings in As featured in

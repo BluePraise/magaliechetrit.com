@@ -7,6 +7,11 @@ $(function () {
     });
     $(document).ready(function() {
         new WOW().init();
+        gsap.registerPlugin(ScrollTrigger) // register gsap plugin
+        // gsap.to(".blogposts", {
+        //     scrollTrigger: ".blogposts", // start animation when ".box" enters the viewport
+        //     // y: 500,
+        // });
     });
 
 });
@@ -29,6 +34,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
     // startTime();
 });
+
+// vanilla JS
+// const msnry = new Masonry('.grid', {
+//     columnWidth: 80,
+//     itemSelector: '.grid-item',
+//     gutter: 10
+// });
 
 
 // References and sources:

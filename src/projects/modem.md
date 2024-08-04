@@ -9,6 +9,7 @@ imageFront: /assets/img/modem-imac.png
 wowDelay: 2000ms
 wowEffect: fadeInRight
 techStack: ['Kirby CMS', 'Paper.JS', 'JavaScript', 'CI/CD', 'Git']
+jobTitle: Lead Developer
 ---
 
 Modem.Work is a boutique architecture studio specializing in innovative and sustainable designs. Their portfolio showcases a diverse range of projects, from residential homes to commercial spaces. One of the studio's architects is a Professor and Head of Architecture at MIT, further emphasizing the studio's commitment to excellence and innovation. As the lead developer, I was responsible for creating a website that highlights Modem.Work's work and reflects the studio's ethos of creativity and sustainability.

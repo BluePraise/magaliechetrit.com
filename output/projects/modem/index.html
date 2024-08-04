@@ -54,23 +54,38 @@
 
 <main class="container">
     
-<article class="project-detail container-content">
+<article class="project-detail container__xs">
 
-    <a class="link__small" href="/"><i class="las la-long-arrow-alt-left"></i><span>Back to homepage</span></a>
-    <h1 class="article-title main-heading">Modem.Work - Architecture Studio Portfolio</h1>
-    <h2 class="article-subtitle"></h2>
+    <a class="back-link text__small" href="/" aria-label="Back to home"><i class="las la-long-arrow-alt-left" alt="Arrow left icon"></i><span>Back to home</span></a>
+
+    <h2>Modem.Work - Architecture Studio Portfolio</h2>
     
-    
-    
-    <div class="article-content">
+    <div class="meta-container">
         
-        </div>
+            <p class="meta date-posted"><span class="text__small">Date posted: </span><time datetime="Tue Jul 04 2023 20:00:00 GMT-0400 (Eastern Daylight Time)">Jul 4, 2023</time></p>
+        
+        
+            <p class="meta date-modified"><span class="text__small">Date modified: </span><time datetime="Thu May 23 2024 20:00:00 GMT-0400 (Eastern Daylight Time)">May 23, 2024</time></p>
+        
+        
+            <p class="meta tech"><span class="text__small">Tech Stack: </span>Kirby CMS, Paper.JS, JavaScript, CI/CD, Git</p>
+        
+    </div>
+    <section class="article-content">
+        <p>Modem.Work is a boutique architecture studio specializing in innovative and sustainable designs. Their portfolio showcases a diverse range of projects, from residential homes to commercial spaces. One of the studio's architects is a Professor and Head of Architecture at MIT, further emphasizing the studio's commitment to excellence and innovation. As the lead developer, I was responsible for creating a website that highlights Modem.Work's work and reflects the studio's ethos of creativity and sustainability.</p>
+<p>The website features a clean and minimalist design by Catalogtree, focusing on the studio's projects. High-quality images and videos offer an immersive experience, allowing visitors to explore each project in detail. The site is fully responsive, ensuring it looks great on all devices.</p>
+<p>Collaborating with Catalogtree, we chose <a href="https://getkirby.com/">Kirby CMS</a>, a flexible and user-friendly file-based CMS. Despite it being my first time using Kirby CMS, I quickly learned the system and implemented the design efficiently. Kirby CMS enabled us to create a custom backend that the client could easily use to update the site with new projects and content, reducing the need for ongoing support.</p>
+<p>A unique feature of the homepage is the &quot;donut&quot; animations, implemented using <a href="http://paperjs.org/">Paper.js</a> to create smooth bounce effects. These animations required careful attention to detail to achieve the desired visual impact, adding a dynamic element to the minimalist design.</p>
+<p><img src="/assets/img/modem-innovative-architecture-design.gif" alt="Illustrated GIF of Donuts in Modem.work"></p>
+<p>Through this project, I gained experience with Kirby CMS, including creating custom fields and templates, and developing a custom backend for the client. I used Git for version control and deployed the site using a CI/CD pipeline. The implementation of the donut animations was a challenging but rewarding aspect of the project.</p>
+
+    </section>
 
 </article>
 </main>
 
     <footer>
-        <div class="container">
+        <div class="container__medium">
             <h3 class="site-title"><a href="/">Magalie Chetrit</a></h3>
              <nav class='social-nav'>
                 <ul class="unlist">
@@ -79,7 +94,7 @@
                     <li><a href="https://github.com/bluepraise"><i class="lab la-github"></i></a></li>
                 </ul>
             </nav>
-            <p>Last updated: 24 April 2024.</p>
+            <p>Last updated: 20 May 2024.</p>
             <p>© Magalie Chetrit 2024. All Rights Reserved. </p>
         </div>
     </footer>

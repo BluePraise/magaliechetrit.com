@@ -1,6 +1,6 @@
 <section class="portfolio-area">
         <header class="section-header wow fadeInDown" data-wow-delay="1500ms">
-            <h2 class="heading__huge">Selected Projects</h2>
+            <h2 class="heading__medium">Selected Projects</h2>
         </header>
 
         <ul class="portfolio-items unlist">
@@ -9,7 +9,7 @@
                     <figure>
                         <img src="{{ project.data.imageFront }}" alt="{{ project.data.title }}">
                     </figure>
-                    <h4 class="meta">{{ project.data.title }}</h4>
+                    <h3>{{ project.data.title }}</h3>
 
                     {%- if project.data.jobTitle -%}
                         <p class="meta">{{ project.data.jobTitle }}</p>

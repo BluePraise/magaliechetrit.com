@@ -53,46 +53,45 @@
 
 
 <main class="container">
-    <article class="container-xs">
-<a class="back-link text__small" href="/"><i class="las la-long-arrow-alt-left"></i><span>Back to home</span></a>
+    <article class="container__xs">
+    <a class="back-link text__small" href="/" aria-label="Back to home"><i class="las la-long-arrow-alt-left"></i><span>Back to home</span></a>
     <header class="article-header">
         
             <figure>
-                <img src="/assets/img/2023-12-22-things-learned-in-2023.jpg" />
+                <img src="/assets/img/2023-12-22-things-learned-in-2023.jpg" alt="Things I learned in 2023" />
             </figure>
         
-        <h1 class="main-heading">Things I learned in 2023</h1>
-        <p class="meta date-posted"><span class="text__small">Date posted: </span><datetime>Dec 21, 2023</datetime></p>
-        <p class="meta date-modified"><span class="text__small">Date modified: </span><datetime>Jan 24, 2024</datetime></p>
-
+        <h2>Things I learned in 2023</h2>
+        <div class="meta-container">
+            <p class="meta date-posted"><span class="text__small">Date posted: </span><time datetime="Thu Dec 21 2023 19:00:00 GMT-0500 (Eastern Standard Time)">Dec 21, 2023</time></p>
+            <p class="meta date-modified"><span class="text__small">Date modified: </span><time datetime="Fri May 10 2024 09:53:47 GMT-0400 (Eastern Daylight Time)">May 10, 2024</time></p>
+        </div>
     </header>
-    <div class="post-content">
-
-    <div class="content">
-        <h2>Wrap my functions with conditional checks in JavaScript.</h2>
+    <section class="article-content">
+        <!-- Use h3 for section titles and h4 for subsection titles within the article -->
+        <h3>Wrap my functions with conditional checks in JavaScript.</h3>
 <p>This is a great way to make sure that the function is only called when it's needed and when the DOM is ready.</p>
-<h2>Improve my code with better comments.</h2>
+<h3>Improve my code with better comments.</h3>
 <p>Before I started working fully remote at TMSW, I mostly worked alone on my projects so I didn't feel the need to comment code. I did once I lost track of my work and didn't remember exactly what I was doing and why.</p>
 <p>The projects at TMSW are much bigger than the projects I've worked on before. Improving my skillset in commenting code became even more important for that reason.</p>
 <p>I taught myself how to improve my documentation by reading the comments in the code of large open source projects. Usually, I adapted the same principles to my own code. It's been working great so far.</p>
 <p>When I get back to work the next day or after a few days, I can easily pick up where I left off. It's also easier to explain my code to my colleagues when I speak to them about a feature I have been working on.</p>
 <p>This also helps me to keep my code clean and tidy. I can easily spot code that is not needed anymore and remove it.</p>
-<h2>Keep improving my project management skills.</h2>
+<h3>Keep improving my project management skills.</h3>
 <p>This is strongly related to my previous point. Web Development and any project requires project management skills whether you're a freelance working alone or a junior starting at a big tech company.</p>
 <p>In 2023 I simplified Notion and my task management system. Read more about that <a href="/blog/2023-06-22-a-few-thoughts-on-projectmanagement/">here</a>.</p>
-<h2>Avoid switching tools. Especially for project management.</h2>
+<h3>Avoid switching tools. Especially for project management.</h3>
 <p>I love new tools and I check them out regularly. It's so much fun for me that I even made an anonymous email account to sign up for all the new tools I want to try out. That way if I forget about them and they get hacked or something, I don't have to worry about it.</p>
 <p>As fun as it is, I also know that switching tools is a waste of time. The tools are nothing but a distraction in the end. I try to avoid switching tools as much as possible. I only switch tools when I'm sure that the new tool will improve my workflow. I also try to keep my toolset as small as possible.</p>
-<h2>Learn new things.</h2>
+<h3>Learn new things.</h3>
 <p>This year I learned how to use 11ty. In fact this website is built in 11ty. I also learned about Github Actions. I use to deploy small projects to my staging server.</p>
 
-    </div>
-    </div>
+    </section>
 </article>
 </main>
 
     <footer>
-        <div class="container">
+        <div class="container__medium">
             <h3 class="site-title"><a href="/">Magalie Chetrit</a></h3>
              <nav class='social-nav'>
                 <ul class="unlist">
@@ -101,7 +100,7 @@
                     <li><a href="https://github.com/bluepraise"><i class="lab la-github"></i></a></li>
                 </ul>
             </nav>
-            <p>Last updated: 24 April 2024.</p>
+            <p>Last updated: 20 May 2024.</p>
             <p>© Magalie Chetrit 2024. All Rights Reserved. </p>
         </div>
     </footer>

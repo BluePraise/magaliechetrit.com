@@ -45,8 +45,8 @@ For Portfolio items sometimes I'd like to add a job title and sometimes I don't.
 - [x] Make date dynamic
 - [ ] Adapt taskrunner to copy css to output folder
 - [ ] Add portfolio section
-    - [ ] Add ArtEZ Press gif
-    - [ ] Add McD As Featured In gif
+    - [x] Add ArtEZ Press gif
+    - [x] Add McD As Featured In gif
 - [ ] Add skills section
 - [ ] A11Y
 - [ ] Make all CSS Values scalable to the viewport
