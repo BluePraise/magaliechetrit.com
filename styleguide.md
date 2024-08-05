@@ -1,6 +1,6 @@
 Styleguide for Magaliechetrit.com
-Updated: 22 May 2024
-Version: 0.3
+Updated: 04 August 2024
+Version: 0.5
 
 # Colors
 ## Highlight/Accent
@@ -62,11 +62,32 @@ _Used for portfolio items, for articles_
     - display: block;
     - margin-bottom: 0px;
 
+
+## Buttons
+- Buttons are wrapped in a div with class `.buttons`
+
+_button styling, for now only one button_
+`.button__primary`:
+    - padding: 10px 20px;
+    - border: 1px solid black;
+    - margin-bottom: 20px;
+    - font-family: var(--header-font);
+    - font-size: 24px;
+    - transition: all 0.3s ease;
+    - display: inline-block;
+    - text-decoration: none;
+
+`.button__primary:hover`:
+    - background-color: black;
+    - color: white;
+
 ## Containers
-All containers
+Unified container styling for all
+_uses `^=` to select all classes starting with container_
+`[class^="container__"]`:
+- width: 100%;
 - margin: 0 auto;
 - padding: 0 20px;
 
 `.container__medium`:
- _Used in hero on frontpage_
     - max-width: 60%;
