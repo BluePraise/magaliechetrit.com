@@ -1,5 +1,13 @@
 # Changelog
 (more like a worklog)
+## 04 August 2024
+- Updated client sections. It no longer uses logo images. Instead, it uses a list of clients.
+- Added a new partial for resume buttons. There is now a paid download for my resume.
+- Added `_resume-buttons.njk` to article detail view and porfolio item view.
+- Temporarily commented out read more button on articles view.
+- Removed redundant code from `_base.njk`.
+- Updated styleguide to reflect addition of resume buttons.
+
 ## 22 May 2024
 - Updated classnames for containers throughout the site to match the typography naming.
 - Updated hero and footer partial to reflect changes in classnames.
