@@ -3,6 +3,7 @@
 
 ## 05 August 2024
 - File restructure. Included a `detail-views` folder for detail views such as articles and portfolio items.
+- Fixed UTC date off by 1 day.
 
 ## 04 August 2024
 - Updated client sections. It no longer uses logo images. Instead, it uses a list of clients.

@@ -14,10 +14,11 @@ module.exports = function (eleventyConfig) {
 
     // presents modified date in format 01-01-2022
     eleventyConfig.addFilter("makeDateReadable", (dateObj) => {
-        return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED)
+
+        return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toLocaleString(DateTime.DATE_MED)
     });
 
-    // Sort Posts with `Array.sort` 
+    // Sort Posts with `Array.sort`
     eleventyConfig.addCollection("sortPostsAsc", function (collectionApi) {
         return collectionApi.getAll().sort(function (a, b) {
             return a.dateCreated - b.dateCreated; // sort by date - ascending
