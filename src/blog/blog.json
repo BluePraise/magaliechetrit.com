@@ -1,4 +1,4 @@
 {
-    "layout" : "_article-detail.njk",
+    "layout" : "detail-views/_article-detail.njk",
     "date": "Last Modified"
 }

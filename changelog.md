@@ -1,5 +1,9 @@
 # Changelog
 (more like a worklog)
+
+## 05 August 2024
+- File restructure. Included a `detail-views` folder for detail views such as articles and portfolio items.
+
 ## 04 August 2024
 - Updated client sections. It no longer uses logo images. Instead, it uses a list of clients.
 - Added a new partial for resume buttons. There is now a paid download for my resume.
