@@ -336,6 +336,15 @@ section + section {
     gap: 5%;
 }
 
+.portfolio-item img {
+    filter: grayscale(1);
+    transition: 400ms ease-in-out;
+}
+
+.portfolio-item img:hover{
+    filter: grayscale(0);
+}
+
 .portfolio-area .buttons {
     text-align: center;
 }
