@@ -14,7 +14,10 @@ $(function () {
         // });
     });
 
+
 });
+
+
 
 document.addEventListener("DOMContentLoaded", (event) => {
     function startTime() {
@@ -33,6 +36,18 @@ document.addEventListener("DOMContentLoaded", (event) => {
         return i;
     }
     // startTime();
+
+    // on click toggle the class on an element
+
+});
+document.querySelector('.js-read-more').addEventListener('click', function (el) {
+    document.querySelector('.js-read-more').classList.remove('block');
+    document.querySelector('.js-read-more').classList.add('hide');
+    if (document.querySelector('.hero-more').classList.contains('hide')) {
+        document.querySelector('.hero-more').classList.remove('hide');
+        document.querySelector('.hero-more').classList.add('block');
+        return;
+    }
 });
 
 // vanilla JS

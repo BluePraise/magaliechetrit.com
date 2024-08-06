@@ -9,8 +9,6 @@ tags: ['project']
 imageFront: /assets/img/artezpress-laptop-1.png
 featuredImage: /assets/img/artezpress-laptop-1.png
 featuredImageAlt: ArtezPress WooCommerce Storefront Child Theme
-wowDelay: 2000ms
-wowEffect: fadeInLeft
 techStack: ['WordPress', 'WooCommerce', 'Polylang', 'ACF', 'Custom WP Theme', 'Git']
 jobTitle: Lead Developer
 ---

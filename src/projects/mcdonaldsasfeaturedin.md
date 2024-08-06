@@ -9,8 +9,6 @@ tags: ['project', 'post']
 imageFront: /assets/img/MCD-AsFeaturedIn-IphoneTilted.png
 featuredImage: /assets/img/mcd-featured.png
 featuredImageAlt: McDonald's As Featured In Meal
-wowDelay: 2000ms
-wowEffect: fadeInLeft
 techStack: ['WordPress', 'WPML', 'Lokalize', 'Pantheon', 'JIRA', 'Figma', 'ACF', 'Custom WP Theme', 'Git']
 jobTitle: Senior WordPress Developer
 ---

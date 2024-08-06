@@ -6,8 +6,6 @@ dateModified: 2024-05-24
 tags: project
 image: /assets/img/modem-imac.png
 imageFront: /assets/img/modem-imac.png
-wowDelay: 2000ms
-wowEffect: fadeInRight
 techStack: ['Kirby CMS', 'Paper.JS', 'JavaScript', 'CI/CD', 'Git']
 jobTitle: Lead Developer
 ---

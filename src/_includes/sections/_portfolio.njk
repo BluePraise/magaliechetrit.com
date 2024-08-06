@@ -1,11 +1,11 @@
-<section class="portfolio-area">
-    <header class="section-header wow fadeInDown" data-wow-delay="1500ms">
+<section class="portfolio-area" id="projects">
+    <header class="section-header">
         <h2 class="heading__medium">Selected Projects</h2>
     </header>
 
         <ul class="portfolio-items unlist">
             {%- for project in collections.project | sort(attribute='data.dateModified') -%}
-                <li class="portfolio-item wow {{project.data.wowEffect}}" data-wow-delay="{{project.data.wowDelay}}">
+                <li class="portfolio-item">
                     <figure>
                         <img src="{{ project.data.imageFront }}" alt="{{ project.data.title }}">
                     </figure>

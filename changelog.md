@@ -1,6 +1,12 @@
 # Changelog
 (more like a worklog)
 
+## 06 August 2024
+- Updated gitignore to exclude output files.
+- Updated hero text with more details.
+- Removed WOW from the project.
+- Removed masonry.js from the project. Unused.
+
 ## 05 August 2024
 - File restructure. Included a `detail-views` folder for detail views such as articles and portfolio items.
 - Fixed UTC date off by 1 day.
