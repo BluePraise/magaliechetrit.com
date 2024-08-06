@@ -6,6 +6,8 @@
 - Updated hero text with more details.
 - Removed WOW from the project.
 - Removed masonry.js from the project. Unused.
+- Removed lightbox.js from the project. Unused.
+- Removed smooth-scrollbar.js from the project. Unused.
 
 ## 05 August 2024
 - File restructure. Included a `detail-views` folder for detail views such as articles and portfolio items.

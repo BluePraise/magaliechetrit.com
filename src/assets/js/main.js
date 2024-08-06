@@ -5,16 +5,6 @@ $(function () {
         $('.page-loader').delay('400').fadeOut(600);
 
     });
-    $(document).ready(function() {
-        new WOW().init();
-        gsap.registerPlugin(ScrollTrigger) // register gsap plugin
-        // gsap.to(".blogposts", {
-        //     scrollTrigger: ".blogposts", // start animation when ".box" enters the viewport
-        //     // y: 500,
-        // });
-    });
-
-
 });
 
 
