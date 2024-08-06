@@ -8,6 +8,9 @@
 - Removed masonry.js from the project. Unused.
 - Removed lightbox.js from the project. Unused.
 - Removed smooth-scrollbar.js from the project. Unused.
+- Added image in hero
+- Wrapped hero text and image in a grid container
+- Added read more click functionality in `main.js`
 
 ## 05 August 2024
 - File restructure. Included a `detail-views` folder for detail views such as articles and portfolio items.

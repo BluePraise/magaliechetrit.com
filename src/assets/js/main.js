@@ -30,23 +30,23 @@ document.addEventListener("DOMContentLoaded", (event) => {
     // on click toggle the class on an element
 
 });
-document.querySelector('.js-read-more').addEventListener('click', function (el) {
-    document.querySelector('.js-read-more').classList.remove('block');
-    document.querySelector('.js-read-more').classList.add('hide');
-    if (document.querySelector('.hero-more').classList.contains('hide')) {
-        document.querySelector('.hero-more').classList.remove('hide');
-        document.querySelector('.hero-more').classList.add('block');
-        return;
-    }
-});
 
-// vanilla JS
-// const msnry = new Masonry('.grid', {
-//     columnWidth: 80,
-//     itemSelector: '.grid-item',
-//     gutter: 10
-// });
-
+/**
+ * Shows more text in hero section when clicking on "Read more" label.
+ * @param {string} readMore - The element to click on.
+*/
+const readMore = document.querySelector('.js-read-more');
+if (readMore) {
+    readMore.addEventListener('click', function () {
+        readMore.classList.remove('block');
+        readMore.classList.add('hide');
+        if (document.querySelector('.hero-more').classList.contains('hide')) {
+            document.querySelector('.hero-more').classList.remove('hide');
+            document.querySelector('.hero-more').classList.add('block');
+            return;
+        }
+    });
+}
 
 // References and sources:
 // https://linguinecode.com/post/enable-wordpress-rest-api-cors

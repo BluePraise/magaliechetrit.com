@@ -164,7 +164,7 @@ ul.unlist {
     display: flex;
 }
 
-.grid-container {
+.grid {
     display: grid;
 }
 
@@ -281,6 +281,11 @@ nav.social-nav ul.unlist li a:hover {
     margin-bottom: 20px;
 }
 
+.hero .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 5%;
+}
+
 .page-loader {
     position: fixed;
     left: 0;
@@ -338,7 +343,7 @@ section + section {
 
 .portfolio-item img {
     filter: grayscale(1);
-    transition: 400ms ease-in-out;
+    transition: 200ms ease-in;
 }
 
 .portfolio-item img:hover{
@@ -486,6 +491,12 @@ footer nav.social-nav ul.unlist li a {
 }
 
 @media screen and (max-width: 767px) {
+    .hero .grid {
+        display: block;
+    }
+    .hero img {
+        height: 350px;
+    }
 
     .container__medium,
     .container-content {
