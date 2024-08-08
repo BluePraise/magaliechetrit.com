@@ -115,6 +115,12 @@ h3 + h3 {
 
 }
 
+.hero-image {
+    max-height: 75vh;
+}
+.column-1-2 {
+    text-align: center;
+}
 .link__small,
 .text__small {
     text-transform: uppercase;
