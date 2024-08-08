@@ -1,6 +1,9 @@
 # Changelog
 (more like a worklog)
 
+## 07 August 2024
+- Added classname `article-detail` to `<article>` in article detail view.
+
 ## 06 August 2024
 - Updated gitignore to exclude output files.
 - Updated hero text with more details.
