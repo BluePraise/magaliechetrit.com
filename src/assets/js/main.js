@@ -48,6 +48,28 @@ if (readMore) {
     });
 }
 
+/**
+* The more the image in hero section scrolls out of viewport, the grayscale of the image is decreased.
+* We use the observer API to detect when the image is out of the viewport.
+*/
+const heroImage = document.querySelector('.hero-image');
+if (heroImage) {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            // Calculate the grayscale and opacity values based on the intersection ratio
+            const grayscaleValue = 1 - entry.intersectionRatio;
+            const opacityValue = entry.intersectionRatio;
+            // Apply the grayscale filter and opacity to the image
+            heroImage.style.filter = `grayscale(${grayscaleValue})`;
+            heroImage.style.opacity = opacityValue;
+        });
+    }, {
+        threshold: Array.from({ length: 101 }, (_, i) => i / 100) // Create thresholds from 0 to 1 in increments of 0.01
+    });
+
+    observer.observe(heroImage);
+}
+
 // References and sources:
 // https://linguinecode.com/post/enable-wordpress-rest-api-cors
 
