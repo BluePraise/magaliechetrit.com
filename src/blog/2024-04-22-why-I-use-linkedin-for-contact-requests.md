@@ -1,15 +1,16 @@
 ---
-title: Why I use LinkedIn for contact requests and resume.
+title: How I built this website.
 author: Magalie Chetrit
 dateCreated: 2024-04-22
 date: Last Modified
 tags: post, draft
 image:
 imageAlt:
-description: I use LinkedIn for contact requests and resume. Here's why.
+description: I built this website with 11ty. Here's what I learned.
 ---
-### Wrap my functions with conditional checks in JavaScript.
-This is a great way to make sure that the function is only called when it's needed and when the DOM is ready.
+### Why I built this website.
+I'm a front-end developer. To showcase my work the most popular way is a portfolio. It also is a chance for me to learn new things without restrictions. I can experiment with new technologies and see how they work in a real-world scenario.
+This time I've chosen to work with 11ty. I don't need a lot of things that come WordPress site. Mostly I enjoy writing in markdown.
 
 ### Improve my code with better comments.
 Before I started working fully remote at TMSW, I mostly worked alone on my projects so I didn't feel the need to comment code. I did once I lost track of my work and didn't remember exactly what I was doing and why.

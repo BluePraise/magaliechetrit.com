@@ -2,7 +2,6 @@
 title: A few thoughts on project management
 author: Magalie Chetrit
 dateCreated: 2023-06-22
-date: Last Modified
 tags: post
 image:
 imageAlt:
