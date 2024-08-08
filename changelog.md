@@ -3,6 +3,7 @@
 
 ## 07 August 2024
 - Added classname `article-detail` to `<article>` in article detail view.
+- Removed `container__medium` from `_resume-buttons.njk`.
 
 ## 06 August 2024
 - Updated gitignore to exclude output files.
