@@ -108,19 +108,6 @@ h3 + h3 {
     margin-top: 0px;
 }
 
-.hero-text {
-    margin-bottom: 20px;
-    font-size: 24px;
-    font-weight: 300;
-
-}
-
-.hero-image {
-    max-height: 75vh;
-}
-.column-1-2 {
-    text-align: center;
-}
 .link__small,
 .text__small {
     text-transform: uppercase;
@@ -140,8 +127,14 @@ a.link__small {
 main.container {
     flex: 1;
     /* keep footer to bottom */
-    margin: 0 auto;
+
     padding: 0 10px;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* to offset the fixed main-nav */
+    margin-top: 90px;
+
 }
 
 /* HELPERS */
@@ -202,14 +195,15 @@ ul.unlist {
 }
 
 .button__primary {
+    display: inline-block;
     cursor: pointer;
-    border: 1px solid black;
+    border: 1px solid #eee;
+    border-radius: 3px;
     padding: 10px 20px;
     margin-bottom: 20px;
     font-family: var(--header-font);
     font-size: 24px;
     text-decoration: none;
-    display: inline-block;
     transition: 1s;
 }
 .button__primary i {
@@ -234,6 +228,10 @@ ul.unlist {
     padding: 20px;
     border-bottom: 1px solid #eee;
     width: 100%;
+    position: fixed;
+    top: 0px;
+    z-index: 100;
+    backdrop-filter: blur(3px);
 }
 
 .main-header h1.site-title {
@@ -283,13 +281,26 @@ nav.social-nav ul.unlist li a:hover {
 .hero {
     margin: 0 auto;
 }
-.hero .link__small {
-    margin-bottom: 20px;
-}
-
 .hero .grid {
     grid-template-columns: 1fr 1fr;
-    gap: 5%;
+}
+
+.hero-text {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 300;
+
+}
+
+.hero-image {
+    max-height: 75vh;
+}
+
+.column-1-2 {
+    text-align: center;
+}
+.hero .link__small {
+    margin-bottom: 20px;
 }
 
 .page-loader {
@@ -343,7 +354,7 @@ section + section {
 
 .portfolio-items {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 5%;
 }
 
@@ -510,7 +521,8 @@ footer nav.social-nav ul.unlist li a {
     }
 
     .portfolio-items {
-        display: block;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: unset
     }
     .portfolio-item + .portfolio-item {
         margin-top: 20px;
