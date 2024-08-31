@@ -3,48 +3,44 @@ title: McDonald's As Featured In - Promotion Site
 subtitle: How I helped McDonald's celebrate being featured in movies for decades by introducing a new meal and a new promotion site.
 introduction: McDonald's celebrated being featured in movies for decades by introducing a new meal and a new promotion site. I was tasked with developing the site. As an international site, the site supported over 105 languages.
 year: 2023
-tags: project
-imageFront: /assets/img/mcdo-front-view.jpg
-imageGif: /assets/img/mcd-gfo.gif
-image: /assets/img/mcd-gfo.gif
+dateCreated: 2023-07-05
+dateModified: 2024-03-20
+tags: ['project', 'post']
+imageFront: /assets/img/MCD-AsFeaturedIn-IphoneTilted.png
 featuredImage: /assets/img/mcd-featured.png
 featuredImageAlt: McDonald's As Featured In Meal
-wowDelay: 2000ms
-wowEffect: fadeInLeft
+techStack: ['WordPress', 'WPML', 'Lokalize', 'Pantheon', 'JIRA', 'Figma', 'ACF', 'Custom WP Theme', 'Git']
+jobTitle: Senior WordPress Developer
 ---
-<!-- Title: "McDonald's As Featured In": A Showcase of Collaborative Innovation in Web Development -->
 
-## Introduction
+### Introduction
 
 In the dynamic realm of web development, projects often serve as a testament to collaborative prowess, creativity, and technological finesse. One such project that stands out is the short-lived yet impactful promotional site, "McDonald's As Featured In." This article delves into the intricacies of this two-month endeavor, highlighting the collaborative efforts, tools, and technologies that brought it to life.
 
-## Project Overview
+### Project Overview
 
 "McDonald's As Featured In" was not just a promotional site; it was a convergence of creativity and collaboration between McDonald's and the renowned Skateboard Apparel Shop, Palace. The objective was clear—to create a visually compelling and engaging platform that showcased McDonald's global influence while seamlessly integrating the unique aesthetic of Palace. In tandem with the launch of the "As Featured In" meal, the site was designed to highlight McDonald's presence in movies and TV shows.
 
 ![McDonald's As Featured In Meal](/assets/img/mcd-featured.png)
 
-## Collaboration and Team Dynamics
+### Collaboration and Team Dynamics
 
 The backbone of any successful project lies in effective collaboration. This venture was no exception, as it brought together a multi-disciplinary team that operated with a synergy seldom seen. Daily stand-up meetings, quality assurance processes, and the utilization of JIRA for project management ensured a smooth workflow.
 
-## Design and Development
+### Design and Development
 
-The design phase, executed in Figma by the talented designers of TMSW, laid the foundation for a visually stunning and user-friendly interface. As the lead developer, my role was pivotal in translating these designs into a fully functional website.
+The design phase, executed in Figma by the talented designers of TMSW, laid the foundation for a visually clear and user-friendly interface. As the lead developer, my role was pivotal in translating these designs into a fully functional website.
 
-## Technological Stack
+### Technological Stack
 
-To achieve global reach and cater to diverse audiences, the project employed a robust technological stack. The website was built on Pantheon, a high-performance hosting platform that ensured optimal speed and reliability. WPML (WordPress Multilingual) was used for content translation, allowing the site to serve over 105 locales seamlessly.
+The project was built on WordPress. We built a custom theme with Advanced Custom Fields (ACF) that facilitated seamless content management and customization. For version control we used Git, ensuring that the development process was streamlined and efficient. The integration of Lokalize.com with WPML played a pivotal role in streamlining the content translation. It allowed for efficient translation management, ensuring that content updates were reflected accurately across all 105locales. To achieve global reach and cater to diverse audiences, the project employed a robust technological stack. The website was hosted by Pantheon, a high-performance hosting platform that ensured optimal speed and reliability.
 
-## Localization and Global Deployment
+### Localization and Global Deployment
 
 One of the project's standout achievements was its global footprint. With content translated into 105 languages, the site was published in an equal number of countries. This not only showcased McDonald's international influence but also demonstrated the technical prowess of the team.
 
-## Tools for Efficiency
 
-Efficiency is the cornerstone of any successful project. The integration of Lokalize.com with WPML played a pivotal role in streamlining the localization process. It allowed for efficient translation management, ensuring that content updates were reflected accurately across all locales.
-
-## Conclusion
+### Conclusion
 
 "McDonald's As Featured In" might have had a brief run, but its impact was far-reaching. The collaboration between McDonald's and Palace, coupled with the technical finesse of the development team, resulted in a visually appealing, multilingual website that transcended borders.
 

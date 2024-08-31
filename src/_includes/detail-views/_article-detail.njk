@@ -1,0 +1,25 @@
+---
+layout: 'base.njk'
+---
+<article class="article-detail container__xs">
+    <a class="back-link text__small" href="/" aria-label="Back to home"><i class="las la-long-arrow-alt-left"></i><span>Back to home</span></a>
+    <header class="article-header">
+        {% if image %}
+            <figure>
+                <img src="/assets/img/{{ image }}" alt="{{ title }}" />
+            </figure>
+        {% endif %}
+        <h2>{{ title }}</h2>
+        <div class="meta-container">
+            <p class="meta date-posted"><span class="text__small">Date posted: </span><time datetime="{{ dateCreated }}">{{ dateCreated | makeDateReadable }}</time></p>
+            {% if dateModified %}
+                <p class="meta date-modified"><span class="text__small">Date modified: </span><time datetime="{{ dateModified }}">{{ dateModified | makeDateReadable }}</time></p>
+            {% endif %}
+        </div>
+    </header>
+    <section class="article-content">
+        <!-- Use h3 for section titles and h4 for subsection titles within the article -->
+        {{ content | safe }}
+    </section>
+</article>
+{% include "../sections/_resume-buttons.njk" %}

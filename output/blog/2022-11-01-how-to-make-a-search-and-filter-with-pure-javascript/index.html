@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to make a search filter with pure JavaScript</title>
+    <meta name="description" content="A Front-End Developer. Wordpress, Woocommerce, SEO, Webdesign and Development.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="front-end developer, front-end, websites, website, website development, wordpress, woocommerce, e-commerce">
+    <meta property="og:title" content="Portfolio website of Magalie Chetrit">
+    <meta property="og:url" content="https://magaliechetrit.com">
+    <meta property="og:description" content="A Portfolio Website of Magalie Chetrit - Front-End Developer">
+    <meta property="og:type" content="website">
+
+    <!-- Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/animate.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/smooth-scrollbar.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+
+</head>
+
+<body>
+
+
+
+ <header class='main-header container flex'>
+    <div class="left-column">
+        <h1 class='site-title'><a href="/">Magalie Chetrit</a></h1>
+    </div>
+    <nav class='social-nav'>
+        <ul class="unlist">
+            <li><a href="https://www.linkedin.com/in/magaliechetrit/"><i class="lab la-linkedin-in"></i></a></li>
+            <li><a href="mailto:email@magaliechetrit.com"><i class="las la-at"></i></a></li>
+            <li><a href="https://github.com/bluepraise"><i class="lab la-github"></i></a></li>
+        </ul>
+    </nav>
+</header>
+
+
+
+<main class="container">
+    <article class="article-detail container__xs">
+    <a class="back-link text__small" href="/" aria-label="Back to home"><i class="las la-long-arrow-alt-left"></i><span>Back to home</span></a>
+    <header class="article-header">
+        
+        <h2>How to make a search filter with pure JavaScript</h2>
+        <div class="meta-container">
+            <p class="meta date-posted"><span class="text__small">Date posted: </span><time datetime="Mon Jul 04 2022 20:00:00 GMT-0400 (Eastern Daylight Time)">Jul 5, 2022</time></p>
+            
+                <p class="meta date-modified"><span class="text__small">Date modified: </span><time datetime="Sun Apr 21 2024 20:00:00 GMT-0400 (Eastern Daylight Time)">Apr 22, 2024</time></p>
+            
+        </div>
+    </header>
+    <section class="article-content">
+        <!-- Use h3 for section titles and h4 for subsection titles within the article -->
+        <p>I was working on a project for a friend and she wanted a search filter on her site. The search filter is supposed to search through a list of work that she has on various pages.
+Most active search filters require a database connection or XHR requests. That was a bit too heavy for me. Other search filters were difficult to adapt to what my friend wanted.
+All I wanted was a functionality that searched through the current page, something simple, light and adjustable. It was really hard to find something like that. So I set about making one myself.</p>
+<p>The search filter I created is a simple JavaScript function that searches through a list of items and hides the items that don't match the search query. It's a simple function that can be used on any page. It's also very easy to adapt to your own needs. I've used it on a few projects now and it's been working great.</p>
+<p>I'm working on a few improvements but I wanted to share it with you. I hope you find it useful.</p>
+<h3>List of requirements.</h3>
+<ul>
+<li>Lightweight</li>
+<li>Flexible and easy to adapt to different projects</li>
+<li>Easy to implement</li>
+<li>No database connection</li>
+<li>No XHR requests</li>
+<li>No jQuery</li>
+<li>No plugins</li>
+<li>No dependencies</li>
+<li>No CSS frameworks</li>
+<li>Show search results after two characters have been typed</li>
+</ul>
+<h3>List of To-Dos</h3>
+<ul>
+<li>Show a message when there are no results</li>
+<li>A reset button</li>
+</ul>
+<h3>The Demo.</h3>
+<p class="codepen" data-height="600" data-theme-id="dark" data-default-tab="result" data-slug-hash="MWxWXyE" data-user="magaliechetrit" style="height: 600px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/magaliechetrit/pen/MWxWXyE">
+  A Simple Search Filter with Vanilla Javascript</a> by Magalie Chetrit (<a href="https://codepen.io/magaliechetrit">@magaliechetrit</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<h3>The HTML Markup.</h3>
+<p>A simple search input with a class of <code>js-search-field</code> and a list item with a class of <code>js-search-item</code>. I am using the prefix <code>js-</code> prefix to indicate that this is a class that will be used in JavaScript. It's a convention that I like to use to keep things organized.</p>
+<p><code>&lt;input type=&quot;search&quot; class=&quot;js-search-field&quot; placeholder=&quot;Type a word..&quot;/&gt;</code></p>
+<p>With just this simple search input it's easy to add it to any place. I've even implemented in a WordPress project. The only thing you need to do is add the class <code>js-search-field</code> to the search input.</p>
+<h3>The items to be searched (search dataset).</h3>
+<p>In this case, the dataset is the list of items that we want to search through. In my demo, I am using a list of random list items. Each item has a class of <code>js-search-item</code> which is set in an array called <code>searchItems</code>.</p>
+<p>The meat of the operation is in the function <code>renderResults</code>. This function is called when the user types in the search field. The function loops through the array <code>searchItems</code> and checks if the search query matches any of the items in the array. If it does, it shows the item. If it doesn't, right now it does nothing. But it would be nice if it showed a message that there are no results. See To Do List.</p>
+<h3>Key takeaways.</h3>
+<p>Lately, I've been on a big kick to learn more about JavaScript. I've been using it for a while but I've never taken the time to learn it properly. I was a little scared of it, I think. I mainly defaulted to jQuery. I still appreciate jQuery. It's one of the best libraries on the web.</p>
+<p>Using vanilla JavaScript taught me to appreciate the sequence of rendering of a website.</p>
+<p>I also understand other languages such as PHP much better. I know PHP is a server-side language, but because I was exposed to new principles I understand the MVC patterns and why some things are done the way they are.</p>
+<p>Debugging is also much easier in vanilla JavaScript. I've learned to use the console and the debugger. It's a great way to stop the code at a certain point and see what's going on.</p>
+<p>Let me know if you have any questions or suggestions. I'm always open to learning new things. And I would love to know if you've used this in any of your projects, shoot me an email!</p>
+
+    </section>
+</article>
+<div class="buttons">
+    <a class="button__primary" href="https://www.linkedin.com/in/magaliechetrit/" aria-label="Visit my LinkedIn profile">LinkedIn <i class="las la-external-link-alt" aria-hidden="true"></i></a>
+    <a class="button__primary" href="https://buymeacoffee.com/magaliechetrit/e/285684" aria-label="Download my full resume">Download full resume *<span class="highlight"></span><i class="las la-cloud-download-alt" aria-hidden="true"></i></a>
+    <small class="highlight text__small block blink">* My resume is a paid download.</small>
+</div>
+</main>
+
+
+    <footer>
+        <div class="container__medium">
+            <h3 class="site-title"><a href="/">Magalie Chetrit</a></h3>
+             <nav class='social-nav'>
+                <ul class="unlist">
+                    <li><a href="https://www.linkedin.com/in/magaliechetrit/"><i class="lab la-linkedin-in"></i></a></li>
+                    <li><a href="mailto:email@magaliechetrit.com"><i class="las la-at"></i></a></li>
+                    <li><a href="https://github.com/bluepraise"><i class="lab la-github"></i></a></li>
+                </ul>
+            </nav>
+            <p>Last updated: August 28, 2024.</p>
+            <p>© Magalie Chetrit 2024. All Rights Reserved. </p>
+        </div>
+    </footer>
+    <script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>
+
+</body>
+
+</html>

@@ -19,13 +19,19 @@ There's a separate responsive css file which is easier for tweaking the many bre
 - 1024px
 - `> 1280px`
 
+### Styling feature
+`.highlight` class is used for highlighting text. It's a css var `--highlight-color` which is a light green color.
+
+### Content elements
+#### Job Title in Portfolio items
+For Portfolio items sometimes I'd like to add a job title and sometimes I don't. There's a conditional in the nunjucks file that checks if there's a job title and if there is it will display it.
+
 ### To-Do
 - [x] convert to eleventy.js
 - [x] add Nunjucks
 - [ ] Add a fixed topbar
 - [ ] replace jquery with vanilla javascript
 - [x] replace bootstrap with my own css
-- [ ] replace Inter with an nicer font
 - [x] use more css vars
 - [ ] multilingual
 - [ ] about page
@@ -33,23 +39,24 @@ There's a separate responsive css file which is easier for tweaking the many bre
 - [x] make site semantic (add sections)
 - [ ] fix blog links
 - [ ] Modular JavaScript
-- [ ] Move .table-grid css to frontpage.css
 - [ ] Automatic Deployment (CD)
 - [x] Make date dynamic
-- [ ] Adapt taskrunner to copy css to output folder
-- [ ] Add portfolio section
-    - [ ] Add ArtEZ Press gif
-    - [ ] Add McD As Featured In gif
+- [x] Adapt taskrunner to copy css to output folder
+- [x] Add portfolio section
+    - [x] Add ArtEZ Press gif
+    - [x] Add McD As Featured In gif
 - [ ] Add skills section
-- [ ] A11Y
+- [x] A11Y
 - [ ] Make all CSS Values scalable to the viewport
-- [ ] Better naming convention for `.section-label`. It is being used for a button too.
+- [x] Better naming convention for `.section-label`. It is being used for a button too.
+- [ ] Implement React or Vue.js
 
 
 ### Removed Tasks
-- [ ] Implement React or Vue.js
 - [ ] Add testimonial section
 - [ ] Add resume section
+- [ ] Move .table-grid css to frontpage.css
+- [ ] replace Inter with an nicer font
 
 ### Some sparkles ✨
 1. I demand great A11Y.

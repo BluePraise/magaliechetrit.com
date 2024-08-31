@@ -1,0 +1,29 @@
+<section class="articles" aria-labelledby="article-section-title">
+    <h2 class="heading__medium" id="blogposts-title">Latest Posts</h2>
+    <div class="container__medium">
+        <ul class="unlist">
+        {%- for post in collections.post | sort(attribute='data.dateCreated') | reverse -%}
+            <li class="article-item">
+
+                <h3>{{ post.data.title }}</h3>
+                <p class="meta date-posted"><time datetime="{{ post.data.dateCreated }}">{{ post.data.dateCreated  | makeDateReadable }}</time></p>
+                {# If modified add a small span with the date modified #}
+                {%- if post.data.dateModified -%}
+                    <span class="meta highlight date-modified">Last Modified: <time datetime="{{ post.data.dateModified }}">{{ post.data.dateModified  | makeDateReadable }}</time></span>
+                {%- endif -%}
+                {%- if post.data.tags -%}
+                    {# Check if "project" is in tags #}
+                    {%- if "project" in post.data.tags -%}
+                        <a href="{{ post.url }}" class="meta" aria-label="Read about project: {{ post.data.title }}">Read about project: {{ post.data.title }} <i class="las la-long-arrow-alt-right"></i></a>
+                    {%- elif "post" in post.data.tags -%}
+                        <a href="{{ post.url }}" class="meta" aria-label="Read article: {{ post.data.title }}">Read article: {{ post.data.title }} <i class="las la-long-arrow-alt-right"></i></a>
+                    {%- endif -%}
+                {%- endif -%}
+            </li>
+        {%- endfor -%}
+        </ul>
+    </div>
+    {# <div class="buttons">
+        <a href="/blog" class="button__primary" aria-label="Link to more blog posts">More Posts <i class="las la-long-arrow-alt-right"></i></a>
+    </div> #}
+</section>

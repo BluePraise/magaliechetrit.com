@@ -1,6 +1,100 @@
 # Changelog
 (more like a worklog)
 
+## 14 August 2024
+- Changed content in hero section.
+- Updated article: Tools I use to develop projects.
+- Moved `.hero` css to section hero in `style.css`.
+- Updated `main.container` styling - due to footer overlapping.
+
+## 07 August 2024
+- Added classname `article-detail` to `<article>` in article detail view.
+- Removed `container__medium` from `_resume-buttons.njk`.
+- Added dateModified to posts.
+
+## 06 August 2024
+- Updated gitignore to exclude output files.
+- Updated hero text with more details.
+- Removed WOW from the project.
+- Removed masonry.js from the project. Unused.
+- Removed lightbox.js from the project. Unused.
+- Removed smooth-scrollbar.js from the project. Unused.
+- Added image in hero
+- Wrapped hero text and image in a grid container
+- Added read more click functionality in `main.js`
+- On scroll hero image grays out.
+
+## 05 August 2024
+- File restructure. Included a `detail-views` folder for detail views such as articles and portfolio items.
+- Fixed UTC date off by 1 day.
+
+## 04 August 2024
+- Updated client sections. It no longer uses logo images. Instead, it uses a list of clients.
+- Added a new partial for resume buttons. There is now a paid download for my resume.
+- Added `_resume-buttons.njk` to article detail view and porfolio item view.
+- Temporarily commented out read more button on articles view.
+- Removed redundant code from `_base.njk`.
+- Updated styleguide to reflect addition of resume buttons.
+
+## 22 May 2024
+- Updated classnames for containers throughout the site to match the typography naming.
+- Updated hero and footer partial to reflect changes in classnames.
+- Portfolio has a conditional for `jobTitle`.
+- Updated Readme. Wow. I should have done this earlier.
+- Removed heading styling from h3 article title. It's now a default h3.
+- Updated styleguide.md to reflect changes.
+
+## 20 May 2024
+- Removed spacings in As featured in
+- Updated techstack in As featured in
+- Added content to Modem.Work
+
+## 10 May 2024
+- Updated all headings articles and projects to conform to semantic structure.
+- Renamed blog to articles to adhere to logical structure.
+- Updated styleguide to reflect changes in `h3` headings.
+- Renamed classes for articles for uniformity in naming convention.
+- Cleaned up styling for article detail view.
+- Renamed `.article-subtitle` to `.subtitle` for uniformity. (new applied uniformity removed the need for more styling ✨)
+- Semantic structure and A11y applied to project detail page.
+- Conditional on subtitle because not all projects need a subtitle.
+- Reduced timing on fade in animation.
+- Added index to stylesheet for readability.
+
+## 9 May 2024
+- Unfified `h2` headings everywhere.
+- Blog posts, articles, and portfolio items (on detailpages) now have the same styling for headings.
+- Updated styleguide to reflect changes in headings.
+- Removed media query for headings due to the use of `clamp` for font-size.
+
+## 8 May 2024
+- Merged styling for metadata by using one class for all meta data: `meta`.
+- Changed css variable name for highlight color to `--highlight-color`.
+- Updated styleguide to reflect changes in metadata styling.
+- Uniformity in read more links by adding icons
+- Changed heading from `h1` to `h2` in blog overview partial.
+
+## 7 May 2024
+- Filtered out portfolio items that are not projects on the front page.
+- Added a styleguide to keep better track of changes v0.1 has typography
+- A11y check on `blog-posts` partial ✅
+- A11y check on `article` partial ✅
+- A11y check on `hero` partial ✅
+
+## 24 April 2024
+- Added new article: Why I use LinkedIn for contact requests and resume.
+- Moved portfolio items to a partial.
+- Added blog-posts partial.
+- Updated articles.
+- Added conditionals to elements to prevent empty HTML.
+- Added span to back link in detail pages.
+- Updated font-weight Bricolage Grotesque from 200 to 800.
+- Updated images for two portfolio items.
+
+## 27 December 2023
+- Fixed date in eleventy config
+- Added new articles
+
 ## 21 November 2023
 - Changed layout again.
 - Fixed page loader

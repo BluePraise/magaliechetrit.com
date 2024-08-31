@@ -1,0 +1,4 @@
+{
+    "layout" : "detail-views/_article-detail.njk",
+    "date": "Last Modified"
+}

@@ -1,0 +1,30 @@
+---
+layout: 'base.njk'
+---
+
+<article class="project-detail container__xs">
+
+    <a class="back-link text__small" href="/" aria-label="Back to home"><i class="las la-long-arrow-alt-left" alt="Arrow left icon"></i><span>Back to home</span></a>
+
+    <h2>{{title}}</h2>
+    {% if subtitle %}
+        <h3 class="subtitle">{{subtitle}}</h3>
+    {% endif %}
+    <div class="meta-container">
+        {% if dateCreated %}
+            <p class="meta date-posted"><span class="text__small">Date posted: </span><time datetime="{{ dateCreated }}">{{ dateCreated | makeDateReadable }}</time></p>
+        {% endif %}
+        {% if dateModified %}
+            <p class="meta date-modified"><span class="text__small">Date modified: </span><time datetime="{{ dateModified }}">{{ dateModified | makeDateReadable }}</time></p>
+        {% endif %}
+        {% if techStack %}
+            <p class="meta tech"><span class="text__small">Tech Stack: </span>{{ techStack | join(', ') }}</p>
+        {% endif %}
+    </div>
+    <section class="article-content">
+        {{ content | safe }}
+    </section>
+
+    {% include "../sections/_resume-buttons.njk" %}
+
+</article>

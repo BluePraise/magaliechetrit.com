@@ -1,0 +1,22 @@
+---
+layout: base.njk
+pagename: blog
+title: "😎 Magalie Chetrit | Web Developer in New Jersey. WordPress, WooCommerce. WebDevelopment."
+permalink: blog/{{ blogpost.slug }}/
+---
+<section class="blog">
+    <h2 class="page-title">Recent blog posts</h2>
+    <ul>
+        {%- for post in collections.post -%}
+            <li>
+                {% if image %}
+                    <figure>
+                        <img src="/assets/img/{{ image }}" />
+                    </figure>
+                {% endif %}
+                {{ post.data.title }}
+                <p class="meta date-posted"><datetime>{{ page.date | makeDateReadable }}</datetime></p>
+            </li>
+        {%- endfor -%}
+    </ul>
+</section>
