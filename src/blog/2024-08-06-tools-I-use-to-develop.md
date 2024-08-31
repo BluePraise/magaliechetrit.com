@@ -2,8 +2,7 @@
 title: Tools I use to develop projects
 author: Magalie Chetrit
 dateCreated: 2024-08-06
-date: 2024-08-05
-dateModified: 2024-08-12
+dateModified: 2024-08-31
 tags: post
 image:
 imageAlt:
@@ -20,8 +19,7 @@ While tmux is generally used in combination with Neovim, I have yet to transitio
 My most basic usage of tmux involves splitting the terminal into two panes: one pane for running a local server or watcher, and another for Git. With tmux, I can also detach from a session and reattach later, which is especially useful when I need to step away from my computer and return later. When I reattach to the session, I can easily continue where I left off.
 I’ve been using tmux on and off and have grown accustomed to its keybindings, which took some time. While there are various plugins available for tmux, I haven’t explored those yet and am still delving into its basic functionality.
 
-I believe that [hyper.js the terminal provides a plugin to split the terminal into panes](https://hyper.is/store/hyper-pane) and iTerm2 does too. I have not used it yet, but I am curious to see how it compares to tmux.
-In any case they don't have the
+I believe that [hyper.js the terminal provides a plugin to split the terminal into panes](https://hyper.is/store/hyper-pane) and iTerm2 does too. I have not used hyper.js yet, but I have used iTerm2. It didn't really work for me.
 
 ![A screenshot of two terminal panes in tmux](/assets/img/2024-08-06-tools-I%20use%20to%20develop/screenshot-tmux.png "A screenshot of two terminal panes in tmux")
 *Two terminal panes in tmux.*

@@ -1,5 +1,7 @@
 const pluginRev = require("eleventy-plugin-rev");
 const { DateTime } = require("luxon");
+const { execSync } = require('child_process');
+
 
 module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(pluginRev);
@@ -14,8 +16,7 @@ module.exports = function (eleventyConfig) {
 
     // presents modified date in format 01-01-2022
     eleventyConfig.addFilter("makeDateReadable", (dateObj) => {
-
-        return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toLocaleString(DateTime.DATE_MED)
+        return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toLocaleString(DateTime.DATE_MED);
     });
 
     // Sort Posts with `Array.sort`
@@ -24,7 +25,6 @@ module.exports = function (eleventyConfig) {
             return a.dateCreated - b.dateCreated; // sort by date - ascending
         });
     });
-
 
     return {
         dir: {
