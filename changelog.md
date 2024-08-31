@@ -1,6 +1,12 @@
 # Changelog
 (more like a worklog)
 
+## 14 August 2024
+- Changed content in hero section.
+- Updated article: Tools I use to develop projects.
+- Moved `.hero` css to section hero in `style.css`.
+- Updated `main.container` styling - due to footer overlapping.
+
 ## 07 August 2024
 - Added classname `article-detail` to `<article>` in article detail view.
 - Removed `container__medium` from `_resume-buttons.njk`.
