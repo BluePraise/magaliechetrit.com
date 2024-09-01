@@ -50,9 +50,9 @@ A simple search input with a class of `js-search-field` and a list item with a c
 With just this simple search input it's easy to add it to any place. I've even implemented in a WordPress project. The only thing you need to do is add the class `js-search-field` to the search input.
 
 ### The items to be searched (search dataset).
-In this case, the dataset is the list of items that we want to search through. In my demo, I am using a list of random list items. Each item has a class of `js-search-item` which is set in an array called `searchItems`.
+In this case, the dataset is the list of items that we want to search through. In my demo, I am using a list of random items. Each `li` item has a class of `js-search-item` which is set in an array called `searchItems`.
 
-The meat of the operation is in the function `renderResults`. This function is called when the user types in the search field. The function loops through the array `searchItems` and checks if the search query matches any of the items in the array. If it does, it shows the item. If it doesn't, right now it does nothing. But it would be nice if it showed a message that there are no results. See To Do List.
+The meat of the operation is in the function `renderResults`. This function is called when the user types in the search field. The function loops through the array `searchItems` and checks if the search query matches any of the items in the array. If it does, it shows the item. If it doesn't, ~~right now it does nothing. But it would be nice if it showed a message that there are no results.~~ it shows a message.
 
 ### Key takeaways.
 Lately, I've been on a big kick to learn more about JavaScript. I've been using it for a while but I've never taken the time to learn it properly. I was a little scared of it, I think. I mainly defaulted to jQuery. I still appreciate jQuery. It's one of the best libraries on the web.
