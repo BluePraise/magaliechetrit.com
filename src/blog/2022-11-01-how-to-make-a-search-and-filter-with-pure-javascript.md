@@ -2,7 +2,7 @@
 title: How to make a search filter with pure JavaScript
 author: Magalie Chetrit
 dateCreated: 2022-07-05
-dateModified: 2024-04-22
+dateModified: 2024-08-31
 tags: post
 image:
 imageAlt: Magalie Chetrit
@@ -28,9 +28,11 @@ I'm working on a few improvements but I wanted to share it with you. I hope you 
 - Show search results after two characters have been typed
 
 ### List of To-Dos
-- Show a message when there are no results
+- ~~Show a message when there are no results~~
 - A reset button
 
+### Files on Github
+[Link to the files on Github](https://github.com/BluePraise/js-search-filter)
 
 ### The Demo.
 <p class="codepen" data-height="600" data-theme-id="dark" data-default-tab="result" data-slug-hash="MWxWXyE" data-user="magaliechetrit" style="height: 600px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
