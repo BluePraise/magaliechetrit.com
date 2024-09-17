@@ -140,7 +140,8 @@ main.container {
 /* HELPERS */
 
 .blink {
-    animation: blink 1s infinite;
+    -webkit-animation: blink 1s infinite;
+            animation: blink 1s infinite;
 }
 
 ul.unlist {
@@ -231,7 +232,8 @@ ul.unlist {
     position: fixed;
     top: 0px;
     z-index: 100;
-    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+            backdrop-filter: blur(3px);
 }
 
 .main-header h1.site-title {
@@ -333,7 +335,8 @@ nav.social-nav ul.unlist li a:hover {
     border-radius: 50%;
     background-color: #fff;
     transform-origin: 50%;
-    animation: bounceLoader 500ms alternate infinite ease;
+    -webkit-animation: bounceLoader 500ms alternate infinite ease;
+            animation: bounceLoader 500ms alternate infinite ease;
 }
 section + section {
     border-top: 1px solid #e8e8e8;
@@ -359,12 +362,14 @@ section + section {
 }
 
 .portfolio-item img {
-    filter: grayscale(1);
+    -webkit-filter: grayscale(1);
+            filter: grayscale(1);
     transition: 200ms ease-in;
 }
 
 .portfolio-item img:hover{
-    filter: grayscale(0);
+    -webkit-filter: grayscale(0);
+            filter: grayscale(0);
 }
 
 .portfolio-area .buttons {
@@ -453,6 +458,15 @@ footer nav.social-nav ul.unlist li a {
 }
 
 /* Credit - Eleventy site*/
+@-webkit-keyframes rainbow {
+    0% {
+        background-position: 0 50%
+    }
+
+    100% {
+        background-position: 100% 50%
+    }
+}
 @keyframes rainbow {
     0% {
         background-position: 0 50%
@@ -460,6 +474,20 @@ footer nav.social-nav ul.unlist li a {
 
     100% {
         background-position: 100% 50%
+    }
+}
+
+@-webkit-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }
 
@@ -478,12 +506,37 @@ footer nav.social-nav ul.unlist li a {
 }
 
 /* @Keyframe */
+@-webkit-keyframes rotating {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 @keyframes rotating {
     0% {
         transform: rotate(0);
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes bounceLoader {
+    0% {
+        top: 30px;
+        height: 5px;
+        border-radius: 60px 60px 20px 20px;
+        transform: scaleX(2);
+    }
+    35% {
+        height: 15px;
+        border-radius: 50%;
+        transform: scaleX(1);
+    }
+    100% {
+        top: 0;
     }
 }
 
@@ -504,7 +557,8 @@ footer nav.social-nav ul.unlist li a {
     }
 }
 .fadeInUp {
-    animation-delay: 750ms;
+    -webkit-animation-delay: 750ms;
+            animation-delay: 750ms;
 }
 
 @media screen and (max-width: 767px) {
