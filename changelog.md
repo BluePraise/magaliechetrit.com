@@ -1,5 +1,7 @@
 # Changelog
 (more like a worklog)
+## 29 September 2024
+- 🥂 Big news: Added latest commit date to footer. (Big desire of mine)
 
 ## 14 August 2024
 - Changed content in hero section.

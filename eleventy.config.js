@@ -1,10 +1,16 @@
 const pluginRev = require("eleventy-plugin-rev");
 const { DateTime } = require("luxon");
-const { execSync } = require('child_process');
+const childProcess = require('child_process')
 
 
 module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(pluginRev);
+    // Add a shortcode to get the latest git commit date
+    eleventyConfig.addShortcode('lastCommitDate', function () {
+        const lastUpdatedFromGit = childProcess.execSync(`git log -1 --format=%cd --date=short`).toString().trim();
+        const formattedDate = DateTime.fromISO(lastUpdatedFromGit).toLocaleString(DateTime.DATETIME_HUGE);
+        return formattedDate;
+    });
 
     eleventyConfig.setServerOptions({ showVersion: true });
     // move css and jpg to output folder
