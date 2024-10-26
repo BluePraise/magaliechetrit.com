@@ -8,7 +8,7 @@ module.exports = function (eleventyConfig) {
     // Add a shortcode to get the latest git commit date
     eleventyConfig.addShortcode('lastCommitDate', function () {
         const lastUpdatedFromGit = childProcess.execSync(`git log -1 --format=%cd --date=short`).toString().trim();
-        const formattedDate = DateTime.fromISO(lastUpdatedFromGit).toLocaleString(DateTime.DATETIME_HUGE);
+        const formattedDate = DateTime.fromISO(lastUpdatedFromGit).toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY);
         return formattedDate;
     });
 
@@ -22,7 +22,7 @@ module.exports = function (eleventyConfig) {
 
     // presents modified date in format 01-01-2022
     eleventyConfig.addFilter("makeDateReadable", (dateObj) => {
-        return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toLocaleString(DateTime.DATE_MED);
+        return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY);
     });
 
     // Sort Posts with `Array.sort`
