@@ -11,10 +11,16 @@ module.exports = function (eleventyConfig) {
         const formattedDate = DateTime.fromISO(lastUpdatedFromGit).toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY);
         return formattedDate;
     });
+    // Add a shortcode to get the latest git commit date
+    eleventyConfig.addShortcode('lastCommitHash', function () {
+        const lastCommitHash = childProcess.execSync(`git rev-parse --short HEAD`).toString().trim();
+        return lastCommitHash;
+    });
+
 
     eleventyConfig.setServerOptions({ showVersion: true });
     // move css and jpg to output folder
-    eleventyConfig.addPassthroughCopy("src/assets/*/**");
+    eleventyConfig.addPassthroughCopy("src/assets/*/**");   
     eleventyConfig.addWatchTarget("src/assets/css/*.css");
 
     // presents current year
