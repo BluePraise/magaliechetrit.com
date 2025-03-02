@@ -19,7 +19,7 @@
 /* 0. CSS VARS */
 :root {
     --primary-color: #28e98c;
-    --highlight-color: #28e98c;
+    --highlight-color: rgba(40, 233, 140, 1);
     --a11y-color: #009950;
     --color-gray: #999999;
     --color-gray-dark: #1f1f1f;
@@ -40,6 +40,8 @@
 
 /* 1. BASE */
 body {
+    background-color: #ecfff4;
+    color: blue;
     line-height: var(--base-line-height);
     font-weight: var(--base-font-weight);
     font-family: var(--default-font);
@@ -62,7 +64,7 @@ img {
 }
 
 a {
-    color: #000;
+    color: blue;
 }
 
 code {
@@ -133,8 +135,14 @@ main.container {
     margin-right: auto;
 
     /* to offset the fixed main-nav */
-    margin-top: 90px;
+    margin-top: 150px;
 
+}
+
+main.container.project-detail {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    grid-gap: 5%;
 }
 
 /* HELPERS */
@@ -183,17 +191,22 @@ ul.unlist {
     max-width: 60%;
 }
 
-.button__primary {
+.button {
+    font-weight: 900;
     display: inline-block;
     cursor: pointer;
     border: 1px solid #eee;
     border-radius: 3px;
     padding: 10px 20px;
-    margin-bottom: 20px;
     font-family: var(--header-font);
     font-size: 24px;
     text-decoration: none;
     transition: 1s;
+}
+
+.button__primary {
+   color: white;
+   background: blue;
 }
 .button__primary i {
     margin-left: 10px;
@@ -207,18 +220,14 @@ ul.unlist {
 }
 
 .button__highlight {
-    display: inline-block;
-    cursor: pointer;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    padding: 10px;
-    font-family: var(--header-font);
     font-size: 1.2rem;
-    font-weight: 900;
     text-decoration: none;
     background-color: var(--highlight-color);
-    opacity: 0.6;
     color: white;
+
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    transform: scale(1);
+    animation: pulse 2s infinite;
 }
 
 /* HEADER and NAV */
@@ -241,9 +250,9 @@ ul.unlist {
 
 .main-header h1.site-title {
     font-family: var(--header-font);
-    font-size: 24px;
+    font-size: 1.9rem;
     margin: 0;
-    font-weight: 300;
+    font-weight: 900;
 }
 
 nav.social-nav ul.unlist li {
@@ -281,6 +290,7 @@ nav.social-nav ul.unlist li a:hover {
 
 .buttons {
     padding: var(--element-spacing) 0;
+    margin: var(--element-spacing);
 }
 /* hero */
 .hero {
@@ -445,11 +455,10 @@ footer {
     border-top: 1px solid #eee;
     padding: 20px 0;
     margin-top: 20px;
-    background-color: black;
+    /* background-color: black; */
 }
 footer h3 a {
-    font-family: var(--header-font);
-    color: var(--primary-color);
+    font-weight: 900;
 }
 
 footer p {
@@ -563,6 +572,24 @@ footer nav.social-nav ul.unlist li a {
         top: 0;
     }
 }
+
+@keyframes pulse {
+    0% {
+        /* transform: scale(0.95); */
+        box-shadow: 0 0 0 0 rgba(40, 233, 140, 0.6);
+    }
+
+    70% {
+        /* transform: scale(1); */
+        box-shadow: 0 0 0 10px rgba(40, 233, 140, 0);
+    }
+
+    100% {
+        /* transform: scale(0.95); */
+        box-shadow: 0 0 0 0 rgba(40, 233, 140, 0);
+    }
+}
+
 .fadeInUp {
     -webkit-animation-delay: 750ms;
             animation-delay: 750ms;
@@ -580,6 +607,11 @@ footer nav.social-nav ul.unlist li a {
     .container-content {
         max-width: 100%;
     }
+    main.container {
+        display: initial;
+    }
+
+    .project-detail aside {display: none;}
 
     .portfolio-items {
         grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -591,8 +623,25 @@ footer nav.social-nav ul.unlist li a {
     .hero .heading__medium {
         line-height: 1.1;
     }
+    .buttons {
+        margin: 0;
+    }
     .button__primary,
     .hero-text {
         font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    header.main-header {
+        flex-direction: column;
+        padding: 0px 0px 10px 0px;
+    }
+    header.main-header h1.site-title {
+
+    }
+    header .button__highlight {
+        padding: 0 5px;
+        margin-bottom: 10px;
     }
 }
