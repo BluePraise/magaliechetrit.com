@@ -6,22 +6,16 @@ on:
   push:
     branches: [main]
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
-    runs-on: ubuntu-latest
-    steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v4.2.0
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      with:
-        server: ftp.magaliechetrit.com
-        username: ftp@magaliechetrit.com
-        password: ${{ secrets.FTPPASSWORD }}
-        local-dir: ./output/
-        server-dir: /magaliechetrit.com/public_html/
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/.github/**
-          .DS_Store
+  build:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        # Here is the deployment action
+        - name: 🚀 Upload from public_html via FTP
+          uses: airvzxf/ftp-deployment-action@latest
+          with:
+            server: ftp.magaliechetrit.com
+            user: ftp@magaliechetrit.com
+            password: ${{ secrets.FTPPASSWORD }}
+            local_dir: ./output/
+            remote_dir: /magaliechetrit.com/public_html/
