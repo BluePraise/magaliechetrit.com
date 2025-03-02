@@ -9,14 +9,12 @@
                     <figure>
                         <img src="{{ project.data.imageFront }}" alt="{{ project.data.title }}">
                     </figure>
-                    <h3>{{ project.data.title }}</h3>
-
                     {%- if project.data.jobTitle -%}
-                        <p class="meta">{{ project.data.jobTitle }}</p>
+                        <h3 class="job-title">{{ project.data.jobTitle }}</h3>
                     {%- endif -%}
-
-                    <span class="meta">{{ project.data.year }}</span>
-                    <a href="{{ project.url }}" class="meta">Find out more <i class="las la-long-arrow-alt-right"></i></a>
+                    <p class="portfolio-title">{{ project.data.title }}</p>
+                    <p class="portfolio-date meta">{{ project.data.year }}</p>
+                    <a href="{{ project.url }}" class="meta-link">Find out more <i class="las la-long-arrow-alt-right"></i></a>
                 </li>
             {%-  endfor -%}
 

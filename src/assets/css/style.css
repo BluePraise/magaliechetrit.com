@@ -385,11 +385,10 @@ section + section {
 }
 .meta {
     display: block;
-    font-family: var(--header-font);
-    font-size: 12px;
-    text-transform: uppercase;
+    font-family: var(--default-font);
+    font-size: 0.9rem;
     font-weight: 400;
-    margin-bottom: 0px;
+    margin: 0px;
 }
 
 .meta + .meta {
@@ -399,6 +398,11 @@ section + section {
 .meta-container {
     border-bottom: 1px solid;
     padding-bottom: 40px;
+}
+.meta-link {
+    /* color: var(--color-gray); */
+    font-weight: 900;
+    font-size: 1.1rem;
 }
 
 .back-link {
