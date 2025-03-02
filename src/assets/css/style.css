@@ -183,18 +183,6 @@ ul.unlist {
     max-width: 60%;
 }
 
-/* HAS BEEN ABANDONED AND REPLACED BY A BUTTON */
-.cta-banner {
-    display: block;
-    margin-top: 80px;
-    text-align: center;
-    padding: 40px;
-    text-decoration: none;
-    /* border: 1px solid #cccbcb; */
-    box-shadow: 0px 0px 5px 1px #f4f4f4;
-    /* transition: all 0.5s ease-in-out; */
-}
-
 .button__primary {
     display: inline-block;
     cursor: pointer;
@@ -216,6 +204,22 @@ ul.unlist {
 }
 .button__primary + .button__primary {
     margin-left: 10px;
+}
+
+.button__highlight {
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: var(--header-font);
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-decoration: none;
+    /* transition: 1s; */
+    background-color: var(--highlight-color);
+    opacity: 0.6;
+    color: white;
 }
 
 /* HEADER and NAV */
