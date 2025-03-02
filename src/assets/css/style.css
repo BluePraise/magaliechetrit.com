@@ -216,7 +216,6 @@ ul.unlist {
     font-size: 1.2rem;
     font-weight: 900;
     text-decoration: none;
-    /* transition: 1s; */
     background-color: var(--highlight-color);
     opacity: 0.6;
     color: white;
