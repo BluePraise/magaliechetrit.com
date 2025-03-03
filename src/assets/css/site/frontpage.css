@@ -9,10 +9,8 @@
 }
 
 .portfolio-item figure {
-    height: 65%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    min-height: 65%;
+    display: block;
 }
 @media screen and (max-width: 767px) {
     .portfolio-item figure {
