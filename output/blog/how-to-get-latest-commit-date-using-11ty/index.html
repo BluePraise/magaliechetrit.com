@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modem.Work - Architecture Studio Portfolio</title>
+    <title>How to get the latest Git commit date using 11ty</title>
     <meta name="description" content="A Front-End Developer. Wordpress, Woocommerce, SEO, Webdesign and Development.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="front-end developer, front-end, websites, website, website development, react, woocommerce, e-commerce">
@@ -29,7 +29,7 @@
 
 </head>
 
-<body class="project-detail">
+<body>
 
 
 
@@ -51,63 +51,41 @@
 </header>
 
 
-    <link rel="stylesheet" href="./assets/css/site/project-detail.css">
 
-
-<main class="container project-detail">
-    
- 
-<aside>
-    <h3 class="text__small">Tech Stack</h3>
-    <ul class="tech-stack">
+<main class="container ">
+    <article class="article-detail container__xs">
+    <a class="back-link text__small" href="/" aria-label="Back to home"><i class="las la-long-arrow-alt-left"></i><span>Back to home</span></a>
+    <header class="article-header">
         
-            <li>Kirby CMS</li>
-        
-            <li>Paper.JS</li>
-        
-            <li>JavaScript</li>
-        
-            <li>CI/CD</li>
-        
-            <li>Git</li>
-        
-    </ul>
-</aside>
-
-<article class="project-detail container__xs">
-
-    <a class="back-link text__small" href="/" aria-label="Back to home"><i class="las la-long-arrow-alt-left" alt="Arrow left icon"></i><span>Back to home</span></a>
-
-    <h2>Modem.Work - Architecture Studio Portfolio</h2>
-    
-    <div class="meta-container">
-        
-            <p class="meta date-posted"><span class="text__small">Date posted: </span><time datetime="Tue Jul 04 2023 20:00:00 GMT-0400 (Eastern Daylight Time)">Wed, Jul 5, 2023</time></p>
-        
-        
-            <p class="meta date-modified"><span class="text__small">Date modified: </span><time datetime="Thu May 23 2024 20:00:00 GMT-0400 (Eastern Daylight Time)">Fri, May 24, 2024</time></p>
-        
-        
-            <p class="meta tech"><span class="text__small">Tech Stack: </span>Kirby CMS, Paper.JS, JavaScript, CI/CD, Git</p>
-        
-    </div>
+        <h2>How to get the latest Git commit date using 11ty</h2>
+        <div class="meta-container">
+            <p class="meta date-posted"><span class="text__small">Date posted: </span><time datetime="Sun, Sep 29, 2024">Sun, Sep 29, 2024</time></p>
+            
+                <p class="meta date-modified"><span class="text__small">Date modified: </span><time datetime="Sat, Aug 31, 2024">Sat, Aug 31, 2024</time></p>
+            
+        </div>
+    </header>
     <section class="article-content">
-        <p>Modem.Work is a boutique architecture studio specializing in innovative and sustainable designs. Their portfolio showcases a diverse range of projects, from residential homes to commercial spaces. One of the studio's architects is a Professor and Head of Architecture at MIT, further emphasizing the studio's commitment to excellence and innovation. As the lead developer, I was responsible for creating a website that highlights Modem.Work's work and reflects the studio's ethos of creativity and sustainability.</p>
-<p>The website features a clean and minimalist design by Catalogtree, focusing on the studio's projects. High-quality images and videos offer an immersive experience, allowing visitors to explore each project in detail. The site is fully responsive, ensuring it looks great on all devices.</p>
-<p>Collaborating with Catalogtree, we chose <a href="https://getkirby.com/">Kirby CMS</a>, a flexible and user-friendly file-based CMS. Despite it being my first time using Kirby CMS, I quickly learned the system and implemented the design efficiently. Kirby CMS enabled us to create a custom backend that the client could easily use to update the site with new projects and content, reducing the need for ongoing support.</p>
-<p>A unique feature of the homepage is the &quot;donut&quot; animations, implemented using <a href="http://paperjs.org/">Paper.js</a> to create smooth bounce effects. These animations required careful attention to detail to achieve the desired visual impact, adding a dynamic element to the minimalist design.</p>
-<p><img src="/assets/img/modem-innovative-architecture-design.gif" alt="Illustrated GIF of Donuts in Modem.work"></p>
-<p>Through this project, I gained experience with Kirby CMS, including creating custom fields and templates, and developing a custom backend for the client. I used Git for version control and deployed the site using a CI/CD pipeline. The implementation of the donut animations was a challenging but rewarding aspect of the project.</p>
-
+        <!-- Use h3 for section titles and h4 for subsection titles within the article -->
+        <h3>An archive piece for my future self</h3>
+<p>I would say I am a medior when it comes to JavaScript, SPG and CI/CD. As I am self taught, I am still searching for the best way to do things. Especially, when it comes with folder structure. But as with everything coding, baby steps.</p>
+<p>For a while I have wanted to have the date in the footer of my site to be the latest commit date. I couldn't figure out how to do it from the <a href="https://www.11ty.dev/docs/dates/">11ty documentation</a>. In the documentation it states to use <code>git Last Modified</code> or <code>git Created</code>. In my current configuration this would return &quot;Invalid Datetime&quot;.</p>
+<h3>Search trail references:</h3>
+<ul>
+<li><a href="https://www.11ty.dev/docs/dates/">11ty documentation</a></li>
+<li><a href="https://www.aleksandrhovhannisyan.com/blog/eleventy-build-info/">Add Build Info to an 11ty Site</a> The suggestion in step 3 didn't really work for me.</li>
+<li><a href="https://www.npmjs.com/package/eleventy-plugin-git">11ty plugin git</a> I couldn't make this work.</li>
+</ul>
+<h3>The solution: Make my own shortcode</h3>
+<p>After actually reading the articles, I figured out that I could make my own shortcode.</p>
+<script src="https://gist.github.com/BluePraise/c4e4897c47a11e1ed8aa8a935defa7f4.js"></script>
     </section>
-
-    <div class="buttons">
+</article>
+<div class="buttons">
     <a class="button button__primary" href="https://www.linkedin.com/in/magaliechetrit/" aria-label="Visit my LinkedIn profile">LinkedIn <i class="las la-external-link-alt" aria-hidden="true"></i></a>
     <a class="button button__primary" href="https://buymeacoffee.com/magaliechetrit/e/285684" aria-label="Download my full resume">Download full resume *<span class="highlight"></span><i class="las la-cloud-download-alt" aria-hidden="true"></i></a>
     <small class="highlight text__small block blink">* My resume is a paid download.</small>
 </div>
-
-</article>
 </main>
 
 
