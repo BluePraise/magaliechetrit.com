@@ -1,10 +1,17 @@
 .blogposts .grid {
     grid-template-columns: repeat(2, 1fr);
 }
+.portfolio-item .meta-link {
+    display: inline-block;
+    text-decoration: none;
+}
+.portfolio-item a.meta-link:hover {
+    color: aqua;
+    background-color: black;
+    transition: ease-in-out 0.3s;
+}
 
 .job-title {
-    font-size: 2.2rem;
-    font-weight: 900;
     margin: 0px;
 }
 
@@ -18,15 +25,20 @@
     }
 }
 .portfolio-item .portfolio-title {
-    border-top: 1px solid black;
-    padding-top: 20px;
+    /* border-top: 1px solid black; */
     margin-bottom: 0px;
 }
+.portfolio-item .portfolio-subtitle {
+    font-weight: 300;
+    margin-bottom: 0px;
+}
+.portfolio-item .portfolio-technologies {
+    margin-top: 0px;
+    font-weight: 300;
+}
 .portfolio-item .portfolio-date {
-    border-bottom: 1px solid black;
     padding-bottom: 20px;
 }
-.portfolio-item .meta-link {
-    display: inline-block;
-    padding: 30px 0px;
+.portfolio-item p:last-child {
+    margin-bottom: 0px;
 }

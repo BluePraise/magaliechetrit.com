@@ -1,5 +1,10 @@
 # Changelog
 (more like a worklog)
+## 26 October 2024
+- Removed highlight color from modified date in blog posts.
+- Updated article: How to get the latest Git commit date using 11ty.
+- Removed dates previously added to article file names.
+
 ## 29 September 2024
 - 🥂 Big news: Added latest commit date to footer. (Big desire of mine)
 
@@ -48,7 +53,7 @@
 
 ## 20 May 2024
 - Removed spacings in As featured in
-- Updated techstack in As featured in
+- Updated technologies in As featured in
 - Added content to Modem.Work
 
 ## 10 May 2024

@@ -1,4 +1,3 @@
-
 $(function () {
 
     $(window).on('load', function () {
@@ -70,6 +69,38 @@ if (heroImage) {
     observer.observe(heroImage);
 }
 
+// Lightbox-style modal for .content-image
+const contentImage = document.querySelector('.content-image');
+if (contentImage) {
+    contentImage.addEventListener('click', function () {
+        const modal = document.createElement('div');
+        modal.classList.add('lightbox-overlay');
+        modal.innerHTML = `
+            <div class="lightbox-content">
+                <button class="lightbox-close" aria-label="Close lightbox">×</button>
+                <img src="${contentImage.src}" alt="${contentImage.alt}" />
+                <figcaption class="lightbox-caption">${contentImage.alt || 'Image'}</figcaption>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        function closeModal() {
+            modal.remove();
+            document.removeEventListener('keydown', escListener);
+        }
+
+        modal.querySelector('.lightbox-close').addEventListener('click', closeModal);
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) closeModal();
+        });
+
+        function escListener(event) {
+            if (event.key === 'Escape') closeModal();
+        }
+
+        document.addEventListener('keydown', escListener);
+    });
+}
 // References and sources:
 // https://linguinecode.com/post/enable-wordpress-rest-api-cors
 

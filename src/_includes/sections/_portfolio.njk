@@ -4,20 +4,23 @@
     </header>
 
         <ul class="portfolio-items unlist">
-            {%- for project in collections.project | sort(attribute='data.dateModified') -%}
+            {%- for project in collections.project | sort('data.order') | reverse -%}
                 <li class="portfolio-item">
+                    <a href="{{ project.url }}" class="meta-link">
                     <figure>
                         <img src="{{ project.data.imageFront }}" alt="{{ project.data.title }}">
                     </figure>
-                    {%- if project.data.jobTitle -%}
-                        <h3 class="job-title">{{ project.data.jobTitle }}</h3>
+                    <h3 class="portfolio-title">{{ project.data.title }}</h3>
+                    <h3 class="job-title">{{ project.data.jobTitle }}</h3>
+                    {%- if project.data.subtitle -%}
+                        <p class="portfolio-subtitle">{{ project.data.subtitle }}</p>
                     {%- endif -%}
-                    <p class="portfolio-title">{{ project.data.title }}</p>
-                    <p class="portfolio-date meta">{{ project.data.year }}</p>
-                    <a href="{{ project.url }}" class="meta-link">Find out more <i class="las la-long-arrow-alt-right"></i></a>
+                    <p class="portfolio-technologies">{{ project.data.technologies | join(', ') }}</p>
+                    <p class="portfolio-date meta">{{ project.data.years }}</p>
+
+                    </a>
                 </li>
             {%-  endfor -%}
 
         </ul>
-        {% include "./_resume-buttons.njk" %}
 </section>

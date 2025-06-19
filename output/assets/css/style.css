@@ -18,10 +18,12 @@
 
 /* 0. CSS VARS */
 :root {
-    --primary-color: #28e98c;
+    /* --primary-color: #28e98c; */
+    --primary-color: aqua;
     --highlight-color: rgba(40, 233, 140, 1);
     --a11y-color: #009950;
     --color-gray: #999999;
+    --color-gray-mid: #666666;
     --color-gray-dark: #1f1f1f;
     --text-color: var(--color-gray);
     --scroll-padding: 40px;
@@ -40,8 +42,8 @@
 
 /* 1. BASE */
 body {
-    background-color: #ecfff4;
-    color: blue;
+    /* background-color: #ecfff4; */
+    /* color: blue; */
     line-height: var(--base-line-height);
     font-weight: var(--base-font-weight);
     font-family: var(--default-font);
@@ -65,7 +67,10 @@ img {
 }
 
 a {
-    color: blue;
+    color: black;
+}
+a:visited {
+    color: var(--color-gray-mid);
 }
 
 code {
@@ -185,7 +190,7 @@ ul.unlist {
 }
 
 .container__xs {
-    max-width: 640px;
+    max-width: 30vw;
 
 }
 .container__medium,
@@ -224,7 +229,7 @@ ul.unlist {
 .button__highlight {
     font-size: 1.2rem;
     text-decoration: none;
-    background-color: var(--highlight-color);
+    background-color: black;
     color: white;
 
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
@@ -297,6 +302,7 @@ nav.social-nav ul.unlist li a:hover {
 /* hero */
 .hero {
     margin: 0 auto;
+    max-width: 80vw;
 }
 .hero .grid {
     grid-template-columns: 1fr 1fr;
@@ -373,7 +379,7 @@ section + section {
 .portfolio-items {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 5%;
+        gap: 1% 5%;
 }
 
 .portfolio-item img {
@@ -451,6 +457,27 @@ h3.subtitle {
 
 .project-detail figure {
     max-width: 400px;
+}
+.enlarged:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.enlarged {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80vw;
+    height: 80vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 footer {
@@ -578,7 +605,7 @@ footer nav.social-nav ul.unlist li a {
 @keyframes pulse {
     0% {
         /* transform: scale(0.95); */
-        box-shadow: 0 0 0 0 rgba(40, 233, 140, 0.6);
+        box-shadow: 0 0 0 0 rgba(77, 77, 77, 0.6);
     }
 
     70% {
@@ -639,11 +666,53 @@ footer nav.social-nav ul.unlist li a {
         flex-direction: column;
         padding: 0px 0px 10px 0px;
     }
-    header.main-header h1.site-title {
 
-    }
     header .button__highlight {
         padding: 0 5px;
         margin-bottom: 10px;
     }
+    main.container.project-detail {
+        grid-template-columns: 1fr;
+    }
+}
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.lightbox-overlay img {
+    max-width: 70vw;
+    max-height: 90vh;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.lightbox-content {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.lightbox-caption {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-family: var(--default-font);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
 }

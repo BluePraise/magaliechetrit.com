@@ -35,11 +35,11 @@ For Portfolio items sometimes I'd like to add a job title and sometimes I don't.
 - [x] use more css vars
 - [ ] multilingual
 - [ ] about page
-- [ ] fix relative path structures
+- [x] fix relative path structures
 - [x] make site semantic (add sections)
-- [ ] fix blog links
+- [x] fix blog links
 - [ ] Modular JavaScript
-- [ ] Automatic Deployment (CD)
+- [x] Automatic Deployment (CD) -> Used Github Actions
 - [x] Make date dynamic
 - [x] Adapt taskrunner to copy css to output folder
 - [x] Add portfolio section
@@ -49,7 +49,7 @@ For Portfolio items sometimes I'd like to add a job title and sometimes I don't.
 - [x] A11Y
 - [ ] Make all CSS Values scalable to the viewport
 - [x] Better naming convention for `.section-label`. It is being used for a button too.
-- [ ] Implement React or Vue.js
+- [ ] Update github actions with newer node (see github actions)
 
 
 ### Removed Tasks
@@ -57,6 +57,7 @@ For Portfolio items sometimes I'd like to add a job title and sometimes I don't.
 - [ ] Add resume section
 - [ ] Move .table-grid css to frontpage.css
 - [ ] replace Inter with an nicer font
+- [ ] Implement React or Vue.js < we're never using React if we have a choice. >
 
 ### Some sparkles ✨
 1. I demand great A11Y.

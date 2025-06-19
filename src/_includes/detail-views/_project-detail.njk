@@ -2,12 +2,12 @@
 layout: 'base.njk'
 pagename: 'project-detail'
 ---
-{% set techStack = techStack | default([]) %}
- {% if techStack %}
+{% set technologies = technologies | default([]) %}
+ {% if technologies %}
 <aside>
     <h3 class="text__small">Tech Stack</h3>
     <ul class="tech-stack">
-        {% for tech in techStack %}
+        {% for tech in technologies %}
             <li>{{ tech }}</li>
         {% endfor %}
     </ul>
@@ -28,14 +28,12 @@ pagename: 'project-detail'
         {% if dateModified %}
             <p class="meta date-modified"><span class="text__small">Date modified: </span><time datetime="{{ dateModified }}">{{ dateModified | makeDateReadable }}</time></p>
         {% endif %}
-        {% if techStack %}
-            <p class="meta tech"><span class="text__small">Tech Stack: </span>{{ techStack | join(', ') }}</p>
+        {% if technologies %}
+            <p class="meta tech"><span class="text__small">Tech Stack: </span>{{ technologies | join(', ') }}</p>
         {% endif %}
     </div>
     <section class="article-content">
         {{ content | safe }}
     </section>
-
-    {% include "../sections/_resume-buttons.njk" %}
 
 </article>

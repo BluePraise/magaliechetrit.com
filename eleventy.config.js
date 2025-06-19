@@ -1,10 +1,9 @@
-const pluginRev = require("eleventy-plugin-rev");
 const { DateTime } = require("luxon");
 const childProcess = require('child_process')
 
 
 module.exports = function (eleventyConfig) {
-    eleventyConfig.addPlugin(pluginRev);
+
     // Add a shortcode to get the latest git commit date
     eleventyConfig.addShortcode('lastCommitDate', function () {
         const lastUpdatedFromGit = childProcess.execSync(`git log -1 --format=%cd --date=short`).toString().trim();
@@ -20,7 +19,7 @@ module.exports = function (eleventyConfig) {
 
     eleventyConfig.setServerOptions({ showVersion: true });
     // move css and jpg to output folder
-    eleventyConfig.addPassthroughCopy("src/assets/*/**");   
+    eleventyConfig.addPassthroughCopy("src/assets/*/**");
     eleventyConfig.addWatchTarget("src/assets/css/*.css");
 
     // presents current year
@@ -31,12 +30,6 @@ module.exports = function (eleventyConfig) {
         return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY);
     });
 
-    // Sort Posts with `Array.sort`
-    eleventyConfig.addCollection("sortPostsAsc", function (collectionApi) {
-        return collectionApi.getAll().sort(function (a, b) {
-            return a.dateCreated - b.dateCreated; // sort by date - ascending
-        });
-    });
 
     return {
         dir: {

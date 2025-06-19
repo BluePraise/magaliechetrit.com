@@ -2,14 +2,15 @@
 title: McDonald's As Featured In - Promotion Site
 subtitle: How I helped McDonald's celebrate being featured in movies for decades by introducing a new meal and a new promotion site.
 introduction: McDonald's celebrated being featured in movies for decades by introducing a new meal and a new promotion site. I was tasked with developing the site. As an international site, the site supported over 105 languages.
-year: 2023
+years: 2023
+order: 3,
 dateCreated: 2023-07-05
 dateModified: 2024-03-20
 tags: ['project', 'post']
 imageFront: /assets/img/MCD-AsFeaturedIn-IphoneTilted.png
 featuredImage: /assets/img/mcd-featured.png
 featuredImageAlt: McDonald's As Featured In Meal
-techStack: ['WordPress', 'WPML', 'Lokalize', 'Pantheon', 'JIRA', 'Figma', 'ACF', 'Custom WP Theme', 'Git']
+technologies: ['WordPress', 'WPML', 'Lokalize', 'Pantheon', 'JIRA', 'Figma', 'ACF', 'Custom WP Theme', 'Git', 'PHP']
 jobTitle: Senior WordPress Developer
 ---
 

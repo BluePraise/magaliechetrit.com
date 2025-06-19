@@ -6,7 +6,7 @@ layout: 'base.njk'
     <header class="article-header">
         {% if image %}
             <figure>
-                <img src="/assets/img/{{ image }}" alt="{{ title }}" />
+                <img class="js-enlarge-image" src="/assets/img/{{ image }}" alt="{{ title }}" />
             </figure>
         {% endif %}
         <h2>{{ title }}</h2>
@@ -22,4 +22,3 @@ layout: 'base.njk'
         {{ content | safe }}
     </section>
 </article>
-{% include "../sections/_resume-buttons.njk" %}

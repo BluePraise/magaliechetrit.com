@@ -1,12 +1,13 @@
 ---
 title: Modem.Work - Architecture Studio Portfolio
-year: 2018/2023
+years: 2023, 2020, 2019, 2018
 dateCreated: 2023-07-05
 dateModified: 2024-05-24
+order: 1,
 tags: project
 image: /assets/img/modem-imac.png
 imageFront: /assets/img/modem-imac.png
-techStack: ['Kirby CMS', 'Paper.JS', 'JavaScript', 'CI/CD', 'Git']
+technologies: ['Kirby CMS', 'PHP', 'Paper.JS', 'JavaScript', 'CI/CD', 'Git']
 jobTitle: Lead Developer
 ---
 

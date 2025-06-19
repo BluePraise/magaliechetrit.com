@@ -2,7 +2,7 @@
     <h2 class="heading__medium" id="blogposts-title">Latest Posts</h2>
     <div class="container__medium">
         <ul class="unlist">
-        {%- for post in collections.post | sort(attribute='data.dateCreated') | reverse -%}
+        {%- for post in collections.post -%}
             <li class="article-item">
 
                 <h3>{{ post.data.title }}</h3>
