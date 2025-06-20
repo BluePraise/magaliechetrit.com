@@ -631,7 +631,10 @@ footer nav.social-nav ul.unlist li a {
     .hero img {
         height: 350px;
     }
+    .container__xs {
+        max-width: 100vw;
 
+    }
     .container__medium,
     .container-content {
         max-width: 100%;
