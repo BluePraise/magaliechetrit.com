@@ -479,6 +479,47 @@ h3.subtitle {
     align-items: center;
     justify-content: center;
 }
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.lightbox-overlay img {
+    max-width: 70vw;
+    max-height: 90vh;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.lightbox-content {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.lightbox-caption {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-family: var(--default-font);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
 
 footer {
     border-top: 1px solid #eee;
@@ -639,8 +680,9 @@ footer nav.social-nav ul.unlist li a {
     .container-content {
         max-width: 100%;
     }
+    main.container.project-detail,
     main.container {
-        display: initial;
+        display: unset;
     }
 
     .project-detail aside {display: none;}
@@ -674,48 +716,5 @@ footer nav.social-nav ul.unlist li a {
         padding: 0 5px;
         margin-bottom: 10px;
     }
-    main.container.project-detail {
-        grid-template-columns: 1fr;
-    }
-}
-.lightbox-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-}
 
-.lightbox-overlay img {
-    max-width: 70vw;
-    max-height: 90vh;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-}
-
-.lightbox-content {
-    position: relative;
-    text-align: center;
-    color: white;
-}
-
-.lightbox-caption {
-    margin-top: 1rem;
-    font-size: 1rem;
-    font-family: var(--default-font);
-}
-
-.lightbox-close {
-    position: absolute;
-    top: 0.5rem;
-    right: 1rem;
-    font-size: 2rem;
-    color: white;
-    background: none;
-    border: none;
-    cursor: pointer;
 }
