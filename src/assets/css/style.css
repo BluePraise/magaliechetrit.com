@@ -525,22 +525,31 @@ footer {
     border-top: 1px solid #eee;
     padding: 20px 0;
     margin-top: 20px;
-    /* background-color: black; */
+    background-color: black;
+    color: white;
+}
+footer h3 {
+    margin-top: 0;
 }
 footer h3 a {
+    color: white;
     font-weight: 900;
 }
 
 footer p {
-    color: #6c757d;
+    color: var(--color-gray);
     font-size: 12px;
 }
 footer nav.social-nav ul.unlist li {
-    border: 1px solid #6c757d;
+    border: 1px solid var(--color-gray);
 }
 
 footer nav.social-nav ul.unlist li a {
-    color: #6c757d;
+    color: var(--color-gray);
+}
+
+footer .flex {
+    justify-content: space-between;
 }
 
 /* Credit - Eleventy site*/
