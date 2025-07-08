@@ -159,14 +159,13 @@ main.container.project-detail {
             animation: blink 1s infinite;
 }
 
-ul.unlist {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
 
 /* LAYOUT */
+.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
 .block {
     display: block;
 }
@@ -187,6 +186,11 @@ ul.unlist {
     width: 100%;
     margin: 0 auto;
     padding: 0 10px;
+}
+ul.unlist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .container__xs {
