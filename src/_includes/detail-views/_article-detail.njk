@@ -10,6 +10,9 @@ layout: 'base.njk'
             </figure>
         {% endif %}
         <h2>{{ title }}</h2>
+        {% if series %}
+            <p class="meta series"><span class="text__small">Part {{ seriesNumber }} of the "{{ series }}" Series</span></p>
+        {% endif %}
         <div class="meta-container">
             <p class="meta date-posted"><span class="text__small">Date posted: </span><time datetime="{{ dateCreated | makeDateReadable }}">{{ dateCreated | makeDateReadable }}</time></p>
             {% if dateModified %}
@@ -21,4 +24,37 @@ layout: 'base.njk'
         <!-- Use h3 for section titles and h4 for subsection titles within the article -->
         {{ content | safe }}
     </section>
+    {% if series %}
+    <div class="series-navigation">
+        <h4>Part {{ seriesNumber }} of the "{{ series }}" Series</h4>
+
+        <div class="series-links">
+        {% set previousPost = collections.post | getPreviousInSeries(page) %}
+        {% set nextPost = collections.post | getNextInSeries(page) %}
+
+        {% if previousPost %}
+            <a href="{{ previousPost.url }}" class="prev-post">
+            ← Previous: {{ previousPost.data.title }}
+            </a>
+        {% endif %}
+
+        {% if nextPost %}
+            <a href="{{ nextPost.url }}" class="next-post">
+            Next: {{ nextPost.data.title }} →
+            </a>
+        {% endif %}
+        </div>
+
+        <div class="series-list">
+        <h5>All posts in this series:</h5>
+        <ol>
+            {% for post in collections.post | getSeriesPosts(series) %}
+            <li{% if post.url == page.url %} class="current"{% endif %}>
+                <a href="{{ post.url }}">{{ post.data.title }}</a>
+            </li>
+            {% endfor %}
+        </ol>
+        </div>
+    </div>
+    {% endif %}
 </article>

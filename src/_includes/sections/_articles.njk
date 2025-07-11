@@ -2,9 +2,8 @@
     <h2 class="heading__medium" id="blogposts-title">Latest Posts</h2>
     <div class="container__medium">
         <ul class="unlist">
-        {%- for post in collections.post -%}
+        {%- for post in collections.post | sortByDateCreated -%}
             <li class="article-item">
-
                 <h3>{{ post.data.title }}</h3>
                 <p class="meta date-posted"><time datetime="{{ post.data.dateCreated }}">{{ post.data.dateCreated | makeDateReadable }}</time></p>
                 {# If modified add a small span with the date modified #}
