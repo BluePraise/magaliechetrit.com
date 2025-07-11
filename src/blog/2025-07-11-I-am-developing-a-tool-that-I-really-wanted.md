@@ -5,7 +5,6 @@ dateCreated: 2025-07-11
 tags: ['post', 'post-by-email']
 series: post-by-email
 seriesNumber: 1
-image:
 imageAlt:
 description: Here are some tips for privacy on the web.
 ---
@@ -21,7 +20,9 @@ It seems more sensible to keep it small so I manage to understand each step. Kee
 
 I want to send an email to a dedicated email address and the content of that email will be used as a post on my website. I don't want to log into a CMS or deal with code editors. You know how you post on instagram? Well, it needs to be like that, but then by email. Post by E-Mail.
 
-Breaking things down we'll need to:
+![A sketch of the workflow and architecture from one of my notes ](/assets/img/2025-07-11-I-am-developing-the-tool-that-I-want.jpg)
+
+Breaking things down we'll need to:!
 1. Receive an email (securely),
 2. Parse (or convert) email content to HTML,
 3. Place post in site in the form of a html file.
