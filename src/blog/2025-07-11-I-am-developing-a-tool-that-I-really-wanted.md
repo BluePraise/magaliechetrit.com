@@ -29,6 +29,7 @@ Breaking things down we'll need to:!
 
 Starting small, means we need to also leave some cool ideas for later. No AWS SES or Synology mail server for now. We also won't deal with images, because that adds some complexity with AWS or other cloud storages. And we have to wait with database or headless CMS until later.
 
-It is a milestone when these blogposts are sent through email. I can't wait.
+I have it all set up in (this Github repo)[https://github.com/BluePraise/post-by-email]. There are issues (tasks) and you can even leave behind a message in (the discussion tab)[https://github.com/BluePraise/post-by-email/discussions/24].
 
+It is a milestone when these blogposts are sent through email. I can't wait.
 Let's start at the beginning with step 1!
