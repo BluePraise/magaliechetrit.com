@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post-by-Email Development Log 2 - Demo Built, Mailgun Lessons, and the Power of Small Steps</title>
+    <meta name="description" content="A Front-End Developer. Wordpress, Woocommerce, SEO, Webdesign and Development.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="front-end developer, front-end, websites, website, website development, react, woocommerce, e-commerce">
+    <meta property="og:title" content="Portfolio website of Magalie Chetrit">
+    <meta property="og:url" content="https://magaliechetrit.com">
+    <meta property="og:description" content="A Portfolio Website of Magalie Chetrit - Front-End Developer">
+    <meta property="og:type" content="website">
+
+    <!-- Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/animate.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+
+</head>
+
+<body>
+
+
+
+ <header class='main-header container flex'>
+    <div class="left-column">
+        <h1 class='site-title'><a href="/">Magalie Chetrit</a></h1>
+    </div>
+    <a class="button button__highlight call-for-work pulse" href="mailto:email@magaliechetrit.com">
+        Available for hire, let's talk!
+    </a>
+
+    <nav class='social-nav'>
+        <ul class="unlist">
+            <li><a href="https://www.linkedin.com/in/magaliechetrit/"><i class="lab la-linkedin-in"></i></a></li>
+            <li><a href="mailto:email@magaliechetrit.com"><i class="las la-at"></i></a></li>
+            <li><a href="https://github.com/bluepraise"><i class="lab la-github"></i></a></li>
+        </ul>
+    </nav>
+</header>
+
+
+
+<main class="container ">
+    <article class="article-detail container__xs">
+    <a class="back-link text__small" href="/" aria-label="Back to home"><i class="las la-long-arrow-alt-left"></i><span>Back to home</span></a>
+    <header class="article-header">
+        
+        <h2>Post-by-Email Development Log 2 - Demo Built, Mailgun Lessons, and the Power of Small Steps</h2>
+        
+            <p class="meta series"><span class="text__small">Part 2 of the "post-by-email" Series</span></p>
+        
+        <div class="meta-container">
+            <p class="meta date-posted"><span class="text__small">Date posted: </span><time datetime="Mon, Jul 14, 2025">Mon, Jul 14, 2025</time></p>
+            
+        </div>
+    </header>
+    <section class="article-content">
+        <!-- Use h3 for section titles and h4 for subsection titles within the article -->
+        <p>Progress update on my post-by-email project! If you missed the beginning of this journey, <a href="https://magaliechetrit.com/blog/2025-07-11-I-am-developing-a-tool-that-I-really-wanted/">check out part 1</a> where I explained why I'm building this and what I'm trying to accomplish.</p>
+<h3>What I Built This Week</h3>
+<p>I've made some real progress! I successfully created a demo project and deployed it to Netlify. More importantly, I dove deep into the email handling side of things and learned a ton about the underlying architecture.</p>
+<h3>Setting Up Mailgun</h3>
+<p>I started by integrating Mailgun for email forwarding. The setup process was educational, as in difficult. Mailgun's UI is nice if you want to test simple scenarios.</p>
+<h3>Getting Familiar with Email Processing and Netlify deploys</h3>
+<p>To handle the email parsing logic, I had to write my first Netlify function. This was actually a little daunting. I used <a href="https://nodemailer.com/extras/mailparser">Mailparser</a>, an NPM package I'd never worked with before. It forced me to understand how email parsing works and how Node and Netlify functions operate.</p>
+<p>This is the email recieving function I wrote:</p>
+<script src="https://gist.github.com/BluePraise/b905ea6b36b8b843cd8612024b4a02e9.js"></script>
+<p>If you have JS disabled or use blockers, this is the link to <a href="https://gist.github.com/BluePraise/b905ea6b36b8b843cd8612024b4a02e9">my Github Gist</a></p>
+<p>I built a demo and deployed it to Netlify. But first I tried it out on local!</p>
+<p><img src="/assets/img/2025-07-14-getting-very-familiar-with-email-standards.png" alt="Success working on local, but not when I deployed to Netlify"></p>
+<h3>Why Mailgun Didn't Make the Cut</h3>
+<p>After getting everything set up, I realized Mailgun wasn't going to work for my use case. Two main issues:</p>
+<ol>
+<li>MIME limitations: I couldn't get the MIME handling I needed for future features</li>
+<li>Poor logging: The debugging experience was frustrating when things went wrong</li>
+</ol>
+<p>I overestimated Mailgun's free tier and MIME turned out to be more important than I initially realized. It's the standard that defines how email content is structured, especially when you have mixed content types like text, HTML, and attachments. It's going to be essential for what I'm building. The MIME issue was the real dealbreaker. While I could have taken a shortcut and parsed emails as JSON for now, that would have been shortsighted.</p>
+<h3>Taking Architecture Seriously</h3>
+<p>This is where I'm proud of the decision I made. I could have pushed forward with a quick JSON-based solution, but I stopped and thought about the bigger picture. If I want to eventually support:</p>
+<ul>
+<li>Email attachments (images for blog posts!)</li>
+<li>Rich HTML content</li>
+<li>Better formatting options</li>
+</ul>
+<p>Then I need proper MIME support from the start. Building on shaky foundations would just create technical debt I'd have to deal with later.</p>
+<h3>What's Next: The Email Service Hunt</h3>
+<p>Now I'm researching alternatives. My current list includes:</p>
+<ul>
+<li>BREVO</li>
+<li>SendGrid</li>
+<li>Mailjet</li>
+<li>Postmark</li>
+<li>Forward Email</li>
+<li>Scaleway Transactional Email</li>
+</ul>
+<p>I'm looking for something that gives me the MIME support I need while also providing better logging and debugging capabilities. And for now I need it to be free.</p>
+<h3>Updating the Project Management</h3>
+<p>I need to update my GitHub issues tracker to reflect what I've learned. The original plan was a bit too optimistic about sticking with Mailgun, so I'm adjusting the roadmap.
+You can still follow along with the project at the <a href="https://github.com/BluePraise/post-by-email/issues">GitHub repo issues</a> - I keep the issues updated as I go.</p>
+<h3>💎 Personal Learning: Taking Projects Seriously</h3>
+<p>Here's something that might resonate with other developers: I've always struggled with taking my side projects seriously. There's something about personal projects that makes me want to rush through them, cut corners or discard. But this project is different. Maybe it's because I've wanted this feature for so long, or maybe I'm just at a different point in my development growth. Either way, I'm finding myself making thoughtful architectural decisions instead of just trying to get something working quickly. The decision to abandon Mailgun despite having it working is a perfect example. Old me would have said &quot;good enough&quot; and moved on. Current me is willing to take the time to build something sustainable.</p>
+<p>Another example is using Netlify vs my own SiteGround hosting. Siteground hosting is amazing for WordPress projects. But using email comes with security considerations and working PHP will be a lot of ground to cover in this early stage. I am looking forward to build something with it when this feature has evolved.</p>
+<h3>The Power of Small Steps</h3>
+<p>One thing I'm really appreciating is how breaking this project into tiny pieces is making it manageable. Each step teaches me something specific, and I'm not getting overwhelmed by the bigger picture.
+This week I learned about:</p>
+<ul>
+<li>MIME and email structure</li>
+<li>Netlify Functions</li>
+<li>Mailparser NPM package</li>
+<li>Architecture decisions</li>
+</ul>
+<p>None of these are earth-shattering on their own, but together they're building toward something I'm genuinely excited about.</p>
+<h3>What's Coming Next</h3>
+<p>Next week I'll be diving into the email service research and hopefully settling on a replacement for Mailgun. I'm also planning to document the technical requirements I've discovered so far - turns out there were some assumptions in my original plan that needed updating. The goal is still the same: I want to email this very blog post to my website instead of writing it in a code editor. We're not there yet, but every step is getting me closer.</p>
+<hr>
+<p>Following along with this project? I'd love to hear your thoughts in the <a href="https://github.com/BluePraise/post-by-email/discussions/24">GitHub discussions</a> or <a href="mailto:email@magaliechetrit.com">feel free to reach out</a>!</p>
+
+    </section>
+    
+    <div class="series-navigation">
+        <h4>Part 2 of the "post-by-email" Series</h4>
+
+        <div class="series-links">
+        
+        
+
+        
+
+        
+        </div>
+
+        <div class="series-list">
+        <h5>All posts in this series:</h5>
+        <ol>
+            
+            <li>
+                <a href="/blog/2025-07-11-I-am-developing-a-tool-that-I-really-wanted/">Hello. I am developing a tool I really wanted.</a>
+            </li>
+            
+            <li class="current">
+                <a href="/blog/2025-07-14-getting-very-familiar-with-email-standards/">Post-by-Email Development Log 2 - Demo Built, Mailgun Lessons, and the Power of Small Steps</a>
+            </li>
+            
+        </ol>
+        </div>
+    </div>
+    
+</article>
+
+</main>
+
+
+    <footer>
+        <div class="container__medium flex">
+            <div class="left-column">
+                <h3 class="site-title"><a href="/">Magalie Chetrit</a></h3>
+                <p>Last updated: Fri, Jul 11, 2025 (commit: f7541c3)</p>
+            </div>
+
+             <nav class='social-nav'>
+                <ul class="unlist">
+                    <li><a href="https://www.linkedin.com/in/magaliechetrit/"><i class="lab la-linkedin-in"></i></a></li>
+                    <li><a href="mailto:email@magaliechetrit.com"><i class="las la-at"></i></a></li>
+                    <li><a href="https://github.com/bluepraise"><i class="lab la-github"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="container__medium bottom-bar">
+            <p>© Magalie Chetrit 2025. All Rights Reserved. </p>
+        </div>
+    </footer>
+    <script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>
+
+</body>
+
+</html>
