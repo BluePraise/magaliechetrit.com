@@ -4,9 +4,9 @@ pagename: blog
 title: "😎 Magalie Chetrit | Web Developer in New Jersey. WordPress, WooCommerce. WebDevelopment."
 permalink: blog/{{ blogpost.slug }}/
 ---
-<section class="blog">
+<div class="container__medium">
     <h2 class="page-title">Recent blog posts</h2>
-    <ul>
+    <ul class="unlist">
         {%- for post in collections.post -%}
             <li>
                 {% if image %}
@@ -14,9 +14,10 @@ permalink: blog/{{ blogpost.slug }}/
                         <img src="/assets/img/{{ image }}" />
                     </figure>
                 {% endif %}
-                {{ post.data.title }}
-                <p class="meta date-posted"><datetime>{{ page.date | makeDateReadable }}</datetime></p>
+                <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+                <p class="excerpt">{{ post.data.description | safe }}</p>
+                <p class="meta date-posted"><datetime>{{ post.date | makeDateReadable }}</datetime></p>
             </li>
         {%- endfor -%}
     </ul>
-</section>
+</div>

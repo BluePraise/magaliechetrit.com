@@ -525,6 +525,16 @@ h3.subtitle {
     cursor: pointer;
 }
 
+.container.blog .unlist li {
+    border-bottom: 1px solid #eee;
+    padding: 5vh 0;
+}
+.container.blog .unlist li a {
+    font-weight: 900;
+    font-size: 3vh;
+    text-decoration: none;
+}
+
 footer {
     border-top: 1px solid #eee;
     padding: 20px 0;
@@ -541,7 +551,6 @@ footer h3 a {
 }
 
 footer p {
-    color: var(--color-gray);
     font-size: 12px;
 }
 footer nav.social-nav ul.unlist li {
@@ -549,7 +558,7 @@ footer nav.social-nav ul.unlist li {
 }
 
 footer nav.social-nav ul.unlist li a {
-    color: var(--color-gray);
+    color: white;
 }
 
 footer .flex {

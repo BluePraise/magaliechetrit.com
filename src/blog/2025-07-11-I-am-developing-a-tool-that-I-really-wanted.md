@@ -6,7 +6,7 @@ tags: ['post', 'post-by-email']
 series: post-by-email
 seriesNumber: 1
 imageAlt:
-description: Here are some tips for privacy on the web.
+description: The start of a side project that I wanted to build for years.
 ---
 The internet used to be a fun place, but currently I am very burnt out on the current state of the internet. Instagram was the straw that broke the camel's back. On top of that all of the demands that the housekeeping of accounts require is just too much for me. We need to install password managers, 2FA and update these regularly.
 
