@@ -1,13 +1,16 @@
 {
   "name": "magaliechetrit.com",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Portfolio for Magaliechetrit",
   "main": ".eleventy.js",
   "scripts": {
     "start": "npx @11ty/eleventy --serve --quiet",
     "debug": "DEBUG=Eleventy* npx @11ty/eleventy",
     "debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx @11ty/eleventy --quiet"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "repository": {
     "type": "git",
