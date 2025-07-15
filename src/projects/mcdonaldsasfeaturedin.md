@@ -41,6 +41,8 @@ The project was built on WordPress. We built a custom theme with Advanced Custom
 
 One of the project's standout achievements was its global footprint. With content translated into 105 languages, the site was published in an equal number of countries. This not only showcased McDonald's international influence but also demonstrated the technical prowess of the team.
 
+![iPhone render](/assets/img/MCD-AsFeaturedIn-IphoneTilted.png)
+
 ### Conclusion
 
 "McDonald's As Featured In" might have had a brief run, but its impact was far-reaching. The collaboration between McDonald's and Palace, coupled with the technical finesse of the development team, resulted in a visually appealing, multilingual website that transcended borders.
