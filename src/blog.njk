@@ -7,7 +7,7 @@ permalink: blog/{{ blogpost.slug }}/
 <div class="container__medium">
     <h2 class="page-title">Recent blog posts</h2>
     <ul class="unlist">
-        {%- for post in collections.post -%}
+        {%- for post in collections.post | sortByDateCreated -%}
             <li>
                 {% if image %}
                     <figure>
