@@ -7,8 +7,8 @@ order: 4,
 dateCreated: 2025-03-04
 dateModified: 2025-06-16
 tags: ['project', 'post']
-imageFront: /assets/img/mcdrive-jurij-kenda-OcMKDx5y11A-unsplash.jpg
-featuredImage: /assets/img/mcdrive-jurij-kenda-OcMKDx5y11A-unsplash.jpg
+imageFront: /assets/img/mcd-restaurant-toy.JPG
+featuredImage: /assets/img/mcd-restaurant-toy.JPG
 featuredImageAlt: McDonald's Restaurant Experience
 technologies: ['React', 'TypeScript', 'Redux', 'Git', 'Gradle', 'Tailwind', 'JIRA', 'Figma', 'Node.js', 'Docker', 'MySQL', Rest API]
 jobTitle: Senior Web Developer
@@ -28,6 +28,8 @@ Imagine you walk into a McDonald's—not in New York or LA, but maybe somewhere 
 That's where REX comes in. (Technically it's the “Restaurant Experience” platform. Internally, we sometimes called it RIQ. Either way, same beast.)
 
 And I helped build that.
+
+![McDonald's Restaurant Kiosk](/assets/img/mcd-indoor-kiosk.JPG)
 
 ### The challenge: legacy code, real deadlines, and real people relying on you
 
