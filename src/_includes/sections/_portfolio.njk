@@ -3,21 +3,25 @@
         <h2 class="heading__medium">Selected Projects</h2>
     </header>
 
-        <ul class="portfolio-items unlist">
+        <ul class="portfolio-items unlist container__xs">
             {%- for project in collections.project | sort('data.order') | reverse -%}
                 <li class="portfolio-item">
                     <a href="{{ project.url }}" class="meta-link">
-                    <figure>
-                        <img src="{{ project.data.imageFront }}" alt="{{ project.data.title }}">
-                    </figure>
-                    <h3 class="portfolio-title">{{ project.data.title }}</h3>
-                    <h3 class="job-title">{{ project.data.jobTitle }}</h3>
-                    {%- if project.data.subtitle -%}
-                        <p class="portfolio-subtitle">{{ project.data.subtitle }}</p>
-                    {%- endif -%}
-                    <p class="portfolio-technologies">{{ project.data.technologies | join(', ') }}</p>
-                    <p class="portfolio-date meta">{{ project.data.years }}</p>
-
+                        <figure>
+                            <img src="{{ project.data.imageFront }}" alt="{{ project.data.title }}">
+                        </figure>
+                        <div class="portfolio-content">
+                            <h3 class="job-title">{{ project.data.jobTitle }}</h3>
+                            <p class="portfolio-technologies text__small">{{ project.data.technologies | join(', ') }}</p>
+                            <p class="portfolio-date meta">{{ project.data.years }}</p>
+                            <h4 class="portfolio-title">{{ project.data.title }}</h4>
+                            {%- if project.data.subtitle -%}
+                                <p class="portfolio-subtitle">{{ project.data.subtitle }}</p>
+                            {%- endif -%}
+                            <span class="read-more">
+                                View project <i class="las la-arrow-right"></i>
+                            </span>
+                        </div>
                     </a>
                 </li>
             {%-  endfor -%}
