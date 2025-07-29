@@ -1,44 +1,96 @@
 .blogposts .grid {
     grid-template-columns: repeat(2, 1fr);
 }
-.portfolio-item .meta-link {
-    display: inline-block;
-    text-decoration: none;
+
+.portfolio-items {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5%;
 }
-.portfolio-item a.meta-link:hover {
-    color: aqua;
-    background-color: black;
-    transition: ease-in-out 0.3s;
+.portfolio-items.unlist {
+    margin: auto;
+}
+.portfolio-item {
+    border: 4px solid black;
+}
+.portfolio-item .portfolio-content {
+    padding: 0 2%;
+}
+
+.portfolio-item img {
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+    transition: 200ms ease-in;
+}
+
+.portfolio-item .meta-link {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
 }
 
 .job-title {
     margin: 0px;
+    color: black;
+    font-weight: 600;
 }
 
-.portfolio-item figure {
-    min-height: 65%;
-    display: block;
-}
-@media screen and (max-width: 767px) {
-    .portfolio-item figure {
-        height: unset;
-    }
-}
 .portfolio-item .portfolio-title {
-    /* border-top: 1px solid black; */
-    margin-bottom: 0px;
+    color: black;
+    border-top: 1px solid #eee;
+    margin: 0px;
+    padding-top: 2%;
 }
+
 .portfolio-item .portfolio-subtitle {
     font-weight: 300;
-    margin-bottom: 0px;
+    font-size: 16px;
+    line-height: 1.3;
 }
+
 .portfolio-item .portfolio-technologies {
     margin-top: 0px;
     font-weight: 300;
 }
+
 .portfolio-item .portfolio-date {
     padding-bottom: 20px;
 }
+
 .portfolio-item p:last-child {
     margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.portfolio-item .read-more {
+    display: block;
+    color: black;
+    text-align: right;
+    font-weight: 300;
+    font-size: 14px;
+    padding: 4%;
+}
+
+.portfolio-item a.meta-link:hover {
+    color: white;
+    background-color: black;
+    transition: ease-in-out 0.3s;
+}
+
+.portfolio-item a.meta-link:hover h3.job-title,
+.portfolio-item a.meta-link:hover h4.portfolio-title,
+.portfolio-item a.meta-link:hover span.read-more {
+    color: white;
+}
+
+.portfolio-item a.meta-link:hover img {
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+}
+
+@media screen and (max-width: 767px) {
+    .portfolio-item figure {
+        height: unset;
+    }
 }

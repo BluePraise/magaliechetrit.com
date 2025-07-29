@@ -1,5 +1,5 @@
 ---
-title: ArtezPress - WooCommerce, Storefront Child Theme
+title: ArtezPress - Custom WooCommerce Theme
 subtitle:
 introduction: McDonald's celebrated being featured in movies for decades by introducing a new meal and a new promotion site. I was tasked with developing the site. As an international site, the site supported over 105 languages.
 years: 2023, 2022, 2021, 2020, 2019

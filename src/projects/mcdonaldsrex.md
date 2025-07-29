@@ -11,7 +11,7 @@ imageFront: /assets/img/mcd-restaurant-toy.JPG
 featuredImage: /assets/img/mcd-restaurant-toy.JPG
 featuredImageAlt: McDonald's Restaurant Experience
 technologies: ['React', 'TypeScript', 'Redux', 'Git', 'Gradle', 'Tailwind', 'JIRA', 'Figma', 'Node.js', 'Docker', 'MySQL', Rest API]
-jobTitle: Senior Web Developer
+jobTitle: Senior Front-End Engineer
 ---
 ### Introduction
 <img

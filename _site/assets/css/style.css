@@ -194,7 +194,7 @@ ul.unlist {
 }
 
 .container__xs {
-    max-width: 40vw;
+    max-width: 960px;
 
 }
 .container__medium,
@@ -217,7 +217,7 @@ ul.unlist {
 
 .button__primary {
    color: white;
-   background: blue;
+   background: black;
 }
 .button__primary i {
     margin-left: 10px;
@@ -378,23 +378,6 @@ section + section {
 .portfolio-area {
     border-top: 1px solid #e8e8e8;
     padding-top: 50px;
-}
-
-.portfolio-items {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1% 5%;
-}
-
-.portfolio-item img {
-    -webkit-filter: grayscale(1);
-            filter: grayscale(1);
-    transition: 200ms ease-in;
-}
-
-.portfolio-item img:hover{
-    -webkit-filter: grayscale(0);
-            filter: grayscale(0);
 }
 
 .portfolio-area .buttons {
