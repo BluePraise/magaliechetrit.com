@@ -1,9 +1,10 @@
 # Welcome to my site
+[![Netlify Status](https://api.netlify.com/api/v1/badges/05ee597d-181b-4a9b-a205-799e28bcce29/deploy-status)](https://app.netlify.com/projects/magaliechetrit/deploys)
 
 ## What it is this site built with?
 - [Eleventy.js](https://www.11ty.dev)
 - [Nunjucks](https://github.com/mozilla/nunjucks)
-- A little PHP
+- Netlify
 
 ## About CSS Structure
 Style.css contains the main styles for the site or elements that are used in all pages. The rest of the styles are in the respective pages.
@@ -29,7 +30,7 @@ For Portfolio items sometimes I'd like to add a job title and sometimes I don't.
 ### To-Do
 - [x] convert to eleventy.js
 - [x] add Nunjucks
-- [ ] Add a fixed topbar
+- [x] Add a fixed topbar
 - [ ] replace jquery with vanilla javascript
 - [x] replace bootstrap with my own css
 - [x] use more css vars
@@ -45,11 +46,11 @@ For Portfolio items sometimes I'd like to add a job title and sometimes I don't.
 - [x] Add portfolio section
     - [x] Add ArtEZ Press gif
     - [x] Add McD As Featured In gif
-- [ ] Add skills section
+- [x] Add skills section
 - [x] A11Y
 - [ ] Make all CSS Values scalable to the viewport
 - [x] Better naming convention for `.section-label`. It is being used for a button too.
-- [ ] Update github actions with newer node (see github actions)
+
 
 
 ### Removed Tasks
@@ -58,6 +59,7 @@ For Portfolio items sometimes I'd like to add a job title and sometimes I don't.
 - [ ] Move .table-grid css to frontpage.css
 - [ ] replace Inter with an nicer font
 - [ ] Implement React or Vue.js < we're never using React if we have a choice. >
+- [ ] Update github actions with newer node (see github actions) <moved to Netlify>
 
 ### Some sparkles ✨
 1. I demand great A11Y.
