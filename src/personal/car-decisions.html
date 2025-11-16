@@ -1,0 +1,508 @@
+---
+pagename: personal - car-decisions
+title: "😎 Magalie Chetrit | Web Developer in New Jersey. WordPress, WooCommerce. WebDevelopment."
+permalink: personal/car-decisions/
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Buying Decision Matrix</title>
+    <style>
+        body {
+            /* font-family: Arial, sans-serif; */
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            /* max-width: 1200px; */
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="number"] {
+            text-align: right;
+        }
+
+        .score-cell {
+            background-color: #e8f5e8 !important;
+            font-weight: bold;
+        }
+
+        .total-row {
+            background-color: #4CAF50 !important;
+            color: white;
+            font-weight: bold;
+        }
+
+        .section {
+            margin: 30px 0;
+        }
+
+        .notes {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .highlight {
+            background-color: #ffeb3b !important;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Car Buying Decision Matrix</h1>
+
+        <div class="notes">
+            <strong>Instructions:</strong> Fill in the vehicle information and costs. The scoring system uses 1-5 scale
+            (5 = excellent, 1 = poor).
+            Weights reflect your priorities - adjust them based on what matters most to your family.
+        </div>
+
+        <div class="section">
+            <h2>1. Vehicle Comparison & Scoring</h2>
+            <table id="vehicleTable">
+                <thead>
+                    <tr>
+                        <th>Criteria</th>
+                        <th>Weight (1-5)</th>
+                        <th>Vehicle 1</th>
+                        <th>Score (1-5)</th>
+                        <th>Weighted Score</th>
+                        <th>Vehicle 2</th>
+                        <th>Score (1-5)</th>
+                        <th>Weighted Score</th>
+                        <th>Vehicle 3</th>
+                        <th>Score (1-5)</th>
+                        <th>Weighted Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Vehicle Name</strong></td>
+                        <td>-</td>
+                        <td><input type="text" placeholder="e.g., Honda Pilot"></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td><input type="text" placeholder="e.g., Toyota Highlander"></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td><input type="text" placeholder="e.g., Subaru Ascent"></td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Safety Ratings</td>
+                        <td><input type="number" value="5" min="1" max="5" class="weight" data-row="0"></td>
+                        <td><input type="text" placeholder="IIHS/NHTSA ratings"></td>
+                        <td><input type="number" min="1" max="5" class="score" data-vehicle="0" data-row="0"></td>
+                        <td class="score-cell" id="weighted_0_0">0</td>
+                        <td><input type="text" placeholder="IIHS/NHTSA ratings"></td>
+                        <td><input type="number" min="1" max="5" class="score" data-vehicle="1" data-row="0"></td>
+                        <td class="score-cell" id="weighted_1_0">0</td>
+                        <td><input type="text" placeholder="IIHS/NHTSA ratings"></td>
+                        <td><input type="number" min="1" max="5" class="score" data-vehicle="2" data-row="0"></td>
+                        <td class="score-cell" id="weighted_2_0">0</td>
+                    </tr>
+                    <tr>
+                        <td>Reliability Rating</td>
+                        <td><input type="number" value="5" min="1" max="5" class="weight" data-row="1"></td>
+                        <td><input type="text" placeholder="Consumer Reports score"></td>
+                        <td><input type="number" min="1" max="5" class="score" data-vehicle="0" data-row="1"></td>
+                        <td class="score-cell" id="weighted_0_1">0</td>
+                        <td><input type="text" placeholder="Consumer Reports score"></td>
+                        <td><input type="number" min="1" max="5" class="score" data-vehicle="1" data-row="1"></td>
+                        <td class="score-cell" id="weighted_1_1">0</td>
+                        <td><input type="text" placeholder="Consumer Reports score"></td>
+                        <td><input type="number" min="1" max="5" class="score" data-vehicle="2" data-row="1"></td>
+                        <td class="score-cell" id="weighted_2_1">0</td>
+                    </tr>
+                    <tr>
+                        <td>Cargo Space</td>
+                        <td><input type="number" value="4" min="1" max="5" class="weight" data-row="2"></td>
+                        <td><input type="text" placeholder="Cubic feet"></td>
+                        <td><input type="number" min="1" max="5" class="score" data-vehicle="0" data-row="2"></td>
+                        <td class="score-cell" id="weighted_0_2">0</td>
+                        <td><input type="text" placeholder="Cubic feet"></td>
+                        <td><input type="number" min="1" max="5" class="score" data-vehicle="1" data-row="2"></td>
+                        <td class="score-cell" id="weighted_1_2">0</td>
+                        <td><input type="text" placeholder="Cubic feet"></td>
+                        <td><input type="number" min="1" max="5" class="score" data-vehicle="2" data-row="2"></td>
+                        <td class="score-cell" id="weighted_2_2">0</td>
+                    </tr>
+                    <tr>
+                        <td>AWD System Quality</td>
+                        <td><input type="number" value="4" min="1" max="5" class="weight" data-row="3"></td>
+                        <td><input type="text" placeholder="System type"></td>
+                        <td><input type="number" min="1" max="5" class="score" data-vehicle="0" data-row="3"></td>
+                        <td class="score-cell" id="weighted_0_3">0</td>
+                        <td><input type="text" placeholder="System type"></td>
+                        <td><input type="number" min="1" max="5" class="score" data-vehicle="1" data-row="3"></td>
+                        <td class="score-cell" id="weighted_1_3">0</td>
+                        <td><input type="text" placeholder="System type"></td>
+                        <td><input type="number" min="1" max="5" class="score" data-vehicle="2" data-row="3"></td>
+                        <td class="score-cell" id="weighted_2_3">0</td>
+                    </tr>
+                    <tr>
+                        <td>Fuel Economy</td>
+                        <td><input type="number" value="3" min="1" max="5" class="weight" data-row="4"></td>
+                        <td><input type="text" placeholder="Combined MPG"></td>
+                        <td><input type="number" min="1" max="5" class="score" data-vehicle="0" data-row="4"></td>
+                        <td class="score-cell" id="weighted_0_4">0</td>
+                        <td><input type="text" placeholder="Combined MPG"></td>
+                        <td><input type="number" min="1" max="5" class="score" data-vehicle="1" data-row="4"></td>
+                        <td class="score-cell" id="weighted_1_4">0</td>
+                        <td><input type="text" placeholder="Combined MPG"></td>
+                        <td><input type="number" min="1" max="5" class="score" data-vehicle="2" data-row="4"></td>
+                        <td class="score-cell" id="weighted_2_4">0</td>
+                    </tr>
+                    <tr>
+                        <td>Features/Technology</td>
+                        <td><input type="number" value="2" min="1" max="5" class="weight" data-row="5"></td>
+                        <td><input type="text" placeholder="Key features"></td>
+                        <td><input type="number" min="1" max="5" class="score" data-vehicle="0" data-row="5"></td>
+                        <td class="score-cell" id="weighted_0_5">0</td>
+                        <td><input type="text" placeholder="Key features"></td>
+                        <td><input type="number" min="1" max="5" class="score" data-vehicle="1" data-row="5"></td>
+                        <td class="score-cell" id="weighted_1_5">0</td>
+                        <td><input type="text" placeholder="Key features"></td>
+                        <td><input type="number" min="1" max="5" class="score" data-vehicle="2" data-row="5"></td>
+                        <td class="score-cell" id="weighted_2_5">0</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td><strong>TOTAL SCORE</strong></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td id="total_0">0</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td id="total_1">0</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td id="total_2">0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>2. Financial Comparison</h2>
+            <table id="financialTable">
+                <thead>
+                    <tr>
+                        <th>Cost Factor</th>
+                        <th>Vehicle 1 - Lease</th>
+                        <th>Vehicle 1 - Buy</th>
+                        <th>Vehicle 2 - Lease</th>
+                        <th>Vehicle 2 - Buy</th>
+                        <th>Vehicle 3 - Lease</th>
+                        <th>Vehicle 3 - Buy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monthly Payment</td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="lease" data-vehicle="0"
+                                data-factor="monthly"></td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="buy" data-vehicle="0"
+                                data-factor="monthly"></td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="lease" data-vehicle="1"
+                                data-factor="monthly"></td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="buy" data-vehicle="1"
+                                data-factor="monthly"></td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="lease" data-vehicle="2"
+                                data-factor="monthly"></td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="buy" data-vehicle="2"
+                                data-factor="monthly"></td>
+                    </tr>
+                    <tr>
+                        <td>Down Payment</td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="lease" data-vehicle="0"
+                                data-factor="down"></td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="buy" data-vehicle="0"
+                                data-factor="down"></td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="lease" data-vehicle="1"
+                                data-factor="down"></td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="buy" data-vehicle="1"
+                                data-factor="down"></td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="lease" data-vehicle="2"
+                                data-factor="down"></td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="buy" data-vehicle="2"
+                                data-factor="down"></td>
+                    </tr>
+                    <tr>
+                        <td>Trade-in Value</td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="lease" data-vehicle="0"
+                                data-factor="trade"></td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="buy" data-vehicle="0"
+                                data-factor="trade"></td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="lease" data-vehicle="1"
+                                data-factor="trade"></td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="buy" data-vehicle="1"
+                                data-factor="trade"></td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="lease" data-vehicle="2"
+                                data-factor="trade"></td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="buy" data-vehicle="2"
+                                data-factor="trade"></td>
+                    </tr>
+                    <tr>
+                        <td>Insurance (Monthly)</td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="lease" data-vehicle="0"
+                                data-factor="insurance"></td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="buy" data-vehicle="0"
+                                data-factor="insurance"></td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="lease" data-vehicle="1"
+                                data-factor="insurance"></td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="buy" data-vehicle="1"
+                                data-factor="insurance"></td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="lease" data-vehicle="2"
+                                data-factor="insurance"></td>
+                        <td><input type="number" placeholder="$" class="financial" data-type="buy" data-vehicle="2"
+                                data-factor="insurance"></td>
+                    </tr>
+                    <tr class="highlight">
+                        <td><strong>Total Cost (3 Years)</strong></td>
+                        <td class="score-cell" id="total_cost_lease_0">$0</td>
+                        <td class="score-cell" id="total_cost_buy_0">$0</td>
+                        <td class="score-cell" id="total_cost_lease_1">$0</td>
+                        <td class="score-cell" id="total_cost_buy_1">$0</td>
+                        <td class="score-cell" id="total_cost_lease_2">$0</td>
+                        <td class="score-cell" id="total_cost_buy_2">$0</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td><strong>Total Cost (5 Years)</strong></td>
+                        <td class="score-cell" id="total_cost_5_lease_0">$0</td>
+                        <td class="score-cell" id="total_cost_5_buy_0">$0</td>
+                        <td class="score-cell" id="total_cost_5_lease_1">$0</td>
+                        <td class="score-cell" id="total_cost_5_buy_1">$0</td>
+                        <td class="score-cell" id="total_cost_5_lease_2">$0</td>
+                        <td class="score-cell" id="total_cost_5_buy_2">$0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>3. Decision Summary</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vehicle</th>
+                        <th>Quality Score</th>
+                        <th>Best Financial Option</th>
+                        <th>Monthly Budget Fit</th>
+                        <th>Overall Recommendation</th>
+                    </tr>
+                </thead>
+                <tbody id="summaryTable">
+                    <tr>
+                        <td id="summary_name_0">Vehicle 1</td>
+                        <td id="summary_score_0">-</td>
+                        <td id="summary_financial_0">-</td>
+                        <td id="summary_budget_0">-</td>
+                        <td id="summary_rec_0">-</td>
+                    </tr>
+                    <tr>
+                        <td id="summary_name_1">Vehicle 2</td>
+                        <td id="summary_score_1">-</td>
+                        <td id="summary_financial_1">-</td>
+                        <td id="summary_budget_1">-</td>
+                        <td id="summary_rec_1">-</td>
+                    </tr>
+                    <tr>
+                        <td id="summary_name_2">Vehicle 3</td>
+                        <td id="summary_score_2">-</td>
+                        <td id="summary_financial_2">-</td>
+                        <td id="summary_budget_2">-</td>
+                        <td id="summary_rec_2">-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="notes">
+            <h3>Key Considerations for Your Situation:</h3>
+            <ul>
+                <li><strong>Budget:</strong> $400/month fits well with mid-size SUV financing</li>
+                <li><strong>Reliability Focus:</strong> Since you don't mind keeping a car long-term, buying makes more
+                    financial sense</li>
+                <li><strong>Family Needs:</strong> Prioritize safety ratings and cargo space for kids + dog</li>
+                <li><strong>NJ Weather:</strong> Look for quality AWD systems (Subaru, Audi, etc.)</li>
+                <li><strong>Maintenance:</strong> Factor in post-warranty repair costs for buying decisions</li>
+            </ul>
+        </div>
+
+        <button class="button" onclick="calculateAll()">Calculate All Scores</button>
+        <button class="button" onclick="printResults()">Print Results</button>
+    </div>
+
+    <script>
+        function calculateWeightedScore(weight, score) {
+            return (weight && score) ? weight * score : 0;
+        }
+
+        function updateScores() {
+            // Update weighted scores for each vehicle and criteria
+            for (let vehicle = 0; vehicle < 3; vehicle++) {
+                let totalScore = 0;
+                for (let row = 0; row < 6; row++) {
+                    const weight = document.querySelector(`.weight[data-row="${row}"]`).value || 0;
+                    const score = document.querySelector(`.score[data-vehicle="${vehicle}"][data-row="${row}"]`).value || 0;
+                    const weighted = calculateWeightedScore(weight, score);
+
+                    document.getElementById(`weighted_${vehicle}_${row}`).textContent = weighted;
+                    totalScore += weighted;
+                }
+                document.getElementById(`total_${vehicle}`).textContent = totalScore;
+            }
+        }
+
+        function updateFinancials() {
+            for (let vehicle = 0; vehicle < 3; vehicle++) {
+                // Calculate 3-year costs
+                ['lease', 'buy'].forEach(type => {
+                    const monthly = parseFloat(document.querySelector(`.financial[data-type="${type}"][data-vehicle="${vehicle}"][data-factor="monthly"]`).value) || 0;
+                    const down = parseFloat(document.querySelector(`.financial[data-type="${type}"][data-vehicle="${vehicle}"][data-factor="down"]`).value) || 0;
+                    const trade = parseFloat(document.querySelector(`.financial[data-type="${type}"][data-vehicle="${vehicle}"][data-factor="trade"]`).value) || 0;
+                    const insurance = parseFloat(document.querySelector(`.financial[data-type="${type}"][data-vehicle="${vehicle}"][data-factor="insurance"]`).value) || 0;
+
+                    const total3Year = (monthly * 36) + down - trade + (insurance * 36);
+                    const total5Year = (monthly * 60) + down - trade + (insurance * 60);
+
+                    document.getElementById(`total_cost_${type}_${vehicle}`).textContent = `$${total3Year.toLocaleString()}`;
+                    document.getElementById(`total_cost_5_${type}_${vehicle}`).textContent = `$${total5Year.toLocaleString()}`;
+                });
+            }
+        }
+
+        function updateSummary() {
+            for (let vehicle = 0; vehicle < 3; vehicle++) {
+                // Get vehicle name
+                const nameInput = document.querySelector(`input[type="text"]`);
+                const vehicleInputs = document.querySelectorAll('input[type="text"]');
+                const vehicleName = vehicleInputs[vehicle * 6 + 1] ? vehicleInputs[vehicle * 6 + 1].value || `Vehicle ${vehicle + 1}` : `Vehicle ${vehicle + 1}`;
+
+                // Get quality score
+                const qualityScore = document.getElementById(`total_${vehicle}`).textContent;
+
+                // Determine best financial option
+                const lease3 = parseFloat(document.getElementById(`total_cost_lease_${vehicle}`).textContent.replace(/[$,]/g, '')) || 999999;
+                const buy3 = parseFloat(document.getElementById(`total_cost_buy_${vehicle}`).textContent.replace(/[$,]/g, '')) || 999999;
+                const bestFinancial = lease3 < buy3 ? 'Lease' : 'Buy';
+
+                // Check budget fit
+                const leaseMonthly = parseFloat(document.querySelector(`.financial[data-type="lease"][data-vehicle="${vehicle}"][data-factor="monthly"]`).value) || 0;
+                const buyMonthly = parseFloat(document.querySelector(`.financial[data-type="buy"][data-vehicle="${vehicle}"][data-factor="monthly"]`).value) || 0;
+                const budgetFit = (leaseMonthly <= 400 && buyMonthly <= 400) ? 'Excellent' :
+                    (leaseMonthly <= 400 || buyMonthly <= 400) ? 'Good' : 'Over Budget';
+
+                // Update summary
+                document.getElementById(`summary_name_${vehicle}`).textContent = vehicleName;
+                document.getElementById(`summary_score_${vehicle}`).textContent = qualityScore;
+                document.getElementById(`summary_financial_${vehicle}`).textContent = bestFinancial;
+                document.getElementById(`summary_budget_${vehicle}`).textContent = budgetFit;
+
+                // Overall recommendation
+                const score = parseFloat(qualityScore) || 0;
+                let recommendation = 'Needs Data';
+                if (score > 0 && budgetFit !== 'Over Budget') {
+                    if (score >= 80 && budgetFit === 'Excellent') recommendation = 'Highly Recommended';
+                    else if (score >= 60) recommendation = 'Good Option';
+                    else recommendation = 'Consider Alternatives';
+                }
+                document.getElementById(`summary_rec_${vehicle}`).textContent = recommendation;
+            }
+        }
+
+        function calculateAll() {
+            updateScores();
+            updateFinancials();
+            updateSummary();
+        }
+
+        function printResults() {
+            window.print();
+        }
+
+        // Add event listeners
+        document.addEventListener('input', function (e) {
+            if (e.target.matches('.weight, .score, .financial')) {
+                setTimeout(() => {
+                    updateScores();
+                    updateFinancials();
+                    updateSummary();
+                }, 100);
+            }
+        });
+
+        // Initialize calculations
+        calculateAll();
+    </script>
+</body>
+
+</html>

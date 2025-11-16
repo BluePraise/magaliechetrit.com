@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Claude Taught Me the Magic of Symlinks (And Wrote Me a Script)</title>
+    <meta name="description" content="A Front-End Developer. Wordpress, Woocommerce, SEO, Webdesign and Development.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="front-end developer, front-end, websites, website, website development, react, woocommerce, e-commerce">
+    <meta property="og:title" content="Portfolio website of Magalie Chetrit">
+    <meta property="og:url" content="https://magaliechetrit.com">
+    <meta property="og:description" content="A Portfolio Website of Magalie Chetrit - Front-End Developer">
+    <meta property="og:type" content="website">
+
+    <!-- Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/vendor/animate.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+
+</head>
+
+<body>
+
+
+
+ <header class='main-header container flex'>
+    <div class="left-column">
+        <h1 class='site-title'><a href="/">Magalie Chetrit</a></h1>
+    </div>
+    <a class="button button__highlight call-for-work pulse" href="mailto:email@magaliechetrit.com">
+        Available for hire, let's talk!
+    </a>
+
+    <nav class='social-nav'>
+        <ul class="unlist">
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="https://www.linkedin.com/in/magaliechetrit/"><i class="lab la-linkedin-in"></i></a></li>
+            <li><a href="mailto:email@magaliechetrit.com"><i class="las la-at"></i></a></li>
+            <li><a href="https://github.com/bluepraise"><i class="lab la-github"></i></a></li>
+        </ul>
+    </nav>
+</header>
+
+
+
+<main class="container ">
+    <article class="article-detail container__xs">
+    <a class="back-link text__small" href="/" aria-label="Back to home"><i class="las la-long-arrow-alt-left"></i><span>Back to home</span></a>
+    <header class="article-header">
+        
+        <h2>How Claude Taught Me the Magic of Symlinks (And Wrote Me a Script)</h2>
+        
+        <div class="meta-container">
+            <p class="meta date-posted"><span class="text__small">Date posted: </span><time datetime="Fri, Nov 14, 2025">Fri, Nov 14, 2025</time></p>
+            
+        </div>
+    </header>
+    <section class="article-content">
+        <!-- Use h3 for section titles and h4 for subsection titles within the article -->
+        <p>I'll be honest—before this week, I thought symlinks were some kind of dark wizardry reserved for Linux veterans and people who actually read man pages. Then Claude (yes, the AI) patiently explained them to me, and suddenly my WordPress development workflow got about 300% smoother. Turns out symlinks are just shortcuts on steroids, and they're exactly what I needed to stop copying files back and forth like some kind of digital packrat.</p>
+<p>The problem was simple but annoying: I keep my WordPress projects in a tidy <code>Projects</code> folder with Git repos, but Local by Flywheel expects everything to live in its own special <code>Local Sites</code> folder. So every time I made changes, I'd have to manually sync things, or worse, work directly in the Local folder and forget to commit my changes. Symlinks solved this — they let me work in my Git-tracked project folder while Local thinks the files are right where it wants them. It's like being in two places at once, minus the existential crisis.</p>
+<p>But here's where it gets really good: I didn't just learn about symlinks, I made Claude write me a custom ZSH script that automates the entire setup process. The script — which I charmingly named <code>wplink</code> — asks me three simple questions (project name, theme or plugin, and GitHub repo name), then creates all my folder structure, clones the repo from my GitHub, and sets up the symlink automatically. No more remembering the exact syntax or where everything goes. Just type <code>wplink</code> in your terminal, answer a few questions, and boom💥 — instant workflow magic.</p>
+<p>Claude walked me through exactly how it works, so I actually understand what's happening under the hood. The script creates my project folders, builds the GitHub URL (since I only use one account for client work), clones the repo into the right spot, and then creates a symbolic link between my <code>Projects</code> folder and Local's WordPress installation. It even shows me the exact command before running it, so I can see what's happening and learn as I go. It's like having a really patient senior dev who never gets tired of my questions.</p>
+<p>You can find the script here: <a href="https://gist.github.com/BluePraise/8dcb8b6de4b9aa54f5d3a3c34dc348a7">Gist on Github</a></p>
+<p>Install it in your home folder.</p>
+<hr>
+<h2>WordPress Local Development Symlink Helper</h2>
+<p>A ZSH script that automates the workflow of cloning WordPress themes/plugins from GitHub and symlinking them to Local by Flywheel installations.</p>
+<h3>What It Does</h3>
+<p>This script streamlines your WordPress development workflow by:</p>
+<ol>
+<li>Creating a clean project folder structure</li>
+<li>Cloning your GitHub repository</li>
+<li>Creating symbolic links between your project folder and Local by Flywheel</li>
+</ol>
+<p>No more manually copying files or working directly in Local's folders!</p>
+<h3>Prerequisites</h3>
+<ul>
+<li>macOS or Linux with ZSH shell</li>
+<li><a href="https://localwp.com/">Local by Flywheel</a> installed</li>
+<li>Git configured with SSH access to GitHub</li>
+<li>A GitHub account</li>
+</ul>
+<h3>Installation</h3>
+<ol>
+<li>
+<p>Download the <code>wplink.sh</code> file</p>
+</li>
+<li>
+<p>Open the file and customize these settings:</p>
+<ul>
+<li><strong>Line 13</strong>: Change <code>GITHUB_USERNAME</code> to your GitHub username</li>
+<li><strong>Line 39</strong>: Change <code>~/Projects</code> if you use a different projects folder</li>
+<li><strong>Line 98</strong>: Change <code>~/Local Sites</code> if Local uses a different path</li>
+</ul>
+</li>
+<li>
+<p>Add the script to your <code>.zshrc</code>:</p>
+<pre><code class="language-bash"># Option 1: Source the file
+echo &quot;source ~/path/to/wplink.sh&quot; &gt;&gt; ~/.zshrc
+
+# Option 2: Copy the function directly into ~/.zshrc
+cat wplink.sh &gt;&gt; ~/.zshrc
+</code></pre>
+</li>
+<li>
+<p>Reload your shell:</p>
+<pre><code class="language-bash">source ~/.zshrc
+</code></pre>
+</li>
+</ol>
+<h3>Usage</h3>
+<p>Simply run the command:</p>
+<pre><code class="language-bash">wplink
+</code></pre>
+<p>The script will ask you three questions:</p>
+<ol>
+<li><strong>What is the project name?</strong> - This will be used for both the local folder and the Local by Flywheel site name</li>
+<li><strong>Is this a theme or plugin?</strong> - Choose 1 for theme, 2 for plugin</li>
+<li><strong>What is the name of the repo in GitHub?</strong> - Just the repo name, not the full URL</li>
+</ol>
+<h4>Example</h4>
+<pre><code class="language-bash">wplink
+
+🔗 WordPress Project Symlink Helper
+==================================
+
+What is the project name?
+&gt; my-awesome-site
+
+📁 Creating project folder: /Users/you/Projects/my-awesome-site
+
+Is this:
+  1. A theme
+  2. A plugin
+&gt; 1
+
+📁 Creating theme folder: /Users/you/Projects/my-awesome-site/theme
+
+What is the name of the repo in GitHub?
+&gt; my-theme
+
+📦 Cloning repository from: git@github.com:your-username/my-theme.git
+...
+✅ Repository cloned successfully!
+
+📋 This command will be executed:
+   ln -s &quot;/Users/you/Projects/my-awesome-site/theme/my-theme&quot; &quot;/Users/you/Local Sites/my-awesome-site/app/public/wp-content/themes/my-theme&quot;
+
+✅ Create this symlink? (y/n)
+&gt; y
+
+✨ Symlink created successfully!
+</code></pre>
+<h3>Folder Structure</h3>
+<p>After running the script, your folder structure will look like this:</p>
+<pre><code>~/Projects/
+  └── my-awesome-site/
+      └── theme/  (or plugin/)
+          └── my-theme/  (cloned from GitHub)
+
+~/Local Sites/
+  └── my-awesome-site/
+      └── app/
+          └── public/
+              └── wp-content/
+                  └── themes/  (or plugins/)
+                      └── my-theme/  (symlinked to ~/Projects)
+</code></pre>
+<h3>How to Check if Symlink Worked</h3>
+<p>Run this command to see if the symlink was created:</p>
+<pre><code class="language-bash">ls -la ~/Local\ Sites/[your-project]/app/public/wp-content/themes/
+</code></pre>
+<p>You should see an arrow (<code>-&gt;</code>) pointing to your Projects folder:</p>
+<pre><code>my-theme -&gt; /Users/you/Projects/my-awesome-site/theme/my-theme
+</code></pre>
+<h3>Benefits</h3>
+<ul>
+<li>Work in your Git-tracked project folder while Local thinks files are in its own folder</li>
+<li>No more manual file copying or syncing</li>
+<li>Clean separation between source code and Local installations</li>
+<li>Easy to track changes and commit to Git</li>
+</ul>
+<h3>Troubleshooting</h3>
+<p><strong>The repo failed to clone:</strong></p>
+<ul>
+<li>Make sure your SSH key is added to GitHub</li>
+<li>Verify the repo name is correct</li>
+<li>Check that you have access to the repository</li>
+</ul>
+<p><strong>The symlink failed:</strong></p>
+<ul>
+<li>Ensure the Local by Flywheel site exists and matches the project name exactly</li>
+<li>Check that you have write permissions in the Local Sites folder</li>
+</ul>
+<p><strong>&quot;Command not found&quot; when running wplink:</strong></p>
+<ul>
+<li>Make sure you've sourced your <code>.zshrc</code>: <code>source ~/.zshrc</code></li>
+<li>Verify the function was added correctly to <code>.zshrc</code></li>
+</ul>
+<h3>Credits</h3>
+<p>Created with help from Claude (Anthropic) during a conversation about improving WordPress development workflows.</p>
+<h3>License</h3>
+<p>Feel free to use, modify, and share!</p>
+
+    </section>
+    
+</article>
+
+</main>
+
+
+    <footer>
+        <div class="container__medium flex">
+            <div class="left-column">
+                <h3 class="site-title"><a href="/">Magalie Chetrit</a></h3>
+                <p>Last updated: Tue, Jul 29, 2025 (commit: bcce60a)</p>
+            </div>
+
+             <nav class='social-nav'>
+                <ul class="unlist">
+                    <li><a href="https://www.linkedin.com/in/magaliechetrit/"><i class="lab la-linkedin-in"></i></a></li>
+                    <li><a href="mailto:email@magaliechetrit.com"><i class="las la-at"></i></a></li>
+                    <li><a href="https://github.com/bluepraise"><i class="lab la-github"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="container__medium bottom-bar">
+            <p>© Magalie Chetrit 2025. All Rights Reserved. </p>
+        </div>
+    </footer>
+    <script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>
+
+</body>
+
+</html>
