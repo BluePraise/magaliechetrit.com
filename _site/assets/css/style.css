@@ -285,14 +285,15 @@ select:focus {
 
 /* HEADER and NAV */
 .main-header {
-    justify-content: space-between;
-    align-items: center;
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
     margin-top: 0;
     margin-bottom: 50px;
-    padding: 20px;
-    border-bottom: 1px solid #eee;
+    padding: 0 20px;
+    border-bottom: 2px solid #FF13F0;
     width: 100%;
     position: fixed;
     top: 0px;
@@ -302,10 +303,15 @@ select:focus {
 }
 
 .main-header h1.site-title {
+    display: block;
     font-family: var(--header-font);
     font-size: 1.9rem;
+    line-height: 1;
     margin: 0;
     font-weight: 900;
+    border-top: 1px solid #FF13F0;
+    border-bottom: 1px solid #FF13F0;
+    padding: 5px 0;
 }
 .main-header h1.site-title a {
     text-decoration: none;
@@ -322,7 +328,7 @@ nav.social-nav ul.unlist li a {
     padding: 4px 8px;
     display: block;
     transition: 1s;
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: 0.4px;
 }
 
@@ -330,7 +336,8 @@ nav.social-nav ul.unlist li a:hover {
     background-color: #eee;
 }
 .digitalclock {
-    margin-top: 0px;
+    margin: 0px;
+    color:#000;
 }
 
 .dash {
@@ -357,6 +364,10 @@ nav.social-nav ul.unlist li a:hover {
 .hero {
     margin: 0 auto;
     max-width: 80vw;
+}
+
+.hero h2 {
+    margin-block-start: 0;
 }
 .hero .grid {
     grid-template-columns: 1fr 1fr;
