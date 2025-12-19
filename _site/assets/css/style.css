@@ -322,6 +322,8 @@ nav.social-nav ul.unlist li a {
     padding: 4px 8px;
     display: block;
     transition: 1s;
+    font-size: 20px;
+    letter-spacing: 0.4px;
 }
 
 nav.social-nav ul.unlist li a:hover {
