@@ -307,10 +307,14 @@ select:focus {
     margin: 0;
     font-weight: 900;
 }
+.main-header h1.site-title a {
+    text-decoration: none;
+    color: #FF13F0;
+}
 
 nav.social-nav ul.unlist li {
     display: inline-block;
-    border: 1px solid #eee;
+    /* border: 2px solid var(--color-gray); */
     border-radius: 3px;
 }
 
@@ -408,7 +412,7 @@ nav.social-nav ul.unlist li a:hover {
             animation: bounceLoader 500ms alternate infinite ease;
 }
 section + section {
-    border-top: 1px solid #e8e8e8;
+    border-top: 2px solid #FF13F0;
     margin-top: var(--section-spacing-desktop);
     margin-bottom: var(--element-spacing);
     padding: 0 10px;
@@ -605,6 +609,42 @@ footer .flex {
     border-bottom: 1px solid #cdcdcd;
     padding-bottom: 0.5rem;
     margin-bottom: 0.5rem;
+}
+
+/*A custom cursor: A neon pink rounded dot that blinks */
+.custom-cursor {
+    width: 35px;
+    height: 35px;
+    opacity: 0.7;
+    background-color: #FF13F0;
+    position: absolute;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    /* animation: blink 1.5s infinite; */
+}
+.custom-cursor-inner {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    left: 25%;
+    animation: bounceLoader 2s infinite;
+}
+/* // on click the cursor expands and then shrinks back to normal size*/
+.custom-cursor-expand {
+    animation: cursorExpand 0.5s forwards;
+}
+@keyframes cursorExpand {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(2);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
 
 /* Credit - Eleventy site*/

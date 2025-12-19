@@ -9,6 +9,26 @@ $(function () {
 
 
 document.addEventListener("DOMContentLoaded", (event) => {
+    // A custom cursor that follows the user's mouse movements.
+    // A rounded dot that follows the mouse, upon moving the mouse's movement leaves a trail.
+    const cursor = document.createElement('div');
+    cursor.classList.add('custom-cursor');
+    document.body.appendChild(cursor);
+
+    const cursorInner = document.createElement('div');
+    cursorInner.classList.add('custom-cursor-inner');
+    cursor.appendChild(cursorInner);
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.pageX + 'px';
+        cursor.style.top = e.pageY + 'px';
+    });
+    // on click the cursor expands and then shrinks back to normal size
+    document.addEventListener('click', () => {
+        cursor.classList.add('custom-cursor-expand');
+        setTimeout(() => {
+            cursor.classList.remove('custom-cursor-expand');
+        }, 300);
+    });
 
     // A custom digital clock that shows the current time in the user's locale format.
     function updateClock() {
