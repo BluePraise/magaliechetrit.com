@@ -37,19 +37,20 @@
  
 
  <header class='main-header container flex'>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <div class="left-column">
         <h1 class='site-title'><a href="/">Magalie Chetrit</a></h1>
+        <p class="digitalclock text__small">The time in New Jersey is <span class="js-digital-clock"></span></p>
+    
     </div>
-    <a class="button button__highlight call-for-work pulse" href="mailto:email@magaliechetrit.com">
-        Available for hire, let's talk!
-    </a>
-
-    <nav class='social-nav'>
+    <nav class='social-nav' aria-label="Main navigation">
         <ul class="unlist">
+            <li><a href="#techstack">My techstack</a></li>
+            <li><a href="#nownownow">NowNowNow</a></li>
             <li><a href="/blog">Blog</a></li>
-            <li><a href="https://www.linkedin.com/in/magaliechetrit/"><i class="lab la-linkedin-in"></i></a></li>
-            <li><a href="mailto:email@magaliechetrit.com"><i class="las la-at"></i></a></li>
-            <li><a href="https://github.com/bluepraise"><i class="lab la-github"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/magaliechetrit/" aria-label="LinkedIn profile"><i class="lab la-linkedin-in"></i></a></li>
+            <li><a href="mailto:magaliechetrit+website@gmail.com" aria-label="Email contact"><i class="las la-at"></i></a></li>
+            <li><a href="https://github.com/bluepraise" aria-label="GitHub profile"><i class="lab la-github"></i></a></li>
         </ul>
     </nav>
 </header>
@@ -58,11 +59,11 @@
     <link rel="stylesheet" href="./assets/css/site/frontpage.css">
 
 
-<main class="container frontpage">
+<main id="main-content" class="container frontpage">
     <section class="hero">
 <div class="grid">
     <div class="column-1-2">
-        <img src="/assets/img/me-2024.jpeg" alt="Magalie Chetrit" class="hero-image">
+        <img src="/assets/img/me-2024.jpeg" alt="Portrait photo of Magalie Chetrit" class="hero-image">
     </div>
     <div class="column-2-2">
             <h2 class="heading__medium">I'm Magalie, a web developer.</h2>
@@ -75,7 +76,8 @@
             I also worked on TopGear, NewScientist, I have helped developers at Intel Corp with their proprietary software, I've worked with SAP's Hybris. My experiences range from large to small projects, dealing with over millions monthly pageviews, A11y, SEO and projectmanagement.
             <br>
             </p>
-            <a href="https://www.linkedin.com/in/magaliechetrit/" aria-label="Visit my LinkedIn profile">LinkedIn</a> — email@magaliechetrit.com
+            <a href="https://www.linkedin.com/in/magaliechetrit/" aria-label="Visit my LinkedIn profile">LinkedIn</a> — magaliechetrit [at] gmail.com
+            <a href="#nownownow" class="block">See my current projects</a>
             <br>
     </div>
 </div>
@@ -174,9 +176,44 @@
 	</div>
 </section>
 
+<section class="projects" id="nownownow">
+<h2>NowNowNow</h2>
+    <div class="container__xs">
+
+    <span class="text__small">Last updated: December 2025</span>
+    <p>This is a list of what I am doing right now. What I am working on, what I am focusing on. I took my inspiration from <a href="https://nownownow.com/">nownownow.com</a> to create this section.
+    And also: <a href="https://herman.bearblog.dev/now/">Herman.</a>
+    Below you will find some the projects I have recently closed.</p>
+    <h3>Current projects.</h3>
+    <p>What I am working on right now:</p>
+    <ul>
+        <li><a href="https://maggiematters.com">maggiematters.com</a> - A personal project. Documentation of my life with cancer. I'm experimenting with Google Analytics, WordPress Theme TwentyTwentyFive and technical SEO.</li>
+        <li><a href="#">ErikKorte.nl</a> - Refactoring and rebuilding a WordPress site for a Dutch funeral home. Including a custom plugin for creating and managing condolances.</li>
+        <li><a href="https://farbest.com">farbest.com</a> - A custom plugin to filter ingredients.</li>
+        <li><a href="https://haymumford.com">haymumford.com</a> - Webhosting, DevOps and Maintenance.</li>
+        <li><a href="https://navesink.digital">navesink.digital</a> - A personal project - helping individuals and businesses organize their digital life.</li>
+        <li><a href="https://navesinkwebsolutions.com">navesinkwebsolutions.com</a> - Owner of a small digital agency in New Jersey.</li>
+    </ul>
+    <h3>Courses, Books, Volunteering.</h3>
+    <ul>
+        <li><a href="https://tnbcthrivers.org">TNBCThrivers</a> - Volunteering as moderator for Metastatic TNBC Chats and community support.</li>
+        <li><a href="https://wordpress.org">Volunteering with WordPress Core</a> I volunteer 4 - 8 hours a week to WordPress's Accessibility, Docs and CSS team.</a> I help with bug scrubs, documentation, join meetings.<a href="https://profiles.wordpress.org/magaliechetrit/">My WP profile</a></li>
+        <li><a href="https://www.coursera.org/learn/fundamentals-of-building-ai-agents">Course: Fundamentals of Building AI Agents</a></li>
+    </ul>
+    <h3>Previously closed projects.</h3>
+    <ul>
+        <li><a href="https://happymeal.com">happymeal.com</a> - developing and guiding migration to a WordPress project that supports a 100+ locales</li>
+        <li><a href="/projects/mcdonaldsasfeaturedin/">mcdonaldsasfeaturedin.com</a> - A shortlived campaign for McDonald's in WordPress, WPML, Timber and ACF</li>
+        <li><a href="/projects/artezpress/">ArtEZPress Shop</a> - A custom theme I built in WooCommerce with custom API connection to a WMS</li>
+        <li><a href="https://modem.work">Modem.Work</a> - A portfolio for MIT Architects built in Kirby CMS. </li>
+        <li><a href="https://topgear.com">TopGear.com</a> - WordPress Theme Development and Supports</li>
+    </ul>
+    <p>...and more work can be found in <a href="https://www.linkedin.com/in/magaliechetrit/">my resume or my linkedin.</a></p>
+    </div>
+</section>
 <section class="portfolio-area" id="projects">
     <header class="section-header">
-        <h2 class="heading__medium">Selected Projects</h2>
+        <h2 class="heading__medium">Highlighted Projects</h2>
     </header>
 
         <ul class="portfolio-items unlist container__xs"><li class="portfolio-item">
@@ -279,15 +316,15 @@
     <footer>
         <div class="container__medium flex">
             <div class="left-column">
-                <h3 class="site-title"><a href="/">Magalie Chetrit</a></h3>
-                <p>Last updated: Sat, Nov 15, 2025 (commit: ea03877)</p>
+                <div class="site-title"><a href="/">Magalie Chetrit</a></div>
+                <p>Last updated: Sat, Nov 15, 2025 (commit: 804061a)</p>
             </div>
 
-             <nav class='social-nav'>
+             <nav class='social-nav' aria-label="Social media links">
                 <ul class="unlist">
-                    <li><a href="https://www.linkedin.com/in/magaliechetrit/"><i class="lab la-linkedin-in"></i></a></li>
-                    <li><a href="mailto:email@magaliechetrit.com"><i class="las la-at"></i></a></li>
-                    <li><a href="https://github.com/bluepraise"><i class="lab la-github"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/magaliechetrit/" aria-label="LinkedIn profile"><i class="lab la-linkedin-in"></i></a></li>
+                    <li><a href="mailto:email@magaliechetrit.com" aria-label="Email contact"><i class="las la-at"></i></a></li>
+                    <li><a href="https://github.com/bluepraise" aria-label="GitHub profile"><i class="lab la-github"></i></a></li>
                 </ul>
             </nav>
         </div>

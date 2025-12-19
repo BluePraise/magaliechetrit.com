@@ -42,7 +42,7 @@
 
 /* 1. BASE */
 body {
-    /* background-color: #ecfff4; */
+    background-color: #e7e7e7;
     /* color: blue; */
     line-height: var(--base-line-height);
     font-weight: var(--base-font-weight);
@@ -116,6 +116,16 @@ h3 {
 h3 + h3 {
     margin-top: 0px;
 }
+.heading__small {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+    color: var(--color-gray);
+    border-bottom: 1px solid var(--color-gray);
+    padding-bottom: 5px;
+}
 
 .link__small,
 .text__small {
@@ -159,6 +169,28 @@ main.container.project-detail {
             animation: blink 1s infinite;
 }
 
+/* Skip link */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.skip-link:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 10px;
+    padding: 10px;
+    background: var(--primary-color);
+    color: white;
+    z-index: 1000;
+    text-decoration: none;
+    border-radius: 3px;
+}
 
 /* LAYOUT */
 .sticky {
@@ -230,6 +262,16 @@ ul.unlist {
     margin-left: 10px;
 }
 
+/* Focus styles for better keyboard navigation */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 3px solid var(--a11y-color);
+    outline-offset: 2px;
+}
+
 .button__highlight {
     font-size: 1.2rem;
     text-decoration: none;
@@ -281,7 +323,9 @@ nav.social-nav ul.unlist li a {
 nav.social-nav ul.unlist li a:hover {
     background-color: #eee;
 }
-
+.digitalclock {
+    margin-top: 0px;
+}
 
 .dash {
     margin: 80px 0;
@@ -525,10 +569,12 @@ footer {
     background-color: black;
     color: white;
 }
-footer h3 {
+footer h3,
+footer .site-title {
     margin-top: 0;
 }
-footer h3 a {
+footer h3 a,
+footer .site-title a {
     color: white;
     font-weight: 900;
 }
@@ -546,6 +592,19 @@ footer nav.social-nav ul.unlist li a {
 
 footer .flex {
     justify-content: space-between;
+}
+
+/* Tech Stack Grid */
+.tech-stack__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.tech-stack__item {
+    border-bottom: 1px solid #cdcdcd;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 /* Credit - Eleventy site*/
@@ -670,7 +729,18 @@ footer .flex {
             animation-delay: 750ms;
 }
 
+/* Tablet / iPad */
+@media screen and (max-width: 1024px) {
+    .tech-stack__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media screen and (max-width: 767px) {
+    .tech-stack__grid {
+        grid-template-columns: 1fr;
+    }
+
     .hero .grid {
         display: block;
     }

@@ -9,24 +9,23 @@ $(function () {
 
 
 document.addEventListener("DOMContentLoaded", (event) => {
-    function startTime() {
-        const today = new Date();
-        let h = today.getHours();
-        let m = today.getMinutes();
-        let s = today.getSeconds();
-        m = checkTime(m);
-        s = checkTime(s);
-        document.querySelector('.clock').innerHTML = h + ":" + m + ":" + s;
-        setTimeout(startTime, 1000);
-    }
 
-    function checkTime(i) {
-        if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
-        return i;
+    // A custom digital clock that shows the current time in the user's locale format.
+    function updateClock() {
+        const clockElement = document.getElementsByClassName('js-digital-clock')[0];
+        if (clockElement) {
+            const now = new Date();
+            clockElement.textContent = now.toLocaleTimeString(undefined, {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+        }
     }
-    // startTime();
-
-    // on click toggle the class on an element
+    // Update the clock every second
+    setInterval(updateClock, 1000);
+    // Initial call to display the clock immediately on page load
+    updateClock();
 
 });
 
