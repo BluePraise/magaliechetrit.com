@@ -309,8 +309,6 @@ select:focus {
     line-height: 1;
     margin: 0;
     font-weight: 900;
-    border-top: 1px solid #FF13F0;
-    border-bottom: 1px solid #FF13F0;
     padding: 5px 0;
 }
 .main-header h1.site-title a {
@@ -337,7 +335,7 @@ nav.social-nav ul.unlist li a:hover {
 }
 .digitalclock {
     margin: 0px;
-    color:#000;
+    color: var(--color-gray-mid);
 }
 
 .dash {
