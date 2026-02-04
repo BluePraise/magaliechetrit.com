@@ -35,14 +35,19 @@ document.addEventListener("DOMContentLoaded", () => {
 */
 const readMore = document.querySelector('.js-read-more');
 if (readMore) {
+    const heroMore = document.querySelector('#hero-more') || document.querySelector('.hero-more');
+
+    const setExpandedState = (isExpanded) => {
+        readMore.setAttribute('aria-expanded', String(isExpanded));
+        readMore.textContent = isExpanded ? 'Read less' : 'Read more';
+        if (heroMore) heroMore.hidden = !isExpanded;
+    };
+
+    setExpandedState(false);
+
     readMore.addEventListener('click', function () {
-        readMore.classList.remove('block');
-        readMore.classList.add('hide');
-        if (document.querySelector('.hero-more').classList.contains('hide')) {
-            document.querySelector('.hero-more').classList.remove('hide');
-            document.querySelector('.hero-more').classList.add('block');
-            return;
-        }
+        const isExpanded = readMore.getAttribute('aria-expanded') === 'true';
+        setExpandedState(!isExpanded);
     });
 }
 
@@ -52,6 +57,11 @@ if (readMore) {
 */
 const heroImage = document.querySelector('.hero-image');
 if (heroImage) {
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+        heroImage.style.filter = '';
+        heroImage.style.opacity = '';
+    } else {
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             // Calculate the grayscale and opacity values based on the intersection ratio
@@ -66,38 +76,122 @@ if (heroImage) {
     });
 
     observer.observe(heroImage);
+    }
 }
 
 // Lightbox-style modal for .content-image
-const contentImage = document.querySelector('.content-image');
-if (contentImage) {
-    contentImage.addEventListener('click', function () {
+const contentImages = document.querySelectorAll('img.content-image');
+if (contentImages.length) {
+    const openLightbox = (triggerImage) => {
+        const previousActiveElement = document.activeElement;
+        const previousBodyOverflow = document.body.style.overflow;
+
         const modal = document.createElement('div');
         modal.classList.add('lightbox-overlay');
+        modal.setAttribute('role', 'dialog');
+        modal.setAttribute('aria-modal', 'true');
+        modal.setAttribute('aria-label', 'Image lightbox');
+
+        const captionText = triggerImage.alt || 'Image';
+        const captionId = 'lightbox-caption';
+        modal.setAttribute('aria-describedby', captionId);
+
         modal.innerHTML = `
             <div class="lightbox-content">
-                <button class="lightbox-close" aria-label="Close lightbox">×</button>
-                <img src="${contentImage.src}" alt="${contentImage.alt}" />
-                <figcaption class="lightbox-caption">${contentImage.alt || 'Image'}</figcaption>
+                <button type="button" class="lightbox-close" aria-label="Close lightbox">×</button>
+                <img src="${triggerImage.currentSrc || triggerImage.src}" alt="${triggerImage.alt}" />
+                <figcaption id="${captionId}" class="lightbox-caption">${captionText}</figcaption>
             </div>
         `;
+
         document.body.appendChild(modal);
+        document.body.style.overflow = 'hidden';
 
-        function closeModal() {
+        const inertTargets = [document.querySelector('header'), document.querySelector('main'), document.querySelector('footer')]
+            .filter(Boolean);
+        inertTargets.forEach((el) => {
+            el.setAttribute('aria-hidden', 'true');
+            el.inert = true;
+        });
+
+        const closeButton = modal.querySelector('.lightbox-close');
+
+        const getFocusableElements = () => {
+            const focusableSelector = [
+                'a[href]',
+                'button:not([disabled])',
+                'input:not([disabled])',
+                'select:not([disabled])',
+                'textarea:not([disabled])',
+                '[tabindex]:not([tabindex="-1"])'
+            ].join(',');
+            return Array.from(modal.querySelectorAll(focusableSelector))
+                .filter((el) => !el.hasAttribute('disabled') && el.offsetParent !== null);
+        };
+
+        const closeModal = () => {
+            document.removeEventListener('keydown', keydownListener, true);
             modal.remove();
-            document.removeEventListener('keydown', escListener);
-        }
 
-        modal.querySelector('.lightbox-close').addEventListener('click', closeModal);
-        modal.addEventListener('click', function (e) {
+            inertTargets.forEach((el) => {
+                el.removeAttribute('aria-hidden');
+                el.inert = false;
+            });
+
+            document.body.style.overflow = previousBodyOverflow;
+
+            if (previousActiveElement && previousActiveElement.focus) {
+                previousActiveElement.focus();
+            } else if (triggerImage && triggerImage.focus) {
+                triggerImage.focus();
+            }
+        };
+
+        const keydownListener = (event) => {
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                closeModal();
+                return;
+            }
+
+            if (event.key !== 'Tab') return;
+
+            const focusable = getFocusableElements();
+            if (!focusable.length) return;
+
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
+            }
+        };
+
+        closeButton.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModal();
         });
 
-        function escListener(event) {
-            if (event.key === 'Escape') closeModal();
-        }
+        document.addEventListener('keydown', keydownListener, true);
+        closeButton.focus();
+    };
 
-        document.addEventListener('keydown', escListener);
+    contentImages.forEach((img) => {
+        img.setAttribute('tabindex', '0');
+        img.setAttribute('role', 'button');
+        img.setAttribute('aria-label', `Open image in lightbox: ${img.alt || 'Image'}`);
+
+        img.addEventListener('click', () => openLightbox(img));
+        img.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                openLightbox(img);
+            }
+        });
     });
 }
 // References and sources:

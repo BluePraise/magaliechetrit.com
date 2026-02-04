@@ -132,9 +132,19 @@ h3 + h3 {
     color: var(--color-gray);
 }
 
-a.link__small {
+.link__small {
     cursor: pointer;
     letter-spacing: 4px;
+}
+
+button.link__small {
+    -webkit-appearance: none;
+    appearance: none;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
 }
 
 .highlight {
@@ -267,6 +277,11 @@ textarea:focus,
 select:focus {
     outline: 3px solid var(--a11y-color);
     outline-offset: 2px;
+}
+
+img.content-image:focus {
+    outline: 3px solid var(--a11y-color);
+    outline-offset: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {
