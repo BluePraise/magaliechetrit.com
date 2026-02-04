@@ -21,9 +21,9 @@
     /* --primary-color: #28e98c; */
     --primary-color: aqua;
     --highlight-color: rgba(40, 233, 140, 1);
-    --a11y-color: #009950;
-    --color-gray: #999999;
-    --color-gray-mid: #666666;
+    --a11y-color: #00B8B8;
+    --color-gray: #767676;
+    --color-gray-mid: #595959;
     --color-gray-dark: #1f1f1f;
     --text-color: var(--color-gray);
     --scroll-padding: 40px;
@@ -185,7 +185,7 @@ main.container.project-detail {
     height: auto;
     margin: 10px;
     padding: 10px;
-    background: var(--primary-color);
+    background: var(--a11y-color);
     color: white;
     z-index: 1000;
     text-decoration: none;
@@ -270,6 +270,25 @@ textarea:focus,
 select:focus {
     outline: 3px solid var(--a11y-color);
     outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    body {
+        scroll-behavior: auto;
+    }
+
+    .custom-cursor {
+        display: none;
+    }
 }
 
 .button__highlight {
