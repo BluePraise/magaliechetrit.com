@@ -18,10 +18,8 @@
 
 /* 0. CSS VARS */
 :root {
-    /* --primary-color: #28e98c; */
-    --primary-color: aqua;
-    --highlight-color: rgba(40, 233, 140, 1);
-    --a11y-color: #00B8B8;
+    --highlight-color: #007272;
+    --a11y-color: #007272;
     --color-gray: #767676;
     --color-gray-mid: #595959;
     --color-gray-dark: #1f1f1f;
