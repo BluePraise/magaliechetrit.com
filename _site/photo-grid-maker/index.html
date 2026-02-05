@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tips for privacy on the web</title>
+    <title>Photo Grid Maker</title>
     <meta name="description" content="A Front-End Developer. Wordpress, Woocommerce, SEO, Webdesign and Development.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="front-end developer, front-end, websites, website, website development, react, woocommerce, e-commerce">
@@ -66,50 +66,23 @@
 
 
 <main id="main-content" class="container ">
-    <article class="article-detail container__xs">
-    <a class="back-link text__small" href="/" aria-label="Back to home"><i class="las la-long-arrow-alt-left"></i><span>Back to home</span></a>
-    <header class="article-header">
-        
-        <h2>Tips for privacy on the web</h2>
-        
-        <div class="meta-container">
-            <p class="meta date-posted"><span class="text__small">Date posted: </span><time datetime="Fri, Apr 26, 2024">Fri, Apr 26, 2024</time></p>
+    <link rel="stylesheet" href="./assets/css/site/photo-grid-maker.css">
+<script src="./assets/js/photo-grid-maker.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<div class="container__xs">
+    <h2 class="heading__large">Photo Grid Maker</h2>
+    <p class="subtitle">Create print-ready 4×6 photo grids. Portrait photos go in 2×2 grids, landscape in 2×1 stacks. Download as PDF. This project was developed so I could easily create and print photo grids for my personal use. I use a <a href="https://amzn.to/3M8dACE" alt="Affiliate Amazon link to Liene Photo Printer">Liene Photo Printer.</a></p>
+    <div class="photo-grid-maker-app">
+        <div class="drop-zone" id="drop-zone">
+            <p>Drag & drop your photos here</p>
+            <p>or <span class="browse">browse files</span></p>
+                <label for="file-input" class="button button--primary">Select Photos</label>
+                <input type="file" id="file-input" multiple hidden accept="image/*">
+            </div>
             
-        </div>
-    </header>
-    <section class="article-content">
-        <!-- Use h3 for section titles and h4 for subsection titles within the article -->
-        <h3>Protect your identity online.</h3>
-<p><a href="https://mysudo.com/">MySudo</a>
-Create a private &quot;Sudo&quot;: phone, handle, email, and card.</p>
-<h3>How to read this article.</h3>
-<p>I've noticed that I have a lot to explain about each topic. I will write a separate article for each topic. This article will be a summary of all the topics I will cover in the future. I will link to the articles as soon as they are published. I will also update this article with the links to the articles.</p>
-<h3>How does a site get hacked?</h3>
-<p>I don't know exactly. There are a lot of reasons why a site can get hacked. Just know that it can happen to anyone. Even if you are careful, it can still happen. Companies don't always have the means to protect their online store. Sometimes they don't have the budget for it and sometimes they don't have the knowledge. As soon as a user submits their personal information, it can be stolen. This is why it is important to be careful with your personal information. Below are some tips to help you protect your personal information.</p>
-<h3>Table of contents:</h3>
-<h4><a href="">Use a privacy-focused email provider.</a></h4>
-<h4><a href="">Use an e-mail alias generator</a></h4>
-<h4>[]</h4>
-<h4><a href="">Use a password manager.</a></h4>
-<h4><a href="">Use a VPN.</a></h4>
-<h4><a href="">Use a privacy-focused browser.</a></h4>
-<h4><a href="">Use a privacy-focused search engine.</a></h4>
-<h4><a href="">Use a privacy-focused messaging app.</a></h4>
-<h4><a href="">Privacy on your devices: iOS.</a></h4>
-<h2>Use a privacy-focused email provider.</h2>
-<p>Protonmail or Tutanota are privacy-focused email providers. Gmail, Yahoo, and Outlook are not privacy-focused email providers. They scan your emails for advertising purposes. Instead, use a privacy-focused email provider like ProtonMail or Tutanota. These providers are free like Gmail, offer end-to-end encryption and do not scan your emails. They also do not require personal information to sign up. If you need more features, you can upgrade to a paid plan.</p>
-<p>I use my protonmail email account for my personal email or any shopping. I have a hard time knowing I am being tracked by companies.</p>
-<h3>Use a password manager.</h3>
-<h3>Use a VPN.</h3>
-<h3>Use a privacy-focused browser.</h3>
-<h3>Use a privacy-focused search engine.</h3>
-<h3>Use a privacy-focused messaging app.</h3>
-<h3>Privacy on your devices: iOS.</h3>
-
-    </section>
-    
-</article>
-
+        <div id="photo-grid-preview" class="photo-grid-preview"></div>
+    </div>
+</div>
 </main>
 
 

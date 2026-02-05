@@ -1,0 +1,21 @@
+---
+layout: base.njk
+title: Photo Grid Maker
+---
+<link rel="stylesheet" href="./assets/css/site/photo-grid-maker.css">
+<script src="./assets/js/photo-grid-maker.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<div class="container__xs">
+    <h2 class="heading__large">Photo Grid Maker</h2>
+    <p class="subtitle">Create print-ready 4×6 photo grids. Portrait photos go in 2×2 grids, landscape in 2×1 stacks. Download as PDF. This project was developed so I could easily create and print photo grids for my personal use. I use a <a href="https://amzn.to/3M8dACE" alt="Affiliate Amazon link to Liene Photo Printer">Liene Photo Printer.</a></p>
+    <div class="photo-grid-maker-app">
+        <div class="drop-zone" id="drop-zone">
+            <p>Drag & drop your photos here</p>
+            <p>or <span class="browse">browse files</span></p>
+                <label for="file-input" class="button button--primary">Select Photos</label>
+                <input type="file" id="file-input" multiple hidden accept="image/*">
+            </div>
+            {# <button type="button" id="generate-pdf-button" class="button button--secondary" disabled>Generate PDF</button> #}
+        <div id="photo-grid-preview" class="photo-grid-preview"></div>
+    </div>
+</div>
