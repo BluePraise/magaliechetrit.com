@@ -106,6 +106,11 @@ function updateStats() {
     } else {
         warning.classList.add('hidden');
     }
+    // if all grids are even, show success message
+    if (portraitRemainder === 0 && landscapeRemainder === 0) {
+        warning.innerHTML = '✅ All grids are even! You can print without worries.';
+        warning.classList.remove('hidden');
+    }
 }
 
 function resizeToFill(img, targetWidth, targetHeight) {
