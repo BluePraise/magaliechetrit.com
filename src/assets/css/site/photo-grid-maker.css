@@ -1,0 +1,97 @@
+.drop-zone {
+    border: 2px dashed #d1d5db;
+    border-radius: 12px;
+    padding: 3rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: white;
+}
+
+.drop-zone:hover,
+.drop-zone.drag-over {
+    border-color: #3b82f6;
+    background: #eff6ff;
+}
+
+.drop-zone p {
+    margin: 0;
+    color: #6b7280;
+}
+
+.drop-zone .browse {
+    color: #3b82f6;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#file-input {
+    display: none;
+}
+
+.stats {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.stat-box {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    flex: 1;
+    min-width: 150px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.stat-box .number {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.stat-box .label {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.warning {
+    background: #fef3c7;
+    border: 1px solid #f59e0b;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+}
+
+.preview-section {
+    margin-top: 2rem;
+}
+
+.preview-section h2 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+}
+
+.preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.preview-grid canvas {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.hidden {
+    display: none;
+}
