@@ -66,22 +66,54 @@
 
 
 <main id="main-content" class="container ">
-    <link rel="stylesheet" href="./assets/css/site/photo-grid-maker.css">
-<script src="./assets/js/photo-grid-maker.js" defer></script>
+    <link rel="stylesheet" href="/assets/css/site/photo-grid-maker.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="/assets/js/photo-grid-maker.js" defer></script>
 <div class="container__xs">
     <h2 class="heading__large">Photo Grid Maker</h2>
-    <p class="subtitle">Create print-ready 4×6 photo grids. Portrait photos go in 2×2 grids, landscape in 2×1 stacks. Download as PDF. This project was developed so I could easily create and print photo grids for my personal use. I use a <a href="https://amzn.to/3M8dACE" alt="Affiliate Amazon link to Liene Photo Printer">Liene Photo Printer.</a></p>
+    <p class="subtitle">Create print-ready 4×6 photo grids. Portrait photos go in 2×2 grids, landscape in a 2×1 stack. Download as ZIP. <br> This project was developed so I could easily create and print photo grids for my personal use. I use a <a href="https://amzn.to/3M8dACE" alt="Affiliate Amazon link to Liene Photo Printer">Liene Photo Printer.</a></p>
+    <p>This project does not store any photos, any data and when you refresh the page all your photos are removed from the browser.</p>
     <div class="photo-grid-maker-app">
         <div class="drop-zone" id="drop-zone">
             <p>Drag & drop your photos here</p>
             <p>or <span class="browse">browse files</span></p>
-                <label for="file-input" class="button button--primary">Select Photos</label>
                 <input type="file" id="file-input" multiple hidden accept="image/*">
             </div>
-            
         <div id="photo-grid-preview" class="photo-grid-preview"></div>
+        <h3>Stats</h3>
+        <div class="stats" id="stats">
+
+        <div class="stat-box">
+            <div class="number" id="portrait-count">0</div>
+            <div class="label">Portrait photos</div>
+        </div>
+        <div class="stat-box">
+            <div class="number" id="landscape-count">0</div>
+            <div class="label">Landscape photos</div>
+        </div>
+        <div class="stat-box">
+            <div class="number" id="grid-count">0</div>
+            <div class="label">Grids to print</div>
+        </div>
     </div>
+
+    <div class="warning hidden" id="warning"></div>
+
+    <div class="actions hidden" id="download-actions">
+        <button class="button button__primary" id="generate-btn">Generate Grids</button>
+        <button type="button" id="download-btn" class="button" disabled>Generate ZIP</button>
+        <button id="clear-btn" class="button">Clear</button>
+    </div>
+
+        <div class="preview-section hidden" id="preview-section">
+            <h3>Portrait Grids (2×2)</h3>
+            <div class="preview-grid" id="portrait-preview"></div>
+
+            <h3>Landscape Grids (2×1)</h3>
+            <div class="preview-grid" id="landscape-preview"></div>
+        </div>
+    </div>
+
 </div>
 </main>
 
@@ -90,7 +122,7 @@
         <div class="container__medium flex">
             <div class="left-column">
                 <div class="site-title"><a href="/">Magalie Chetrit</a></div>
-                <p>Last updated: Wed, Feb 4, 2026 (commit: d8a64bb)</p>
+                <p>Last updated: Thu, Feb 5, 2026 (commit: 96af8ba)</p>
             </div>
 
              <nav class='social-nav' aria-label="Social media links">

@@ -17,7 +17,10 @@ module.exports = function (eleventyConfig) {
     });
 
 
-    eleventyConfig.setServerOptions({ showVersion: true });
+    eleventyConfig.setServerOptions({
+        showVersion: true,
+        liveReload: false
+    });
     // move css and jpg to output folder
     eleventyConfig.addPassthroughCopy("src/assets/*/**");
     eleventyConfig.addWatchTarget("src/assets/css/*.css");

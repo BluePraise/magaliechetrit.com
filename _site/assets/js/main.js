@@ -1,12 +1,3 @@
-$(function () {
-
-    $(window).on('load', function () {
-        $('.page-loader').delay('400').fadeOut(600);
-
-    });
-});
-
-
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -194,34 +185,3 @@ if (contentImages.length) {
         });
     });
 }
-// References and sources:
-// https://linguinecode.com/post/enable-wordpress-rest-api-cors
-
-// const url = 'https://libra.nightschool.studio/mc/wp-json/wp/v2/posts'
-// console.log(url)
-// const response = fetch(url)
-//     .then(response => response.json())
-//     .then(data => data.forEach(post => {
-//         console.log(post.title.rendered);
-//     }));
-
-// // this one works. Fallback.
-// function fetchAllPosts() {
-//     let request = new XMLHttpRequest();
-//     if (request) {
-//         request.onreadystatechange = function () {
-//             if (this.readyState == 4 && (this.status == 200 || this.status == 304)) {
-//                 // why does a XMLHttpRequest need to be parsed and the fetch does not?
-//                 parsedData = JSON.parse(request.responseText);
-//                 console.log(parsedData[0].title);
-//             }
-//         }
-//         request.open("GET", url, true)
-//         request.send(null)
-//     }
-// }
-
-// fetchAllPosts();
-// import { fetchAllPosts } from '../../_data/blogPosts.js';
-// fetchAllPosts();
-// console.log('Fetching all posts...');

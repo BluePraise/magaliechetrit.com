@@ -245,7 +245,8 @@ ul.unlist {
     font-weight: 900;
     display: inline-block;
     cursor: pointer;
-    border: 1px solid #eee;
+    border-width: 1px;
+    border-style: solid;
     border-radius: 3px;
     padding: 10px 20px;
     font-family: var(--header-font);
@@ -257,16 +258,29 @@ ul.unlist {
 .button__primary {
    color: white;
    background: black;
+   border-color: black;
 }
 .button__primary i {
     margin-left: 10px;
 }
 .button__primary:hover {
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
+    border-color: black;
 }
 .button__primary + .button__primary {
     margin-left: 10px;
+}
+
+button:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+}
+
+.button__highlight {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    transform: scale(1);
+    animation: pulse 2s infinite;
 }
 
 /* Focus styles for better keyboard navigation */
@@ -303,16 +317,6 @@ img.content-image:focus {
     }
 }
 
-.button__highlight {
-    font-size: 1.2rem;
-    text-decoration: none;
-    background-color: black;
-    color: white;
-
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
-    transform: scale(1);
-    animation: pulse 2s infinite;
-}
 
 /* HEADER and NAV */
 .main-header {
