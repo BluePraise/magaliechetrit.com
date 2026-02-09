@@ -7,16 +7,18 @@ const PORTRAIT_SLOT = { width: 600, height: 900 };
 const LANDSCAPE_SLOT = { width: 1200, height: 900 };
 
 // State
-let portraits = [];
-let landscapes = [];
+let fileEntries = []; // { id, name, img, orientation }
+let nextId = 0;
 let generatedGrids = { portrait: [], landscape: [] };
 
 // DOM elements
 const dropZone = document.getElementById('drop-zone');
 const fileInput = document.getElementById('file-input');
 const warning = document.getElementById('warning');
-    const actions = document.getElementById('download-actions');
+const actions = document.getElementById('download-actions');
 const previewSection = document.getElementById('preview-section');
+const fileList = document.getElementById('file-list');
+const fileListBody = document.getElementById('file-list-body');
 const portraitPreview = document.getElementById('portrait-preview');
 const landscapePreview = document.getElementById('landscape-preview');
 
@@ -276,6 +278,7 @@ async function downloadZip() {
 }
 
 function clearAll() {
+    fileEntries = [];
     portraits = [];
     landscapes = [];
     generatedGrids = { portrait: [], landscape: [] };
