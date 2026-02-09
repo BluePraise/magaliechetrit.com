@@ -16,6 +16,19 @@ title: Photo Grid Maker
             <p>or <span class="browse">browse files</span></p>
                 <input type="file" id="file-input" multiple hidden accept="image/*">
             </div>
+        <div class="file-list hidden" id="file-list">
+            <h2>Uploaded Files</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>File Name</th>
+                        <th>Type</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="file-list-body"></tbody>
+            </table>
+        </div>
         <div id="photo-grid-preview" class="photo-grid-preview"></div>
         <h3>Stats</h3>
         <div class="stats" id="stats">
