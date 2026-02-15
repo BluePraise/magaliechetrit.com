@@ -39,13 +39,16 @@
 }
 
 /* 1. BASE */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: #e7e7e7;
     line-height: var(--base-line-height);
     font-weight: var(--base-font-weight);
     font-family: var(--default-font);
     font-size: var(--base-font-size);
-    scroll-behavior: smooth;
     line-height: 1.7;
     overflow-x: hidden;
     height: 100vh;
@@ -308,7 +311,7 @@ img.content-image:focus {
         scroll-behavior: auto !important;
     }
 
-    body {
+    html {
         scroll-behavior: auto;
     }
 
@@ -461,6 +464,11 @@ section + section {
     margin-top: var(--section-spacing-desktop);
     margin-bottom: var(--element-spacing);
     padding: 0 10px;
+}
+
+/* Offset anchor scrolling for fixed header */
+section[id] {
+    scroll-margin-top: 120px;
 }
 
 .section-header {
