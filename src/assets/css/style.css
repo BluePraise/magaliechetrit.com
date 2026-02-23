@@ -22,8 +22,8 @@
     --a11y-color: #007272;
     --color-gray: #767676;
     --color-gray-mid: #595959;
-    --color-gray-dark: #1f1f1f;
-    --text-color: var(--color-gray);
+    --color-gray-dark: rgb(49, 53, 57);
+    --text-color: var(--color-gray-dark);
     --scroll-padding: 40px;
     --element-spacing: 60px;
     --section-spacing-desktop: 100px;
@@ -50,6 +50,7 @@ body {
     font-family: var(--default-font);
     font-size: var(--base-font-size);
     line-height: 1.7;
+    color: var(--text-color);
     overflow-x: hidden;
     height: 100vh;
     display: flex;
