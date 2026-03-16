@@ -1,1 +1,292 @@
-(()=>{const e=1200,t=1800,n=600,a=900,d=1200,i=900;let o=[],r=0,s={portrait:[],landscape:[]};const c=document.getElementById("drop-zone"),l=document.getElementById("file-input"),m=document.getElementById("warning"),h=document.getElementById("download-actions"),g=document.getElementById("preview-section"),p=document.getElementById("file-list"),u=document.getElementById("file-list-body"),f=document.getElementById("portrait-preview"),L=document.getElementById("landscape-preview");async function v(e){for(const t of e){const e=await w(t),n=e.height>=e.width?"portrait":"landscape",a=y(e,40);o.push({id:r++,name:t.name,img:e,orientation:n,thumb:a})}E(),x()}function y(e,t){const n=Math.min(t/e.width,t/e.height),a=Math.round(e.width*n),d=Math.round(e.height*n),i=document.createElement("canvas");return i.width=a,i.height=d,i.getContext("2d").drawImage(e,0,0,a,d),i.toDataURL("image/jpeg",.7)}function E(){u.innerHTML="",0!==o.length?(p.classList.remove("hidden"),o.forEach(e=>{const t=document.createElement("tr"),n="portrait"===e.orientation?"portrait":"landscape",a="portrait"===e.orientation?"Portrait":"Landscape";t.innerHTML=`\n        <td><img class="file-thumb" src="${e.thumb}" alt=""> ${function(e){const t=document.createElement("div");return t.textContent=e,t.innerHTML}(e.name)}</td>\n        <td><span class="orientation-badge ${n}">${a}</span></td>\n        <td><button class="remove-btn" title="Remove">✕</button></td>\n    `,t.querySelector(".remove-btn").addEventListener("click",()=>{return t=e.id,o=o.filter(e=>e.id!==t),E(),void(0===o.length?(p.classList.add("hidden"),stats.classList.add("hidden"),m.classList.add("hidden"),h.classList.add("hidden"),g.classList.add("hidden"),downloadActions.classList.add("hidden")):x());var t}),u.appendChild(t)})):p.classList.add("hidden")}function w(e){return new Promise((t,n)=>{const a=new Image;a.onload=()=>{URL.revokeObjectURL(a.src),t(a)},a.onerror=n,a.src=URL.createObjectURL(e)})}function b(){return o.filter(e=>"portrait"===e.orientation).map(e=>e.img)}function I(){return o.filter(e=>"landscape"===e.orientation).map(e=>e.img)}function x(){const e=b(),t=I(),n=Math.ceil(e.length/4)+Math.ceil(t.length/2);document.getElementById("portrait-count").textContent=e.length,document.getElementById("landscape-count").textContent=t.length,document.getElementById("grid-count").textContent=n,h.classList.remove("hidden");const a=[],d=e.length%4,i=t.length%2;if(d>0){const e=4-d;a.push(`Portraits: add ${e} more for even grids of 4 (or ${d} slot${d>1?"s":""} will be empty)`)}i>0&&a.push("Landscapes: add 1 more for even grids of 2 (or 1 slot will be empty)"),a.length>0?(m.innerHTML="⚠️ "+a.join("<br>⚠️ "),m.classList.remove("hidden")):m.classList.add("hidden"),0===d&&0===i&&(m.innerHTML="✅ All grids are even! You can print without worries.",m.classList.remove("hidden"))}function B(e,t,n){const a=Math.max(t/e.width,n/e.height),d=e.width*a,i=e.height*a,o=(d-t)/2,r=(i-n)/2,s=document.createElement("canvas");s.width=t,s.height=n;return s.getContext("2d").drawImage(e,-o,-r,d,i),s}c.addEventListener("click",()=>l.click()),c.addEventListener("dragover",e=>{e.preventDefault(),c.classList.add("drag-over")}),c.addEventListener("dragleave",()=>{c.classList.remove("drag-over")}),c.addEventListener("drop",function(e){e.preventDefault(),c.classList.remove("drag-over");v(Array.from(e.dataTransfer.files).filter(e=>e.type.startsWith("image/")))}),l.addEventListener("change",function(e){v(Array.from(e.target.files))}),document.getElementById("generate-btn").addEventListener("click",function(){const o=b(),r=I();s={portrait:[],landscape:[]},f.innerHTML="",L.innerHTML="";const c=[{x:0,y:0},{x:600,y:0},{x:0,y:900},{x:600,y:900}];for(let d=0;d<o.length;d+=4){const i=o.slice(d,d+4),r=document.createElement("canvas");r.width=e,r.height=t;const l=r.getContext("2d");l.fillStyle="white",l.fillRect(0,0,e,t),i.forEach((e,t)=>{const d=B(e,n,a);l.drawImage(d,c[t].x,c[t].y)}),s.portrait.push(r),f.appendChild(r.cloneNode(!0));f.lastChild.getContext("2d").drawImage(r,0,0)}const l=[{x:0,y:0},{x:0,y:900}];for(let n=0;n<r.length;n+=2){const a=r.slice(n,n+2),o=document.createElement("canvas");o.width=e,o.height=t;const c=o.getContext("2d");c.fillStyle="white",c.fillRect(0,0,e,t),a.forEach((e,t)=>{const n=B(e,d,i);c.drawImage(n,l[t].x,l[t].y)}),s.landscape.push(o),L.appendChild(o.cloneNode(!0));L.lastChild.getContext("2d").drawImage(o,0,0)}g.classList.remove("hidden"),document.getElementById("download-btn").disabled=!1}),document.getElementById("clear-btn").addEventListener("click",function(){o=[],portraits=[],landscapes=[],s={portrait:[],landscape:[]},l.value="",f.innerHTML="",L.innerHTML="",m.classList.add("hidden"),h.classList.add("hidden"),g.classList.add("hidden")}),document.getElementById("download-btn").addEventListener("click",async function(){const e=new JSZip;s.portrait.forEach((t,n)=>{const a=t.toDataURL("image/jpeg",.95).split(",")[1];e.file(`portrait_grid_${String(n+1).padStart(2,"0")}.jpg`,a,{base64:!0})}),s.landscape.forEach((t,n)=>{const a=t.toDataURL("image/jpeg",.95).split(",")[1];e.file(`landscape_grid_${String(n+1).padStart(2,"0")}.jpg`,a,{base64:!0})});const t=await e.generateAsync({type:"blob"}),n=URL.createObjectURL(t),a=document.createElement("a");a.href=n,a.download="photo_grids.zip",a.click(),URL.revokeObjectURL(n)})})();
+(() => {
+// if (window.__photoGridMakerInit) return;
+// window.__photoGridMakerInit = true;
+const CANVAS_WIDTH = 1200;
+const CANVAS_HEIGHT = 1800;
+const PORTRAIT_SLOT = { width: 600, height: 900 };
+const LANDSCAPE_SLOT = { width: 1200, height: 900 };
+
+// State
+let fileEntries = []; // { id, name, img, orientation }
+let nextId = 0;
+let generatedGrids = { portrait: [], landscape: [] };
+
+// DOM elements
+const dropZone = document.getElementById('drop-zone');
+const fileInput = document.getElementById('file-input');
+const warning = document.getElementById('warning');
+const actions = document.getElementById('download-actions');
+const previewSection = document.getElementById('preview-section');
+const fileList = document.getElementById('file-list');
+const fileListBody = document.getElementById('file-list-body');
+const portraitPreview = document.getElementById('portrait-preview');
+const landscapePreview = document.getElementById('landscape-preview');
+
+// Event listeners
+// if (!dropZone) return;
+dropZone.addEventListener('click', () => fileInput.click());
+dropZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    dropZone.classList.add('drag-over');
+});
+dropZone.addEventListener('dragleave', () => {
+    dropZone.classList.remove('drag-over');
+});
+dropZone.addEventListener('drop', handleDrop);
+fileInput.addEventListener('change', handleFileSelect);
+document.getElementById('generate-btn').addEventListener('click', generateGrids);
+document.getElementById('clear-btn').addEventListener('click', clearAll);
+document.getElementById('download-btn').addEventListener('click', downloadZip);
+
+function handleDrop(e) {
+    e.preventDefault();
+    dropZone.classList.remove('drag-over');
+    const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
+    processFiles(files);
+}
+
+function handleFileSelect(e) {
+    const files = Array.from(e.target.files);
+    processFiles(files);
+}
+
+async function processFiles(files) {
+    for (const file of files) {
+        const img = await loadImage(file);
+        const orientation = img.height >= img.width ? 'portrait' : 'landscape';
+        const thumb = createThumbnail(img, 40);
+        fileEntries.push({ id: nextId++, name: file.name, img, orientation, thumb });
+    }
+
+    renderFileList();
+    updateStats();
+}
+function createThumbnail(img, maxSize) {
+    const scale = Math.min(maxSize / img.width, maxSize / img.height);
+    const w = Math.round(img.width * scale);
+    const h = Math.round(img.height * scale);
+    const canvas = document.createElement('canvas');
+    canvas.width = w;
+    canvas.height = h;
+    canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+    return canvas.toDataURL('image/jpeg', 0.7);
+}
+
+function removeFile(id) {
+    fileEntries = fileEntries.filter(e => e.id !== id);
+    renderFileList();
+    if (fileEntries.length === 0) {
+        fileList.classList.add('hidden');
+        stats.classList.add('hidden');
+        warning.classList.add('hidden');
+        actions.classList.add('hidden');
+        previewSection.classList.add('hidden');
+        downloadActions.classList.add('hidden');
+    } else {
+        updateStats();
+    }
+}
+
+
+
+function renderFileList() {
+    fileListBody.innerHTML = '';
+    if (fileEntries.length === 0) {
+        fileList.classList.add('hidden');
+        return;
+    }
+    fileList.classList.remove('hidden');
+    fileEntries.forEach(entry => {
+        const tr = document.createElement('tr');
+        const badgeClass = entry.orientation === 'portrait' ? 'portrait' : 'landscape';
+        const label = entry.orientation === 'portrait' ? 'Portrait' : 'Landscape';
+        tr.innerHTML = `
+        <td><img class="file-thumb" src="${entry.thumb}" alt=""> ${escapeHtml(entry.name)}</td>
+        <td><span class="orientation-badge ${badgeClass}">${label}</span></td>
+        <td><button class="remove-btn" title="Remove">✕</button></td>
+    `;
+        tr.querySelector('.remove-btn').addEventListener('click', () => removeFile(entry.id));
+        fileListBody.appendChild(tr);
+    });
+}
+
+function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+function loadImage(file) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => {
+            URL.revokeObjectURL(img.src);
+            resolve(img);
+        };
+        img.onerror = reject;
+        img.src = URL.createObjectURL(file);
+    });
+}
+
+function getPortraits() {
+    return fileEntries.filter(e => e.orientation === 'portrait').map(e => e.img);
+}
+
+function getLandscapes() {
+    return fileEntries.filter(e => e.orientation === 'landscape').map(e => e.img);
+}
+
+function updateStats() {
+    const portraits = getPortraits();
+    const landscapes = getLandscapes();
+    const portraitGrids = Math.ceil(portraits.length / 4);
+    const landscapeGrids = Math.ceil(landscapes.length / 2);
+    const totalGrids = portraitGrids + landscapeGrids;
+
+    document.getElementById('portrait-count').textContent = portraits.length;
+    document.getElementById('landscape-count').textContent = landscapes.length;
+    document.getElementById('grid-count').textContent = totalGrids;
+
+    actions.classList.remove('hidden');
+
+    // Check for uneven grids
+    const warnings = [];
+    const portraitRemainder = portraits.length % 4;
+    const landscapeRemainder = landscapes.length % 2;
+
+    if (portraitRemainder > 0) {
+        const needed = 4 - portraitRemainder;
+        warnings.push(`Portraits: add ${needed} more for even grids of 4 (or ${portraitRemainder} slot${portraitRemainder > 1 ? 's' : ''} will be empty)`);
+    }
+    if (landscapeRemainder > 0) {
+        warnings.push(`Landscapes: add 1 more for even grids of 2 (or 1 slot will be empty)`);
+    }
+
+    if (warnings.length > 0) {
+        warning.innerHTML = '⚠️ ' + warnings.join('<br>⚠️ ');
+        warning.classList.remove('hidden');
+    } else {
+        warning.classList.add('hidden');
+    }
+    // if all grids are even, show success message
+    if (portraitRemainder === 0 && landscapeRemainder === 0) {
+        warning.innerHTML = '✅ All grids are even! You can print without worries.';
+        warning.classList.remove('hidden');
+    }
+}
+
+function resizeToFill(img, targetWidth, targetHeight) {
+    const scale = Math.max(targetWidth / img.width, targetHeight / img.height);
+    const newWidth = img.width * scale;
+    const newHeight = img.height * scale;
+    const offsetX = (newWidth - targetWidth) / 2;
+    const offsetY = (newHeight - targetHeight) / 2;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = targetWidth;
+    canvas.height = targetHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, -offsetX, -offsetY, newWidth, newHeight);
+    return canvas;
+}
+
+function generateGrids() {
+    const portraits = getPortraits();
+    const landscapes = getLandscapes();
+    generatedGrids = { portrait: [], landscape: [] };
+    portraitPreview.innerHTML = '';
+    landscapePreview.innerHTML = '';
+
+    // Portrait grids (2x2)
+    const portraitPositions = [
+        { x: 0, y: 0 },
+        { x: 600, y: 0 },
+        { x: 0, y: 900 },
+        { x: 600, y: 900 }
+    ];
+
+    for (let i = 0; i < portraits.length; i += 4) {
+        const batch = portraits.slice(i, i + 4);
+        const canvas = document.createElement('canvas');
+        canvas.width = CANVAS_WIDTH;
+        canvas.height = CANVAS_HEIGHT;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+        batch.forEach((img, j) => {
+            const resized = resizeToFill(img, PORTRAIT_SLOT.width, PORTRAIT_SLOT.height);
+            ctx.drawImage(resized, portraitPositions[j].x, portraitPositions[j].y);
+        });
+
+        generatedGrids.portrait.push(canvas);
+        portraitPreview.appendChild(canvas.cloneNode(true));
+        const previewCanvas = portraitPreview.lastChild;
+        previewCanvas.getContext('2d').drawImage(canvas, 0, 0);
+    }
+
+    // Landscape grids (2x1)
+    const landscapePositions = [
+        { x: 0, y: 0 },
+        { x: 0, y: 900 }
+    ];
+
+    for (let i = 0; i < landscapes.length; i += 2) {
+        const batch = landscapes.slice(i, i + 2);
+        const canvas = document.createElement('canvas');
+        canvas.width = CANVAS_WIDTH;
+        canvas.height = CANVAS_HEIGHT;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+        batch.forEach((img, j) => {
+            const resized = resizeToFill(img, LANDSCAPE_SLOT.width, LANDSCAPE_SLOT.height);
+            ctx.drawImage(resized, landscapePositions[j].x, landscapePositions[j].y);
+        });
+
+        generatedGrids.landscape.push(canvas);
+        landscapePreview.appendChild(canvas.cloneNode(true));
+        const previewCanvas = landscapePreview.lastChild;
+        previewCanvas.getContext('2d').drawImage(canvas, 0, 0);
+    }
+
+    previewSection.classList.remove('hidden');
+    document.getElementById('download-btn').disabled = false;
+}
+
+async function downloadZip() {
+    const zip = new JSZip();
+
+    generatedGrids.portrait.forEach((canvas, i) => {
+        const data = canvas.toDataURL('image/jpeg', 0.95).split(',')[1];
+        zip.file(`portrait_grid_${String(i + 1).padStart(2, '0')}.jpg`, data, { base64: true });
+    });
+
+    generatedGrids.landscape.forEach((canvas, i) => {
+        const data = canvas.toDataURL('image/jpeg', 0.95).split(',')[1];
+        zip.file(`landscape_grid_${String(i + 1).padStart(2, '0')}.jpg`, data, { base64: true });
+    });
+
+    const blob = await zip.generateAsync({ type: 'blob' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'photo_grids.zip';
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+function clearAll() {
+    fileEntries = [];
+    portraits = [];
+    landscapes = [];
+    generatedGrids = { portrait: [], landscape: [] };
+    fileInput.value = '';
+    portraitPreview.innerHTML = '';
+    landscapePreview.innerHTML = '';
+    warning.classList.add('hidden');
+    actions.classList.add('hidden');
+    previewSection.classList.add('hidden');
+}
+})();
