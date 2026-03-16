@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %}{{ title }}{% else %}Magalie Chetrit{% endif %} · Lite</title>
+    <meta name="description" content="Lightweight version of magaliechetrit.com — no scripts, no web fonts, minimal CSS.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="stylesheet" href="/assets/css/lite.css">
+</head>
+<body>
+    <div class="lite-wrap">
+
+        <a href="#main-content" class="lite-skip">Skip to main content</a>
+
+        <header class="lite-header">
+            <a href="/lite/" class="site-title">Magalie Chetrit</a>
+            <nav class="lite-nav" aria-label="Lite site navigation">
+                <ul>
+                    <li><a href="/lite/">Home</a></li>
+                    <li><a href="/lite/blog/">Blog</a></li>
+                    <li><a href="/now/">Now</a></li>
+                    <li><a href="/" title="Switch to the full website">Full site ↗</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="lite-banner" role="note">
+            You are on the <strong>lite version</strong> of this site — no scripts, no web fonts, minimal CSS.
+            <a href="/">Switch to the full site.</a>
+        </div>
+
+        <main id="main-content">
+            {{ content | safe }}
+        </main>
+
+        <footer class="lite-footer">
+            <p>© Magalie Chetrit {% year %}. &nbsp;·&nbsp;
+               <a href="/">Full site</a> &nbsp;·&nbsp;
+               <a href="mailto:magaliechetrit+website@gmail.com">Email me</a> &nbsp;·&nbsp;
+               <a href="https://www.linkedin.com/in/magaliechetrit/">LinkedIn</a> &nbsp;·&nbsp;
+               <a href="https://github.com/bluepraise">GitHub</a>
+            </p>
+            <p class="muted">Last updated: {% lastCommitDate %} (commit: {% lastCommitHash %})</p>
+        </footer>
+
+    </div>
+</body>
+</html>

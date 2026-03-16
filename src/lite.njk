@@ -1,0 +1,94 @@
+---
+layout: base-lite.njk
+title: "Magalie Chetrit — Web Developer"
+permalink: /lite/index.html
+---
+
+<h1>Hi, I'm Magalie Chetrit</h1>
+<p>
+    A web developer based in New Jersey with over 20 years of experience. I work with
+    WordPress, WooCommerce, React, and modern front-end tools.
+</p>
+<p>
+    <a href="mailto:magaliechetrit+website@gmail.com">magaliechetrit [at] gmail.com</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/magaliechetrit/">LinkedIn</a>
+    &nbsp;·&nbsp;
+    <a href="https://github.com/bluepraise">GitHub</a>
+</p>
+
+<section class="lite-section" aria-labelledby="clients-title">
+    <h2 id="clients-title">Select Clients</h2>
+    <p>McDonald's, Intel Corp, TopGear Franchise, TMSW.com, ArtEZ University, HANOS International.</p>
+</section>
+
+<section class="lite-section" aria-labelledby="techstack-title">
+    <h2 id="techstack-title">Tech Stack</h2>
+    <div class="lite-techstack">
+        <div>
+            <h3>Front-End &amp; UI</h3>
+            <ul>
+                <li>JavaScript</li>
+                <li>HTML5 / CSS3 / SCSS</li>
+                <li>React</li>
+                <li>Astro.js · Gatsby.js · 11ty</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Back-End &amp; APIs</h3>
+            <ul>
+                <li>Node.js / PHP / MySQL</li>
+                <li>RESTful APIs / GraphQL</li>
+                <li>Docker / MongoDB</li>
+                <li>Express.js / AJAX</li>
+            </ul>
+        </div>
+        <div>
+            <h3>CMS &amp; E-Commerce</h3>
+            <ul>
+                <li>WordPress / WooCommerce</li>
+                <li>Shopify</li>
+                <li>Kirby CMS</li>
+                <li>Squarespace</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Tools &amp; AI</h3>
+            <ul>
+                <li>GitHub Copilot · Claude</li>
+                <li>ChatGPT</li>
+                <li>Figma / Adobe XD</li>
+                <li>Git · Netlify · Vercel</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="lite-section" aria-labelledby="now-title">
+    <h2 id="now-title">What I'm Working On Now</h2>
+    <p class="muted">Last updated: February 2026 · <a href="/now/">See full now page</a></p>
+    <h3>Client Projects</h3>
+    <ul>
+        <li><strong>ErikKorte.nl</strong> — Rebuilding a WordPress site for a Dutch funeral home, including <a href="https://github.com/BluePraise/ek-condoleance-register">a custom condolances plugin</a>.</li>
+        <li><a href="https://farbest.com">farbest.com</a> — A custom WordPress plugin to filter ingredients.</li>
+    </ul>
+    <h3>Personal Projects</h3>
+    <ul>
+        <li><a href="/photo-grid-maker">Photo Grid Maker</a> — A photo grid maker for my Liene Photo Printer.</li>
+        <li><a href="https://navesinkwebsolutions.com">Navesink Web Solutions</a> — My small digital agency in New Jersey.</li>
+        <li><a href="https://navesink.digital">navesink.digital</a> — Helping individuals and businesses organize their digital life.</li>
+    </ul>
+</section>
+
+<section class="lite-section" aria-labelledby="posts-title">
+    <h2 id="posts-title">Latest Blog Posts</h2>
+    <ul class="lite-post-list">
+    {%- for post in collections.post | sortByDateCreated -%}
+        <li>
+            <a href="{{ post.url }}">{{ post.data.title }}</a>
+            <time datetime="{{ post.data.dateCreated }}">{{ post.data.dateCreated | makeDateReadable }}</time>
+        </li>
+    {%- endfor -%}
+    </ul>
+    <p><a href="/lite/blog/">All posts →</a></p>
+</section>
