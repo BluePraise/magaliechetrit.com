@@ -1,23 +1,21 @@
 ---
-layout: base.njk
-pagename: blog
-title: "😎 Magalie Chetrit | Web Developer in New Jersey. WordPress, WooCommerce. WebDevelopment."
-permalink: blog/{{ blogpost.slug }}/
+layout: base-lite.njk
+title: "Blog — Magalie Chetrit"
+description: "Articles on web development, WordPress, JavaScript, and the tools I use."
+permalink: /blog/index.html
 ---
-<div class="container__medium">
-    <h2 class="page-title">Recent blog posts</h2>
-    <ul class="unlist">
-        {%- for post in collections.post | sortByDateCreated -%}
-            <li>
-                {% if image %}
-                    <figure>
-                        <img src="/assets/img/{{ image }}" />
-                    </figure>
-                {% endif %}
-                <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
-                <p class="excerpt">{{ post.data.description | safe }}</p>
-                <p class="meta date-posted"><datetime>{{ post.date | makeDateReadable }}</datetime></p>
-            </li>
-        {%- endfor -%}
-    </ul>
-</div>
+
+<h1>Blog</h1>
+<p>Writing on web development, WordPress, JavaScript, and the tools I use.</p>
+
+<ul class="lite-post-list">
+{%- for post in collections.post | sortByDateCreated -%}
+    <li>
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+        {% if post.data.description %}
+            <p class="excerpt">{{ post.data.description | safe }}</p>
+        {% endif %}
+        <time datetime="{{ post.data.dateCreated }}">{{ post.data.dateCreated | makeDateReadable }}</time>
+    </li>
+{%- endfor -%}
+</ul>

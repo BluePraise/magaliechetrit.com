@@ -2,6 +2,27 @@
   command = "npm run build"
   publish = "_site"
 
+# Redirect old /lite/* URLs to their new canonical locations
+[[redirects]]
+  from = "/lite/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/lite/blog/"
+  to = "/blog/"
+  status = 301
+
+[[redirects]]
+  from = "/lite/now/"
+  to = "/now/"
+  status = 301
+
+[[redirects]]
+  from = "/lite/*"
+  to = "/"
+  status = 301
+
 # Cache static assets for 1 year (content-hashed or versioned files)
 [[headers]]
   for = "/assets/*"

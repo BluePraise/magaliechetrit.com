@@ -245,6 +245,111 @@ li {
     font-size: 0.875rem;
 }
 
+/* ---- Back link ---- */
+.back-link {
+    display: inline-block;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    color: var(--color-link);
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* ---- Article / Project detail ---- */
+.article-detail,
+.project-detail {
+    margin-top: 1rem;
+}
+
+.article-header h1,
+.project-detail h1 {
+    margin-top: 0.25rem;
+}
+
+.article-meta {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    margin-bottom: 1.5rem;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--color-muted);
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.tech-stack-list {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    margin-bottom: 1.5rem;
+}
+
+.article-content {
+    margin-top: 1.5rem;
+}
+
+.article-content h2,
+.article-content h3,
+.article-content h4 {
+    margin-top: 2rem;
+}
+
+.article-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.5rem 0;
+}
+
+.article-content pre {
+    background: #f4f4f0;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 1rem;
+    overflow-x: auto;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.article-content code {
+    font-size: 0.875em;
+    background: #f4f4f0;
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+}
+
+.article-content pre code {
+    background: none;
+    padding: 0;
+}
+
+.article-content blockquote {
+    border-left: 3px solid var(--color-accent-border);
+    margin: 1.5rem 0;
+    padding: 0.5rem 1rem;
+    color: var(--color-muted);
+}
+
+/* ---- Series navigation ---- */
+.series-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.series-list {
+    margin-top: 0.5rem;
+}
+
+.series-list li.current {
+    font-weight: 700;
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 520px) {
     .lite-header {
