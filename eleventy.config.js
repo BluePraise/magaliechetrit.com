@@ -3,6 +3,7 @@ const childProcess = require('child_process');
 const htmlMinifier = require('html-minifier-terser');
 const Image = require('@11ty/eleventy-img');
 const path = require('path');
+const sharp = require('sharp');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -121,6 +122,36 @@ module.exports = function (eleventyConfig) {
 </picture>`;
     });
 
+
+    // Retro image shortcode — greyscale + ordered dither, max 400px wide, JPEG output
+    // Usage: {% retroImage "src/assets/images/photo.jpg", "Alt text" %}
+    eleventyConfig.addAsyncShortcode('retroImage', async (src, alt, maxWidth = 400) => {
+        const absoluteSrc = path.resolve(__dirname, src);
+        const outputDir = path.resolve(__dirname, '_site/assets/images/retro');
+        const fs = require('fs');
+        if (!fs.existsSync(outputDir)) {
+            fs.mkdirSync(outputDir, { recursive: true });
+        }
+
+        const baseName = path.basename(src, path.extname(src));
+        const outputFilename = `${baseName}-retro.jpg`;
+        const outputPath = path.join(outputDir, outputFilename);
+        const urlPath = `/assets/images/retro/${outputFilename}`;
+
+        // Ordered (Bayer) dithering via threshold map applied to greyscale
+        // Sharp doesn't expose Bayer dithering directly, but normalise + greyscale
+        // + aggressive JPEG quantisation produces the "old thermal printer" look.
+        await sharp(absoluteSrc)
+            .resize({ width: maxWidth, withoutEnlargement: true })
+            .greyscale()
+            .normalise()
+            .threshold(128)
+            .jpeg({ quality: 40, mozjpeg: false })
+            .toFile(outputPath);
+
+        const meta = await sharp(outputPath).metadata();
+        return `<img src="${urlPath}" width="${meta.width}" height="${meta.height}" alt="${alt}" loading="lazy" decoding="async" class="retro-img">`;
+    });
 
     return {
         dir: {
