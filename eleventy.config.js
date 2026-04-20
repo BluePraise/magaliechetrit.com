@@ -100,17 +100,21 @@ module.exports = function (eleventyConfig) {
     });
 
     // Responsive image shortcode using @11ty/eleventy-img
-    // Usage: {% image "src/assets/images/me.png", "Alt text", "my-css-class", [400, 800] %}
+    // Emits a <picture> with WebP + JPEG sources for modern browsers and a
+    // pre-generated retro JPEG as the <img src> fallback for browsers that
+    // don't understand <picture> (BlackBerry, early Symbian, IE < 9).
+    // Usage: {% image "src/assets/img/me.png", "Alt text", "my-css-class", [400, 800] %}
     eleventyConfig.addAsyncShortcode('image', async (src, alt, className, widths = [400, 800, null]) => {
         const absoluteSrc = path.resolve(__dirname, src);
         const metadata = await Image(absoluteSrc, {
             widths,
             formats: ['webp', 'jpeg'],
-            outputDir: '_site/assets/images/generated',
-            urlPath: '/assets/images/generated',
+            outputDir: '_site/assets/img/generated',
+            urlPath: '/assets/img/generated',
         });
 
-        const lowsrc = metadata.jpeg[0];
+        const baseName = path.basename(src, path.extname(src));
+        const retroUrl = `/assets/img/retro/${baseName}-retro.jpg`;
         const highsrc = metadata.jpeg[metadata.jpeg.length - 1];
         const classAttr = className ? ` class="${className}"` : '';
 
@@ -118,7 +122,7 @@ module.exports = function (eleventyConfig) {
   ${Object.values(metadata).map(imageFormat => {
     return `<source type="${imageFormat[0].sourceType}" srcset="${imageFormat.map(e => e.srcset).join(', ')}" sizes="(max-width: 600px) 100vw, 50vw">`;
   }).join('\n  ')}
-  <img${classAttr} src="${lowsrc.url}" width="${highsrc.width}" height="${highsrc.height}" alt="${alt}" loading="lazy" decoding="async">
+  <img${classAttr} src="${retroUrl}" width="${highsrc.width}" height="${highsrc.height}" alt="${alt}" loading="lazy" decoding="async">
 </picture>`;
     });
 
@@ -127,7 +131,7 @@ module.exports = function (eleventyConfig) {
     // Usage: {% retroImage "src/assets/images/photo.jpg", "Alt text" %}
     eleventyConfig.addAsyncShortcode('retroImage', async (src, alt, maxWidth = 400) => {
         const absoluteSrc = path.resolve(__dirname, src);
-        const outputDir = path.resolve(__dirname, '_site/assets/images/retro');
+        const outputDir = path.resolve(__dirname, '_site/assets/img/retro');
         const fs = require('fs');
         if (!fs.existsSync(outputDir)) {
             fs.mkdirSync(outputDir, { recursive: true });
@@ -136,7 +140,7 @@ module.exports = function (eleventyConfig) {
         const baseName = path.basename(src, path.extname(src));
         const outputFilename = `${baseName}-retro.jpg`;
         const outputPath = path.join(outputDir, outputFilename);
-        const urlPath = `/assets/images/retro/${outputFilename}`;
+        const urlPath = `/assets/img/retro/${outputFilename}`;
 
         // Ordered (Bayer) dithering via threshold map applied to greyscale
         // Sharp doesn't expose Bayer dithering directly, but normalise + greyscale

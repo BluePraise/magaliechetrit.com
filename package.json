@@ -7,7 +7,8 @@
     "start": "npx @11ty/eleventy --serve --quiet",
     "debug": "DEBUG=Eleventy* npx @11ty/eleventy",
     "debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
-    "build": "NODE_ENV=production npx @11ty/eleventy --quiet && node scripts/optimize.js",
+    "build": "NODE_ENV=production npx @11ty/eleventy --quiet && node scripts/optimize.js && node scripts/retro-images.js",
+    "build:retro": "node scripts/retro-images.js",
     "build:dev": "npx @11ty/eleventy --quiet"
   },
   "engines": {
@@ -39,6 +40,7 @@
     "@11ty/eleventy-fetch": "^4.0.0",
     "@11ty/eleventy-img": "^3.1.8",
     "common-tags": "^1.8.2",
-    "fslightbox": "^3.6.1"
+    "fslightbox": "^3.6.1",
+    "sharp": "^0.32.6"
   }
 }

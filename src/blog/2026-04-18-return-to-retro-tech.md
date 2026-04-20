@@ -4,8 +4,8 @@ author: Magalie Chetrit
 dateCreated: 2026-04-18
 date: Last Modified
 tags: post
-image:
-imageAlt:
+image: blackberry-ipod.png
+imageAlt: A Blackberry Classic next to an iPod Classic
 description: On phone addiction, overcomplicated web development, and finding my way back through a Blackberry.
 ---
 
@@ -28,6 +28,8 @@ I am not romanticizing the past — early web was often broken and inaccessible.
 I still use AI. I still use my iPhone. I am not pretending those things do not exist or that they are not useful. But I use them under strict rules.
 
 I use an app called [Freedom](https://freedom.to) to block apps on a set schedule. It runs automatically — I do not have to make a decision in the moment about whether to open something, because the decision has already been made. Worth noting: Freedom has a tier that does not use a subscription model, which I appreciate.
+
+![A Blackberry Classic next to an iPod Classic](/assets/img/blackberry-ipod.png)
 
 When I want to use a device, I reach for my Blackberry instead. It has become my media and notes device. I can take a few photos, jot things down, check the weather. Yahoo Weather and Moon Reader are the apps I use most. I also built myself a [small resource page](/retro-web) so I can access sites that are actually worth visiting on older hardware.
 

@@ -8,12 +8,12 @@
 }
 
 :root {
-    --color-bg:           #fdfdf9;
-    --color-text:         #1c1c1c;
-    --color-link:         #1a4e8a;
+    --color-bg:           #d9adc4;
+    --color-text:         #14292a;
+    --color-link:         #b91462;
     --color-link-visited: #5b3590;
     --color-muted:        #595959;
-    --color-border:       #d0d0c4;
+    --color-border:       var(--color-text);
     --color-accent-bg:    #e8f5ee;
     --color-accent-border:#9ecdb4;
     --color-accent-text:  #1a4a2e;

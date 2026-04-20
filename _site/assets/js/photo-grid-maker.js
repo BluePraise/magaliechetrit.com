@@ -103,7 +103,7 @@ function renderFileList() {
         tr.innerHTML = `
         <td><img class="file-thumb" src="${entry.thumb}" alt=""> ${escapeHtml(entry.name)}</td>
         <td><span class="orientation-badge ${badgeClass}">${label}</span></td>
-        <td><button class="remove-btn" title="Remove">✕</button></td>
+        <td><button class="remove-btn" aria-label="Remove ${escapeHtml(entry.name)}">✕</button></td>
     `;
         tr.querySelector('.remove-btn').addEventListener('click', () => removeFile(entry.id));
         fileListBody.appendChild(tr);
