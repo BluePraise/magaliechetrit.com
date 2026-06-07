@@ -9,8 +9,6 @@ imageAlt:
 description: Why I chose a 2015 MacBook Air in 2026, what I use it for, and what surprised me most after buying it.
 ---
 
-# Why I Bought a 2015 MacBook Air in 2026
-
 I just bought a MacBook Air 11" from 2015. In 2026. On purpose.
 
 People with one good laptop don't usually go shopping for a decade-old one. But I have an M4 13", and I kept noticing something: I wasn't reaching for it. Not for the small stuff. It's a wonderful machine, and it's also heavy, a little unwieldy, and slightly too much commitment for the thing I actually want to do, which is fire off one email, check a Slack message, or look something up.
