@@ -1,0 +1,36 @@
+---
+layout: base-lite.njk
+title: "Privacy Chess — Magalie Chetrit"
+description: "A fully offline chess game that runs entirely in your browser with no tracking or server connection."
+permalink: /privacy-chess/index.html
+---
+<link rel="stylesheet" href="/assets/css/site/chess.css">
+
+<h1>♟️ Privacy Chess</h1>
+<p>A fully-featured chess game that runs entirely in your browser with zero external dependencies, tracking, or server connection. Every aspect of your game stays on your device.</p>
+<p>No JavaScript frameworks, no external CDNs, no analytics. Save and load games in standard PGN format — all files stay local.</p>
+
+<div id="chess-container">
+  <div class="chess-status" id="status">White to move</div>
+
+  <div class="board" id="board"></div>
+
+  <div class="chess-controls">
+    <button class="chess-button" onclick="resetGame()">New Game</button>
+    <button class="chess-button" onclick="undoMove()">Undo</button>
+    <button class="chess-button" onclick="exportGame()">Save Game</button>
+    <label class="chess-file-btn chess-file-input-wrapper">
+      Load Game
+      <input type="file" id="importFile" accept=".pgn,.txt" onchange="importGame(this)">
+    </label>
+  </div>
+
+  <div class="chess-moves" id="moves"></div>
+
+  <div class="chess-help-text">
+    Tap a piece to select, then tap destination.<br>
+    All games stay on your device only.
+  </div>
+</div>
+
+<script src="/assets/js/chess.js"></script>

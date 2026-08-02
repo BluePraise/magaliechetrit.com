@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Chess — Magalie Chetrit</title>
+    <meta name="description" content="A fully offline chess game that runs entirely in your browser with no tracking or server connection.">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Privacy Chess — Magalie Chetrit">
+    <meta property="og:description" content="A fully offline chess game that runs entirely in your browser with no tracking or server connection.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://magaliechetrit.com/privacy-chess/">
+    <meta property="og:site_name" content="Magalie Chetrit">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://magaliechetrit.com/privacy-chess/">
+
+    <link rel="stylesheet" href="/assets/css/lite.css">
+</head>
+<body>
+    <div class="lite-wrap">
+
+        <a href="#main-content" class="lite-skip">Skip to main content</a>
+
+        <header class="lite-header">
+            <a href="/" class="site-title">Magalie Chetrit</a>
+            <nav class="lite-nav" aria-label="Site navigation">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/retro-web/">Retro Web</a></li>
+                    <li><a href="/now/">Now</a></li>
+                    <li><a href="/about/">About</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main id="main-content">
+            <link rel="stylesheet" href="/assets/css/site/chess.css">
+
+<h1>♟️ Privacy Chess</h1>
+<p>A fully-featured chess game that runs entirely in your browser with zero external dependencies, tracking, or server connection. Every aspect of your game stays on your device.</p>
+<p>No JavaScript frameworks, no external CDNs, no analytics. Save and load games in standard PGN format — all files stay local.</p>
+
+<div id="chess-container">
+  <div class="chess-status" id="status">White to move</div>
+
+  <div class="board" id="board"></div>
+
+  <div class="chess-controls">
+    <button class="chess-button" onclick="resetGame()">New Game</button>
+    <button class="chess-button" onclick="undoMove()">Undo</button>
+    <button class="chess-button" onclick="exportGame()">Save Game</button>
+    <label class="chess-file-btn chess-file-input-wrapper">
+      Load Game
+      <input type="file" id="importFile" accept=".pgn,.txt" onchange="importGame(this)">
+    </label>
+  </div>
+
+  <div class="chess-moves" id="moves"></div>
+
+  <div class="chess-help-text">
+    Tap a piece to select, then tap destination.<br>
+    All games stay on your device only.
+  </div>
+</div>
+
+<script src="/assets/js/chess.js"></script>
+
+        </main>
+
+        <footer class="lite-footer">
+            <p>© Magalie Chetrit 2026. &nbsp;·&nbsp;
+               <a href="mailto:magaliechetrit@proton.me">Email</a> &nbsp;·&nbsp;
+               <a href="https://www.linkedin.com/in/magaliechetrit/">LinkedIn</a> &nbsp;·&nbsp;
+               <a href="https://github.com/bluepraise">GitHub</a>
+            </p>
+            <p class="muted">Last updated: Sun, Aug 2, 2026 (commit: 13adcd2)</p>
+        </footer>
+
+    </div>
+</body>
+</html>
