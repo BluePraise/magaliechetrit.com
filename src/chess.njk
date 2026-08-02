@@ -1,0 +1,33 @@
+---
+layout: base-lite.njk
+title: Privacy Chess
+description: A fully offline chess game that runs entirely in your browser with no tracking or server connection.
+---
+
+<link rel="stylesheet" href="/assets/css/site/chess.css">
+
+<div id="chess-container">
+  <h1 class="chess-title">♟️ Privacy Chess</h1>
+  <div class="chess-status" id="status">White to move</div>
+
+  <div class="board" id="board"></div>
+
+  <div class="chess-controls">
+    <button class="chess-button" onclick="resetGame()">New Game</button>
+    <button class="chess-button" onclick="undoMove()">Undo</button>
+    <button class="chess-button" onclick="exportGame()">Save Game</button>
+    <label class="chess-file-btn chess-file-input-wrapper">
+      Load Game
+      <input type="file" id="importFile" accept=".pgn,.txt" onchange="importGame(this)">
+    </label>
+  </div>
+
+  <div class="chess-moves" id="moves"></div>
+
+  <div class="chess-help-text">
+    Tap a piece to select, then tap destination.<br>
+    All games stay on your device only.
+  </div>
+</div>
+
+<script src="/assets/js/chess.js"></script>
