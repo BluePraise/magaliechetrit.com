@@ -1,1 +1,2607 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Offline Chess</title><style>*{box-sizing:border-box}body,html{margin:0;padding:0;background-color:#f5f1e8;color:#2b2420;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:16px;line-height:1.4}body{padding:12px}h1{font-family:Georgia,"Times New Roman",serif;font-size:24px;margin:0 0 4px 0}p.tagline{margin:0 0 16px 0;font-size:14px;color:#5a5044}.clearfix:after{content:"";display:block;clear:both}.boardWrap{float:left;width:100%;max-width:480px}.sideWrap{float:left;width:100%;max-width:480px;margin-top:20px}@media (min-width:760px){.boardWrap{width:480px;margin-right:24px}.sideWrap{width:300px;margin-top:0}}table.board{border-collapse:collapse;table-layout:fixed;width:100%;min-width:280px;margin:0 auto;border:4px solid #4a3524}.boardScroll{overflow-x:auto}table.board td{width:12.5%;padding:0}table.board button.square{display:block;width:100%;height:46px;padding:0;margin:0;border:none;font-size:30px;line-height:1;cursor:pointer}@media (max-width:420px){table.board button.square{font-size:22px;height:38px}}.square.light{background-color:#ede1c8}.square.dark{background-color:#7c5a3b}.square.white-piece{color:#fbf8f2;text-shadow:1px 1px 0 #2b2420,-1px -1px 0 #2b2420,1px -1px 0 #2b2420,-1px 1px 0 #2b2420}.square.black-piece{color:#1a1512;text-shadow:1px 1px 0 #fbf8f2,-1px -1px 0 #fbf8f2,1px -1px 0 #fbf8f2,-1px 1px 0 #fbf8f2}.square.selected{background-color:#c9a227!important}.square.target{outline:3px solid #4C7A3F;outline-offset:-3px}.square.in-check{background-color:#c0504d!important}.square:focus{outline:3px solid #2B6CB0;outline-offset:-3px}#status{font-size:17px;font-weight:700;margin:12px 0;min-height:24px}.controls button,fieldset button{font-size:15px;padding:8px 12px;margin:4px 6px 4px 0;min-height:44px;min-width:44px;border:1px solid #4a3524;background-color:#ede1c8;color:#2b2420;cursor:pointer}.controls button:disabled,fieldset button:disabled{opacity:.5;cursor:default}.controls button:focus,fieldset button:focus{outline:3px solid #2B6CB0}fieldset{border:1px solid #c9bba0;margin:0 0 16px 0;padding:10px}legend{font-weight:700;padding:0 6px}label{display:block;margin:6px 0;font-size:15px}#moveScoresheet{border-collapse:collapse;width:100%;font-size:15px;background-color:#fff}#moveScoresheet td,#moveScoresheet th{border:1px solid #c9bba0;padding:4px 6px;text-align:left}#moveListWrap{max-height:220px;overflow-y:auto;border:1px solid #c9bba0}textarea.pgnBox{width:100%;font-family:"Courier New",monospace;font-size:14px;min-height:70px;padding:6px}.note{font-size:13px;color:#5a5044;margin-top:4px}.privacyNote{clear:both;margin-top:20px;padding:10px;border:1px dashed #4a3524;font-size:13px;background-color:#fffdf7}.visually-hidden{position:absolute;left:-9999px;top:auto}</style></head><body><noscript>This game needs JavaScript, which appears to be off in this browser.</noscript><h1>Offline Chess</h1><p class="tagline">Runs entirely on this device. No internet connection, accounts, or tracking involved.</p><div class="clearfix"><div class="boardWrap"><div id="status" role="status" aria-live="polite">White to move</div><div class="boardScroll"><table class="board" id="board" aria-label="Chess board"></table></div><div class="controls" style="margin-top:12px"><button type="button" id="newGameBtn">New game</button> <button type="button" id="undoBtn">Undo</button> <button type="button" id="flipBtn">Flip board</button></div><label><input type="checkbox" id="vsComputerToggle"> Play Black as the computer (easy)</label></div><div class="sideWrap"><fieldset><legend>Save on this device</legend><label><input type="checkbox" id="saveToggle"> Remember this game on this device</label><div class="note">Stored only in this browser's local storage. Nothing leaves your device.</div><div class="note" id="storageNote"></div><button type="button" id="clearSaveBtn" style="margin-top:8px">Clear saved game</button></fieldset><fieldset><legend>Moves</legend><div id="moveListWrap"><table id="moveScoresheet"><caption class="visually-hidden">Move list</caption><thead><tr><th>#</th><th>White</th><th>Black</th></tr></thead><tbody id="moveListBody"></tbody></table></div></fieldset><fieldset><legend>Export game</legend><textarea class="pgnBox" id="pgnOutput" readonly="readonly" aria-label="Game notation for copying"></textarea> <button type="button" id="copyPgnBtn">Select all / copy</button> <button type="button" id="downloadPgnBtn">Download .pgn file</button><div class="note" id="copyNote"></div></fieldset><fieldset><legend>Import game</legend><textarea class="pgnBox" id="pgnInput" placeholder="Paste PGN text here" aria-label="Paste game notation to load"></textarea> <button type="button" id="loadPastedBtn">Load pasted game</button><div id="fileImportWrap" style="margin-top:8px"><label for="pgnFile">Or load a .pgn file:</label> <input type="file" id="pgnFile" accept=".pgn,.txt"></div><div class="note" id="importNote"></div></fieldset></div></div><div class="privacyNote"><strong>Privacy:</strong> This page makes no network requests and uses no cookies or analytics. Your game is only saved locally if you turn on "Remember this game," and only in this browser.</div><script>var SYMBOLS="pnbrqkPNBRQK",DEFAULT_POSITION="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",TERMINATION_MARKERS=["1-0","0-1","1/2-1/2","*"],PAWN_OFFSETS={b:[16,32,17,15],w:[-16,-32,-17,-15]},PIECE_OFFSETS={n:[-18,-33,-31,-14,18,33,31,14],b:[-17,-15,17,15],r:[-16,1,16,-1],q:[-17,-16,-15,1,17,16,15,-1],k:[-17,-16,-15,1,17,16,15,-1]},ATTACKS=[20,0,0,0,0,0,0,24,0,0,0,0,0,0,20,0,0,20,0,0,0,0,0,24,0,0,0,0,0,20,0,0,0,0,20,0,0,0,0,24,0,0,0,0,20,0,0,0,0,0,0,20,0,0,0,24,0,0,0,20,0,0,0,0,0,0,0,0,20,0,0,24,0,0,20,0,0,0,0,0,0,0,0,0,0,20,2,24,2,20,0,0,0,0,0,0,0,0,0,0,0,2,53,56,53,2,0,0,0,0,0,0,24,24,24,24,24,24,56,0,56,24,24,24,24,24,24,0,0,0,0,0,0,2,53,56,53,2,0,0,0,0,0,0,0,0,0,0,0,20,2,24,2,20,0,0,0,0,0,0,0,0,0,0,20,0,0,24,0,0,20,0,0,0,0,0,0,0,0,20,0,0,0,24,0,0,0,20,0,0,0,0,0,0,20,0,0,0,0,24,0,0,0,0,20,0,0,0,0,20,0,0,0,0,0,24,0,0,0,0,0,20,0,0,20,0,0,0,0,0,0,24,0,0,0,0,0,0,20],RAYS=[17,0,0,0,0,0,0,16,0,0,0,0,0,0,15,0,0,17,0,0,0,0,0,16,0,0,0,0,0,15,0,0,0,0,17,0,0,0,0,16,0,0,0,0,15,0,0,0,0,0,0,17,0,0,0,16,0,0,0,15,0,0,0,0,0,0,0,0,17,0,0,16,0,0,15,0,0,0,0,0,0,0,0,0,0,17,0,16,0,15,0,0,0,0,0,0,0,0,0,0,0,0,17,16,15,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,-15,-16,-17,0,0,0,0,0,0,0,0,0,0,0,0,-15,0,-16,0,-17,0,0,0,0,0,0,0,0,0,0,-15,0,0,-16,0,0,-17,0,0,0,0,0,0,0,0,-15,0,0,0,-16,0,0,0,-17,0,0,0,0,0,0,-15,0,0,0,0,-16,0,0,0,0,-17,0,0,0,0,-15,0,0,0,0,0,-16,0,0,0,0,0,-17,0,0,-15,0,0,0,0,0,0,-16,0,0,0,0,0,0,-17],SHIFTS={p:0,n:1,b:2,r:3,q:4,k:5},BITS={NORMAL:1,CAPTURE:2,BIG_PAWN:4,EP_CAPTURE:8,PROMOTION:16,KSIDE_CASTLE:32,QSIDE_CASTLE:64},RANK_1=7,RANK_2=6,RANK_3=5,RANK_4=4,RANK_5=3,RANK_6=2,RANK_7=1,RANK_8=0,SQUARE_MAP={a8:0,b8:1,c8:2,d8:3,e8:4,f8:5,g8:6,h8:7,a7:16,b7:17,c7:18,d7:19,e7:20,f7:21,g7:22,h7:23,a6:32,b6:33,c6:34,d6:35,e6:36,f6:37,g6:38,h6:39,a5:48,b5:49,c5:50,d5:51,e5:52,f5:53,g5:54,h5:55,a4:64,b4:65,c4:66,d4:67,e4:68,f4:69,g4:70,h4:71,a3:80,b3:81,c3:82,d3:83,e3:84,f3:85,g3:86,h3:87,a2:96,b2:97,c2:98,d2:99,e2:100,f2:101,g2:102,h2:103,a1:112,b1:113,c1:114,d1:115,e1:116,f1:117,g1:118,h1:119},ROOKS={w:[{square:SQUARE_MAP.a1,flag:BITS.QSIDE_CASTLE},{square:SQUARE_MAP.h1,flag:BITS.KSIDE_CASTLE}],b:[{square:SQUARE_MAP.a8,flag:BITS.QSIDE_CASTLE},{square:SQUARE_MAP.h8,flag:BITS.KSIDE_CASTLE}]},PARSER_STRICT=0,PARSER_SLOPPY=1;function get_disambiguator(e,t){for(var r=e.from,n=e.to,o=e.piece,i=0,a=0,l=0,u=0,c=t.length;u<c;u++){var f=t[u].from,s=t[u].to;o===t[u].piece&&r!==f&&n===s&&(i++,rank(r)===rank(f)&&a++,file(r)===file(f)&&l++)}return i>0?a>0&&l>0?algebraic(r):l>0?algebraic(r).charAt(1):algebraic(r).charAt(0):""}function infer_piece_type(e){var t=e.charAt(0);if(t>="a"&&t<="h"){if(e.match(/[a-h]\d.*[a-h]\d/))return;return PAWN}return"o"===(t=t.toLowerCase())?KING:t}function stripped_san(e){return e.replace(/=/,"").replace(/[+#]?[?!]*$/,"")}function rank(e){return e>>4}function file(e){return 15&e}function algebraic(e){var t=file(e),r=rank(e);return"abcdefgh".substring(t,t+1)+"87654321".substring(r,r+1)}function swap_color(e){return e===WHITE?BLACK:WHITE}function is_digit(e){return-1!=="0123456789".indexOf(e)}function clone(e){var t=e instanceof Array?[]:{};for(var r in e)t[r]="object"==typeof r?clone(e[r]):e[r];return t}function trim(e){return e.replace(/^\s+|\s+$/g,"")}var BLACK="b",WHITE="w",EMPTY=-1,PAWN="p",KNIGHT="n",BISHOP="b",ROOK="r",QUEEN="q",KING="k",SQUARES=function(){for(var e=[],t=SQUARE_MAP.a8;t<=SQUARE_MAP.h1;t++)136&t?t+=7:e.push(algebraic(t));return e}(),FLAGS={NORMAL:"n",CAPTURE:"c",BIG_PAWN:"b",EP_CAPTURE:"e",PROMOTION:"p",KSIDE_CASTLE:"k",QSIDE_CASTLE:"q"},Chess=function(e){var t=new Array(128),r={w:EMPTY,b:EMPTY},n=WHITE,o={w:0,b:0},i=EMPTY,a=0,l=1,u=[],c={},f={};function s(e){void 0===e&&(e=!1),t=new Array(128),r={w:EMPTY,b:EMPTY},n=WHITE,o={w:0,b:0},i=EMPTY,a=0,l=1,u=[],e||(c={}),f={},S(v())}function p(){for(var e=[],t={},r=function(e){e in f&&(t[e]=f[e])};u.length>0;)e.push(N());for(r(v());e.length>0;)O(e.pop()),r(v());f=t}function d(){g(DEFAULT_POSITION)}function g(e,t){void 0===t&&(t=!1);var r=e.split(/\s+/),u=r[0],c=0;if(!h(e).valid)return!1;s(t);for(var f=0;f<u.length;f++){var p=u.charAt(f);if("/"===p)c+=8;else if(is_digit(p))c+=parseInt(p,10);else{var d=p<"a"?WHITE:BLACK;A({type:p.toLowerCase(),color:d},algebraic(c)),c++}}return n=r[1],r[2].indexOf("K")>-1&&(o.w|=BITS.KSIDE_CASTLE),r[2].indexOf("Q")>-1&&(o.w|=BITS.QSIDE_CASTLE),r[2].indexOf("k")>-1&&(o.b|=BITS.KSIDE_CASTLE),r[2].indexOf("q")>-1&&(o.b|=BITS.QSIDE_CASTLE),i="-"===r[3]?EMPTY:SQUARE_MAP[r[3]],a=parseInt(r[4],10),l=parseInt(r[5],10),S(v()),!0}function h(e){var t="No errors.",r="FEN string must contain six space-delimited fields.",n="6th field (move number) must be a positive integer.",o="5th field (half move counter) must be a non-negative integer.",i="4th field (en-passant square) is invalid.",a="3rd field (castling availability) is invalid.",l="2nd field (side to move) is invalid.",u="1st field (piece positions) does not contain 8 '/'-delimited rows.",c="1st field (piece positions) is invalid [consecutive numbers].",f="1st field (piece positions) is invalid [invalid piece].",s="1st field (piece positions) is invalid [row too large].",p="Illegal en-passant square",d=e.split(/\s+/);if(6!==d.length)return{valid:!1,error_number:1,error:r};if(isNaN(parseInt(d[5]))||parseInt(d[5],10)<=0)return{valid:!1,error_number:2,error:n};if(isNaN(parseInt(d[4]))||parseInt(d[4],10)<0)return{valid:!1,error_number:3,error:o};if(!/^(-|[abcdefgh][36])$/.test(d[3]))return{valid:!1,error_number:4,error:i};if(!/^(KQ?k?q?|Qk?q?|kq?|q|-)$/.test(d[2]))return{valid:!1,error_number:5,error:a};if(!/^(w|b)$/.test(d[1]))return{valid:!1,error_number:6,error:l};var g=d[0].split("/");if(8!==g.length)return{valid:!1,error_number:7,error:u};for(var h=0;h<g.length;h++){for(var v=0,m=!1,S=0;S<g[h].length;S++)if(isNaN(g[h][S])){if(!/^[prnbqkPRNBQK]$/.test(g[h][S]))return{valid:!1,error_number:9,error:f};v+=1,m=!1}else{if(m)return{valid:!1,error_number:8,error:c};v+=parseInt(g[h][S],10),m=!0}if(8!==v)return{valid:!1,error_number:10,error:s}}return"3"==d[3][1]&&"w"==d[1]||"6"==d[3][1]&&"b"==d[1]?{valid:!1,error_number:11,error:p}:{valid:!0,error_number:0,error:t}}function v(){for(var e=0,r="",u=SQUARE_MAP.a8;u<=SQUARE_MAP.h1;u++){if(null==t[u])e++;else{e>0&&(r+=e,e=0);var c=t[u].color,f=t[u].type;r+=c===WHITE?f.toUpperCase():f.toLowerCase()}u+1&136&&(e>0&&(r+=e),u!==SQUARE_MAP.h1&&(r+="/"),e=0,u+=8)}var s="";o[WHITE]&BITS.KSIDE_CASTLE&&(s+="K"),o[WHITE]&BITS.QSIDE_CASTLE&&(s+="Q"),o[BLACK]&BITS.KSIDE_CASTLE&&(s+="k"),o[BLACK]&BITS.QSIDE_CASTLE&&(s+="q"),s=s||"-";var p=i===EMPTY?"-":algebraic(i);return[r,n,s,p,a,l].join(" ")}function m(e){for(var t=0;t<e.length;t+=2)"string"==typeof e[t]&&"string"==typeof e[t+1]&&(c[e[t]]=e[t+1]);return c}function S(e){u.length>0||(e!==DEFAULT_POSITION?(c.SetUp="1",c.FEN=e):(delete c.SetUp,delete c.FEN))}function E(e){var r=t[SQUARE_MAP[e]];return r?{type:r.type,color:r.color}:null}function A(e,n){if(!("type"in e)||!("color"in e))return!1;if(-1===SYMBOLS.indexOf(e.type.toLowerCase()))return!1;if(!(n in SQUARE_MAP))return!1;var o=SQUARE_MAP[n];return(e.type!=KING||r[e.color]==EMPTY||r[e.color]==o)&&(t[o]={type:e.type,color:e.color},e.type===KING&&(r[e.color]=o),S(v()),!0)}function _(e,t,r,o,i){var a={color:n,from:t,to:r,flags:o,piece:e[t].type};return i&&(a.flags|=BITS.PROMOTION,a.promotion=i),e[r]?a.captured=e[r].type:o&BITS.EP_CAPTURE&&(a.captured=PAWN),a}function I(e){function a(e,t,r,n,o){if(e[r].type!==PAWN||rank(n)!==RANK_8&&rank(n)!==RANK_1)t.push(_(e,r,n,o));else for(var i=[QUEEN,ROOK,BISHOP,KNIGHT],a=0,l=i.length;a<l;a++)t.push(_(e,r,n,o,i[a]))}var l=[],u=n,c=swap_color(u),f={b:RANK_7,w:RANK_2},s=SQUARE_MAP.a8,p=SQUARE_MAP.h1,d=!1,g=void 0===e||!("legal"in e)||e.legal,h=void 0===e||!("piece"in e)||"string"!=typeof e.piece||e.piece.toLowerCase();if(void 0!==e&&"square"in e){if(!(e.square in SQUARE_MAP))return[];s=p=SQUARE_MAP[e.square],d=!0}for(var v=s;v<=p;v++)if(136&v)v+=7;else{var m=t[v];if(null!=m&&m.color===u)if(m.type!==PAWN||!0!==h&&h!==PAWN){if(!0===h||h===m.type)for(var S=0,E=PIECE_OFFSETS[m.type].length;S<E;S++){var A=PIECE_OFFSETS[m.type][S];for(I=v;!(136&(I+=A));){if(null!=t[I]){if(t[I].color===u)break;a(t,l,v,I,BITS.CAPTURE);break}if(a(t,l,v,I,BITS.NORMAL),"n"===m.type||"k"===m.type)break}}}else{var I=v+PAWN_OFFSETS[u][0];if(null==t[I]){a(t,l,v,I,BITS.NORMAL);var I=v+PAWN_OFFSETS[u][1];f[u]===rank(v)&&null==t[I]&&a(t,l,v,I,BITS.BIG_PAWN)}for(S=2;S<4;S++){136&(I=v+PAWN_OFFSETS[u][S])||(null!=t[I]&&t[I].color===c?a(t,l,v,I,BITS.CAPTURE):I===i&&a(t,l,v,i,BITS.EP_CAPTURE))}}}if(!(!0!==h&&h!==KING||d&&p!==r[u])){if(o[u]&BITS.KSIDE_CASTLE){var T=(R=r[u])+2;null!=t[R+1]||null!=t[T]||b(c,r[u])||b(c,R+1)||b(c,T)||a(t,l,r[u],T,BITS.KSIDE_CASTLE)}if(o[u]&BITS.QSIDE_CASTLE){var R;T=(R=r[u])-2;null!=t[R-1]||null!=t[R-2]||null!=t[R-3]||b(c,r[u])||b(c,R-1)||b(c,T)||a(t,l,r[u],T,BITS.QSIDE_CASTLE)}}if(!g)return l;var y=[];for(v=0,E=l.length;v<E;v++)O(l[v]),P(u)||y.push(l[v]),N();return y}function T(e,t){var r="";if(e.flags&BITS.KSIDE_CASTLE)r="O-O";else if(e.flags&BITS.QSIDE_CASTLE)r="O-O-O";else{if(e.piece!==PAWN){var n=get_disambiguator(e,t);r+=e.piece.toUpperCase()+n}e.flags&(BITS.CAPTURE|BITS.EP_CAPTURE)&&(e.piece===PAWN&&(r+=algebraic(e.from)[0]),r+="x"),r+=algebraic(e.to),e.flags&BITS.PROMOTION&&(r+="="+e.promotion.toUpperCase())}return O(e),R()&&(y()?r+="#":r+="+"),N(),r}function b(e,r){for(var n=SQUARE_MAP.a8;n<=SQUARE_MAP.h1;n++)if(136&n)n+=7;else if(null!=t[n]&&t[n].color===e){var o=t[n],i=n-r,a=i+119;if(ATTACKS[a]&1<<SHIFTS[o.type]){if(o.type===PAWN){if(i>0){if(o.color===WHITE)return!0}else if(o.color===BLACK)return!0;continue}if("n"===o.type||"k"===o.type)return!0;for(var l=RAYS[a],u=n+l,c=!1;u!==r;){if(null!=t[u]){c=!0;break}u+=l}if(!c)return!0}}return!1}function P(e){return b(swap_color(e),r[e])}function R(){return P(n)}function y(){return R()&&0===I().length}function C(){return!R()&&0===I().length}function w(){for(var e={},r=[],n=0,o=0,i=SQUARE_MAP.a8;i<=SQUARE_MAP.h1;i++)if(o=(o+1)%2,136&i)i+=7;else{var a=t[i];a&&(e[a.type]=a.type in e?e[a.type]+1:1,a.type===BISHOP&&r.push(o),n++)}if(2===n)return!0;if(3===n&&(1===e[BISHOP]||1===e[KNIGHT]))return!0;if(n===e[BISHOP]+2){var l=0,u=r.length;for(i=0;i<u;i++)l+=r[i];if(0===l||l===u)return!0}return!1}function B(){for(var e=[],t={},r=!1;;){var n=N();if(!n)break;e.push(n)}for(;;){var o=v().split(" ").slice(0,4).join(" ");if(t[o]=o in t?t[o]+1:1,t[o]>=3&&(r=!0),!e.length)break;O(e.pop())}return r}function O(e){var c=n,f=swap_color(c);if(function(e){u.push({move:e,kings:{b:r.b,w:r.w},turn:n,castling:{b:o.b,w:o.w},ep_square:i,half_moves:a,move_number:l})}(e),t[e.to]=t[e.from],t[e.from]=null,e.flags&BITS.EP_CAPTURE&&(n===BLACK?t[e.to-16]=null:t[e.to+16]=null),e.flags&BITS.PROMOTION&&(t[e.to]={type:e.promotion,color:c}),t[e.to].type===KING){if(r[t[e.to].color]=e.to,e.flags&BITS.KSIDE_CASTLE){var s=e.to-1,p=e.to+1;t[s]=t[p],t[p]=null}else if(e.flags&BITS.QSIDE_CASTLE){s=e.to+1,p=e.to-2;t[s]=t[p],t[p]=null}o[c]=""}if(o[c])for(var d=0,g=ROOKS[c].length;d<g;d++)if(e.from===ROOKS[c][d].square&&o[c]&ROOKS[c][d].flag){o[c]^=ROOKS[c][d].flag;break}if(o[f])for(d=0,g=ROOKS[f].length;d<g;d++)if(e.to===ROOKS[f][d].square&&o[f]&ROOKS[f][d].flag){o[f]^=ROOKS[f][d].flag;break}i=e.flags&BITS.BIG_PAWN?"b"===n?e.to-16:e.to+16:EMPTY,e.piece===PAWN||e.flags&(BITS.CAPTURE|BITS.EP_CAPTURE)?a=0:a++,n===BLACK&&l++,n=swap_color(n)}function N(){var e=u.pop();if(null==e)return null;var c=e.move;r=e.kings,n=e.turn,o=e.castling,i=e.ep_square,a=e.half_moves,l=e.move_number;var f,s,p=n,d=swap_color(n);if(t[c.from]=t[c.to],t[c.from].type=c.piece,t[c.to]=null,c.flags&BITS.CAPTURE)t[c.to]={type:c.captured,color:d};else if(c.flags&BITS.EP_CAPTURE){var g;g=p===BLACK?c.to-16:c.to+16,t[g]={type:PAWN,color:d}}c.flags&(BITS.KSIDE_CASTLE|BITS.QSIDE_CASTLE)&&(c.flags&BITS.KSIDE_CASTLE?(f=c.to+1,s=c.to-1):c.flags&BITS.QSIDE_CASTLE&&(f=c.to-2,s=c.to+1),t[f]=t[s],t[s]=null);return c}function k(e,t){for(var r=stripped_san(e),n=0;n<2;n++){if(n==PARSER_SLOPPY){if(!t)return null;var o=!1;if(c=r.match(/([pnbrqkPNBRQK])?([a-h][1-8])x?-?([a-h][1-8])([qrbnQRBN])?/)){var i=c[1],a=c[2],l=c[3],u=c[4];1==a.length&&(o=!0)}else{var c;if(c=r.match(/([pnbrqkPNBRQK])?([a-h]?[1-8]?)x?-?([a-h][1-8])([qrbnQRBN])?/)){i=c[1],a=c[2],l=c[3],u=c[4];if(1==a.length)o=!0}}}for(var f=infer_piece_type(r),s=I({legal:!0,piece:i||f}),p=0,d=s.length;p<d;p++)switch(n){case PARSER_STRICT:if(r===stripped_san(T(s[p],s)))return s[p];break;case PARSER_SLOPPY:if(c){if(!(i&&i.toLowerCase()!=s[p].piece||SQUARE_MAP[a]!=s[p].from||SQUARE_MAP[l]!=s[p].to||u&&u.toLowerCase()!=s[p].promotion))return s[p];if(o){var g=algebraic(s[p].from);if(!(i&&i.toLowerCase()!=s[p].piece||SQUARE_MAP[l]!=s[p].to||a!=g[0]&&a!=g[1]||u&&u.toLowerCase()!=s[p].promotion))return s[p]}}}}return null}function L(e){var t=clone(e);t.san=T(t,I({legal:!0})),t.to=algebraic(t.to),t.from=algebraic(t.from);var r="";for(var n in BITS)BITS[n]&t.flags&&(r+=FLAGS[n]);return t.flags=r,t}function K(e){for(var t=I({legal:!1}),r=0,o=n,i=0,a=t.length;i<a;i++){if(O(t[i]),!P(o))if(e-1>0)r+=K(e-1);else r++;N()}return r}return g(void 0===e?DEFAULT_POSITION:e),{load:function(e){return g(e)},reset:function(){return d()},moves:function(e){for(var t=I(e),r=[],n=0,o=t.length;n<o;n++)void 0!==e&&"verbose"in e&&e.verbose?r.push(L(t[n])):r.push(T(t[n],I({legal:!0})));return r},in_check:function(){return R()},in_checkmate:function(){return y()},in_stalemate:function(){return C()},in_draw:function(){return a>=100||C()||w()||B()},insufficient_material:function(){return w()},in_threefold_repetition:function(){return B()},game_over:function(){return a>=100||y()||C()||w()||B()},validate_fen:function(e){return h(e)},fen:function(){return v()},board:function(){for(var e=[],r=[],n=SQUARE_MAP.a8;n<=SQUARE_MAP.h1;n++)null==t[n]?r.push(null):r.push({square:algebraic(n),type:t[n].type,color:t[n].color}),n+1&136&&(e.push(r),r=[],n+=8);return e},pgn:function(e){var t="object"==typeof e&&"string"==typeof e.newline_char?e.newline_char:"\n",r="object"==typeof e&&"number"==typeof e.max_width?e.max_width:0,n=[],o=!1;for(var i in c)n.push("["+i+' "'+c[i]+'"]'+t),o=!0;o&&u.length&&n.push(t);for(var a=function(e){var t=f[v()];void 0!==t&&(e=e+(e.length>0?" ":"")+"{"+t+"}");return e},s=[];u.length>0;)s.push(N());var p=[],d="";for(0===s.length&&p.push(a(""));s.length>0;){d=a(d);var g=s.pop();if(u.length||"b"!==g.color)"w"===g.color&&(d.length&&p.push(d),d=l+".");else{var h=l+". ...";d=d?d+" "+h:h}d=d+" "+T(g,I({legal:!0})),O(g)}if(d.length&&p.push(a(d)),void 0!==c.Result&&p.push(c.Result),0===r)return n.join("")+p.join(" ");var m=function(){return n.length>0&&" "===n[n.length-1]&&(n.pop(),!0)},S=function(e,o){for(var i of o.split(" "))if(i){if(e+i.length>r){for(;m();)e--;n.push(t),e=0}n.push(i),e+=i.length,n.push(" "),e++}return m()&&e--,e},E=0;for(i=0;i<p.length;i++)E+p[i].length>r&&-1!==p[i].indexOf("{")?E=S(E,p[i]):(E+p[i].length>r&&0!==i?(" "===n[n.length-1]&&n.pop(),n.push(t),E=0):0!==i&&(n.push(" "),E++),n.push(p[i]),E+=p[i].length);return n.join("")},load_pgn:function(e,t){var r=void 0!==t&&"sloppy"in t&&t.sloppy;function n(e){return e.replace(/\\/g,"\\")}e=e.trim();var o="object"==typeof t&&"string"==typeof t.newline_char?t.newline_char:"\r?\n",i=new RegExp("^(\\[((?:"+n(o)+")|.)*\\])(?:\\s*"+n(o)+"){2}"),a=i.test(e)?i.exec(e)[1]:"";d();var l=function(e,t){for(var r="object"==typeof t&&"string"==typeof t.newline_char?t.newline_char:"\r?\n",o={},i=e.split(new RegExp(n(r))),a="",l="",u=0;u<i.length;u++){var c=/^\s*\[([A-Za-z]+)\s*"(.*)"\s*\]\s*$/;a=i[u].replace(c,"$1"),l=i[u].replace(c,"$2"),trim(a).length>0&&(o[a]=l)}return o}(a,t),u="";for(var s in l)"fen"===s.toLowerCase()&&(u=l[s]),m([s,l[s]]);if(r){if(u&&!g(u,!0))return!1}else if(!("1"!==l.SetUp||"FEN"in l&&g(l.FEN,!0)))return!1;for(var p=function(e){return"{"+function(e){return e.split("").map(function(e){return e.charCodeAt(0)<128?e.charCodeAt(0).toString(16):encodeURIComponent(e).replace(/\%/g,"").toLowerCase()}).join("")}((e=e.replace(new RegExp(n(o),"g")," ")).slice(1,e.length-1))+"}"},h=function(e){if("{"===e.charAt(0)&&"}"===e.charAt(e.length-1))return function(e){return 0==e.length?"":decodeURIComponent("%"+e.match(/.{1,2}/g).join("%"))}(e.slice(1,e.length-1))},S=e.replace(a,"").replace(new RegExp("({[^}]*})+?|;([^"+n(o)+"]*)","g"),function(e,t,r){return void 0!==t?p(t):" "+p("{"+r.slice(1)+"}")}).replace(new RegExp(n(o),"g")," "),E=/(\([^\(\)]+\))+?/g;E.test(S);)S=S.replace(E,"");var A=trim(S=(S=(S=S.replace(/\d+\.(\.\.)?/g,"")).replace(/\.\.\./g,"")).replace(/\$\d+/g,"")).split(new RegExp(/\s+/));A=A.join(",").replace(/,,+/g,",").split(",");for(var _="",I="",T=0;T<A.length;T++){var b=h(A[T]);if(void 0===b)if(null==(_=k(A[T],r))){if(!(TERMINATION_MARKERS.indexOf(A[T])>-1))return!1;I=A[T]}else I="",O(_);else f[v()]=b}return I&&Object.keys(c).length&&!c.Result&&m(["Result",I]),!0},header:function(){return m(arguments)},turn:function(){return n},move:function(e,t){var r=void 0!==t&&"sloppy"in t&&t.sloppy,n=null;if("string"==typeof e)n=k(e,r);else if("object"==typeof e)for(var o=I(),i=0,a=o.length;i<a;i++)if(e.from===algebraic(o[i].from)&&e.to===algebraic(o[i].to)&&(!("promotion"in o[i])||e.promotion===o[i].promotion)){n=o[i];break}if(!n)return null;var l=L(n);return O(n),l},undo:function(){var e=N();return e?L(e):null},clear:function(){return s()},put:function(e,t){return A(e,t)},get:function(e){return E(e)},ascii(){for(var e="   +------------------------+\n",r=SQUARE_MAP.a8;r<=SQUARE_MAP.h1;r++){if(0===file(r)&&(e+=" "+"87654321"[rank(r)]+" |"),null==t[r])e+=" . ";else{var n=t[r].type;e+=" "+(t[r].color===WHITE?n.toUpperCase():n.toLowerCase())+" "}r+1&136&&(e+="|\n",r+=8)}return e+="   +------------------------+\n",e+="     a  b  c  d  e  f  g  h"},remove:function(e){return function(e){var n=E(e);return t[SQUARE_MAP[e]]=null,n&&n.type===KING&&(r[n.color]=EMPTY),S(v()),n}(e)},perft:function(e){return K(e)},square_color:function(e){if(e in SQUARE_MAP){var t=SQUARE_MAP[e];return(rank(t)+file(t))%2==0?"light":"dark"}return null},history:function(e){for(var t=[],r=[],n=(void 0!==e&&"verbose"in e&&e.verbose);u.length>0;)t.push(N());for(;t.length>0;){var o=t.pop();n?r.push(L(o)):r.push(T(o,I({legal:!0}))),O(o)}return r},get_comment:function(){return f[v()]},set_comment:function(e){f[v()]=e.replace("{","[").replace("}","]")},delete_comment:function(){var e=f[v()];return delete f[v()],e},get_comments:function(){return p(),Object.keys(f).map(function(e){return{fen:e,comment:f[e]}})},delete_comments:function(){return p(),Object.keys(f).map(function(e){var t=f[e];return delete f[e],{fen:e,comment:t}})}}};!function(){"use strict";var e=["a","b","c","d","e","f","g","h"],t="offlineChessSave_v1",r=!1;try{window.localStorage.setItem("__chess_storage_test__","1"),window.localStorage.removeItem("__chess_storage_test__"),r=!0}catch(e){r=!1}var n=new Chess,o=!1,i=null,a=[],l=!1,u=[],c=document.getElementById("board"),f=document.getElementById("status"),s=document.getElementById("moveListBody"),p=document.getElementById("moveListWrap"),d=document.getElementById("newGameBtn"),g=document.getElementById("undoBtn"),h=document.getElementById("flipBtn"),v=document.getElementById("vsComputerToggle"),m=document.getElementById("saveToggle"),S=document.getElementById("clearSaveBtn"),E=document.getElementById("storageNote"),A=document.getElementById("pgnOutput"),_=document.getElementById("copyPgnBtn"),I=document.getElementById("downloadPgnBtn"),T=document.getElementById("copyNote"),b=document.getElementById("pgnInput"),P=document.getElementById("loadPastedBtn"),R=document.getElementById("pgnFile"),y=document.getElementById("fileImportWrap"),C=document.getElementById("importNote"),w={p:"♙",n:"♘",b:"♗",r:"♖",q:"♕",k:"♔"},B={p:"♟",n:"♞",b:"♝",r:"♜",q:"♛",k:"♚"},O={p:"pawn",n:"knight",b:"bishop",r:"rook",q:"queen",k:"king"};function N(t,r){return e[o?7-r:r]+(8-(o?7-t:t))}function k(e){return e?"w"===e.color?w[e.type]:B[e.type]:""}function L(e,t,r){e.onclick=function(){!function(e,t){if(l)return;var r=n.turn();if(v.checked&&"b"===r)return;var o=N(e,t);if(i&&-1!==a.indexOf(o)){var u=n.move({from:i,to:o,promotion:"q"});return i=null,a=[],void(u?function(){if(K(),U(),M(),Q(),n.game_over())return;v.checked&&"b"===n.turn()&&(l=!0,U(),setTimeout(q,400))}():K())}if(i===o)return i=null,a=[],void K();var c=n.get(o);if(c&&c.color===r){i=o;var f=n.moves({square:o,verbose:!0});a=[];for(var s=0;s<f.length;s++)a.push(f[s].to);return void K()}i=null,a=[],K()}(t,r)},e.onkeydown=function(e){!function(e,t,r){var n=e.keyCode||e.which,o=t,i=r;if(37===n)i=r-1;else if(39===n)i=r+1;else if(38===n)o=t-1;else{if(40!==n)return;o=t+1}if(o<0||o>7||i<0||i>7)return;e.preventDefault(),u[o][i].focus()}(e,t,r)}}function K(){for(var t=n.in_check()?function(t){for(var r=0;r<8;r++)for(var o=1;o<=8;o++){var i=e[r]+o,a=n.get(i);if(a&&"k"===a.type&&a.color===t)return i}return null}(n.turn()):null,r=0;r<8;r++)for(var o=0;o<8;o++){var l=N(r,o),c=n.get(l),f=u[r][o];f.setAttribute("data-square",l),f.textContent=k(c);var s=c?("w"===c.color?"White ":"Black ")+O[c.type]:"empty";f.setAttribute("aria-label",l+", "+s);var p="square "+f.getAttribute("data-base");c&&(p+="w"===c.color?" white-piece":" black-piece"),l===i&&(p+=" selected"),-1!==a.indexOf(l)&&(p+=" target"),l===t&&(p+=" in-check"),f.className=p}}function U(){var e;l?e="Computer is thinking…":n.in_checkmate()?e="Checkmate — "+("w"===n.turn()?"Black":"White")+" wins.":n.in_stalemate()?e="Draw by stalemate.":n.in_threefold_repetition()?e="Draw by threefold repetition.":n.insufficient_material()?e="Draw — insufficient material.":n.in_draw()?e="Draw (fifty-move rule).":(e=("w"===n.turn()?"White":"Black")+" to move",n.in_check()&&(e+=" — Check!")),f.textContent=e,g.disabled=0===n.history().length}function M(){for(var e=n.history();s.firstChild;)s.removeChild(s.firstChild);for(var t=0;t<e.length;t+=2){var r=document.createElement("tr"),o=document.createElement("td");o.textContent=t/2+1+".";var i=document.createElement("td");i.textContent=e[t]||"";var a=document.createElement("td");a.textContent=e[t+1]||"",r.appendChild(o),r.appendChild(i),r.appendChild(a),s.appendChild(r)}p.scrollTop=p.scrollHeight,A.value=n.pgn()}function Q(){if(r&&m.checked)try{var e=JSON.stringify({pgn:n.pgn(),flipped:o,vsComputer:v.checked});window.localStorage.setItem(t,e)}catch(e){}}function q(){var e=n.moves({verbose:!0});if(0!==e.length){for(var t=[],r=0;r<e.length;r++)e[r].captured&&t.push(e[r]);var o=t.length>0?t:e,i=o[Math.floor(Math.random()*o.length)];n.move({from:i.from,to:i.to,promotion:"q"}),l=!1,K(),U(),M(),Q()}else l=!1}function x(e){if(e&&e.replace(/\s/g,"")){if(!(n.history().length>0)||window.confirm("Loading a game will replace the current game. Continue?")){var t=new Chess;t.load_pgn(e)?(n=t,i=null,a=[],l=!1,K(),U(),M(),Q(),C.textContent="Game loaded.",b.value=""):C.textContent="Could not read that PGN — check the text and try again."}}else C.textContent="Paste a PGN game first."}d.onclick=function(){n.history().length>0&&!window.confirm("Start a new game? This will clear the current game.")||(n.reset(),i=null,a=[],l=!1,K(),U(),M(),Q())},g.onclick=function(){l||n.undo()&&(v.checked&&"b"===n.turn()&&n.undo(),i=null,a=[],K(),U(),M(),Q())},h.onclick=function(){o=!o,K(),Q()},v.onchange=function(){Q(),!v.checked||n.game_over()||"b"!==n.turn()||l||(l=!0,U(),setTimeout(q,400))},m.onchange=function(){if(m.checked)Q();else if(r)try{window.localStorage.removeItem(t)}catch(e){}},S.onclick=function(){if(r)try{window.localStorage.removeItem(t)}catch(e){}m.checked=!1,E.textContent="Saved game cleared.",setTimeout(function(){E.textContent=""},3e3)},_.onclick=function(){A.focus(),A.select();var e=!1;try{e=document.execCommand("copy")}catch(t){e=!1}T.textContent=e?"Copied to clipboard.":"Text selected — use your device’s copy command."},I.onclick=function(){var e=n.pgn()||"[Empty game]";try{var t=new Blob([e],{type:"text/plain"}),r=window.URL.createObjectURL(t),o=document.createElement("a");o.href=r,o.download="chess-game.pgn",document.body.appendChild(o),o.click(),document.body.removeChild(o),setTimeout(function(){window.URL.revokeObjectURL(r)},1e3)}catch(e){T.textContent="Download not supported here — copy the text above instead."}},P.onclick=function(){x(b.value)},window.FileReader?R.onchange=function(){var e=R.files&&R.files[0];if(e){var t=new FileReader;t.onload=function(e){x(String(e.target.result)),R.value=""},t.onerror=function(){C.textContent="Could not read that file."},t.readAsText(e)}}:y.style.display="none",r||(E.textContent="Local saving is not available in this browser.",m.disabled=!0,S.disabled=!0),function(){for(var e=0;e<8;e++){for(var t=document.createElement("tr"),r=[],n=0;n<8;n++){var o=(e+n)%2==0,i=document.createElement("td"),a=document.createElement("button");a.type="button",a.className="square "+(o?"light":"dark"),a.setAttribute("data-base",o?"light":"dark"),L(a,e,n),i.appendChild(a),t.appendChild(i),r.push(a)}c.appendChild(t),u.push(r)}}(),function(){if(r){var e;try{e=window.localStorage.getItem(t)}catch(e){return}if(e){var i;try{i=JSON.parse(e)}catch(e){return}if(i&&"string"==typeof i.pgn){var a=new Chess;if(""!==i.pgn)if(!a.load_pgn(i.pgn))return;n=a,o=!!i.flipped,m.checked=!0,"boolean"==typeof i.vsComputer&&(v.checked=i.vsComputer)}}}}(),K(),U(),M()}()</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offline Chess</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #F5F1E8;
+    color: #2B2420;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  body { padding: 12px; }
+  h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 24px;
+    margin: 0 0 4px 0;
+  }
+  p.tagline { margin: 0 0 16px 0; font-size: 14px; color: #5A5044; }
+  .clearfix:after { content: ""; display: block; clear: both; }
+
+  .boardWrap { float: left; width: 100%; max-width: 480px; }
+  .sideWrap { float: left; width: 100%; max-width: 480px; margin-top: 20px; }
+  @media (min-width: 760px) {
+    .boardWrap { width: 480px; margin-right: 24px; }
+    .sideWrap { width: 300px; margin-top: 0; }
+  }
+
+  table.board {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+    min-width: 280px;
+    margin: 0 auto;
+    border: 4px solid #4A3524;
+  }
+  .boardScroll { overflow-x: auto; }
+  table.board td { width: 12.5%; padding: 0; }
+  table.board button.square {
+    display: block;
+    width: 100%;
+    height: 46px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  @media (max-width: 420px) {
+    table.board button.square { font-size: 22px; height: 38px; }
+  }
+  .square.light { background-color: #EDE1C8; }
+  .square.dark  { background-color: #7C5A3B; }
+  .square.white-piece {
+    color: #FBF8F2;
+    text-shadow: 1px 1px 0 #2B2420, -1px -1px 0 #2B2420, 1px -1px 0 #2B2420, -1px 1px 0 #2B2420;
+  }
+  .square.black-piece {
+    color: #1A1512;
+    text-shadow: 1px 1px 0 #FBF8F2, -1px -1px 0 #FBF8F2, 1px -1px 0 #FBF8F2, -1px 1px 0 #FBF8F2;
+  }
+  .square.selected { background-color: #C9A227 !important; }
+  .square.target { outline: 3px solid #4C7A3F; outline-offset: -3px; }
+  .square.in-check { background-color: #C0504D !important; }
+  .square:focus { outline: 3px solid #2B6CB0; outline-offset: -3px; }
+
+  #status { font-size: 17px; font-weight: bold; margin: 12px 0; min-height: 24px; }
+
+  .controls button, fieldset button {
+    font-size: 15px;
+    padding: 8px 12px;
+    margin: 4px 6px 4px 0;
+    min-height: 44px;
+    min-width: 44px;
+    border: 1px solid #4A3524;
+    background-color: #EDE1C8;
+    color: #2B2420;
+    cursor: pointer;
+  }
+  .controls button:disabled, fieldset button:disabled { opacity: 0.5; cursor: default; }
+  .controls button:focus, fieldset button:focus { outline: 3px solid #2B6CB0; }
+
+  fieldset { border: 1px solid #C9BBA0; margin: 0 0 16px 0; padding: 10px; }
+  legend { font-weight: bold; padding: 0 6px; }
+  label { display: block; margin: 6px 0; font-size: 15px; }
+
+  #moveScoresheet { border-collapse: collapse; width: 100%; font-size: 15px; background-color: #FFFFFF; }
+  #moveScoresheet th, #moveScoresheet td { border: 1px solid #C9BBA0; padding: 4px 6px; text-align: left; }
+  #moveListWrap { max-height: 220px; overflow-y: auto; border: 1px solid #C9BBA0; }
+
+  textarea.pgnBox {
+    width: 100%;
+    font-family: "Courier New", monospace;
+    font-size: 14px;
+    min-height: 70px;
+    padding: 6px;
+  }
+
+  .note { font-size: 13px; color: #5A5044; margin-top: 4px; }
+  .privacyNote {
+    clear: both;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px dashed #4A3524;
+    font-size: 13px;
+    background-color: #FFFDF7;
+  }
+  .visually-hidden { position: absolute; left: -9999px; top: auto; }
+</style>
+</head>
+<body>
+<noscript>This game needs JavaScript, which appears to be off in this browser.</noscript>
+
+<h1>Offline Chess</h1>
+<p class="tagline">Runs entirely on this device. No internet connection, accounts, or tracking involved.</p>
+
+<div class="clearfix">
+  <div class="boardWrap">
+    <div id="status" role="status" aria-live="polite">White to move</div>
+    <div class="boardScroll">
+      <table class="board" id="board" aria-label="Chess board"></table>
+    </div>
+    <div class="controls" style="margin-top:12px;">
+      <button type="button" id="newGameBtn">New game</button>
+      <button type="button" id="undoBtn">Undo</button>
+      <button type="button" id="flipBtn">Flip board</button>
+    </div>
+    <label><input type="checkbox" id="vsComputerToggle"> Play Black as the computer (easy)</label>
+  </div>
+
+  <div class="sideWrap">
+    <fieldset>
+      <legend>Save on this device</legend>
+      <label><input type="checkbox" id="saveToggle"> Remember this game on this device</label>
+      <div class="note">Stored only in this browser's local storage. Nothing leaves your device.</div>
+      <div class="note" id="storageNote"></div>
+      <button type="button" id="clearSaveBtn" style="margin-top:8px;">Clear saved game</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>Moves</legend>
+      <div id="moveListWrap">
+        <table id="moveScoresheet">
+          <caption class="visually-hidden">Move list</caption>
+          <thead><tr><th>#</th><th>White</th><th>Black</th></tr></thead>
+          <tbody id="moveListBody"></tbody>
+        </table>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Export game</legend>
+      <textarea class="pgnBox" id="pgnOutput" readonly aria-label="Game notation for copying"></textarea>
+      <button type="button" id="copyPgnBtn">Select all / copy</button>
+      <button type="button" id="downloadPgnBtn">Download .pgn file</button>
+      <div class="note" id="copyNote"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Import game</legend>
+      <textarea class="pgnBox" id="pgnInput" placeholder="Paste PGN text here" aria-label="Paste game notation to load"></textarea>
+      <button type="button" id="loadPastedBtn">Load pasted game</button>
+      <div id="fileImportWrap" style="margin-top:8px;">
+        <label for="pgnFile">Or load a .pgn file:</label>
+        <input type="file" id="pgnFile" accept=".pgn,.txt">
+      </div>
+      <div class="note" id="importNote"></div>
+    </fieldset>
+  </div>
+</div>
+
+<div class="privacyNote">
+  <strong>Privacy:</strong> This page makes no network requests and uses no cookies or analytics. Your game is only saved locally if you turn on "Remember this game," and only in this browser.
+</div>
+
+<script>
+/* ---------------------------------------------------------------------
+   chess.js 0.13.4 (Jeff Hlywa, BSD license), adapted from ES module
+   syntax to a classic ES5 script (no const/let/template literals/
+   Array.from/startsWith/endsWith) for compatibility with old browsers.
+   --------------------------------------------------------------------- */
+/*
+ * Copyright (c) 2022, Jeff Hlywa (jhlywa@gmail.com)
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *
+ *----------------------------------------------------------------------------*/
+
+var SYMBOLS = 'pnbrqkPNBRQK'
+
+var DEFAULT_POSITION =
+  'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
+
+var TERMINATION_MARKERS = ['1-0', '0-1', '1/2-1/2', '*']
+
+var PAWN_OFFSETS = {
+  b: [16, 32, 17, 15],
+  w: [-16, -32, -17, -15],
+}
+
+var PIECE_OFFSETS = {
+  n: [-18, -33, -31, -14, 18, 33, 31, 14],
+  b: [-17, -15, 17, 15],
+  r: [-16, 1, 16, -1],
+  q: [-17, -16, -15, 1, 17, 16, 15, -1],
+  k: [-17, -16, -15, 1, 17, 16, 15, -1],
+}
+
+// prettier-ignore
+var ATTACKS = [
+  20, 0, 0, 0, 0, 0, 0, 24,  0, 0, 0, 0, 0, 0,20, 0,
+   0,20, 0, 0, 0, 0, 0, 24,  0, 0, 0, 0, 0,20, 0, 0,
+   0, 0,20, 0, 0, 0, 0, 24,  0, 0, 0, 0,20, 0, 0, 0,
+   0, 0, 0,20, 0, 0, 0, 24,  0, 0, 0,20, 0, 0, 0, 0,
+   0, 0, 0, 0,20, 0, 0, 24,  0, 0,20, 0, 0, 0, 0, 0,
+   0, 0, 0, 0, 0,20, 2, 24,  2,20, 0, 0, 0, 0, 0, 0,
+   0, 0, 0, 0, 0, 2,53, 56, 53, 2, 0, 0, 0, 0, 0, 0,
+  24,24,24,24,24,24,56,  0, 56,24,24,24,24,24,24, 0,
+   0, 0, 0, 0, 0, 2,53, 56, 53, 2, 0, 0, 0, 0, 0, 0,
+   0, 0, 0, 0, 0,20, 2, 24,  2,20, 0, 0, 0, 0, 0, 0,
+   0, 0, 0, 0,20, 0, 0, 24,  0, 0,20, 0, 0, 0, 0, 0,
+   0, 0, 0,20, 0, 0, 0, 24,  0, 0, 0,20, 0, 0, 0, 0,
+   0, 0,20, 0, 0, 0, 0, 24,  0, 0, 0, 0,20, 0, 0, 0,
+   0,20, 0, 0, 0, 0, 0, 24,  0, 0, 0, 0, 0,20, 0, 0,
+  20, 0, 0, 0, 0, 0, 0, 24,  0, 0, 0, 0, 0, 0,20
+];
+
+// prettier-ignore
+var RAYS = [
+   17,  0,  0,  0,  0,  0,  0, 16,  0,  0,  0,  0,  0,  0, 15, 0,
+    0, 17,  0,  0,  0,  0,  0, 16,  0,  0,  0,  0,  0, 15,  0, 0,
+    0,  0, 17,  0,  0,  0,  0, 16,  0,  0,  0,  0, 15,  0,  0, 0,
+    0,  0,  0, 17,  0,  0,  0, 16,  0,  0,  0, 15,  0,  0,  0, 0,
+    0,  0,  0,  0, 17,  0,  0, 16,  0,  0, 15,  0,  0,  0,  0, 0,
+    0,  0,  0,  0,  0, 17,  0, 16,  0, 15,  0,  0,  0,  0,  0, 0,
+    0,  0,  0,  0,  0,  0, 17, 16, 15,  0,  0,  0,  0,  0,  0, 0,
+    1,  1,  1,  1,  1,  1,  1,  0, -1, -1,  -1,-1, -1, -1, -1, 0,
+    0,  0,  0,  0,  0,  0,-15,-16,-17,  0,  0,  0,  0,  0,  0, 0,
+    0,  0,  0,  0,  0,-15,  0,-16,  0,-17,  0,  0,  0,  0,  0, 0,
+    0,  0,  0,  0,-15,  0,  0,-16,  0,  0,-17,  0,  0,  0,  0, 0,
+    0,  0,  0,-15,  0,  0,  0,-16,  0,  0,  0,-17,  0,  0,  0, 0,
+    0,  0,-15,  0,  0,  0,  0,-16,  0,  0,  0,  0,-17,  0,  0, 0,
+    0,-15,  0,  0,  0,  0,  0,-16,  0,  0,  0,  0,  0,-17,  0, 0,
+  -15,  0,  0,  0,  0,  0,  0,-16,  0,  0,  0,  0,  0,  0,-17
+];
+
+var SHIFTS = { p: 0, n: 1, b: 2, r: 3, q: 4, k: 5 }
+
+var BITS = {
+  NORMAL: 1,
+  CAPTURE: 2,
+  BIG_PAWN: 4,
+  EP_CAPTURE: 8,
+  PROMOTION: 16,
+  KSIDE_CASTLE: 32,
+  QSIDE_CASTLE: 64,
+}
+
+var RANK_1 = 7
+var RANK_2 = 6
+var RANK_3 = 5
+var RANK_4 = 4
+var RANK_5 = 3
+var RANK_6 = 2
+var RANK_7 = 1
+var RANK_8 = 0
+
+// prettier-ignore
+var SQUARE_MAP = {
+  a8:   0, b8:   1, c8:   2, d8:   3, e8:   4, f8:   5, g8:   6, h8:   7,
+  a7:  16, b7:  17, c7:  18, d7:  19, e7:  20, f7:  21, g7:  22, h7:  23,
+  a6:  32, b6:  33, c6:  34, d6:  35, e6:  36, f6:  37, g6:  38, h6:  39,
+  a5:  48, b5:  49, c5:  50, d5:  51, e5:  52, f5:  53, g5:  54, h5:  55,
+  a4:  64, b4:  65, c4:  66, d4:  67, e4:  68, f4:  69, g4:  70, h4:  71,
+  a3:  80, b3:  81, c3:  82, d3:  83, e3:  84, f3:  85, g3:  86, h3:  87,
+  a2:  96, b2:  97, c2:  98, d2:  99, e2: 100, f2: 101, g2: 102, h2: 103,
+  a1: 112, b1: 113, c1: 114, d1: 115, e1: 116, f1: 117, g1: 118, h1: 119
+};
+
+var ROOKS = {
+  w: [
+    { square: SQUARE_MAP.a1, flag: BITS.QSIDE_CASTLE },
+    { square: SQUARE_MAP.h1, flag: BITS.KSIDE_CASTLE },
+  ],
+  b: [
+    { square: SQUARE_MAP.a8, flag: BITS.QSIDE_CASTLE },
+    { square: SQUARE_MAP.h8, flag: BITS.KSIDE_CASTLE },
+  ],
+}
+
+var PARSER_STRICT = 0
+var PARSER_SLOPPY = 1
+
+/* this function is used to uniquely identify ambiguous moves */
+function get_disambiguator(move, moves) {
+  var from = move.from
+  var to = move.to
+  var piece = move.piece
+
+  var ambiguities = 0
+  var same_rank = 0
+  var same_file = 0
+
+  for (var i = 0, len = moves.length; i < len; i++) {
+    var ambig_from = moves[i].from
+    var ambig_to = moves[i].to
+    var ambig_piece = moves[i].piece
+
+    /* if a move of the same piece type ends on the same to square, we'll
+     * need to add a disambiguator to the algebraic notation
+     */
+    if (piece === ambig_piece && from !== ambig_from && to === ambig_to) {
+      ambiguities++
+
+      if (rank(from) === rank(ambig_from)) {
+        same_rank++
+      }
+
+      if (file(from) === file(ambig_from)) {
+        same_file++
+      }
+    }
+  }
+
+  if (ambiguities > 0) {
+    /* if there exists a similar moving piece on the same rank and file as
+     * the move in question, use the square as the disambiguator
+     */
+    if (same_rank > 0 && same_file > 0) {
+      return algebraic(from)
+    } else if (same_file > 0) {
+      /* if the moving piece rests on the same file, use the rank symbol as the
+       * disambiguator
+       */
+      return algebraic(from).charAt(1)
+    } else {
+      /* else use the file symbol */
+      return algebraic(from).charAt(0)
+    }
+  }
+
+  return ''
+}
+
+function infer_piece_type(san) {
+  var piece_type = san.charAt(0)
+  if (piece_type >= 'a' && piece_type <= 'h') {
+    var matches = san.match(/[a-h]\d.*[a-h]\d/)
+    if (matches) {
+      return undefined
+    }
+    return PAWN
+  }
+  piece_type = piece_type.toLowerCase()
+  if (piece_type === 'o') {
+    return KING
+  }
+  return piece_type
+}
+
+// parses all of the decorators out of a SAN string
+function stripped_san(move) {
+  return move.replace(/=/, '').replace(/[+#]?[?!]*$/, '')
+}
+
+/*****************************************************************************
+ * UTILITY FUNCTIONS
+ ****************************************************************************/
+function rank(i) {
+  return i >> 4
+}
+
+function file(i) {
+  return i & 15
+}
+
+function algebraic(i) {
+  var f = file(i),
+    r = rank(i)
+  return 'abcdefgh'.substring(f, f + 1) + '87654321'.substring(r, r + 1)
+}
+
+function swap_color(c) {
+  return c === WHITE ? BLACK : WHITE
+}
+
+function is_digit(c) {
+  return '0123456789'.indexOf(c) !== -1
+}
+
+function clone(obj) {
+  var dupe = obj instanceof Array ? [] : {}
+
+  for (var property in obj) {
+    if (typeof property === 'object') {
+      dupe[property] = clone(obj[property])
+    } else {
+      dupe[property] = obj[property]
+    }
+  }
+
+  return dupe
+}
+
+function trim(str) {
+  return str.replace(/^\s+|\s+$/g, '')
+}
+
+/***************************************************************************
+ * PUBLIC CONSTANTS
+ **************************************************************************/
+
+var BLACK = 'b'
+var WHITE = 'w'
+
+var EMPTY = -1
+
+var PAWN = 'p'
+var KNIGHT = 'n'
+var BISHOP = 'b'
+var ROOK = 'r'
+var QUEEN = 'q'
+var KING = 'k'
+
+var SQUARES = (function () {
+  /* from the ECMA-262 spec (section 12.6.4):
+   * "The mechanics of enumerating the properties ... is
+   * implementation dependent"
+   * so: for (var sq in SQUARES) { keys.push(sq); } might not be
+   * ordered correctly
+   */
+  var keys = []
+  for (var i = SQUARE_MAP.a8; i <= SQUARE_MAP.h1; i++) {
+    if (i & 0x88) {
+      i += 7
+      continue
+    }
+    keys.push(algebraic(i))
+  }
+  return keys
+})()
+
+var FLAGS = {
+  NORMAL: 'n',
+  CAPTURE: 'c',
+  BIG_PAWN: 'b',
+  EP_CAPTURE: 'e',
+  PROMOTION: 'p',
+  KSIDE_CASTLE: 'k',
+  QSIDE_CASTLE: 'q',
+}
+
+var Chess = function (fen) {
+  var board = new Array(128)
+  var kings = { w: EMPTY, b: EMPTY }
+  var turn = WHITE
+  var castling = { w: 0, b: 0 }
+  var ep_square = EMPTY
+  var half_moves = 0
+  var move_number = 1
+  var history = []
+  var header = {}
+  var comments = {}
+
+  /* if the user passes in a fen string, load it, else default to
+   * starting position
+   */
+  if (typeof fen === 'undefined') {
+    load(DEFAULT_POSITION)
+  } else {
+    load(fen)
+  }
+
+  function clear(keep_headers) {
+    if (typeof keep_headers === 'undefined') {
+      keep_headers = false
+    }
+
+    board = new Array(128)
+    kings = { w: EMPTY, b: EMPTY }
+    turn = WHITE
+    castling = { w: 0, b: 0 }
+    ep_square = EMPTY
+    half_moves = 0
+    move_number = 1
+    history = []
+    if (!keep_headers) header = {}
+    comments = {}
+    update_setup(generate_fen())
+  }
+
+  function prune_comments() {
+    var reversed_history = []
+    var current_comments = {}
+    var copy_comment = function (fen) {
+      if (fen in comments) {
+        current_comments[fen] = comments[fen]
+      }
+    }
+    while (history.length > 0) {
+      reversed_history.push(undo_move())
+    }
+    copy_comment(generate_fen())
+    while (reversed_history.length > 0) {
+      make_move(reversed_history.pop())
+      copy_comment(generate_fen())
+    }
+    comments = current_comments
+  }
+
+  function reset() {
+    load(DEFAULT_POSITION)
+  }
+
+  function load(fen, keep_headers) {
+    if (typeof keep_headers === 'undefined') {
+      keep_headers = false
+    }
+
+    var tokens = fen.split(/\s+/)
+    var position = tokens[0]
+    var square = 0
+
+    if (!validate_fen(fen).valid) {
+      return false
+    }
+
+    clear(keep_headers)
+
+    for (var i = 0; i < position.length; i++) {
+      var piece = position.charAt(i)
+
+      if (piece === '/') {
+        square += 8
+      } else if (is_digit(piece)) {
+        square += parseInt(piece, 10)
+      } else {
+        var color = piece < 'a' ? WHITE : BLACK
+        put({ type: piece.toLowerCase(), color: color }, algebraic(square))
+        square++
+      }
+    }
+
+    turn = tokens[1]
+
+    if (tokens[2].indexOf('K') > -1) {
+      castling.w |= BITS.KSIDE_CASTLE
+    }
+    if (tokens[2].indexOf('Q') > -1) {
+      castling.w |= BITS.QSIDE_CASTLE
+    }
+    if (tokens[2].indexOf('k') > -1) {
+      castling.b |= BITS.KSIDE_CASTLE
+    }
+    if (tokens[2].indexOf('q') > -1) {
+      castling.b |= BITS.QSIDE_CASTLE
+    }
+
+    ep_square = tokens[3] === '-' ? EMPTY : SQUARE_MAP[tokens[3]]
+    half_moves = parseInt(tokens[4], 10)
+    move_number = parseInt(tokens[5], 10)
+
+    update_setup(generate_fen())
+
+    return true
+  }
+
+  /* TODO: this function is pretty much crap - it validates structure but
+   * completely ignores content (e.g. doesn't verify that each side has a king)
+   * ... we should rewrite this, and ditch the silly error_number field while
+   * we're at it
+   */
+  function validate_fen(fen) {
+    var errors = {
+      0: 'No errors.',
+      1: 'FEN string must contain six space-delimited fields.',
+      2: '6th field (move number) must be a positive integer.',
+      3: '5th field (half move counter) must be a non-negative integer.',
+      4: '4th field (en-passant square) is invalid.',
+      5: '3rd field (castling availability) is invalid.',
+      6: '2nd field (side to move) is invalid.',
+      7: "1st field (piece positions) does not contain 8 '/'-delimited rows.",
+      8: '1st field (piece positions) is invalid [consecutive numbers].',
+      9: '1st field (piece positions) is invalid [invalid piece].',
+      10: '1st field (piece positions) is invalid [row too large].',
+      11: 'Illegal en-passant square',
+    }
+
+    /* 1st criterion: 6 space-seperated fields? */
+    var tokens = fen.split(/\s+/)
+    if (tokens.length !== 6) {
+      return { valid: false, error_number: 1, error: errors[1] }
+    }
+
+    /* 2nd criterion: move number field is a integer value > 0? */
+    if (isNaN(parseInt(tokens[5])) || parseInt(tokens[5], 10) <= 0) {
+      return { valid: false, error_number: 2, error: errors[2] }
+    }
+
+    /* 3rd criterion: half move counter is an integer >= 0? */
+    if (isNaN(parseInt(tokens[4])) || parseInt(tokens[4], 10) < 0) {
+      return { valid: false, error_number: 3, error: errors[3] }
+    }
+
+    /* 4th criterion: 4th field is a valid e.p.-string? */
+    if (!/^(-|[abcdefgh][36])$/.test(tokens[3])) {
+      return { valid: false, error_number: 4, error: errors[4] }
+    }
+
+    /* 5th criterion: 3th field is a valid castle-string? */
+    if (!/^(KQ?k?q?|Qk?q?|kq?|q|-)$/.test(tokens[2])) {
+      return { valid: false, error_number: 5, error: errors[5] }
+    }
+
+    /* 6th criterion: 2nd field is "w" (white) or "b" (black)? */
+    if (!/^(w|b)$/.test(tokens[1])) {
+      return { valid: false, error_number: 6, error: errors[6] }
+    }
+
+    /* 7th criterion: 1st field contains 8 rows? */
+    var rows = tokens[0].split('/')
+    if (rows.length !== 8) {
+      return { valid: false, error_number: 7, error: errors[7] }
+    }
+
+    /* 8th criterion: every row is valid? */
+    for (var i = 0; i < rows.length; i++) {
+      /* check for right sum of fields AND not two numbers in succession */
+      var sum_fields = 0
+      var previous_was_number = false
+
+      for (var k = 0; k < rows[i].length; k++) {
+        if (!isNaN(rows[i][k])) {
+          if (previous_was_number) {
+            return { valid: false, error_number: 8, error: errors[8] }
+          }
+          sum_fields += parseInt(rows[i][k], 10)
+          previous_was_number = true
+        } else {
+          if (!/^[prnbqkPRNBQK]$/.test(rows[i][k])) {
+            return { valid: false, error_number: 9, error: errors[9] }
+          }
+          sum_fields += 1
+          previous_was_number = false
+        }
+      }
+      if (sum_fields !== 8) {
+        return { valid: false, error_number: 10, error: errors[10] }
+      }
+    }
+
+    if (
+      (tokens[3][1] == '3' && tokens[1] == 'w') ||
+      (tokens[3][1] == '6' && tokens[1] == 'b')
+    ) {
+      return { valid: false, error_number: 11, error: errors[11] }
+    }
+
+    /* everything's okay! */
+    return { valid: true, error_number: 0, error: errors[0] }
+  }
+
+  function generate_fen() {
+    var empty = 0
+    var fen = ''
+
+    for (var i = SQUARE_MAP.a8; i <= SQUARE_MAP.h1; i++) {
+      if (board[i] == null) {
+        empty++
+      } else {
+        if (empty > 0) {
+          fen += empty
+          empty = 0
+        }
+        var color = board[i].color
+        var piece = board[i].type
+
+        fen += color === WHITE ? piece.toUpperCase() : piece.toLowerCase()
+      }
+
+      if ((i + 1) & 0x88) {
+        if (empty > 0) {
+          fen += empty
+        }
+
+        if (i !== SQUARE_MAP.h1) {
+          fen += '/'
+        }
+
+        empty = 0
+        i += 8
+      }
+    }
+
+    var cflags = ''
+    if (castling[WHITE] & BITS.KSIDE_CASTLE) {
+      cflags += 'K'
+    }
+    if (castling[WHITE] & BITS.QSIDE_CASTLE) {
+      cflags += 'Q'
+    }
+    if (castling[BLACK] & BITS.KSIDE_CASTLE) {
+      cflags += 'k'
+    }
+    if (castling[BLACK] & BITS.QSIDE_CASTLE) {
+      cflags += 'q'
+    }
+
+    /* do we have an empty castling flag? */
+    cflags = cflags || '-'
+    var epflags = ep_square === EMPTY ? '-' : algebraic(ep_square)
+
+    return [fen, turn, cflags, epflags, half_moves, move_number].join(' ')
+  }
+
+  function set_header(args) {
+    for (var i = 0; i < args.length; i += 2) {
+      if (typeof args[i] === 'string' && typeof args[i + 1] === 'string') {
+        header[args[i]] = args[i + 1]
+      }
+    }
+    return header
+  }
+
+  /* called when the initial board setup is changed with put() or remove().
+   * modifies the SetUp and FEN properties of the header object.  if the FEN is
+   * equal to the default position, the SetUp and FEN are deleted
+   * the setup is only updated if history.length is zero, ie moves haven't been
+   * made.
+   */
+  function update_setup(fen) {
+    if (history.length > 0) return
+
+    if (fen !== DEFAULT_POSITION) {
+      header['SetUp'] = '1'
+      header['FEN'] = fen
+    } else {
+      delete header['SetUp']
+      delete header['FEN']
+    }
+  }
+
+  function get(square) {
+    var piece = board[SQUARE_MAP[square]]
+    return piece ? { type: piece.type, color: piece.color } : null
+  }
+
+  function put(piece, square) {
+    /* check for valid piece object */
+    if (!('type' in piece && 'color' in piece)) {
+      return false
+    }
+
+    /* check for piece */
+    if (SYMBOLS.indexOf(piece.type.toLowerCase()) === -1) {
+      return false
+    }
+
+    /* check for valid square */
+    if (!(square in SQUARE_MAP)) {
+      return false
+    }
+
+    var sq = SQUARE_MAP[square]
+
+    /* don't let the user place more than one king */
+    if (
+      piece.type == KING &&
+      !(kings[piece.color] == EMPTY || kings[piece.color] == sq)
+    ) {
+      return false
+    }
+
+    board[sq] = { type: piece.type, color: piece.color }
+    if (piece.type === KING) {
+      kings[piece.color] = sq
+    }
+
+    update_setup(generate_fen())
+
+    return true
+  }
+
+  function remove(square) {
+    var piece = get(square)
+    board[SQUARE_MAP[square]] = null
+    if (piece && piece.type === KING) {
+      kings[piece.color] = EMPTY
+    }
+
+    update_setup(generate_fen())
+
+    return piece
+  }
+
+  function build_move(board, from, to, flags, promotion) {
+    var move = {
+      color: turn,
+      from: from,
+      to: to,
+      flags: flags,
+      piece: board[from].type,
+    }
+
+    if (promotion) {
+      move.flags |= BITS.PROMOTION
+      move.promotion = promotion
+    }
+
+    if (board[to]) {
+      move.captured = board[to].type
+    } else if (flags & BITS.EP_CAPTURE) {
+      move.captured = PAWN
+    }
+    return move
+  }
+
+  function generate_moves(options) {
+    function add_move(board, moves, from, to, flags) {
+      /* if pawn promotion */
+      if (
+        board[from].type === PAWN &&
+        (rank(to) === RANK_8 || rank(to) === RANK_1)
+      ) {
+        var pieces = [QUEEN, ROOK, BISHOP, KNIGHT]
+        for (var i = 0, len = pieces.length; i < len; i++) {
+          moves.push(build_move(board, from, to, flags, pieces[i]))
+        }
+      } else {
+        moves.push(build_move(board, from, to, flags))
+      }
+    }
+
+    var moves = []
+    var us = turn
+    var them = swap_color(us)
+    var second_rank = { b: RANK_7, w: RANK_2 }
+
+    var first_sq = SQUARE_MAP.a8
+    var last_sq = SQUARE_MAP.h1
+    var single_square = false
+
+    /* do we want legal moves? */
+    var legal =
+      typeof options !== 'undefined' && 'legal' in options
+        ? options.legal
+        : true
+
+    var piece_type =
+      typeof options !== 'undefined' &&
+      'piece' in options &&
+      typeof options.piece === 'string'
+        ? options.piece.toLowerCase()
+        : true
+
+    /* are we generating moves for a single square? */
+    if (typeof options !== 'undefined' && 'square' in options) {
+      if (options.square in SQUARE_MAP) {
+        first_sq = last_sq = SQUARE_MAP[options.square]
+        single_square = true
+      } else {
+        /* invalid square */
+        return []
+      }
+    }
+
+    for (var i = first_sq; i <= last_sq; i++) {
+      /* did we run off the end of the board */
+      if (i & 0x88) {
+        i += 7
+        continue
+      }
+
+      var piece = board[i]
+      if (piece == null || piece.color !== us) {
+        continue
+      }
+
+      if (piece.type === PAWN && (piece_type === true || piece_type === PAWN)) {
+        /* single square, non-capturing */
+        var square = i + PAWN_OFFSETS[us][0]
+        if (board[square] == null) {
+          add_move(board, moves, i, square, BITS.NORMAL)
+
+          /* double square */
+          var square = i + PAWN_OFFSETS[us][1]
+          if (second_rank[us] === rank(i) && board[square] == null) {
+            add_move(board, moves, i, square, BITS.BIG_PAWN)
+          }
+        }
+
+        /* pawn captures */
+        for (j = 2; j < 4; j++) {
+          var square = i + PAWN_OFFSETS[us][j]
+          if (square & 0x88) continue
+
+          if (board[square] != null && board[square].color === them) {
+            add_move(board, moves, i, square, BITS.CAPTURE)
+          } else if (square === ep_square) {
+            add_move(board, moves, i, ep_square, BITS.EP_CAPTURE)
+          }
+        }
+      } else if (piece_type === true || piece_type === piece.type) {
+        for (var j = 0, len = PIECE_OFFSETS[piece.type].length; j < len; j++) {
+          var offset = PIECE_OFFSETS[piece.type][j]
+          var square = i
+
+          while (true) {
+            square += offset
+            if (square & 0x88) break
+
+            if (board[square] == null) {
+              add_move(board, moves, i, square, BITS.NORMAL)
+            } else {
+              if (board[square].color === us) break
+              add_move(board, moves, i, square, BITS.CAPTURE)
+              break
+            }
+
+            /* break, if knight or king */
+            if (piece.type === 'n' || piece.type === 'k') break
+          }
+        }
+      }
+    }
+
+    /* check for castling if: a) we're generating all moves, or b) we're doing
+     * single square move generation on the king's square
+     */
+    if (piece_type === true || piece_type === KING) {
+      if (!single_square || last_sq === kings[us]) {
+        /* king-side castling */
+        if (castling[us] & BITS.KSIDE_CASTLE) {
+          var castling_from = kings[us]
+          var castling_to = castling_from + 2
+
+          if (
+            board[castling_from + 1] == null &&
+            board[castling_to] == null &&
+            !attacked(them, kings[us]) &&
+            !attacked(them, castling_from + 1) &&
+            !attacked(them, castling_to)
+          ) {
+            add_move(board, moves, kings[us], castling_to, BITS.KSIDE_CASTLE)
+          }
+        }
+
+        /* queen-side castling */
+        if (castling[us] & BITS.QSIDE_CASTLE) {
+          var castling_from = kings[us]
+          var castling_to = castling_from - 2
+
+          if (
+            board[castling_from - 1] == null &&
+            board[castling_from - 2] == null &&
+            board[castling_from - 3] == null &&
+            !attacked(them, kings[us]) &&
+            !attacked(them, castling_from - 1) &&
+            !attacked(them, castling_to)
+          ) {
+            add_move(board, moves, kings[us], castling_to, BITS.QSIDE_CASTLE)
+          }
+        }
+      }
+    }
+
+    /* return all pseudo-legal moves (this includes moves that allow the king
+     * to be captured)
+     */
+    if (!legal) {
+      return moves
+    }
+
+    /* filter out illegal moves */
+    var legal_moves = []
+    for (var i = 0, len = moves.length; i < len; i++) {
+      make_move(moves[i])
+      if (!king_attacked(us)) {
+        legal_moves.push(moves[i])
+      }
+      undo_move()
+    }
+
+    return legal_moves
+  }
+
+  /* convert a move from 0x88 coordinates to Standard Algebraic Notation
+   * (SAN)
+   *
+   * @param {boolean} sloppy Use the sloppy SAN generator to work around over
+   * disambiguation bugs in Fritz and Chessbase.  See below:
+   *
+   * r1bqkbnr/ppp2ppp/2n5/1B1pP3/4P3/8/PPPP2PP/RNBQK1NR b KQkq - 2 4
+   * 4. ... Nge7 is overly disambiguated because the knight on c6 is pinned
+   * 4. ... Ne7 is technically the valid SAN
+   */
+  function move_to_san(move, moves) {
+    var output = ''
+
+    if (move.flags & BITS.KSIDE_CASTLE) {
+      output = 'O-O'
+    } else if (move.flags & BITS.QSIDE_CASTLE) {
+      output = 'O-O-O'
+    } else {
+      if (move.piece !== PAWN) {
+        var disambiguator = get_disambiguator(move, moves)
+        output += move.piece.toUpperCase() + disambiguator
+      }
+
+      if (move.flags & (BITS.CAPTURE | BITS.EP_CAPTURE)) {
+        if (move.piece === PAWN) {
+          output += algebraic(move.from)[0]
+        }
+        output += 'x'
+      }
+
+      output += algebraic(move.to)
+
+      if (move.flags & BITS.PROMOTION) {
+        output += '=' + move.promotion.toUpperCase()
+      }
+    }
+
+    make_move(move)
+    if (in_check()) {
+      if (in_checkmate()) {
+        output += '#'
+      } else {
+        output += '+'
+      }
+    }
+    undo_move()
+
+    return output
+  }
+
+  function attacked(color, square) {
+    for (var i = SQUARE_MAP.a8; i <= SQUARE_MAP.h1; i++) {
+      /* did we run off the end of the board */
+      if (i & 0x88) {
+        i += 7
+        continue
+      }
+
+      /* if empty square or wrong color */
+      if (board[i] == null || board[i].color !== color) continue
+
+      var piece = board[i]
+      var difference = i - square
+      var index = difference + 119
+
+      if (ATTACKS[index] & (1 << SHIFTS[piece.type])) {
+        if (piece.type === PAWN) {
+          if (difference > 0) {
+            if (piece.color === WHITE) return true
+          } else {
+            if (piece.color === BLACK) return true
+          }
+          continue
+        }
+
+        /* if the piece is a knight or a king */
+        if (piece.type === 'n' || piece.type === 'k') return true
+
+        var offset = RAYS[index]
+        var j = i + offset
+
+        var blocked = false
+        while (j !== square) {
+          if (board[j] != null) {
+            blocked = true
+            break
+          }
+          j += offset
+        }
+
+        if (!blocked) return true
+      }
+    }
+
+    return false
+  }
+
+  function king_attacked(color) {
+    return attacked(swap_color(color), kings[color])
+  }
+
+  function in_check() {
+    return king_attacked(turn)
+  }
+
+  function in_checkmate() {
+    return in_check() && generate_moves().length === 0
+  }
+
+  function in_stalemate() {
+    return !in_check() && generate_moves().length === 0
+  }
+
+  function insufficient_material() {
+    var pieces = {}
+    var bishops = []
+    var num_pieces = 0
+    var sq_color = 0
+
+    for (var i = SQUARE_MAP.a8; i <= SQUARE_MAP.h1; i++) {
+      sq_color = (sq_color + 1) % 2
+      if (i & 0x88) {
+        i += 7
+        continue
+      }
+
+      var piece = board[i]
+      if (piece) {
+        pieces[piece.type] = piece.type in pieces ? pieces[piece.type] + 1 : 1
+        if (piece.type === BISHOP) {
+          bishops.push(sq_color)
+        }
+        num_pieces++
+      }
+    }
+
+    /* k vs. k */
+    if (num_pieces === 2) {
+      return true
+    } else if (
+      /* k vs. kn .... or .... k vs. kb */
+      num_pieces === 3 &&
+      (pieces[BISHOP] === 1 || pieces[KNIGHT] === 1)
+    ) {
+      return true
+    } else if (num_pieces === pieces[BISHOP] + 2) {
+      /* kb vs. kb where any number of bishops are all on the same color */
+      var sum = 0
+      var len = bishops.length
+      for (var i = 0; i < len; i++) {
+        sum += bishops[i]
+      }
+      if (sum === 0 || sum === len) {
+        return true
+      }
+    }
+
+    return false
+  }
+
+  function in_threefold_repetition() {
+    /* TODO: while this function is fine for casual use, a better
+     * implementation would use a Zobrist key (instead of FEN). the
+     * Zobrist key would be maintained in the make_move/undo_move functions,
+     * avoiding the costly that we do below.
+     */
+    var moves = []
+    var positions = {}
+    var repetition = false
+
+    while (true) {
+      var move = undo_move()
+      if (!move) break
+      moves.push(move)
+    }
+
+    while (true) {
+      /* remove the last two fields in the FEN string, they're not needed
+       * when checking for draw by rep */
+      var fen = generate_fen().split(' ').slice(0, 4).join(' ')
+
+      /* has the position occurred three or move times */
+      positions[fen] = fen in positions ? positions[fen] + 1 : 1
+      if (positions[fen] >= 3) {
+        repetition = true
+      }
+
+      if (!moves.length) {
+        break
+      }
+      make_move(moves.pop())
+    }
+
+    return repetition
+  }
+
+  function push(move) {
+    history.push({
+      move: move,
+      kings: { b: kings.b, w: kings.w },
+      turn: turn,
+      castling: { b: castling.b, w: castling.w },
+      ep_square: ep_square,
+      half_moves: half_moves,
+      move_number: move_number,
+    })
+  }
+
+  function make_move(move) {
+    var us = turn
+    var them = swap_color(us)
+    push(move)
+
+    board[move.to] = board[move.from]
+    board[move.from] = null
+
+    /* if ep capture, remove the captured pawn */
+    if (move.flags & BITS.EP_CAPTURE) {
+      if (turn === BLACK) {
+        board[move.to - 16] = null
+      } else {
+        board[move.to + 16] = null
+      }
+    }
+
+    /* if pawn promotion, replace with new piece */
+    if (move.flags & BITS.PROMOTION) {
+      board[move.to] = { type: move.promotion, color: us }
+    }
+
+    /* if we moved the king */
+    if (board[move.to].type === KING) {
+      kings[board[move.to].color] = move.to
+
+      /* if we castled, move the rook next to the king */
+      if (move.flags & BITS.KSIDE_CASTLE) {
+        var castling_to = move.to - 1
+        var castling_from = move.to + 1
+        board[castling_to] = board[castling_from]
+        board[castling_from] = null
+      } else if (move.flags & BITS.QSIDE_CASTLE) {
+        var castling_to = move.to + 1
+        var castling_from = move.to - 2
+        board[castling_to] = board[castling_from]
+        board[castling_from] = null
+      }
+
+      /* turn off castling */
+      castling[us] = ''
+    }
+
+    /* turn off castling if we move a rook */
+    if (castling[us]) {
+      for (var i = 0, len = ROOKS[us].length; i < len; i++) {
+        if (
+          move.from === ROOKS[us][i].square &&
+          castling[us] & ROOKS[us][i].flag
+        ) {
+          castling[us] ^= ROOKS[us][i].flag
+          break
+        }
+      }
+    }
+
+    /* turn off castling if we capture a rook */
+    if (castling[them]) {
+      for (var i = 0, len = ROOKS[them].length; i < len; i++) {
+        if (
+          move.to === ROOKS[them][i].square &&
+          castling[them] & ROOKS[them][i].flag
+        ) {
+          castling[them] ^= ROOKS[them][i].flag
+          break
+        }
+      }
+    }
+
+    /* if big pawn move, update the en passant square */
+    if (move.flags & BITS.BIG_PAWN) {
+      if (turn === 'b') {
+        ep_square = move.to - 16
+      } else {
+        ep_square = move.to + 16
+      }
+    } else {
+      ep_square = EMPTY
+    }
+
+    /* reset the 50 move counter if a pawn is moved or a piece is captured */
+    if (move.piece === PAWN) {
+      half_moves = 0
+    } else if (move.flags & (BITS.CAPTURE | BITS.EP_CAPTURE)) {
+      half_moves = 0
+    } else {
+      half_moves++
+    }
+
+    if (turn === BLACK) {
+      move_number++
+    }
+    turn = swap_color(turn)
+  }
+
+  function undo_move() {
+    var old = history.pop()
+    if (old == null) {
+      return null
+    }
+
+    var move = old.move
+    kings = old.kings
+    turn = old.turn
+    castling = old.castling
+    ep_square = old.ep_square
+    half_moves = old.half_moves
+    move_number = old.move_number
+
+    var us = turn
+    var them = swap_color(turn)
+
+    board[move.from] = board[move.to]
+    board[move.from].type = move.piece // to undo any promotions
+    board[move.to] = null
+
+    if (move.flags & BITS.CAPTURE) {
+      board[move.to] = { type: move.captured, color: them }
+    } else if (move.flags & BITS.EP_CAPTURE) {
+      var index
+      if (us === BLACK) {
+        index = move.to - 16
+      } else {
+        index = move.to + 16
+      }
+      board[index] = { type: PAWN, color: them }
+    }
+
+    if (move.flags & (BITS.KSIDE_CASTLE | BITS.QSIDE_CASTLE)) {
+      var castling_to, castling_from
+      if (move.flags & BITS.KSIDE_CASTLE) {
+        castling_to = move.to + 1
+        castling_from = move.to - 1
+      } else if (move.flags & BITS.QSIDE_CASTLE) {
+        castling_to = move.to - 2
+        castling_from = move.to + 1
+      }
+
+      board[castling_to] = board[castling_from]
+      board[castling_from] = null
+    }
+
+    return move
+  }
+
+  // convert a move from Standard Algebraic Notation (SAN) to 0x88 coordinates
+  function move_from_san(move, sloppy) {
+    // strip off any move decorations: e.g Nf3+?! becomes Nf3
+    var clean_move = stripped_san(move)
+
+    // the move parsers is a 2-step state
+    for (var parser = 0; parser < 2; parser++) {
+      if (parser == PARSER_SLOPPY) {
+        // only run the sloppy parse if explicitly requested
+        if (!sloppy) {
+          return null
+        }
+
+        // The sloppy parser allows the user to parse non-standard chess
+        // notations. This parser is opt-in (by specifying the
+        // '{ sloppy: true }' setting) and is only run after the Standard
+        // Algebraic Notation (SAN) parser has failed.
+        //
+        // When running the sloppy parser, we'll run a regex to grab the piece,
+        // the to/from square, and an optional promotion piece. This regex will
+        // parse common non-standard notation like: Pe2-e4, Rc1c4, Qf3xf7,
+        // f7f8q, b1c3
+
+        // NOTE: Some positions and moves may be ambiguous when using the
+        // sloppy parser. For example, in this position:
+        // 6k1/8/8/B7/8/8/8/BN4K1 w - - 0 1, the move b1c3 may be interpreted
+        // as Nc3 or B1c3 (a disambiguated bishop move). In these cases, the
+        // sloppy parser will default to the most most basic interpretation
+        // (which is b1c3 parsing to Nc3).
+
+        // FIXME: these var's are hoisted into function scope, this will need
+        // to change when switching to const/let
+
+        var overly_disambiguated = false
+
+        var matches = clean_move.match(
+          /([pnbrqkPNBRQK])?([a-h][1-8])x?-?([a-h][1-8])([qrbnQRBN])?/
+        )
+        if (matches) {
+          var piece = matches[1]
+          var from = matches[2]
+          var to = matches[3]
+          var promotion = matches[4]
+
+          if (from.length == 1) {
+            overly_disambiguated = true
+          }
+        } else {
+          // The [a-h]?[1-8]? portion of the regex below handles moves that may
+          // be overly disambiguated (e.g. Nge7 is unnecessary and non-standard
+          // when there is one legal knight move to e7). In this case, the value
+          // of 'from' variable will be a rank or file, not a square.
+          var matches = clean_move.match(
+            /([pnbrqkPNBRQK])?([a-h]?[1-8]?)x?-?([a-h][1-8])([qrbnQRBN])?/
+          )
+
+          if (matches) {
+            var piece = matches[1]
+            var from = matches[2]
+            var to = matches[3]
+            var promotion = matches[4]
+
+            if (from.length == 1) {
+              var overly_disambiguated = true
+            }
+          }
+        }
+      }
+
+      var piece_type = infer_piece_type(clean_move)
+      var moves = generate_moves({
+        legal: true,
+        piece: piece ? piece : piece_type,
+      })
+
+      for (var i = 0, len = moves.length; i < len; i++) {
+        switch (parser) {
+          case PARSER_STRICT: {
+            if (clean_move === stripped_san(move_to_san(moves[i], moves))) {
+              return moves[i]
+            }
+            break
+          }
+          case PARSER_SLOPPY: {
+            if (matches) {
+              // hand-compare move properties with the results from our sloppy
+              // regex
+              if (
+                (!piece || piece.toLowerCase() == moves[i].piece) &&
+                SQUARE_MAP[from] == moves[i].from &&
+                SQUARE_MAP[to] == moves[i].to &&
+                (!promotion || promotion.toLowerCase() == moves[i].promotion)
+              ) {
+                return moves[i]
+              } else if (overly_disambiguated) {
+                // SPECIAL CASE: we parsed a move string that may have an
+                // unneeded rank/file disambiguator (e.g. Nge7).  The 'from'
+                // variable will
+                var square = algebraic(moves[i].from)
+                if (
+                  (!piece || piece.toLowerCase() == moves[i].piece) &&
+                  SQUARE_MAP[to] == moves[i].to &&
+                  (from == square[0] || from == square[1]) &&
+                  (!promotion || promotion.toLowerCase() == moves[i].promotion)
+                ) {
+                  return moves[i]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    return null
+  }
+
+  /* pretty = external move object */
+  function make_pretty(ugly_move) {
+    var move = clone(ugly_move)
+    move.san = move_to_san(move, generate_moves({ legal: true }))
+    move.to = algebraic(move.to)
+    move.from = algebraic(move.from)
+
+    var flags = ''
+
+    for (var flag in BITS) {
+      if (BITS[flag] & move.flags) {
+        flags += FLAGS[flag]
+      }
+    }
+    move.flags = flags
+
+    return move
+  }
+
+  /*****************************************************************************
+   * DEBUGGING UTILITIES
+   ****************************************************************************/
+  function perft(depth) {
+    var moves = generate_moves({ legal: false })
+    var nodes = 0
+    var color = turn
+
+    for (var i = 0, len = moves.length; i < len; i++) {
+      make_move(moves[i])
+      if (!king_attacked(color)) {
+        if (depth - 1 > 0) {
+          var child_nodes = perft(depth - 1)
+          nodes += child_nodes
+        } else {
+          nodes++
+        }
+      }
+      undo_move()
+    }
+
+    return nodes
+  }
+
+  return {
+    /***************************************************************************
+     * PUBLIC API
+     **************************************************************************/
+    load: function (fen) {
+      return load(fen)
+    },
+
+    reset: function () {
+      return reset()
+    },
+
+    moves: function (options) {
+      /* The internal representation of a chess move is in 0x88 format, and
+       * not meant to be human-readable.  The code below converts the 0x88
+       * square coordinates to algebraic coordinates.  It also prunes an
+       * unnecessary move keys resulting from a verbose call.
+       */
+
+      var ugly_moves = generate_moves(options)
+      var moves = []
+
+      for (var i = 0, len = ugly_moves.length; i < len; i++) {
+        /* does the user want a full move object (most likely not), or just
+         * SAN
+         */
+        if (
+          typeof options !== 'undefined' &&
+          'verbose' in options &&
+          options.verbose
+        ) {
+          moves.push(make_pretty(ugly_moves[i]))
+        } else {
+          moves.push(
+            move_to_san(ugly_moves[i], generate_moves({ legal: true }))
+          )
+        }
+      }
+
+      return moves
+    },
+
+    in_check: function () {
+      return in_check()
+    },
+
+    in_checkmate: function () {
+      return in_checkmate()
+    },
+
+    in_stalemate: function () {
+      return in_stalemate()
+    },
+
+    in_draw: function () {
+      return (
+        half_moves >= 100 ||
+        in_stalemate() ||
+        insufficient_material() ||
+        in_threefold_repetition()
+      )
+    },
+
+    insufficient_material: function () {
+      return insufficient_material()
+    },
+
+    in_threefold_repetition: function () {
+      return in_threefold_repetition()
+    },
+
+    game_over: function () {
+      return (
+        half_moves >= 100 ||
+        in_checkmate() ||
+        in_stalemate() ||
+        insufficient_material() ||
+        in_threefold_repetition()
+      )
+    },
+
+    validate_fen: function (fen) {
+      return validate_fen(fen)
+    },
+
+    fen: function () {
+      return generate_fen()
+    },
+
+    board: function () {
+      var output = [],
+        row = []
+
+      for (var i = SQUARE_MAP.a8; i <= SQUARE_MAP.h1; i++) {
+        if (board[i] == null) {
+          row.push(null)
+        } else {
+          row.push({
+            square: algebraic(i),
+            type: board[i].type,
+            color: board[i].color,
+          })
+        }
+        if ((i + 1) & 0x88) {
+          output.push(row)
+          row = []
+          i += 8
+        }
+      }
+
+      return output
+    },
+
+    pgn: function (options) {
+      /* using the specification from http://www.chessclub.com/help/PGN-spec
+       * example for html usage: .pgn({ max_width: 72, newline_char: "<br />" })
+       */
+      var newline =
+        typeof options === 'object' && typeof options.newline_char === 'string'
+          ? options.newline_char
+          : '\n'
+      var max_width =
+        typeof options === 'object' && typeof options.max_width === 'number'
+          ? options.max_width
+          : 0
+      var result = []
+      var header_exists = false
+
+      /* add the PGN header information */
+      for (var i in header) {
+        /* TODO: order of enumerated properties in header object is not
+         * guaranteed, see ECMA-262 spec (section 12.6.4)
+         */
+        result.push('[' + i + ' "' + header[i] + '"]' + newline)
+        header_exists = true
+      }
+
+      if (header_exists && history.length) {
+        result.push(newline)
+      }
+
+      var append_comment = function (move_string) {
+        var comment = comments[generate_fen()]
+        if (typeof comment !== 'undefined') {
+          var delimiter = move_string.length > 0 ? ' ' : ''
+          move_string = move_string + delimiter + '{' + comment + '}'
+        }
+        return move_string
+      }
+
+      /* pop all of history onto reversed_history */
+      var reversed_history = []
+      while (history.length > 0) {
+        reversed_history.push(undo_move())
+      }
+
+      var moves = []
+      var move_string = ''
+
+      /* special case of a commented starting position with no moves */
+      if (reversed_history.length === 0) {
+        moves.push(append_comment(''))
+      }
+
+      /* build the list of moves.  a move_string looks like: "3. e3 e6" */
+      while (reversed_history.length > 0) {
+        move_string = append_comment(move_string)
+        var move = reversed_history.pop()
+
+        /* if the position started with black to move, start PGN with #. ... */
+        if (!history.length && move.color === 'b') {
+          var prefix = move_number + '. ...'
+          /* is there a comment preceding the first move? */
+          move_string = move_string ? move_string + ' ' + prefix : prefix
+        } else if (move.color === 'w') {
+          /* store the previous generated move_string if we have one */
+          if (move_string.length) {
+            moves.push(move_string)
+          }
+          move_string = move_number + '.'
+        }
+
+        move_string =
+          move_string + ' ' + move_to_san(move, generate_moves({ legal: true }))
+        make_move(move)
+      }
+
+      /* are there any other leftover moves? */
+      if (move_string.length) {
+        moves.push(append_comment(move_string))
+      }
+
+      /* is there a result? */
+      if (typeof header.Result !== 'undefined') {
+        moves.push(header.Result)
+      }
+
+      /* history should be back to what it was before we started generating PGN,
+       * so join together moves
+       */
+      if (max_width === 0) {
+        return result.join('') + moves.join(' ')
+      }
+
+      var strip = function () {
+        if (result.length > 0 && result[result.length - 1] === ' ') {
+          result.pop()
+          return true
+        }
+        return false
+      }
+
+      /* NB: this does not preserve comment whitespace. */
+      var wrap_comment = function (width, move) {
+        for (var token of move.split(' ')) {
+          if (!token) {
+            continue
+          }
+          if (width + token.length > max_width) {
+            while (strip()) {
+              width--
+            }
+            result.push(newline)
+            width = 0
+          }
+          result.push(token)
+          width += token.length
+          result.push(' ')
+          width++
+        }
+        if (strip()) {
+          width--
+        }
+        return width
+      }
+
+      /* wrap the PGN output at max_width */
+      var current_width = 0
+      for (var i = 0; i < moves.length; i++) {
+        if (current_width + moves[i].length > max_width) {
+          if (moves[i].indexOf('{') !== -1) {
+            current_width = wrap_comment(current_width, moves[i])
+            continue
+          }
+        }
+        /* if the current move will push past max_width */
+        if (current_width + moves[i].length > max_width && i !== 0) {
+          /* don't end the line with whitespace */
+          if (result[result.length - 1] === ' ') {
+            result.pop()
+          }
+
+          result.push(newline)
+          current_width = 0
+        } else if (i !== 0) {
+          result.push(' ')
+          current_width++
+        }
+        result.push(moves[i])
+        current_width += moves[i].length
+      }
+
+      return result.join('')
+    },
+
+    load_pgn: function (pgn, options) {
+      // allow the user to specify the sloppy move parser to work around over
+      // disambiguation bugs in Fritz and Chessbase
+      var sloppy =
+        typeof options !== 'undefined' && 'sloppy' in options
+          ? options.sloppy
+          : false
+
+      function mask(str) {
+        return str.replace(/\\/g, '\\')
+      }
+
+      function parse_pgn_header(header, options) {
+        var newline_char =
+          typeof options === 'object' &&
+          typeof options.newline_char === 'string'
+            ? options.newline_char
+            : '\r?\n'
+        var header_obj = {}
+        var headers = header.split(new RegExp(mask(newline_char)))
+        var key = ''
+        var value = ''
+
+        for (var i = 0; i < headers.length; i++) {
+          var regex = /^\s*\[([A-Za-z]+)\s*"(.*)"\s*\]\s*$/
+          key = headers[i].replace(regex, '$1')
+          value = headers[i].replace(regex, '$2')
+          if (trim(key).length > 0) {
+            header_obj[key] = value
+          }
+        }
+
+        return header_obj
+      }
+
+      // strip whitespace from head/tail of PGN block
+      pgn = pgn.trim()
+
+      var newline_char =
+        typeof options === 'object' && typeof options.newline_char === 'string'
+          ? options.newline_char
+          : '\r?\n'
+
+      // RegExp to split header. Takes advantage of the fact that header and movetext
+      // will always have a blank line between them (ie, two newline_char's).
+      // With default newline_char, will equal: /^(\[((?:\r?\n)|.)*\])(?:\s*\r?\n){2}/
+      var header_regex = new RegExp(
+        '^(\\[((?:' +
+          mask(newline_char) +
+          ')|.)*\\])' +
+          '(?:\\s*' +
+          mask(newline_char) +
+          '){2}'
+      )
+
+      // If no header given, begin with moves.
+      var header_string = header_regex.test(pgn)
+        ? header_regex.exec(pgn)[1]
+        : ''
+
+      // Put the board in the starting position
+      reset()
+
+      /* parse PGN header */
+      var headers = parse_pgn_header(header_string, options)
+      var fen = ''
+
+      for (var key in headers) {
+        // check to see user is including fen (possibly with wrong tag case)
+        if (key.toLowerCase() === 'fen') {
+          fen = headers[key]
+        }
+        set_header([key, headers[key]])
+      }
+
+      /* sloppy parser should attempt to load a fen tag, even if it's
+       * the wrong case and doesn't include a corresponding [SetUp "1"] tag */
+      if (sloppy) {
+        if (fen) {
+          if (!load(fen, true)) {
+            return false
+          }
+        }
+      } else {
+        /* strict parser - load the starting position indicated by [Setup '1']
+         * and [FEN position] */
+        if (headers['SetUp'] === '1') {
+          if (!('FEN' in headers && load(headers['FEN'], true))) {
+            // second argument to load: don't clear the headers
+            return false
+          }
+        }
+      }
+
+      /* NB: the regexes below that delete move numbers, recursive
+       * annotations, and numeric annotation glyphs may also match
+       * text in comments. To prevent this, we transform comments
+       * by hex-encoding them in place and decoding them again after
+       * the other tokens have been deleted.
+       *
+       * While the spec states that PGN files should be ASCII encoded,
+       * we use {en,de}codeURIComponent here to support arbitrary UTF8
+       * as a convenience for modern users */
+
+      var to_hex = function (string) {
+        return string.split('')
+          .map(function (c) {
+            /* encodeURI doesn't transform most ASCII characters,
+             * so we handle these ourselves */
+            return c.charCodeAt(0) < 128
+              ? c.charCodeAt(0).toString(16)
+              : encodeURIComponent(c).replace(/\%/g, '').toLowerCase()
+          })
+          .join('')
+      }
+
+      var from_hex = function (string) {
+        return string.length == 0
+          ? ''
+          : decodeURIComponent('%' + string.match(/.{1,2}/g).join('%'))
+      }
+
+      var encode_comment = function (string) {
+        string = string.replace(new RegExp(mask(newline_char), 'g'), ' ')
+        return '{' + to_hex(string.slice(1, string.length - 1)) + '}'
+      }
+
+      var decode_comment = function (string) {
+        if (string.charAt(0) === '{' && string.charAt(string.length - 1) === '}') {
+          return from_hex(string.slice(1, string.length - 1))
+        }
+      }
+
+      /* delete header to get the moves */
+      var ms = pgn
+        .replace(header_string, '')
+        .replace(
+          /* encode comments so they don't get deleted below */
+          new RegExp('(\{[^}]*\})+?|;([^' + mask(newline_char) + ']*)', 'g'),
+          function (match, bracket, semicolon) {
+            return bracket !== undefined
+              ? encode_comment(bracket)
+              : ' ' + encode_comment('{' + semicolon.slice(1) + '}')
+          }
+        )
+        .replace(new RegExp(mask(newline_char), 'g'), ' ')
+
+      /* delete recursive annotation variations */
+      var rav_regex = /(\([^\(\)]+\))+?/g
+      while (rav_regex.test(ms)) {
+        ms = ms.replace(rav_regex, '')
+      }
+
+      /* delete move numbers */
+      ms = ms.replace(/\d+\.(\.\.)?/g, '')
+
+      /* delete ... indicating black to move */
+      ms = ms.replace(/\.\.\./g, '')
+
+      /* delete numeric annotation glyphs */
+      ms = ms.replace(/\$\d+/g, '')
+
+      /* trim and get array of moves */
+      var moves = trim(ms).split(new RegExp(/\s+/))
+
+      /* delete empty entries */
+      moves = moves.join(',').replace(/,,+/g, ',').split(',')
+      var move = ''
+
+      var result = ''
+
+      for (var half_move = 0; half_move < moves.length; half_move++) {
+        var comment = decode_comment(moves[half_move])
+        if (comment !== undefined) {
+          comments[generate_fen()] = comment
+          continue
+        }
+
+        move = move_from_san(moves[half_move], sloppy)
+
+        /* invalid move */
+        if (move == null) {
+          /* was the move an end of game marker */
+          if (TERMINATION_MARKERS.indexOf(moves[half_move]) > -1) {
+            result = moves[half_move]
+          } else {
+            return false
+          }
+        } else {
+          /* reset the end of game marker if making a valid move */
+          result = ''
+          make_move(move)
+        }
+      }
+
+      /* Per section 8.2.6 of the PGN spec, the Result tag pair must match
+       * match the termination marker. Only do this when headers are present,
+       * but the result tag is missing
+       */
+      if (result && Object.keys(header).length && !header['Result']) {
+        set_header(['Result', result])
+      }
+
+      return true
+    },
+
+    header: function () {
+      return set_header(arguments)
+    },
+
+    turn: function () {
+      return turn
+    },
+
+    move: function (move, options) {
+      /* The move function can be called with in the following parameters:
+       *
+       * .move('Nxb7')      <- where 'move' is a case-sensitive SAN string
+       *
+       * .move({ from: 'h7', <- where the 'move' is a move object (additional
+       *         to :'h8',      fields are ignored)
+       *         promotion: 'q',
+       *      })
+       */
+
+      // allow the user to specify the sloppy move parser to work around over
+      // disambiguation bugs in Fritz and Chessbase
+      var sloppy =
+        typeof options !== 'undefined' && 'sloppy' in options
+          ? options.sloppy
+          : false
+
+      var move_obj = null
+
+      if (typeof move === 'string') {
+        move_obj = move_from_san(move, sloppy)
+      } else if (typeof move === 'object') {
+        var moves = generate_moves()
+
+        /* convert the pretty move object to an ugly move object */
+        for (var i = 0, len = moves.length; i < len; i++) {
+          if (
+            move.from === algebraic(moves[i].from) &&
+            move.to === algebraic(moves[i].to) &&
+            (!('promotion' in moves[i]) ||
+              move.promotion === moves[i].promotion)
+          ) {
+            move_obj = moves[i]
+            break
+          }
+        }
+      }
+
+      /* failed to find move */
+      if (!move_obj) {
+        return null
+      }
+
+      /* need to make a copy of move because we can't generate SAN after the
+       * move is made
+       */
+      var pretty_move = make_pretty(move_obj)
+
+      make_move(move_obj)
+
+      return pretty_move
+    },
+
+    undo: function () {
+      var move = undo_move()
+      return move ? make_pretty(move) : null
+    },
+
+    clear: function () {
+      return clear()
+    },
+
+    put: function (piece, square) {
+      return put(piece, square)
+    },
+
+    get: function (square) {
+      return get(square)
+    },
+
+    ascii() {
+      var s = '   +------------------------+\n'
+      for (var i = SQUARE_MAP.a8; i <= SQUARE_MAP.h1; i++) {
+        /* display the rank */
+        if (file(i) === 0) {
+          s += ' ' + '87654321'[rank(i)] + ' |'
+        }
+
+        /* empty piece */
+        if (board[i] == null) {
+          s += ' . '
+        } else {
+          var piece = board[i].type
+          var color = board[i].color
+          var symbol =
+            color === WHITE ? piece.toUpperCase() : piece.toLowerCase()
+          s += ' ' + symbol + ' '
+        }
+
+        if ((i + 1) & 0x88) {
+          s += '|\n'
+          i += 8
+        }
+      }
+      s += '   +------------------------+\n'
+      s += '     a  b  c  d  e  f  g  h'
+
+      return s
+    },
+
+    remove: function (square) {
+      return remove(square)
+    },
+
+    perft: function (depth) {
+      return perft(depth)
+    },
+
+    square_color: function (square) {
+      if (square in SQUARE_MAP) {
+        var sq_0x88 = SQUARE_MAP[square]
+        return (rank(sq_0x88) + file(sq_0x88)) % 2 === 0 ? 'light' : 'dark'
+      }
+
+      return null
+    },
+
+    history: function (options) {
+      var reversed_history = []
+      var move_history = []
+      var verbose =
+        typeof options !== 'undefined' &&
+        'verbose' in options &&
+        options.verbose
+
+      while (history.length > 0) {
+        reversed_history.push(undo_move())
+      }
+
+      while (reversed_history.length > 0) {
+        var move = reversed_history.pop()
+        if (verbose) {
+          move_history.push(make_pretty(move))
+        } else {
+          move_history.push(move_to_san(move, generate_moves({ legal: true })))
+        }
+        make_move(move)
+      }
+
+      return move_history
+    },
+
+    get_comment: function () {
+      return comments[generate_fen()]
+    },
+
+    set_comment: function (comment) {
+      comments[generate_fen()] = comment.replace('{', '[').replace('}', ']')
+    },
+
+    delete_comment: function () {
+      var comment = comments[generate_fen()]
+      delete comments[generate_fen()]
+      return comment
+    },
+
+    get_comments: function () {
+      prune_comments()
+      return Object.keys(comments).map(function (fen) {
+        return { fen: fen, comment: comments[fen] }
+      })
+    },
+
+    delete_comments: function () {
+      prune_comments()
+      return Object.keys(comments).map(function (fen) {
+        var comment = comments[fen]
+        delete comments[fen]
+        return { fen: fen, comment: comment }
+      })
+    },
+  }
+}
+/* ---------------------------- end chess.js --------------------------- */
+
+;(function () {
+  'use strict';
+
+  var FILES = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+  var STORAGE_KEY = 'offlineChessSave_v1';
+
+  var storageAvailable = false;
+  try {
+    window.localStorage.setItem('__chess_storage_test__', '1');
+    window.localStorage.removeItem('__chess_storage_test__');
+    storageAvailable = true;
+  } catch (e) {
+    storageAvailable = false;
+  }
+
+  var game = new Chess();
+  var flipped = false;
+  var selected = null;
+  var targets = [];
+  var computerThinking = false;
+  var squareButtons = [];
+
+  var boardTable = document.getElementById('board');
+  var statusEl = document.getElementById('status');
+  var moveListBody = document.getElementById('moveListBody');
+  var moveListWrap = document.getElementById('moveListWrap');
+  var newGameBtn = document.getElementById('newGameBtn');
+  var undoBtn = document.getElementById('undoBtn');
+  var flipBtn = document.getElementById('flipBtn');
+  var vsComputerToggle = document.getElementById('vsComputerToggle');
+  var saveToggle = document.getElementById('saveToggle');
+  var clearSaveBtn = document.getElementById('clearSaveBtn');
+  var storageNote = document.getElementById('storageNote');
+  var pgnOutput = document.getElementById('pgnOutput');
+  var copyPgnBtn = document.getElementById('copyPgnBtn');
+  var downloadPgnBtn = document.getElementById('downloadPgnBtn');
+  var copyNote = document.getElementById('copyNote');
+  var pgnInput = document.getElementById('pgnInput');
+  var loadPastedBtn = document.getElementById('loadPastedBtn');
+  var pgnFile = document.getElementById('pgnFile');
+  var fileImportWrap = document.getElementById('fileImportWrap');
+  var importNote = document.getElementById('importNote');
+
+  var WHITE_CHARS = { p: '\u2659', n: '\u2658', b: '\u2657', r: '\u2656', q: '\u2655', k: '\u2654' };
+  var BLACK_CHARS = { p: '\u265F', n: '\u265E', b: '\u265D', r: '\u265C', q: '\u265B', k: '\u265A' };
+  var PIECE_NAMES = { p: 'pawn', n: 'knight', b: 'bishop', r: 'rook', q: 'queen', k: 'king' };
+
+  function gridToSquare(row, col) {
+    var r = flipped ? 7 - row : row;
+    var c = flipped ? 7 - col : col;
+    return FILES[c] + (8 - r);
+  }
+
+  function pieceChar(piece) {
+    if (!piece) return '';
+    return piece.color === 'w' ? WHITE_CHARS[piece.type] : BLACK_CHARS[piece.type];
+  }
+
+  function findKingSquare(color) {
+    for (var f = 0; f < 8; f++) {
+      for (var r = 1; r <= 8; r++) {
+        var sq = FILES[f] + r;
+        var p = game.get(sq);
+        if (p && p.type === 'k' && p.color === color) return sq;
+      }
+    }
+    return null;
+  }
+
+  function attachHandlers(btn, row, col) {
+    btn.onclick = function () { onSquarePressed(row, col); };
+    btn.onkeydown = function (e) { onSquareKeyDown(e, row, col); };
+  }
+
+  function buildBoard() {
+    for (var row = 0; row < 8; row++) {
+      var tr = document.createElement('tr');
+      var rowButtons = [];
+      for (var col = 0; col < 8; col++) {
+        var isLight = (row + col) % 2 === 0;
+        var td = document.createElement('td');
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'square ' + (isLight ? 'light' : 'dark');
+        btn.setAttribute('data-base', isLight ? 'light' : 'dark');
+        attachHandlers(btn, row, col);
+        td.appendChild(btn);
+        tr.appendChild(td);
+        rowButtons.push(btn);
+      }
+      boardTable.appendChild(tr);
+      squareButtons.push(rowButtons);
+    }
+  }
+
+  function renderBoard() {
+    var checkSquare = game.in_check() ? findKingSquare(game.turn()) : null;
+    for (var row = 0; row < 8; row++) {
+      for (var col = 0; col < 8; col++) {
+        var sq = gridToSquare(row, col);
+        var piece = game.get(sq);
+        var btn = squareButtons[row][col];
+        btn.setAttribute('data-square', sq);
+        btn.textContent = pieceChar(piece);
+
+        var desc = piece
+          ? (piece.color === 'w' ? 'White ' : 'Black ') + PIECE_NAMES[piece.type]
+          : 'empty';
+        btn.setAttribute('aria-label', sq + ', ' + desc);
+
+        var cls = 'square ' + btn.getAttribute('data-base');
+        if (piece) cls += piece.color === 'w' ? ' white-piece' : ' black-piece';
+        if (sq === selected) cls += ' selected';
+        if (targets.indexOf(sq) !== -1) cls += ' target';
+        if (sq === checkSquare) cls += ' in-check';
+        btn.className = cls;
+      }
+    }
+  }
+
+  function renderStatus() {
+    var text;
+    if (computerThinking) {
+      text = 'Computer is thinking\u2026';
+    } else if (game.in_checkmate()) {
+      text = 'Checkmate \u2014 ' + (game.turn() === 'w' ? 'Black' : 'White') + ' wins.';
+    } else if (game.in_stalemate()) {
+      text = 'Draw by stalemate.';
+    } else if (game.in_threefold_repetition()) {
+      text = 'Draw by threefold repetition.';
+    } else if (game.insufficient_material()) {
+      text = 'Draw \u2014 insufficient material.';
+    } else if (game.in_draw()) {
+      text = 'Draw (fifty-move rule).';
+    } else {
+      text = (game.turn() === 'w' ? 'White' : 'Black') + ' to move';
+      if (game.in_check()) text += ' \u2014 Check!';
+    }
+    statusEl.textContent = text;
+    undoBtn.disabled = game.history().length === 0;
+  }
+
+  function renderMoveList() {
+    var hist = game.history();
+    while (moveListBody.firstChild) moveListBody.removeChild(moveListBody.firstChild);
+    for (var i = 0; i < hist.length; i += 2) {
+      var tr = document.createElement('tr');
+      var tdNum = document.createElement('td');
+      tdNum.textContent = (i / 2 + 1) + '.';
+      var tdWhite = document.createElement('td');
+      tdWhite.textContent = hist[i] || '';
+      var tdBlack = document.createElement('td');
+      tdBlack.textContent = hist[i + 1] || '';
+      tr.appendChild(tdNum);
+      tr.appendChild(tdWhite);
+      tr.appendChild(tdBlack);
+      moveListBody.appendChild(tr);
+    }
+    moveListWrap.scrollTop = moveListWrap.scrollHeight;
+    pgnOutput.value = game.pgn();
+  }
+
+  function persistIfEnabled() {
+    if (!storageAvailable || !saveToggle.checked) return;
+    try {
+      var payload = JSON.stringify({
+        pgn: game.pgn(),
+        flipped: flipped,
+        vsComputer: vsComputerToggle.checked
+      });
+      window.localStorage.setItem(STORAGE_KEY, payload);
+    } catch (e) { /* quota or privacy-mode error: fail silently */ }
+  }
+
+  function tryRestore() {
+    if (!storageAvailable) return;
+    var raw;
+    try {
+      raw = window.localStorage.getItem(STORAGE_KEY);
+    } catch (e) { return; }
+    if (!raw) return;
+    var data;
+    try {
+      data = JSON.parse(raw);
+    } catch (e) { return; }
+    if (!data || typeof data.pgn !== 'string') return;
+
+    var restored = new Chess();
+    if (data.pgn !== '') {
+      var ok = restored.load_pgn(data.pgn);
+      if (!ok) return; /* corrupted save: leave the fresh game in place */
+    }
+    game = restored;
+    flipped = !!data.flipped;
+    saveToggle.checked = true;
+    if (typeof data.vsComputer === 'boolean') vsComputerToggle.checked = data.vsComputer;
+  }
+
+  function onSquareKeyDown(e, row, col) {
+    var code = e.keyCode || e.which;
+    var newRow = row, newCol = col;
+    if (code === 37) newCol = col - 1;
+    else if (code === 39) newCol = col + 1;
+    else if (code === 38) newRow = row - 1;
+    else if (code === 40) newRow = row + 1;
+    else return;
+    if (newRow < 0 || newRow > 7 || newCol < 0 || newCol > 7) return;
+    e.preventDefault();
+    squareButtons[newRow][newCol].focus();
+  }
+
+  function onSquarePressed(row, col) {
+    if (computerThinking) return;
+    var turn = game.turn();
+    if (vsComputerToggle.checked && turn === 'b') return;
+
+    var sq = gridToSquare(row, col);
+
+    if (selected && targets.indexOf(sq) !== -1) {
+      var moveResult = game.move({ from: selected, to: sq, promotion: 'q' });
+      selected = null;
+      targets = [];
+      if (moveResult) { afterMove(); } else { renderBoard(); }
+      return;
+    }
+
+    if (selected === sq) {
+      selected = null;
+      targets = [];
+      renderBoard();
+      return;
+    }
+
+    var piece = game.get(sq);
+    if (piece && piece.color === turn) {
+      selected = sq;
+      var verbose = game.moves({ square: sq, verbose: true });
+      targets = [];
+      for (var i = 0; i < verbose.length; i++) targets.push(verbose[i].to);
+      renderBoard();
+      return;
+    }
+
+    selected = null;
+    targets = [];
+    renderBoard();
+  }
+
+  function afterMove() {
+    renderBoard();
+    renderStatus();
+    renderMoveList();
+    persistIfEnabled();
+
+    if (game.game_over()) return;
+
+    if (vsComputerToggle.checked && game.turn() === 'b') {
+      computerThinking = true;
+      renderStatus();
+      setTimeout(makeComputerMove, 400);
+    }
+  }
+
+  function makeComputerMove() {
+    var verbose = game.moves({ verbose: true });
+    if (verbose.length === 0) { computerThinking = false; return; }
+    var captures = [];
+    for (var i = 0; i < verbose.length; i++) {
+      if (verbose[i].captured) captures.push(verbose[i]);
+    }
+    var pool = captures.length > 0 ? captures : verbose;
+    var pick = pool[Math.floor(Math.random() * pool.length)];
+    game.move({ from: pick.from, to: pick.to, promotion: 'q' });
+    computerThinking = false;
+    renderBoard();
+    renderStatus();
+    renderMoveList();
+    persistIfEnabled();
+  }
+
+  newGameBtn.onclick = function () {
+    if (game.history().length > 0) {
+      if (!window.confirm('Start a new game? This will clear the current game.')) return;
+    }
+    game.reset();
+    selected = null;
+    targets = [];
+    computerThinking = false;
+    renderBoard();
+    renderStatus();
+    renderMoveList();
+    persistIfEnabled();
+  };
+
+  undoBtn.onclick = function () {
+    if (computerThinking) return;
+    var undone = game.undo();
+    if (!undone) return;
+    if (vsComputerToggle.checked && game.turn() === 'b') game.undo();
+    selected = null;
+    targets = [];
+    renderBoard();
+    renderStatus();
+    renderMoveList();
+    persistIfEnabled();
+  };
+
+  flipBtn.onclick = function () {
+    flipped = !flipped;
+    renderBoard();
+    persistIfEnabled();
+  };
+
+  vsComputerToggle.onchange = function () {
+    persistIfEnabled();
+    if (vsComputerToggle.checked && !game.game_over() && game.turn() === 'b' && !computerThinking) {
+      computerThinking = true;
+      renderStatus();
+      setTimeout(makeComputerMove, 400);
+    }
+  };
+
+  saveToggle.onchange = function () {
+    if (saveToggle.checked) {
+      persistIfEnabled();
+    } else if (storageAvailable) {
+      try { window.localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+    }
+  };
+
+  clearSaveBtn.onclick = function () {
+    if (storageAvailable) {
+      try { window.localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+    }
+    saveToggle.checked = false;
+    storageNote.textContent = 'Saved game cleared.';
+    setTimeout(function () { storageNote.textContent = ''; }, 3000);
+  };
+
+  copyPgnBtn.onclick = function () {
+    pgnOutput.focus();
+    pgnOutput.select();
+    var copied = false;
+    try { copied = document.execCommand('copy'); } catch (e) { copied = false; }
+    copyNote.textContent = copied
+      ? 'Copied to clipboard.'
+      : 'Text selected \u2014 use your device\u2019s copy command.';
+  };
+
+  downloadPgnBtn.onclick = function () {
+    var pgnText = game.pgn() || '[Empty game]';
+    try {
+      var blob = new Blob([pgnText], { type: 'text/plain' });
+      var url = window.URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'chess-game.pgn';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { window.URL.revokeObjectURL(url); }, 1000);
+    } catch (e) {
+      copyNote.textContent = 'Download not supported here \u2014 copy the text above instead.';
+    }
+  };
+
+  function attemptLoadPgn(pgnText) {
+    if (!pgnText || !pgnText.replace(/\s/g, '')) {
+      importNote.textContent = 'Paste a PGN game first.';
+      return;
+    }
+    if (game.history().length > 0) {
+      if (!window.confirm('Loading a game will replace the current game. Continue?')) return;
+    }
+    var temp = new Chess();
+    var success = temp.load_pgn(pgnText);
+    if (!success) {
+      importNote.textContent = 'Could not read that PGN \u2014 check the text and try again.';
+      return;
+    }
+    game = temp;
+    selected = null;
+    targets = [];
+    computerThinking = false;
+    renderBoard();
+    renderStatus();
+    renderMoveList();
+    persistIfEnabled();
+    importNote.textContent = 'Game loaded.';
+    pgnInput.value = '';
+  }
+
+  loadPastedBtn.onclick = function () { attemptLoadPgn(pgnInput.value); };
+
+  if (window.FileReader) {
+    pgnFile.onchange = function () {
+      var file = pgnFile.files && pgnFile.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        attemptLoadPgn(String(e.target.result));
+        pgnFile.value = '';
+      };
+      reader.onerror = function () {
+        importNote.textContent = 'Could not read that file.';
+      };
+      reader.readAsText(file);
+    };
+  } else {
+    fileImportWrap.style.display = 'none';
+  }
+
+  if (!storageAvailable) {
+    storageNote.textContent = 'Local saving is not available in this browser.';
+    saveToggle.disabled = true;
+    clearSaveBtn.disabled = true;
+  }
+
+  buildBoard();
+  tryRestore();
+  renderBoard();
+  renderStatus();
+  renderMoveList();
+})();
+</script>
+</body>
+</html>
