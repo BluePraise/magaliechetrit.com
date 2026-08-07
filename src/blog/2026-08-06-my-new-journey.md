@@ -12,7 +12,7 @@ description: Read about why I am stopping a career in web development.
 In the song "Giving up" by Ingrid Michaelson she sings "I am giving up on half empty glasses and
 I am giving up on greener grasses." I have always loved that line. 
 
-I am giving up on chasing greener grasses with web development. No more no more building better, faster and having an improvement in my workflow. With the introduction of Claude Code and CoPilot, the work isn't fun anymore. 
+I am giving up on chasing greener grasses with web development. No more building better, faster and finding improvement in my workflow with tools. With the introduction of Claude Code and CoPilot, the work isn't fun anymore. 
 
 When I was interviewing for a company I was so interested in, I was asked how I dealt with AI in my workflow. If I had a boner, I lost it right then and there. What a turn off. Yes, I was rejected and I still feel bitter about it. It was done in a very rude and shameful way as well. You may email me if you want to know who it was and how it went. 
 
