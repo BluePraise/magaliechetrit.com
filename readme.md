@@ -4,7 +4,8 @@
 ## What it is this site built with?
 - [Eleventy.js](https://www.11ty.dev)
 - [Nunjucks](https://github.com/mozilla/nunjucks)
-- Netlify
+- Hosted by Netlify
+- CMS: Decap CMS (added August 2026)
 
 ## About CSS Structure
 Style.css contains the main styles for the site or elements that are used in all pages. The rest of the styles are in the respective pages.
@@ -31,11 +32,10 @@ For Portfolio items sometimes I'd like to add a job title and sometimes I don't.
 - [x] convert to eleventy.js
 - [x] add Nunjucks
 - [x] Add a fixed topbar
-- [ ] replace jquery with vanilla javascript
+- [x] replace jquery with vanilla javascript
 - [x] replace bootstrap with my own css
 - [x] use more css vars
-- [ ] multilingual
-- [ ] about page
+- [x] about page
 - [x] fix relative path structures
 - [x] make site semantic (add sections)
 - [x] fix blog links
@@ -60,6 +60,7 @@ For Portfolio items sometimes I'd like to add a job title and sometimes I don't.
 - [ ] replace Inter with an nicer font
 - [ ] Implement React or Vue.js < we're never using React if we have a choice. >
 - [ ] Update github actions with newer node (see github actions) <moved to Netlify>
+- [ ] multilingual
 
 ### Some sparkles ✨
 1. I demand great A11Y.
