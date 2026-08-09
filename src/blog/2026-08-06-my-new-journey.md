@@ -1,8 +1,7 @@
 ---
 title: I am giving up on my web development career.
-author: Magalie Chetrit
 dateCreated: 2026-08-06
-date: Last Modified
+updated_at:
 tags: post
 image:
 imageAlt:

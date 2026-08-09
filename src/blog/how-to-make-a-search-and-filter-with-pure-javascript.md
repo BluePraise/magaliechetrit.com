@@ -2,7 +2,7 @@
 title: How to make a search filter with pure JavaScript
 author: Magalie Chetrit
 dateCreated: 2022-07-05
-dateModified: 2024-08-31
+updated_at: 2024-08-31
 tags: post
 image:
 imageAlt: Magalie Chetrit

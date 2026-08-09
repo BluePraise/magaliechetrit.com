@@ -40,6 +40,7 @@
     "@11ty/eleventy-fetch": "^4.0.0",
     "@11ty/eleventy-img": "^3.1.8",
     "common-tags": "^1.8.2",
+    "decap-cms-app": "^3.15.1",
     "fslightbox": "^3.6.1",
     "sharp": "^0.32.6"
   }

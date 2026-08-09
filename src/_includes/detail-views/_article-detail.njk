@@ -3,7 +3,6 @@ layout: 'base-lite.njk'
 ---
 <article class="article-detail">
     <p><a href="/blog/" class="back-link">← Back to blog</a></p>
-
     <header class="article-header">
         {% if series %}
             <p class="muted">Part {{ seriesNumber }} of the "{{ series }}" series</p>
@@ -11,8 +10,8 @@ layout: 'base-lite.njk'
         <h1>{{ title }}</h1>
         <div class="article-meta">
             <time datetime="{{ dateCreated }}">{{ dateCreated | makeDateReadable }}</time>
-            {% if dateModified %}
-                · <span>Updated: <time datetime="{{ dateModified }}">{{ dateModified | makeDateReadable }}</time></span>
+            {% if updated_at %}
+                · <span>Updated: <time datetime="{{ updated_at }}">{{ updated_at | makeDateReadable }}</time></span>
             {% endif %}
         </div>
     </header>
