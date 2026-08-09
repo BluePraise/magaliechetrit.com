@@ -1,12 +1,12 @@
 ---
+imageAlt: null
 title: How to get the latest Git commit date using 11ty
-author: Magalie Chetrit
 dateCreated: 2024-09-29
-dateModified: 2024-08-31
+updated_at: 2026-08-08T20:11:00-04:00
 tags: post
-image:
-imageAlt:
-description: I wanted to add the latest commit date to the footer of my site. Here's how I did it.
+image: null
+description: I wanted to add the latest commit date to the footer of my site.
+  Here's how I did it.
 ---
 ### An archive piece for my future self
 

@@ -1,12 +1,13 @@
 ---
+seriesNumber: 1
+imageAlt: null
 title: How I built this website.
-author: Magalie Chetrit
+description: Follow the journey on the gruesome things I did to develop this website
 dateCreated: 2024-04-22
-date: Last Modified
-tags: post, draft
-image:
-imageAlt:
-description: I built this website with 11ty. Here's what I learned.
+updated_at: 2026-08-08T20:23:00-04:00
+series: Building this website
+tags: post
+image: null
 ---
 ### Why I built this website.
 I'm a front-end developer. To showcase my work the most popular way is a portfolio. It also is a chance for me to learn new things without restrictions. I can experiment with new technologies and see how they work in a real-world scenario.

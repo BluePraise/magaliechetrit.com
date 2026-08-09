@@ -52,7 +52,8 @@ module.exports = function (eleventyConfig) {
 
     // presents modified date in format 01-01-2022
     eleventyConfig.addFilter("makeDateReadable", (dateObj) => {
-        return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY);
+        const modifiedDate = DateTime.fromJSDate(dateObj, { zone: 'utc' }).toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY);
+        return modifiedDate;
     });
 
     // Sort articles by dateCreated in descending order
@@ -156,6 +157,10 @@ module.exports = function (eleventyConfig) {
         const meta = await sharp(outputPath).metadata();
         return `<img src="${urlPath}" width="${meta.width}" height="${meta.height}" alt="${alt}" loading="lazy" decoding="async" class="retro-img">`;
     });
+
+    // Adding Decap CMS to eleventy and netlify
+    eleventyConfig.addPassthroughCopy("admin");
+    eleventyConfig.addPassthroughCopy({"admin/config.yml": "admin/config.yml" });
 
     return {
         dir: {

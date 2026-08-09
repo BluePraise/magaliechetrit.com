@@ -2,7 +2,6 @@
 title: Things I learned in 2023
 author: Magalie Chetrit
 dateCreated: 2023-12-22
-date: Last Modified
 tags: post
 image: 2023-12-22-things-learned-in-2023.jpg
 imageAlt:

@@ -1,12 +1,14 @@
 ---
-title: My return to retro tech
 author: Magalie Chetrit
-dateCreated: 2026-04-18
-date: Last Modified
-tags: post
-image: blackberry-ipod.png
 imageAlt: A Blackberry Classic next to an iPod Classic
-description: On phone addiction, overcomplicated web development, and finding my way back through a Blackberry.
+title: My return to retro tech
+description: On phone addiction, overcomplicated web development, and finding my
+  way back through a Blackberry.
+date: Last Modified
+series: Retro Web
+tags: post
+dateCreated: 2026-04-18
+image: blackberry-ipod.png
 ---
 
 There is a quote I keep coming back to, from someone called Jake Rhodes:
